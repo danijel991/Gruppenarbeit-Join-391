@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="script.js"></script>
+    <title>Title</title>
+</head>
+
+<body onload="init()">
+    <div class="container-fluid mh-100 d-flex flex-column">
+
+        <!-- HEADER START -->
+        <div w3-include-html="src/templates/header.html"></div>
+        <!-- HEADER END -->
+
+        <!-- SIDE BAR START -->
+        <div class="sidebar " id="sidebar">
+            <div>
+                <h2>SIDEBAR</h2>
+            </div>
+        </div>
+        <!-- SIDEBAR END  -->
+
+        <!-- MAIN START  -->
+        <main class="main">
+            <div class="container">
+                <div class="row" id="greeting-content">
+                    <div class="col-1"></div>
+                    <div class="col-10 hstack d-flex justify-content-center" id="greeting">
+                        <div class="h3 text-black">
+                            Time of Day Greeting,
+                        </div>
+                        <div class="h2 text-danger">
+                            FirstName LastName
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur mollitia hic corrupti provident, quis
+                cupiditate dolore quam, dolorum repellendus modi aliquid doloremque? Voluptatem, excepturi. Ut sed
+                placeat veritatis minus at.
+            </div>
+
+        </main>
+        <!-- MAIN END  -->
+
+    </div>
+
+</body>
+
+</html>
