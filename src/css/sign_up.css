@@ -1,5 +1,10 @@
 body {
     margin: 0;
+    background-color: #4589FF !important;
+}
+
+.frame_main {
+    display: flex;
 }
 
 .signup_h1 {
@@ -25,27 +30,6 @@ body {
     flex-grow: 0;
 }
 
-.signup_bottom_bar {
-    width: 0px;
-    height: 150px;
-
-    /* Version 2/main color */
-
-    border: 3px solid #4589FF;
-    transform: rotate(90deg);
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-
-.signUp-background {
-    background-color: #4589FF;
-    height: 100vh;
-    width: 100%;
-}
 
 .signup_frame {
     display: flex;
@@ -71,70 +55,66 @@ body {
 }
 
 .signup_form_input {
-    height: 50px;
-    width: 422px;
-    left: 0px;
-    top: 0px;
-    border-radius: 0px;
-    padding: 13px 21px 13px 21px;
-}
-
-input {
-    width: 422px;
-    height: 50px;
-    padding: 13px 21px;
-    gap: 10px;
     border: 0;
-    border-bottom: 1px solid #D1D1D1;
-}
-
-.signup_button {
-    background: #4589FF;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 10px;
-
-    width: 106px;
-    height: 43px;
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-    z-index: 2;
-    border: 0;
-
-}
-
-.signup_button span {
-    width: 66px;
-    height: 23px;
-
-    /* Version 2/t6 */
-
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 120%;
-    /* identical to box height, or 23px */
-
-
-    color: #FFFFFF;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    color: #D1D1D1;
+    width: 337.6px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+form img {
+    width: 16px;
+    height: 21px;
+    object-fit: contain;
+}
+
+.around_input {
+    height: 50px;
+    width: 422px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    padding: 13px 21px 13px 21px;
+    width: 422px;
+    height: 50px;
+    padding: 13px 21px;
+    gap: 10px;
+    border: 0;
+    border-bottom: 1px solid #D1D1D1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow_back {
+
+    left: 37.17px;
+    top: 41.51px;
+    position: absolute;
+}
+
+.arrow_back img {
+    height: 23.982166290283203px;
+    width: 24.66666603088379px;
+}
+
+
+.signup_button {
+    background: #4589FF;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 20px;
+    gap: 10px;
+    margin-top: 35px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
+    width: 106px;
+    height: 43px;
+    color: #FFFFFF;
 }
