@@ -1,0 +1,101 @@
+/* General Classes */
+body{
+    min-height: 100vh;
+    background-color: #FFFFFF !important;
+}
+
+
+/* Classe for the Log In Area */
+.logIn__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: inherit;
+}
+
+.logIn__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    width: 652px;
+    height: 473px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+}
+
+.logIn__title{
+    text-align: center;
+    font-weight: 700;
+    width: calc(100% + 20px);
+    padding-bottom: 20px;
+    border-bottom: 5px solid #4589FF;
+}
+
+
+.logIn_input--container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 422px;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+
+.logIn_input--container img{
+    margin-inline-start: 10px;
+    width: 20px;
+}
+
+
+.logIn__input{
+    display: flex;
+    flex-grow: 1;
+    height: 30px;
+    padding-inline:10px ;
+    width: max-content;
+    border: none;
+    color:#E8E8E8;
+    outline-color: #E8E8E8;
+}
+
+.form-control{
+    border: none !important;
+}
+
+.logIn__selectors{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    width: 422px;
+    margin-block: 10px;
+    padding: 13px 21px 13px 21px;
+}
+
+
+.logIn__selector--remember{
+    display: flex;
+    gap: 20px;
+}
+
+
+.logIn--remember{
+    font-weight: 500;
+}
+
+
+.logIn--forgot{
+    font-weight: 600;
+    color: #4589FF;
+    text-decoration: none!important;
+}
+
+
+.logIn__buttons{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
