@@ -8,10 +8,22 @@ body{
 /* Classes for the Logo and "To Sign In"  */
 .ls__wrapper{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: inherit;
     height: 10rem;
+}
+
+
+.logo__container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%); /* Center the img */
+    transition: all 1500ms ease-in-out;
 }
 
 
@@ -49,8 +61,8 @@ body{
     align-items: center;
     padding: 3rem 0px;
     gap: 3rem;
-    width: 600px;
-    height: 600px;
+    width: 652px;
+    height: 457px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 30px;
