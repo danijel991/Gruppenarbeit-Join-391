@@ -1,6 +1,6 @@
 async function init() {
-    await includeHTML();
-    document.getElementById('headline').innerHTML = 'Herzlich willkommen!!';
+    let initialPage = await includeHTML();
+    document.getElementById('headline').innerHTML = initialPage ;
 }
 
 
