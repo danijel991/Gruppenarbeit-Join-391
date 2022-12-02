@@ -25,7 +25,7 @@
             <div>
                 <h1 class="logIn__title">Log In</h1>
             </div>
-            <form>
+            <form onsubmit="">
                 <div class="logIn_input--container">
                     <input class="form-control logIn__input" type="email" placeholder="Email" id="email" required>
                     <img src="/src/img/input_mail.png" alt="">
@@ -40,11 +40,11 @@
                         <input type="checkbox" class="form-check-input">
                         <label for="email password" class="form_check-input logIn--remember">Remember me</label>
                     </div>
-                    <a class="btn-link logIn--forgot">Forgot my password</a>
+                    <a href="/src/html/forgot_password.html"  class="btn-link logIn--forgot" >Forgot my password</a>
                 </div>
                 <div class="logIn__buttons">
                     <button class="btn btn-primary">Log In</button>
-                    <button class="btn btn-outline-secondary">Guest log in</button>
+                    <button id = "guest_logIn"onclick="logInUserGuest()" class="btn btn-outline-secondary">Guest log in</button>
                 </div>
             </form>
         </div>

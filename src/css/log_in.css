@@ -121,8 +121,7 @@ body{
     justify-content: space-around;
     height: 50px;
     width: 500px;
-    margin-top: 3rem;
-
+    margin-top: 2rem;
     margin-bottom: 0.5rem;
     padding: 13px 21px 13px 21px;
     font-size: 1.2rem;
@@ -153,6 +152,60 @@ body{
     gap: 40px;
 }
 
+
 .logIn__buttons button{
     font-size: 1.1rem !important;
+}
+
+
+/* Classe for forgot password */
+.forgot__file--wrapper{
+    min-height: inherit;
+    position: relative;
+    background-color: #4589FF;
+}
+
+
+.logo__position{
+    transition: unset;
+    top: 7rem;
+    left: 7rem;
+}
+
+
+.logo__position img {
+    height: 120px;
+    width: 100px;
+
+}
+
+
+.forgot__wrapper{
+    transform: translate(0%, -10%)
+}
+
+
+.forgot__frame{
+    position: relative;
+    gap:1rem
+}
+
+
+.forgot__text--wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+}
+
+
+.forgot__text{
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+
+.forbot__buttons{
+    margin-top: 2rem;
 }
