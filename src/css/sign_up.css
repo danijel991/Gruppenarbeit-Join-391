@@ -7,6 +7,10 @@ body {
     background-color: #4589FF !important;
 }
 
+a {
+    decoration: none;
+}
+
 .frame_main {
     display: flex;
 }
@@ -26,10 +30,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 35px 0px;
+    padding: 35px 0 45px 0;
     gap: 35px;
     isolation: isolate;
-
     position: absolute;
     width: 652px;
     height: 473px;
@@ -44,6 +47,10 @@ body {
     border: 0;
     color: #D1D1D1;
     width: 337.6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
 }
 
 form {
@@ -92,6 +99,7 @@ form img {
     position: absolute;
     height: 37px;
     width: 37px;
+    flex: none;
 }
 
 .arrow_back img {
@@ -121,4 +129,18 @@ input {
     font-size: 19px;
 }
 
+
 .line1_frame {}
+
+.logo_white {
+    position: absolute;
+    left: 5.35%;
+    right: 87.71%;
+    top: 7.81%;
+    bottom: 80.28%;
+    height: 121.96575164794922px;
+    width: 100.03408813476562px;
+    left: 77px;
+    top: 80px;
+    border-radius: 0px;
+}
