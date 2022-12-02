@@ -4,6 +4,8 @@ body {
   min-height: 100vh;
 }
 
+/* HEADER */
+
 header {
   position: absolute;
   width: 100%;
@@ -19,10 +21,37 @@ header {
   padding: 20px 39px;
   gap: 34px;
   z-index: 4;
+  color: white;
 }
 
 .header-content {
   text-align: center;
+}
+
+header img {
+  cursor: pointer;
+}
+
+.join-logo img {
+  height: 58px;
+  object-fit: cover;
+}
+
+.header-right-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.help-icon {
+  width: 31px;
+  height: 31px;
+}
+
+.acc-icon {
+  width: 49px;
+  height: 49px;
 }
 
 .box {
@@ -36,6 +65,8 @@ header {
   padding: 0px !important;
 }
 
+/* SIDEBAR */
+
 .sidebar {
   position: absolute;
   left: 0;
@@ -44,13 +75,48 @@ header {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   max-height: 100vh;
   height: calc(100vh - 100px);
   width: 230px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   border-radius: 0px;
+  padding: 66px 20px;
 }
+
+.sidebar a:hover {
+  color: #42526E;
+}
+
+.sidebar a:visited {
+  color: #42526E;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.menu-btns {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 30px;
+  background-color: #D2E3FF;
+  border-radius: 8px;
+  gap: 20px;
+  text-decoration: none;
+  color: #42526E;
+}
+
+.menu-btns img {
+  height: 22px;
+}
+
+/* MAIN */
 
 .main {
   display: flex;
