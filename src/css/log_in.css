@@ -47,10 +47,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 35px 0px;
-    gap: 35px;
-    width: 652px;
-    height: 473px;
+    padding: 3rem 0px;
+    gap: 3rem;
+    width: 600px;
+    height: 600px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 30px;
@@ -95,6 +95,11 @@ body{
 
 
 .form-control{
+    font-size: 1.2rem !important;
+}
+
+
+.form-control{
     border: none !important;
 }
 
@@ -103,9 +108,12 @@ body{
     display: flex;
     justify-content: space-around;
     height: 50px;
-    width: 422px;
-    margin-block: 10px;
+    width: 500px;
+    margin-top: 3rem;
+
+    margin-bottom: 0.5rem;
     padding: 13px 21px 13px 21px;
+    font-size: 1.2rem;
 }
 
 
@@ -131,4 +139,8 @@ body{
     display: flex;
     align-items: center;
     gap: 40px;
+}
+
+.logIn__buttons button{
+    font-size: 1.1rem !important;
 }
