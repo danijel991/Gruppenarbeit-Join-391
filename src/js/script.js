@@ -1,6 +1,5 @@
 async function init() {
-    let initialPage = await includeHTML();
-    document.getElementById('headline').innerHTML = initialPage ;
+    await includeHTML();
 }
 
 
@@ -16,5 +15,4 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-
 }
