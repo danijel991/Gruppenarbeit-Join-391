@@ -2,6 +2,15 @@ html,
 body {
   width: 100%;
   min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* HEADER */
@@ -129,29 +138,27 @@ header img {
   width: calc(100% - 230px);
 }
 
+
 .logIn__wrapper--holder {
   min-height: 50vh;
 }
 
-.container {
+.top-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-template-columns: repeat(4, 200px);
-  grid-auto-rows: 200px;
+  /* grid-template-columns: repeat(4, 200px);
+  grid-auto-rows: 200px; */
   row-gap: 20px;
+  column-gap: 20px;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  box-sizing: border-box;
-
 }
 
 .alert-card {
-  box-sizing: border-box;
-
   height: 200px;
   background: #4589ff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
@@ -159,9 +166,22 @@ header img {
   width: 100%;
 }
 
+.alert-card img{
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+height: 76px;
+}
+
+.to-do-card img{
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+height: 76px;
+}
+
 .to-do-card {
   margin: auto;
-  box-sizing: border-box;
   height: 200px;
   min-width: 200px;
   background: #4589ff;
