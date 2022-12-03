@@ -1,7 +1,7 @@
 function initLogo() {
     changeBg();
     changeLogo();
-    minimiseLogo();
+    setTimeout(minimiseLogo(), 2000);
 }
 
 
@@ -11,8 +11,7 @@ function minimiseLogo() {
 
 
 function changeBg() {
-    let container = document.getElementById('logo_container');
-    container.style.backgroundColor = "unset";
+    document.body.style.backgroundColor = "white";
 }
 
 function changeLogo() {

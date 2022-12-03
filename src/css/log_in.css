@@ -78,7 +78,7 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 3rem 0px;
-    gap: 3rem;
+    gap: 2rem;
     width: 652px;
     height: 457px;
     background: #FFFFFF;
@@ -92,16 +92,18 @@ a {
     font-weight: 700;
     width: calc(100% + 20px);
     padding-bottom: 20px;
+    color: black;
     border-bottom: 5px solid #4589FF;
 }
 
 
 .logIn_input--container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 50px;
-    width: 422px;
+    width: 90%;
+    margin: auto;
     border-bottom: 1px solid #D1D1D1;
 }
 
@@ -126,11 +128,13 @@ a {
 
 .form-control {
     font-size: 1.2rem !important;
+    border: none !important;
+    max-width: 85% !important;
 }
 
 
-.form-control {
-    border: none !important;
+.form-control::placeholder {
+    opacity: 0.5 !important;
 }
 
 
@@ -140,7 +144,7 @@ a {
     height: 50px;
     width: 500px;
     margin-top: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     padding: 13px 21px 13px 21px;
     font-size: 1.2rem;
 }
@@ -172,9 +176,39 @@ a {
 }
 
 
-.logIn__buttons button {
+.logIn__btn--user {
+    color: #FFFFFF !important;
+    width: 25%;
     font-size: 1.1rem !important;
+    background-color: hsl(218, 100%, 64%) !important;
+    border:1px solid hsl(218, 100%, 64%) !important;
 }
+
+
+.logIn__btn--user:hover{
+    background-color: hsl(218, 100%, 50%) !important;
+    border:1px solid hsl(218, 100%, 50%) !important;
+    box-shadow: 0px 2px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+
+.logIn__btn--guest {
+    width: 40%;
+    font-size: 1.1rem !important;
+    border:2px solid hsl(0, 0%, 70%) !important;
+}
+
+
+.logIn__btn--guest:hover{
+    border:2px solid hsl(218, 100%, 64%) !important;
+    box-shadow: 0px 2px 1px  rgba(0, 0, 0, 0.15);
+}
+
+
+.logIn__buttons button:nth-child(2):hover{
+    background-color: none;
+}
+
 
 /* Classes for Sign up */
 .arrow_back {
@@ -207,17 +241,28 @@ form img {
     width: 100px;
 }
 
-/* Classe for forgot password */
-.forgot__file--wrapper {
-    min-height: inherit;
+
+.signUp__frame{
     position: relative;
-    background-color: #4589FF;
-    width: 100%;
+    gap: 1rem;
 }
 
 
+.signUp__title{
+    margin: auto;
+    width: 40%;
+}
+
+
+.signUp__form--container{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 20px;
+}
+
+/* Classe for forgot password */
 .logo__position {
-    transition: unset;
     top: 7rem;
     left: 7rem;
 }
@@ -253,6 +298,16 @@ form img {
 }
 
 
-.forbot__buttons {
+.forgot__form--container{
+    width: 55%;
+}
+
+
+.forgot__buttons {
     margin-top: 2rem;
+}
+
+
+.forgot__buttons button{
+    background-color: #4589FF;
 }

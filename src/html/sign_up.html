@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/sign_up.css">
     <link rel="stylesheet" href="/src/css/log_in.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="/src/js/script.js"></script>
@@ -18,15 +17,15 @@
         <div id="logo_container" class="logo__container logo__position">
             <img id="logo__img" src="/src/img/logo_white.png" alt="">
         </div>
-        <div class="logIn__wrapper signUp__wrapper">
+        <div class="logIn__wrapper">
             <div class="logIn__frame signUp__frame">
                 <a href="../../index.html">
                     <img class="arrow_back" src="/src/img/arrow_back.png" alt="">
                 </a>
-                <div class="forgot__text--wrapper">
-                    <h1 class="logIn__title">Sign up</h1>
+                <div class="forgot__text--wrapper ">
+                    <h1 class="logIn__title signUp__title">Sign up</h1>
                 </div>
-                <form>
+                <form class="signUp__form--container">
                     <div class="logIn_input--container">
                         <input class="form-control logIn__input" type="text" placeholder="Name" required>
                         <img src="/src/img/input_name.png" alt="">
@@ -40,7 +39,7 @@
                         <img src="/src/img/input_password.png" alt="">
                     </div>
                     <div class="logIn__buttons">
-                        <button class="btn btn-primary">Sign up</button>
+                        <button class="btn logIn__btn--user">Sign up</button>
                     </div>
                 </form>
             </div>
