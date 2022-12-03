@@ -2,7 +2,31 @@ html,
 body {
   width: 100%;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120%;
+}
+
+h2{
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 120%;
+}
+
 
 /* HEADER */
 
@@ -86,11 +110,11 @@ header img {
 }
 
 .sidebar a:hover {
-  color: #42526E;
+  color: #42526e;
 }
 
 .sidebar a:visited {
-  color: #42526E;
+  color: #42526e;
 }
 
 .menu {
@@ -105,11 +129,11 @@ header img {
   justify-content: flex-start;
   align-items: center;
   padding: 8px 30px;
-  /* background-color: #D2E3FF; */
+  /* background-color: #d2e3ff; */
   border-radius: 8px;
   gap: 20px;
   text-decoration: none;
-  color: #42526E;
+  color: #42526e;
 }
 
 .menu-btns img {
@@ -135,10 +159,83 @@ header img {
   margin-left: 232px;
   margin-top: 100px;
   min-height: calc(100vh - 100px);
+  width: calc(100% - 230px);
+}
+
+.logIn__wrapper--holder {
+  min-height: 50vh;
+}
+
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* grid-template-columns: repeat(4, 200px);
+  grid-auto-rows: 200px; */
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.alert-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: #4589ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+  width: 100%;
+}
+
+.alert-card img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
+}
+
+.task-to-do-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 200px;
+  min-width: 200px;
+  background: #D2E3FF;;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
 }
 
 
-.logIn__wrapper--holder{
-  min-height: 50vh
+.task-to-do-card img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
 }
+
+.to-do-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 200px;
+  min-width: 200px;
+  background: #feffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+}
+
+.to-do-card img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
+}
+
 
