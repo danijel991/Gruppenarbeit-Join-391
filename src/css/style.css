@@ -86,11 +86,11 @@ header img {
 }
 
 .sidebar a:hover {
-  color: #42526E;
+  color: #42526e;
 }
 
 .sidebar a:visited {
-  color: #42526E;
+  color: #42526e;
 }
 
 .menu {
@@ -105,11 +105,11 @@ header img {
   justify-content: flex-start;
   align-items: center;
   padding: 8px 30px;
-  background-color: #D2E3FF;
+  background-color: #d2e3ff;
   border-radius: 8px;
   gap: 20px;
   text-decoration: none;
-  color: #42526E;
+  color: #42526e;
 }
 
 .menu-btns img {
@@ -126,10 +126,45 @@ header img {
   margin-left: 232px;
   margin-top: 100px;
   min-height: calc(100vh - 100px);
+  width: calc(100% - 230px);
 }
 
-
-.logIn__wrapper--holder{
-  min-height: 50vh
+.logIn__wrapper--holder {
+  min-height: 50vh;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-template-columns: repeat(4, 200px);
+  grid-auto-rows: 200px;
+  row-gap: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+
+}
+
+.alert-card {
+  box-sizing: border-box;
+
+  height: 200px;
+  background: #4589ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+  width: 100%;
+}
+
+.to-do-card {
+  margin: auto;
+  box-sizing: border-box;
+  height: 200px;
+  min-width: 200px;
+  background: #4589ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+}
