@@ -1,5 +1,5 @@
 async function init() {
-    initLogo();
+    // initLogo();
     await includeHTML();
 }
 

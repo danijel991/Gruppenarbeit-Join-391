@@ -105,7 +105,7 @@ header img {
   justify-content: flex-start;
   align-items: center;
   padding: 8px 30px;
-  background-color: #D2E3FF;
+  /* background-color: #D2E3FF; */
   border-radius: 8px;
   gap: 20px;
   text-decoration: none;
@@ -114,6 +114,15 @@ header img {
 
 .menu-btns img {
   height: 22px;
+}
+
+.active {
+  background-color: #D2E3FF;
+}
+
+.second-active {
+  background-color: #005DFF;
+  color: white !important;
 }
 
 /* MAIN */
