@@ -13,6 +13,21 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+h1{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120%;
+}
+
+h2{
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 120%;
+}
+
+
 /* HEADER */
 
 header {
@@ -207,11 +222,11 @@ header img {
   border-radius: 30px;
 }
 
-
 .to-do-card img {
   border: white solid 2px;
   border-radius: 100%;
   width: 76px;
   height: 76px;
 }
+
 
