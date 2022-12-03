@@ -5,12 +5,12 @@ body {
   scroll-behavior: smooth;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* HEADER */
@@ -138,7 +138,6 @@ header img {
   width: calc(100% - 230px);
 }
 
-
 .logIn__wrapper--holder {
   min-height: 50vh;
 }
@@ -159,6 +158,9 @@ header img {
 }
 
 .alert-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 200px;
   background: #4589ff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
@@ -166,25 +168,50 @@ header img {
   width: 100%;
 }
 
-.alert-card img{
+.alert-card img {
   border: white solid 2px;
   border-radius: 100%;
   width: 76px;
-height: 76px;
+  height: 76px;
 }
 
-.to-do-card img{
-  border: white solid 2px;
-  border-radius: 100%;
-  width: 76px;
-height: 76px;
-}
-
-.to-do-card {
+.task-to-do-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   height: 200px;
   min-width: 200px;
-  background: #4589ff;
+  background: #D2E3FF;;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   border-radius: 30px;
 }
+
+
+.task-to-do-card img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
+}
+
+.to-do-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 200px;
+  min-width: 200px;
+  background: #feffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+}
+
+
+.to-do-card img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
+}
+
