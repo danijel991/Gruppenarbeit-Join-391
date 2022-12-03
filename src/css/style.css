@@ -163,7 +163,7 @@ header img {
 }
 
 .logIn__wrapper--holder {
-  min-height: 50vh;
+  min-height: inherit;
 }
 
 

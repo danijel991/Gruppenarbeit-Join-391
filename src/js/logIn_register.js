@@ -6,9 +6,7 @@ function initLogo() {
 
 
 function minimiseLogo() {
-    let container = document.getElementById('logo_container');
-    container.style.top = "7rem"
-    container.style.left = "7rem"
+    let container = document.getElementById('logo__img');
 }
 
 

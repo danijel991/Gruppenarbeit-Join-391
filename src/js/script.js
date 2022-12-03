@@ -16,23 +16,3 @@ async function includeHTML() {
         }
     }
 }
-
-
-// Changes the "Log In" to "Sign In"
-function toSignInPage() {
-    let attribute = "w3-include-html";
-    let src = "/src/html/sign_up.html";
-    let holder = document.getElementById('logIn_signIn');
-    holder.innerHTML = holder.setAttribute(attribute, src)
-    includeHTML();
-}
-
-
-// Changes the "Sign In" back to "Log In"
-function toLogIn(){
-    let attribute = "w3-include-html";
-    let src = "/src/html/log_in.html";
-    let holder = document.getElementById('logIn_signIn');
-    holder.innerHTML = holder.setAttribute(attribute, src)
-    includeHTML();
-}

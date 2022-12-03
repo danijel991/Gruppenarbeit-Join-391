@@ -1,33 +1,51 @@
 /* General Classes */
-body{
+body {
+    margin: 0;
+    background-color: #4589FF !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    background-color: #FFFFFF !important;
+
 }
 
 
-/* Classes for the Logo and "To Sign In"  */
-.ls__wrapper{
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+a {
+    decoration: none;
+}
+
+
+/* Classes for the Logo and "To Sign Up"  */
+.ls__wrapper {
+    position: absolute;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: inherit;
+    top: 0px;
+    width: 100%;
     height: 10rem;
 }
 
 
-.logo__container{
+.logo__container {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 50%;
+    left: 10%;
     top: 40%;
-    transform: translate(-50%, -50%); /* Center the img */
+    transform: translate(-50%, -50%);
+    /* Center the img */
     transition: all 1500ms ease-in-out;
 }
 
 
-.to__sign-in--wrapper{
+.to__sign-in--wrapper {
     display: flex;
     align-items: center;
     width: 18rem;
@@ -35,13 +53,13 @@ body{
 }
 
 
-.to__sign-in--wrapper p{
+.to__sign-in--wrapper p {
     margin: 0;
     font-weight: 600;
 }
 
 
-.to__sign-in--wrapper button{
+.to__sign-in--wrapper button {
     background-color: #4589FF;
 }
 
@@ -69,7 +87,7 @@ body{
 }
 
 
-.logIn__title{
+.logIn__title {
     text-align: center;
     font-weight: 700;
     width: calc(100% + 20px);
@@ -78,7 +96,7 @@ body{
 }
 
 
-.logIn_input--container{
+.logIn_input--container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -88,35 +106,35 @@ body{
 }
 
 
-.logIn_input--container img{
+.logIn_input--container img {
     margin-inline-start: 10px;
     width: 20px;
 }
 
 
-.logIn__input{
+.logIn__input {
     display: flex;
     flex-grow: 1;
     height: 30px;
-    padding-inline:10px ;
+    padding-inline: 10px;
     width: max-content;
     border: none;
-    color:#E8E8E8;
+    color: #E8E8E8;
     outline-color: #E8E8E8;
 }
 
 
-.form-control{
+.form-control {
     font-size: 1.2rem !important;
 }
 
 
-.form-control{
+.form-control {
     border: none !important;
 }
 
 
-.logIn__selectors{
+.logIn__selectors {
     display: flex;
     justify-content: space-around;
     height: 50px;
@@ -128,45 +146,77 @@ body{
 }
 
 
-.logIn__selector--remember{
+.logIn__selector--remember {
     display: flex;
     gap: 20px;
 }
 
 
-.logIn--remember{
+.logIn--remember {
     font-weight: 500;
 }
 
 
-.logIn--forgot{
+.logIn--forgot {
     font-weight: 600;
     color: #4589FF;
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 
-.logIn__buttons{
+.logIn__buttons {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 40px;
 }
 
 
-.logIn__buttons button{
+.logIn__buttons button {
     font-size: 1.1rem !important;
 }
 
+/* Classes for Sign up */
+.arrow_back {
+    background: url("../img/arrow_back.png") no-repeat;
+    left: 37.17px;
+    top: 41.51px;
+    position: absolute;
+    height: 37px;
+    width: 37px;
+}
 
-/* Classe for forgot password */
-.forgot__file--wrapper{
-    min-height: inherit;
-    position: relative;
-    background-color: #4589FF;
+.arrow_back img {
+    height: 24px;
+    width: 24px;
 }
 
 
-.logo__position{
+form img {
+    width: 16px;
+    height: 21px;
+    object-fit: contain;
+}
+
+
+.logo_white {
+    position: absolute;
+    left: 7rem;
+    top: 7rem;
+    height: 122px;
+    width: 100px;
+}
+
+/* Classe for forgot password */
+.forgot__file--wrapper {
+    min-height: inherit;
+    position: relative;
+    background-color: #4589FF;
+    width: 100%;
+}
+
+
+.logo__position {
     transition: unset;
     top: 7rem;
     left: 7rem;
@@ -180,32 +230,29 @@ body{
 }
 
 
-.forgot__wrapper{
-    transform: translate(0%, -10%)
-}
-
-
-.forgot__frame{
+.forgot__frame {
     position: relative;
-    gap:1rem
+    width: 761px;
+    height: 450px;
+    gap: 1rem
 }
 
 
-.forgot__text--wrapper{
+.forgot__text--wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 70%;
+    width: 60%;
 }
 
 
-.forgot__text{
+.forgot__text {
     font-size: 1.2rem;
     text-align: center;
     padding-top: 2rem;
 }
 
 
-.forbot__buttons{
+.forbot__buttons {
     margin-top: 2rem;
 }

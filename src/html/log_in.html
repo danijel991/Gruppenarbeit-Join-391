@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/sign_up.css">
     <link rel="stylesheet" href="/src/css/log_in.css">
     <link rel="stylesheet" href="/node_modules\bootstrap\dist\css\bootstrap.min.css">
     <script src="/src/js/logIn_register.js"></script>
@@ -13,13 +9,6 @@
 </head>
 
 <body>
-    <div id="" class="ls__wrapper">
-        <!-- ls == 'Logo' and 'Sign in' -->
-        <div class="to__sign-in--wrapper">
-            <p> Not a Join User?</p>
-            <button class="btn btn-primary" onclick="toSignInPage()">Sign In</button>
-        </div>
-    </div>
     <div class="logIn__wrapper">
         <div class="logIn__frame">
             <div>
@@ -40,11 +29,13 @@
                         <input type="checkbox" class="form-check-input">
                         <label for="email password" class="form_check-input logIn--remember">Remember me</label>
                     </div>
-                    <a href="/src/html/forgot_password.html"  class="btn-link logIn--forgot" >Forgot my password</a>
+                    <a href="/src/html/forgot_password.html" class="btn-link logIn--forgot">Forgot my password</a>
                 </div>
                 <div class="logIn__buttons">
                     <button class="btn btn-primary">Log In</button>
-                    <button id = "guest_logIn"onclick="logInUserGuest()" class="btn btn-outline-secondary">Guest log in</button>
+                    <button id="guest_logIn" onclick="logInUserGuest()" class="btn btn-outline-secondary">
+                        Guest log in
+                    </button>
                 </div>
             </form>
         </div>

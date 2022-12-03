@@ -6,18 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/html/sign_up.html">
     <link rel="stylesheet" href="./src/css/log_in.css">
-    <link rel="stylesheet" href="./src/css/sign_up.css">
-    <script src="./src/js/logIn_register.js"></script>    
+    <script src="./src/js/logIn_register.js"></script>
     <script src="./src/js/script.js"></script>
     <title>Index</title>
 </head>
 
 <body onload="init();  initLogo()">
-    <div id="logo_container" class="logo__container">
-        <img id="logo__img" src="/src/img/logo_white.png" alt="">
+    <div id="" class="ls__wrapper">
+        <!-- ls == 'Logo' and 'Sign in' -->
+        <div id="logo_container" class="logo_white">
+            <img id="logo__img" src="/src/img/logo_white.png" alt="">
+        </div>
+        <div class="to__sign-in--wrapper">
+            <p> Not a Join User?</p>
+            <a href="/src/html/sign_up.html" class="btn btn-primary">Sign In</a>
+        </div>
     </div>
-    <div id = "logIn_signIn" class="logIn__wrapper--holder" w3-include-html="src/html/log_in.html"></div>
+    <div id="logIn_signIn" class="logIn__wrapper--holder" w3-include-html="./src/html/log_in.html"></div>
 </body>
 
 </html>
