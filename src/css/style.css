@@ -15,7 +15,8 @@ body {
 
 h1{
   font-style: normal;
-  font-weight: 700;
+  color: #4589FF;
+  font-weight: 700!important;
   font-size: 64px;
   line-height: 120%;
 }
@@ -172,17 +173,10 @@ header img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* grid-template-columns: repeat(4, 200px);
-  grid-auto-rows: 200px; */
+
   row-gap: 20px;
-  column-gap: 20px;
 }
 
-.row {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
 
 .alert-card {
   display: flex;
@@ -192,7 +186,8 @@ header img {
   background: #4589ff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   border-radius: 30px;
-  width: 100%;
+  /* width: 100%; */
+  /* margin: auto; */
 }
 
 .alert-card img {
@@ -206,8 +201,8 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
   height: 200px;
+  /* margin: auto; */
   min-width: 200px;
   background: #D2E3FF;;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
@@ -226,7 +221,7 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  /* margin: auto; */
   height: 200px;
   min-width: 200px;
   background: #feffff;
