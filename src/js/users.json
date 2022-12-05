@@ -3,6 +3,11 @@
         "userName": "Guest User",
         "userEmail": "guestemail@gmail.com",
         "userPassword": "guestpassword",
-        "userAcces" : false
+        "userAcces": false,
+        "userContacts": {
+            "name": "",
+            "sirname": "",
+            "telefon": ""
+        }
     }
 ]

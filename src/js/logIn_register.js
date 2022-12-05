@@ -62,7 +62,7 @@ function logInUserGuest() {
 
 
 function toSummaryPage() {
-    location.href = 'http://192.168.178.59:5500/src/html/summary.html';
+    location.href = './src/html/summary.html';
 }
 
 
@@ -70,6 +70,7 @@ function toSummaryPage() {
 function addNewUser() {
     getUserInfo();
     cleanInput();
+    showConfirmation();
 }
 
 
