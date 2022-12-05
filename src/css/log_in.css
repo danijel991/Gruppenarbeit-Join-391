@@ -19,7 +19,7 @@ a {
 
 
 .d-none{
-    display: none;
+    display: none !important;
 }
 
 
@@ -110,14 +110,27 @@ a {
 }
 
 
+.logIn__title--container{
+    display: flex;
+    justify-content: center;
+    min-width: fit-content;
+}
+
+
+.logIn__title--container h1{
+    margin-block: 0px;
+}
+
+
 .logIn__title {
-    text-align: center;
-    font-weight: 700;
-    width: calc(100% + 20px);
+    font-weight: 700 !important;
+    font-size: 48px;
     padding-bottom: 20px;
+    padding-inline: 20px;
     color: black;
     border-bottom: 5px solid #4589FF;
 }
+
 
 
 .logIn_input--container {
@@ -273,7 +286,6 @@ form img {
 
 .signUp__title{
     margin: auto;
-    width: 40%;
 }
 
 
@@ -320,7 +332,7 @@ form img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 60%;
+    width: 70%;
 }
 
 

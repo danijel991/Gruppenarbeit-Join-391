@@ -7,18 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/log_in.css">
     <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="/node_modules\bootstrap\dist\css\bootstrap.min.css">
     <script src="./src/js/logIn_register.js"></script>
-    <script defer src="./src/js/script.js"></script>
+    <script src="./src/js/script.js"></script>
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
     <title>Index</title>
 </head>
 
-<body onload="logoAnimation()" >
+<body onload="logoAnimation()">
     <div id="initial__file--wrapper" class="initial__file--wrapper">
         <!-- ls == 'Logo' and 'Sign in' -->
         <div id="ls__wrapper" class="ls__wrapper">
             <div id="logo_container" class="logo__container logo__position">
-                <img  class="logo__img--primary" src="/src/img/logo_blue.png" alt="">
+                <img class="logo__img--primary" src="/src/img/logo_blue.png" alt="">
                 <img id="logo__img" class="logo__img--secondary" src="/src/img/logo_white.png" alt="">
             </div>
             <div id="to__sign-in--wrapper" class="to__sign-in--wrapper" style="display:none;">
@@ -26,8 +27,40 @@
                 <a href="/src/html/sign_up.html" class="btn btn-primary">Sign In</a>
             </div>
         </div>
+        <!-- Log In Card -->
+        <div class="logIn__wrapper">
+            <div id="logIn__frame" class="logIn__frame" style="display:none;">
+                <div class="logIn__title--container">
+                    <h1 class="logIn__title">Log In</h1>
+                </div>
+                <form onsubmit="">
+                    <div class="logIn_input--container">
+                        <input class="form-control logIn__input" type="email" placeholder="Email" id="email" required>
+                        <img src="/src/img/input_mail.png" alt="">
+                    </div>
+                    <div class="logIn_input--container">
+                        <input class="form-control logIn__input" type="password" placeholder="Password" id="password"
+                            required>
+                        <img src="/src/img/input_password.png" alt="">
+                    </div>
+                    <div class="logIn__selectors">
+                        <div class="logIn__selector--remember">
+                            <input type="checkbox" class="form-check-input">
+                            <label for="email password" class="form_check-input logIn--remember">Remember me</label>
+                        </div>
+                        <a href="/src/html/forgot_password.html" class="btn-link logIn--forgot">Forgot my password</a>
+                    </div>
+                    <div class="logIn__buttons">
+                        <button class="btn logIn__btn--user">Log In</button>
+                        <button id="guest_logIn" onclick="logInUserGuest()" class="btn logIn__btn--guest">
+                            Guest log in
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- HTML div holder -->
-        <div id="logIn_signIn" class="logIn__wrapper--holder" w3-include-html="./src/html/log_in.html"></div>
+        <!-- <div id="logIn_signIn" class="logIn__wrapper--holder" w3-include-html="./src/html/log_in.html"></div> -->
     </div>
 </body>
 

@@ -2,8 +2,7 @@
 function logoAnimation() {
     transitionLogo();
     setTimeout(changeBg, 350);
-    setTimeout(showTopHeader, 350);
-    setTimeout(init, 350);
+    setTimeout(showCardAndHeader, 450);
 }
 
     
@@ -20,7 +19,8 @@ function transitionLogo() {
 
 
 
-function showTopHeader() {
+function showCardAndHeader() {
+    document.getElementById('logIn__frame').style.display = "flex";
     document.getElementById('to__sign-in--wrapper').style.display = "flex";
 }
 
