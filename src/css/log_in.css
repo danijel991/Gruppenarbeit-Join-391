@@ -1,12 +1,10 @@
 /* General Classes */
 body {
     margin: 0;
-    background-color: #4589FF !important;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
 }
 
 
@@ -16,11 +14,27 @@ body {
 
 
 a {
-    decoration: none;
+    text-decoration: none;
+}
+
+
+.d-none{
+    display: none;
 }
 
 
 /* Classes for the Logo and "To Sign Up"  */
+.initial__file--wrapper{
+    position: absolute;
+    min-height: inherit;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #4589FF;
+    transition: background 150ms ease-in;
+}
+
 .ls__wrapper {
     position: absolute;
     display: flex;
@@ -37,11 +51,6 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 10%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    /* Center the img */
-    transition: all 1500ms ease-in-out;
 }
 
 
@@ -63,6 +72,20 @@ a {
     background-color: #4589FF;
 }
 
+
+.logo__img--primary{
+    position: relative;
+}
+
+
+.logo__img--secondary{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    scale: 2;
+    left: 50vw;
+    top: 50vh;
+    transition: all 550ms ease-in-out;
+}
 
 /* Classe for the Log In Area */
 .logIn__wrapper {
@@ -262,9 +285,19 @@ form img {
 }
 
 /* Classe for forgot password */
+.forgot__file--wrapper{
+    width: 100% ;
+    min-height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4589FF;
+}
+
+
 .logo__position {
-    top: 7rem;
-    left: 7rem;
+    top: 5rem;
+    left: 5rem;
 }
 
 

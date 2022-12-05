@@ -1,22 +1,29 @@
-function initLogo() {
-    changeBg();
-    changeLogo();
-    setTimeout(minimiseLogo(), 2000);
+
+function logoAnimation() {
+    transitionLogo();
+    setTimeout(changeBg, 350);
+    setTimeout(showTopHeader, 350);
+    setTimeout(init, 350);
 }
 
-
-function minimiseLogo() {
-    let container = document.getElementById('logo__img');
-}
-
-
+    
 function changeBg() {
-    document.body.style.backgroundColor = "white";
+    document.getElementById('initial__file--wrapper').style.background = 'white'
 }
 
-function changeLogo() {
-    document.getElementById('logo__img').src = "/src/img/logo_blue.png";
+function transitionLogo() {
+    document.getElementById('logo__img').style.left = "0px";
+    document.getElementById('logo__img').style.top = "0px";
+    document.getElementById('logo__img').style.scale = "1";
+    document.getElementById('logo__img').style.opacity = "0";
 }
+
+
+
+function showTopHeader() {
+    document.getElementById('to__sign-in--wrapper').style.display = "flex";
+}
+
 
 /***    Log In  ***/
 function logInUser() {
