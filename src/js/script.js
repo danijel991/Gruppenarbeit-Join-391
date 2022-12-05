@@ -8,12 +8,9 @@ let usersArray = [];
 
 async function init() {
     await includeHTML();
-<<<<<<< HEAD
-    let response = await fetch('./src/js/users.json');
+    let response = await fetch('/src/js/users.json');
     usersArray = await response.json();
-=======
     await showSelectedLink();
->>>>>>> 30d5d49bc80a0d1ee0eb0f69e1a9c3facd8b4fb7
 }
 
 

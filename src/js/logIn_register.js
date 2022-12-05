@@ -31,14 +31,15 @@ function logInUser() {
     let emailUser = document.getElementById('email').value;
     let passwordUser = document.getElementById('password').value;
     checkIfExists(emailUser, passwordUser);
-
+    emailUser.value = "";
+    passwordUser = "";
 }
 
 // Check if the user exists
 function checkIfExists(emailUser, passwordUser) {
     for (let i = 0; i < usersArray.length; i++) {
         let emailArray = usersArray[i]["userEmail"];
-        let passwordArray = usersArray[i]["userPassword"]; 
+        let passwordArray = usersArray[i]["userPassword"];
         if (emailUser == emailArray && passwordUser == passwordArray) {
             usersArray[i]["userAcces"] = true;
             toSummaryPage();
@@ -60,7 +61,35 @@ function logInUserGuest() {
 }
 
 
-
 function toSummaryPage() {
     location.href = 'http://192.168.178.59:5500/src/html/summary.html';
 }
+
+
+// Sign Up Functions
+function addNewUser() {
+    getUserInfo();
+    cleanInput();
+}
+
+
+function getUserInfo() {
+    let newName = document.getElementById('newUser-name').value;
+    let newEmail = document.getElementById('newUser-email').value;
+    let newPassword = document.getElementById('newUser-password').value;
+    let newUser = {
+        "userName": String(newName),
+        "userEmail": String(newEmail),
+        "userPassword": String(newPassword),
+        "userAcces": false
+    };
+    usersArray.push(newUser);
+}
+
+
+function cleanInput() {
+    document.getElementById('newUser-name').value = '';
+    document.getElementById('newUser-email').value = '';
+    document.getElementById('newUser-password').value = '';
+}
+
