@@ -6,7 +6,7 @@ function logoAnimation() {
     init();
 }
 
-    
+
 function changeBg() {
     document.getElementById('initial__file--wrapper').style.background = 'white'
 }
@@ -28,22 +28,26 @@ function showCardAndHeader() {
 
 /***    Log In  ***/
 function logInUser() {
-    let emailUser = document.getElementById('email');
-    let passwordUser = document.getElementById('password');
+    let emailUser = document.getElementById('email').value;
+    let passwordUser = document.getElementById('password').value;
     checkIfExists(emailUser, passwordUser);
-
+    emailUser.value = "";
+    passwordUser = "";
 }
 
 // Check if the user exists
 function checkIfExists(emailUser, passwordUser) {
-    /*for (let i = 0; i < emailArray.length; i++) {
-        if (emailUser == emailArray[i] && passwordUser == passwordArray[i]) {
+    for (let i = 0; i < usersArray.length; i++) {
+        let emailArray = usersArray[i]["userEmail"];
+        let passwordArray = usersArray[i]["userPassword"];
+        if (emailUser == emailArray && passwordUser == passwordArray) {
+            usersArray[i]["userAcces"] = true;
             toSummaryPage();
-        } else if {
-            ###     // User not registered! Ask to register
+        } else {
+            alert('Not register yet test')
         }
-    }*/
-    return false
+    }
+    return false;
 }
 
 
@@ -53,9 +57,40 @@ function logInUserGuest() {
     let guestPassword = "guestpassword"
     document.getElementById('email').value = guestEmail;
     document.getElementById('password').value = guestPassword;
-    toSummaryPage();
+    checkIfExists(emailUser, passwordUser);
 }
 
+
 function toSummaryPage() {
-    window.open('http://192.168.178.59:5500/src/html/summary.html', '_self');
+    location.href = './src/html/summary.html';
 }
+
+
+// Sign Up Functions
+function addNewUser() {
+    getUserInfo();
+    cleanInput();
+    showConfirmation();
+}
+
+
+function getUserInfo() {
+    let newName = document.getElementById('newUser-name').value;
+    let newEmail = document.getElementById('newUser-email').value;
+    let newPassword = document.getElementById('newUser-password').value;
+    let newUser = {
+        "userName": String(newName),
+        "userEmail": String(newEmail),
+        "userPassword": String(newPassword),
+        "userAcces": false
+    };
+    usersArray.push(newUser);
+}
+
+
+function cleanInput() {
+    document.getElementById('newUser-name').value = '';
+    document.getElementById('newUser-email').value = '';
+    document.getElementById('newUser-password').value = '';
+}
+

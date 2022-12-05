@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/src/css/log_in.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
+    <script src="/src/js/logIn_register.js"></script>
     <script src="/src/js/script.js"></script>
     <title>Sign up</title>
 
 </head>
 
-<body onload="">
+<body onload="init()">
     <div class="forgot__file--wrapper">
         <div id="logo_container" class="logo__container logo__position">
             <img src="/src/img/logo_white.png" alt="">
@@ -26,17 +27,17 @@
                 <div class="forgot__text--wrapper ">
                     <h1 class="logIn__title signUp__title">Sign up</h1>
                 </div>
-                <form class="signUp__form--container">
+                <form class="signUp__form--container" onsubmit="addNewUser(); return false;">
                     <div class="logIn_input--container">
-                        <input class="form-control logIn__input" type="text" placeholder="Name" required>
+                        <input id="newUser-name" class="form-control logIn__input" type="text" placeholder="Name" required>
                         <img src="/src/img/input_name.png" alt="">
                     </div>
                     <div class="logIn_input--container">
-                        <input class="form-control logIn__input" type="email" placeholder="Email" required>
+                        <input id="newUser-email" class="form-control logIn__input" type="email" placeholder="Email" required>
                         <img src="/src/img/input_mail.png" alt="">
                     </div>
                     <div class="logIn_input--container">
-                        <input class="form-control logIn__input" type="password" placeholder="Password" required>
+                        <input id="newUser-password" class="form-control logIn__input" type="password" placeholder="Password" required>
                         <img src="/src/img/input_password.png" alt="">
                     </div>
                     <div class="logIn__buttons">
