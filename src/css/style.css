@@ -178,7 +178,6 @@ header img {
   row-gap: 20px;
 }
 
-
 .alert-card {
   display: flex;
   justify-content: center;
@@ -210,7 +209,6 @@ header img {
   border-radius: 30px;
 }
 
-
 .task-to-do-card img {
   border: white solid 2px;
   border-radius: 100%;
@@ -236,5 +234,42 @@ header img {
   width: 76px;
   height: 76px;
 }
+
+.summary-number {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.summary-font-lg {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 120%;
+}
+.summary-font-m {
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 120%;
+}
+.summary-font-light {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 120%;
+}
+
+.copy-white {
+  color: #ffffff;
+  text-align: center;
+}
+
+.copy-black {
+  color: #000000;
+  text-align: center;
+}
+
+.copy-blue {
+  color: #4589FF;
+  text-align: center;
+}
+
 
 
