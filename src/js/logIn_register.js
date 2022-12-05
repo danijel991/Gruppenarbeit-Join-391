@@ -2,7 +2,8 @@
 function logoAnimation() {
     transitionLogo();
     setTimeout(changeBg, 350);
-    setTimeout(showCardAndHeader, 450);
+    setTimeout(showCardAndHeader, 400);
+    init();
 }
 
     
