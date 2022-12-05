@@ -1,5 +1,15 @@
+/***    Variable    ***/
+let usersArray = [];
+
+/***    Array       ***/
+
+
+/***    Functions   ***/
+
 async function init() {
     await includeHTML();
+    let response = await fetch('./src/js/users.json');
+    usersArray = await response.json();
 }
 
 

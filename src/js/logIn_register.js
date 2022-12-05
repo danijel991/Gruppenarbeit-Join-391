@@ -6,7 +6,7 @@ function logoAnimation() {
     init();
 }
 
-    
+
 function changeBg() {
     document.getElementById('initial__file--wrapper').style.background = 'white'
 }
@@ -28,22 +28,25 @@ function showCardAndHeader() {
 
 /***    Log In  ***/
 function logInUser() {
-    let emailUser = document.getElementById('email');
-    let passwordUser = document.getElementById('password');
+    let emailUser = document.getElementById('email').value;
+    let passwordUser = document.getElementById('password').value;
     checkIfExists(emailUser, passwordUser);
 
 }
 
 // Check if the user exists
 function checkIfExists(emailUser, passwordUser) {
-    /*for (let i = 0; i < emailArray.length; i++) {
-        if (emailUser == emailArray[i] && passwordUser == passwordArray[i]) {
+    for (let i = 0; i < usersArray.length; i++) {
+        let emailArray = usersArray[i]["userEmail"];
+        let passwordArray = usersArray[i]["userPassword"]; 
+        if (emailUser == emailArray && passwordUser == passwordArray) {
+            usersArray[i]["userAcces"] = true;
             toSummaryPage();
-        } else if {
-            ###     // User not registered! Ask to register
+        } else {
+            alert('Not register yet test')
         }
-    }*/
-    return false
+    }
+    return false;
 }
 
 
@@ -53,9 +56,11 @@ function logInUserGuest() {
     let guestPassword = "guestpassword"
     document.getElementById('email').value = guestEmail;
     document.getElementById('password').value = guestPassword;
-    toSummaryPage();
+    checkIfExists(emailUser, passwordUser);
 }
 
+
+
 function toSummaryPage() {
-    window.open('http://192.168.178.59:5500/src/html/summary.html', '_self');
+    location.href = 'http://192.168.178.59:5500/src/html/summary.html';
 }
