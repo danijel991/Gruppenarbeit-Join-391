@@ -1,5 +1,11 @@
+// gruppe-391.developerakademie.net/smallest_backend_ever/nocors.php
+setURL('https://gruppe-391.developerakademie.net/smallest_backend_ever');
+
+
+
 /***    Variable    ***/
 let usersArray = [];
+
 
 /***    Array       ***/
 
@@ -7,9 +13,11 @@ let usersArray = [];
 /***    Functions   ***/
 
 async function init() {
-    await includeHTML();
-    let response = await fetch('/src/js/users.json');
-    usersArray = await response.json();
+    // await includeHTML();
+    // let response = await fetch('/src/js/users.json');
+    // usersArray = await response.json();
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
     await showSelectedLink();
 }
 
