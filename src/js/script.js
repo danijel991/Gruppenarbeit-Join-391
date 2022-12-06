@@ -13,12 +13,9 @@ let usersArray = [];
 /***    Functions   ***/
 
 async function init() {
-    // await includeHTML();
+    await includeHTML();
     await loadUsersFromBackend();
     await showSelectedLink();
-    await includeHTML();
-    // let response = await fetch('/src/js/users.json');
-    // usersArray = await response.json();
 }
 
 
@@ -44,8 +41,4 @@ async function loadUsersFromBackend(){
 
 async function saveInBackend() {
     await backend.setItem('usersArray', JSON.stringify(usersArray));
-}
-
-function deleteUser(user){
-    user = usersArray[0];
 }

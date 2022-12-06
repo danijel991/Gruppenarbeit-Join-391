@@ -70,7 +70,7 @@ function toSummaryPage() {
 function addNewUser() {
     getUserInfo();
     cleanInput();
-    showConfirmation();
+    // showConfirmation();
 }
 
 
@@ -79,19 +79,23 @@ function getUserInfo() {
     let newEmail = document.getElementById('newUser-email').value;
     let newPassword = document.getElementById('newUser-password').value;
     let newID = usersArray.length;
-    let newInitials = newName.charAt(0);
+    let newInitials = getInitials(newName);
+    let newColor = getColor();
     let newUser = {
         "userName": String(newName),
         "userEmail": String(newEmail),
         "userPassword": String(newPassword),
         "userID": String(newID),
-        "userInitials" : String(newInitials),
+        "userInitials": String(newInitials),
         "userPhone": "",
-        "userContacts" : [], 
+        "userContacts": [],
+        "userColor": String(newColor),
+
     };
     usersArray.push(newUser);
     saveInBackend();
 }
+
 
 
 function cleanInput() {
@@ -99,6 +103,26 @@ function cleanInput() {
     document.getElementById('newUser-email').value = '';
     document.getElementById('newUser-password').value = '';
 }
+
+
+function getColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let color = `rgb(${r}, ${g}, ${b})`
+    return color;
+}
+
+function getInitials(newName) {
+    var names = newName.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+    if (names.length > 1) {
+        initials += names[names.length - 1].substring(0, 1).toUpperCase();
+    } else if (names.length == 1) {
+        initials = newName.substring(0, 2).toUpperCase();
+    }
+    return initials;
+};
 
 
 
