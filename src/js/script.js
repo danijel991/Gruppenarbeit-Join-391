@@ -13,12 +13,9 @@ let usersArray = [];
 /***    Functions   ***/
 
 async function init() {
-    // await includeHTML();
+    await includeHTML();
     await loadUsersFromBackend();
     await showSelectedLink();
-    await includeHTML();
-    // let response = await fetch('/src/js/users.json');
-    // usersArray = await response.json();
 }
 
 
