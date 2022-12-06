@@ -78,13 +78,19 @@ function getUserInfo() {
     let newName = document.getElementById('newUser-name').value;
     let newEmail = document.getElementById('newUser-email').value;
     let newPassword = document.getElementById('newUser-password').value;
+    let newID = usersArray.length;
+    let newInitials = newName.charAt(0);
     let newUser = {
         "userName": String(newName),
         "userEmail": String(newEmail),
         "userPassword": String(newPassword),
-        "userAcces": false
+        "userID": String(newID),
+        "userInitials" : String(newInitials),
+        "userPhone": "",
+        "userContacts" : [], 
     };
     usersArray.push(newUser);
+    saveInBackend();
 }
 
 
@@ -93,4 +99,6 @@ function cleanInput() {
     document.getElementById('newUser-email').value = '';
     document.getElementById('newUser-password').value = '';
 }
+
+
 
