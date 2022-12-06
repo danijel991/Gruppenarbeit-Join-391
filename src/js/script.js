@@ -1,24 +1,23 @@
 // gruppe-391.developerakademie.net/smallest_backend_ever/nocors.php
-setURL('https://gruppe-391.developerakademie.net/smallest_backend_ever');
+// setURL('https://developerakademie.net/smallest_backend_ever');
 
 
 
 /***    Variable    ***/
-let usersArray = [];
+
 
 
 /***    Array       ***/
-
+let usersArray = [];
 
 /***    Functions   ***/
 
 async function init() {
     // await includeHTML();
+    await loadUsersFromBackend();
+    await showSelectedLink();
     // let response = await fetch('/src/js/users.json');
     // usersArray = await response.json();
-    await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
-    await showSelectedLink();
 }
 
 
@@ -34,4 +33,14 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+// Backend functions    
+async function loadUsersFromBackend(){
+    await downloadFromServer();
+    usersArray = JSON.parse(backend.getItem('usersArray')) || [];
+}
+
+async function saveInBackend() {
+    await backend.setItem('usersArray', JSON.stringify(usersArray));
 }
