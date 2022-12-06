@@ -203,7 +203,6 @@ header img {
 .bottom-box {
   display: flex;
   text-align: center;
- 
 }
 
 .summary-container {
@@ -223,7 +222,7 @@ header img {
 .vertical-line {
   display: flex;
   width: 3px;
-  height: 145px;
+  height: 70%;
   background-color: #ffffff;
   /* transition: all 225ms ease-in-out; */
 }
@@ -249,6 +248,25 @@ header img {
   height: 76px;
 }
 
+.alert-card:hover {
+  background-color: #ffffff;
+  border-top-left-radius: 0;
+  transform: scale(1.02);
+  color: #4589ff;
+  transition: all 225ms ease-in-out;
+}
+
+.alert-card:hover .copy-white,
+.alert-card:hover .font-medium,
+.alert-card:hover .font-light {
+  color: #4589ff;
+  transition: all 225ms ease-in-out;
+}
+
+.alert-card:hover .vertical-line {
+  background-color: #4589ff;
+}
+
 .bg-paleblue {
   background: #d2e3ff !important; /*overwrites the white bg from to-do-card*/
 }
@@ -264,6 +282,20 @@ header img {
   border-radius: 30px;
   font-weight: 700;
   font-size: 48px;
+}
+
+.to-do-card:hover {
+  background-color: #4589ff!important;
+  border-top-left-radius: 0;
+  transform: scale(1.02);
+  color: #ffffff;
+  transition: all 225ms ease-in-out;
+}
+
+.to-do-card:hover .copy-black,
+.to-do-card:hover .font-light {
+  color: #ffffff;
+  transition: all 225ms ease-in-out;
 }
 
 .to-do-card img {
