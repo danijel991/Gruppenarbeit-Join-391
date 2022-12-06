@@ -227,6 +227,13 @@ header img {
   /* transition: all 225ms ease-in-out; */
 }
 
+.greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 .alert-card {
   display: flex;
   justify-content: space-evenly;
@@ -267,9 +274,41 @@ header img {
   background-color: #4589ff;
 }
 
-.bg-paleblue {
-  background: #d2e3ff !important; /*overwrites the white bg from to-do-card*/
+.alert-card-paleblue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 190px;
+  min-width: 190px;
+  background: #d2e3ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 48px;
 }
+
+.alert-card-paleblue img {
+  border: white solid 2px;
+  border-radius: 100%;
+  width: 76px;
+  height: 76px;
+}
+
+.alert-card-paleblue:hover{
+  background-color: #4589ff !important;
+  border-top-left-radius: 0;
+  transform: scale(1.02);
+  color: #ffffff;
+  transition: all 225ms ease-in-out;
+}
+
+.alert-card-paleblue:hover .copy-black,
+.alert-card-paleblue:hover .font-light{
+  color: #ffffff;
+  transition: all 225ms ease-in-out;
+}
+
 
 .to-do-card {
   display: flex;
@@ -285,12 +324,13 @@ header img {
 }
 
 .to-do-card:hover {
-  background-color: #4589ff!important;
+  background-color: #4589ff !important;
   border-top-left-radius: 0;
   transform: scale(1.02);
   color: #ffffff;
   transition: all 225ms ease-in-out;
 }
+
 
 .to-do-card:hover .copy-black,
 .to-do-card:hover .font-light {
@@ -303,4 +343,77 @@ header img {
   border-radius: 100%;
   width: 76px;
   height: 76px;
+}
+
+/*/ X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/*/ Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/*/ Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/*/ Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  .top-summary-container {
+    flex-direction: column;
+  }
+
+  .greeting {
+    flex-direction: column;
+  }
+
+  .alert-card {
+    height: 120px;
+    min-width: 420px;
+    background: #4589ff;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 20px;
+    font-size: 38px;
+  }
+
+  .alert-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .alert-card-paleblue {
+    height: 120px;
+    min-width: 420px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 20px;
+    font-size: 38px;
+  }
+
+  .alert-card-paleblue img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .to-do-card {
+    height: 120px;
+    min-width: 120px;
+    border-radius: 20px;
+    font-size: 38px;
+  }
+
+  .to-do-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+.container{
+  flex-direction: column;
+}
+}
+
+/*/ X-Large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+}
+
+/*/ XX-Large devices (larger desktops, 1400px and up) */
+@media (max-width: 1400px) {
 }

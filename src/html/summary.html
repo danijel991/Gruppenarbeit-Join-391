@@ -30,9 +30,9 @@
         <main class="main">
             <div class="summary-container">
 
-                <div class="row justify-content-around" id="greeting-content">
+                <div id="greeting-content">
 
-                    <div class="col-12 d-flex justify-content-center" id="greeting">
+                    <div class="greeting" id="greeting">
                         <div class="text-black">
                             <h2>Good Morning</h2>
                         </div>
@@ -62,9 +62,8 @@
                         </div>
                     </div>
 
-                    <div class="bg-paleblue to-do-card d-flex flex-column justify-content-center">
-                        <div
-                            class=" copy-black d-flex justify-content-between align-items-center p-2 gap-3">
+                    <div class="alert-card-paleblue d-flex flex-column justify-content-center">
+                        <div class=" copy-black d-flex justify-content-between align-items-center p-2 gap-3">
                             <div><img src="../img/dash_board.png"></div>
                             <div>88</div>
                         </div>
@@ -74,40 +73,42 @@
                 </div>
 
                 <div class="container justify-content-between d-flex gap-3">
+                    <div class="box-left d-flex flex-row gap-3">
+                        <div class="to-do-card copy-black d-flex flex-column align-items-center">
+                            <div class=" copy-black top-box">
+                                <div><img src="../img/dash_board.png" alt=""></div>
+                                <div>88</div>
+                            </div>
+                            <span class="copy-blue font-light">Task in Board</span>
 
-                    <div class="to-do-card  copy-black d-flex flex-column align-items-center">
-                        <div class=" copy-black top-box">
-                            <div><img src="../img/dash_board.png" alt=""></div>
-                            <div>88</div>
                         </div>
-                        <span class="copy-blue font-light">Task in Board</span>
-                        
-                    </div>
-                    <div class="to-do-card  copy-black d-flex flex-column align-items-center">
-                        <div class=" copy-black d-flex align-items-center gap-3">
-                            <div><img src="../img/in_progress.png" alt=""></div>
-                            <div>88</div>
-                        </div>
-                       <span class="copy-blue font-light">Task in Progress</span>
-                        
-                    </div>
-                    <div class="to-do-card  copy-black d-flex flex-column align-items-center">
-                        <div class=" copy-black d-flex align-items-center gap-3">
-                            <div><img src="../img/awaiting_feedback.png" alt=""></div>
-                            <div>88</div>
-                        </div>
-                        <span class="copy-blue font-light">Awaiting Feedback</span>
-                        
-                    </div>
-                    <div class="to-do-card  copy-black d-flex flex-column align-items-center">
-                        <div class=" copy-black d-flex align-items-center gap-3">
-                            <div><img src="../img/done.png" alt=""></div>
-                            <div>88</div>
-                        </div>
-                        <span class="copy-blue font-light">Tasks Done</span>
-                        
-                    </div>
+                        <div class="to-do-card  copy-black d-flex flex-column align-items-center">
+                            <div class=" copy-black d-flex align-items-center gap-3">
+                                <div><img src="../img/in_progress.png" alt=""></div>
+                                <div>88</div>
+                            </div>
+                            <span class="copy-blue font-light">Task in Progress</span>
 
+                        </div>
+                    </div>
+                    <div class="box-right  d-flex flex-row gap-3">
+                        <div class="to-do-card copy-black d-flex flex-column align-items-center">
+                            <div class=" copy-black d-flex align-items-center gap-3">
+                                <div><img src="../img/awaiting_feedback.png" alt=""></div>
+                                <div>88</div>
+                            </div>
+                            <span class="copy-blue font-light">Awaiting Feedback</span>
+
+                        </div>
+                        <div class="to-do-card  copy-black d-flex flex-column align-items-center">
+                            <div class=" copy-black d-flex align-items-center gap-3">
+                                <div><img src="../img/done.png" alt=""></div>
+                                <div>88</div>
+                            </div>
+                            <span class="copy-blue font-light">Tasks Done</span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
