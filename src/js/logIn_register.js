@@ -86,7 +86,8 @@ function getUserInfo() {
         "userPassword": String(newPassword),
         "userID": String(newID),
         "userInitials" : String(newInitials),
-        "userPhone": "", 
+        "userPhone": "",
+        "userContacts" : [], 
     };
     usersArray.push(newUser);
     saveInBackend();

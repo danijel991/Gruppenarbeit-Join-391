@@ -45,3 +45,7 @@ async function loadUsersFromBackend(){
 async function saveInBackend() {
     await backend.setItem('usersArray', JSON.stringify(usersArray));
 }
+
+function deleteUser(user){
+    user = usersArray[0];
+}
