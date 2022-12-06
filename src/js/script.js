@@ -13,7 +13,7 @@ let usersArray = [];
 /***    Functions   ***/
 
 async function init() {
-    // await includeHTML();
+    await includeHTML();
     // let response = await fetch('/src/js/users.json');
     // usersArray = await response.json();
     await downloadFromServer();
