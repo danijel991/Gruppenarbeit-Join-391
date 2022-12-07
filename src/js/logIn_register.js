@@ -37,17 +37,15 @@ function logInUser() {
 
 // Check if the user exists
 function checkIfExists(emailUser, passwordUser) {
-    for (let i = 0; i < usersArray.length; i++) {
-        let emailArray = usersArray[i]["userEmail"];
-        let passwordArray = usersArray[i]["userPassword"];
-        if (emailUser == emailArray && passwordUser == passwordArray) {
-            usersArray[i]["userAcces"] = true;
-            toSummaryPage();
-        } else {
-            alert('Not register yet test')
-        }
+    let emailArray = usersArray.map((email) => email.userEmail);
+    let passwordArray = usersArray.map((password) => password.userPassword);
+    let findEmail = emailArray.find(email => email == emailUser);
+    let findPassword = passwordArray.find(password => password == passwordUser);
+    if (findEmail === undefined || findPassword === undefined) {
+        alert('You are not registered');
+    } else {
+        toSummaryPage();
     }
-    return false;
 }
 
 
@@ -57,7 +55,7 @@ function logInUserGuest() {
     let guestPassword = "guestpassword"
     document.getElementById('email').value = guestEmail;
     document.getElementById('password').value = guestPassword;
-    checkIfExists(emailUser, passwordUser);
+    logInUser();
 }
 
 
