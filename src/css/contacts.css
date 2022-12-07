@@ -18,18 +18,18 @@
   /* background-color: rgb(243, 199, 141); */
 }
 
-.contact-box{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
+.contact-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
 }
 
-.letters{
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 100%;
-    background-color: #4589ff;
+.letters {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #4589ff;
 }
 
 .contact-name {
@@ -51,5 +51,74 @@
   min-height: calc(100vh - 100px);
   height: 100%;
   padding: 10px;
-  /* background-color: rgb(230, 157, 63); */
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+  position: fixed;
+  z-index: 5;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  transition: all 250ms ease-in-out;
+}
+
+.add-contact-modal {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 0px 30px 30px 30px;
+  height: 100vh;
+  width: 580px;
+  left: 0px;
+  transform: translateX(-580px);
+  transition: all 225ms ease-in-out;
+}
+
+.slide-in{
+  transition: transform 500ms ease-in-out;
+  transform: translateX(0px);
+}
+
+.slide-in{
+  transition: transform 500ms ease-in-out;
+  transform: translateX(0px);
+}
+
+.add-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  position: absolute;
+  width: 197px;
+  height: 53px;
+  right: 40px;
+  bottom: 50px;
+  background-color: #005dff;
+  border: 1px solid #005dff;
+  border-radius: 10px;
+  font-size: 23px;
+  color: white;
+  transition: all 225ms ease-in-out;
+}
+
+.add-contact-button:hover {
+  box-shadow: rgb(170, 170, 170) 2px 2px 3px 1px;
+}
+
+.add-contact-button img {
+  width: 33px;
+  padding-left: 5px;
 }

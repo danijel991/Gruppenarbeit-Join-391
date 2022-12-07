@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contacts.css">
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
     <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
+
+    <!-- BOOTSTRAP INTEGRATION START-->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- BOOTSTRAP INTEGRATION START-->
 
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
@@ -25,17 +29,52 @@
         <!-- HEADER START -->
         <div w3-include-html="../templates/header.html"></div>
         <!-- HEADER END -->
+
         <!-- SIDE BAR START -->
         <div w3-include-html="../templates/sidebar.html"></div>
         <!-- SIDEBAR END  -->
-        <!-- BOARD START -->
+
+        <!-- MODAL ADD NEW USER START-->
+        <!-- MODAL BUTTON  -->
+        <button class="add-contact-button" onclick="openAddContactDialog()">
+            <span>New contact</span><img src="../img/addcontact.png">
+        </button>
+
+        <!-- MODAL CONTENT -->
+        <div class="overlay d-none" onclick="closeAddContactDialog()" id="overlay">
+            <div class="add-contact-modal" onclick="event.stopPropagation()"" id="add-contact-modal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL ADD NEW USER END-->
+
+        <!-- MAIN START -->
         <main class="main">
             <div class="contacts-container">
                 <div class="contact-list" id="contact-list">fdsa</div>
-                <div class="contact" id="contact">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error soluta, quaerat autem vel non neque eum facere adipisci in deleniti culpa rerum quisquam aut alias a atque magni corrupti maxime.</div>
+                <div class="contact" id="contact">
+
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error soluta, quaerat autem vel non neque
+                    eum facere adipisci in deleniti culpa rerum quisquam aut alias a atque magni corrupti maxime.
+
+                </div>
             </div>
         </main>
-        <!-- BOARD END  -->
+        <!-- MAIN END  -->
     </div>
     </div>
 

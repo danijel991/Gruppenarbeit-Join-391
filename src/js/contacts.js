@@ -19,5 +19,20 @@ async function loadContacts() {
         </div>
         ` ;
     }
-    
+}
+
+function openAddContactDialog() {
+  document.getElementById('overlay').classList.remove('d-none');
+
+  setTimeout(() => {
+      document.getElementById('add-contact-modal').classList.add('slide-in');
+  }, 10);
+}
+
+function closeAddContactDialog() {
+  document.getElementById('add-contact-modal').classList.remove('slide-in');
+
+  setTimeout(() => {
+      document.getElementById('overlay').classList.add('d-none');
+  }, 200);
 }
