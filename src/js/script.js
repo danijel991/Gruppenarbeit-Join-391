@@ -16,6 +16,7 @@ async function init() {
     await includeHTML();
     await loadUsersFromBackend();
     await showSelectedLink();
+    changeDepartmentColor();
 }
 
 

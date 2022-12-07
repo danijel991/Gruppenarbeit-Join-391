@@ -14,6 +14,7 @@
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
     <script defer src="../js/sidebar.js"></script>
+    <script src="../js/board.js"></script>
     <title>Board</title>
 </head>
 
@@ -30,15 +31,93 @@
 
         <!-- BOARD START -->
         <main class="board">
-            <div class="main-header">
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+            <div class="board-header-container">
+                <div class="main-header">
+                    <div class="input-group input-group-lg search">
+                        <input type="text" id="search" placeholder="Find Task" class="form-control"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">
+                            <img src="../img/search-icon.png" alt="search-icon">
+                        </span>
+                    </div>
+                    <button class="btn-add-task">Add task
+                        <img src="../img/add-icon.png" alt="add-icon">
+                    </button>
                 </div>
-                <button></button>
+                <div class="main-header-bottom">
+                    <div class="board-points">
+                        <h3>To do</h3>
+                        <img src="../img/plus-button.png" alt="plus-icon">
+                    </div>
+                    <div class="board-points">
+                        <h3>In progress</h3>
+                        <img src="../img/plus-button.png" alt="plus-icon">
+                    </div>
+                    <div class="board-points">
+                        <h3>Await feedback</h3>
+                        <img src="../img/plus-button.png" alt="plus-icon">
+                    </div>
+                    <div class="board-points">
+                        <h3>Done</h3>
+                        <img src="../img/plus-button.png" alt="plus-icon">
+                    </div>
+                </div>
             </div>
 
+            <div class="board-bottom-container">
+                <div class="board-tasks-container">
+                    <div class="board-task">
+                        <span class="department">Design</span>
+                        <span class="task-headline">Website redesign</span>
+                        <span class="task-description">Modify the contents of the main website..</span>
+                        <div class="contact-and-urgency">
+                            <div class="task-contacts-container">
+                                <div class="task-contacts">SM</div>
+                                <div class="task-contacts pink">MV</div>
+                                <div class="task-contacts green">EF</div>
+                            </div>
+                            <div class="task-urgency">
+                                <img src="../img/priority-low-icon.png" alt="urgency">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="board-task">
+                        <span class="department">Sales</span>
+                        <span>Call potencial clients</span>
+                        <span>Make the product presen</span>
+                    </div> -->
+                </div>
+
+                <div class="board-tasks-container">
+                    <div class="board-task">
+                        <span class="department">Sales</span>
+                        <span class="task-headline">Call potencial clients</span>
+                        <span class="task-description">Make the product presentation to prospective buyers</span>
+                    </div>
+                </div>
+
+                <div class="board-tasks-container">
+                    <div class="board-task">
+                        <span class="department">Backoffice</span>
+                        <span class="task-headline">Accounting invoices</span>
+                        <span class="task-description">Write open invoices for customer</span>
+                    </div>
+                    <div class="board-task">
+                        <span class="department">Media</span>
+                        <span class="task-headline">Video cut</span>
+                        <span class="task-description">Edit the new company video</span>
+                    </div>
+                </div>
+
+                <div class="board-tasks-container">
+                    <div class="board-task">
+                        <span class="department">Marketing</span>
+                        <span class="task-headline">Social media strategy</span>
+                        <span class="task-description">Develop an ad campaign for brand positioning</span>
+                    </div>
+                </div>
+
+            </div>
         </main>
         <!-- BOARD END  -->
 
