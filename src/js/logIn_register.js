@@ -30,7 +30,8 @@ function showCardAndHeader() {
 function logInUser() {
     let emailUser = document.getElementById('email').value;
     let passwordUser = document.getElementById('password').value;
-    checkIfExists(emailUser, passwordUser);
+    let acces = checkIfExists(emailUser, passwordUser);
+    goToSummary(acces);
     emailUser.value = "";
     passwordUser = "";
 }
@@ -42,9 +43,17 @@ function checkIfExists(emailUser, passwordUser) {
     let findEmail = emailArray.find(email => email == emailUser);
     let findPassword = passwordArray.find(password => password == passwordUser);
     if (findEmail === undefined || findPassword === undefined) {
-        alert('You are not registered');
+        return false;
     } else {
+        return true;
+    }
+}
+
+function goToSummary(acces) {
+    if (acces == true) {
         toSummaryPage();
+    } else {
+        alert('Acces denied')
     }
 }
 
@@ -68,7 +77,12 @@ function toSummaryPage() {
 function addNewUser() {
     getUserInfo();
     cleanInput();
+}
+
+
+function backToLogIn() {
     // showConfirmation();
+    // toLogInPage();
 }
 
 
@@ -123,4 +137,57 @@ function getInitials(newName) {
 };
 
 
+/*** Reset Password functions ***/
+let indexReset;
 
+
+function toResetPassword() {
+    let emailUser = document.getElementById('forgot__password--email').value
+    let index = checkIfEmailExists(emailUser);
+    indexReset = getIndex(index);
+    allowResetPassword(index);
+    return indexReset;
+}
+
+
+function getIndex(index) {
+    return index;
+}
+
+function resetPasswordUser(indexReset) {
+    let oldPass = usersArray[indexReset];
+    let newPass = document.getElementById('user__newPassword-1').value;
+    let confirmPass = document.getElementById('user__newPassword-2').value;
+    if (indexReset >= 0 && newPass === confirmPass) {
+        oldPass['userPassword'] = newPass;
+        saveInBackend();
+        newPass = '';
+        confirmPass = '';
+        // setTimeout(toLogInPage(), 1000);
+    }
+}
+
+function changeDivReset() {
+    document.getElementById('forgot__request').classList.add('d-none')
+    document.getElementById('forgot__newPassword').classList.remove('d-none')
+}
+
+
+function checkIfEmailExists(emailUser) {
+    let emailArray = usersArray.map((email) => email.userEmail);
+    let findEmailIndex = emailArray.findIndex(email => email == emailUser);
+    return findEmailIndex;
+}
+
+function allowResetPassword(index) {
+    if (index >= 0) {
+        changeDivReset();
+    } else {
+        alert('Email not registered')
+    }
+}
+
+
+// function toLogInPage() {
+//     window.location.href = './../../index.html';
+// }
