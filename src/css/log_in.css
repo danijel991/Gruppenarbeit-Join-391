@@ -337,7 +337,7 @@ form img {
 
 
 .forgot__text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: center;
     padding-top: 2rem;
 }
@@ -355,4 +355,26 @@ form img {
 
 .forgot__buttons button{
     background-color: #4589FF;
+}
+
+/* Classes for reset Password */
+.forgot__frame--reset{
+    height: 544px;
+}
+
+
+.reset__input--container{
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #D1D1D1;
+    padding-bottom: 5px !important;
+}
+
+
+.reset__input--container img{
+    opacity: 0;
+}
+
+
+.forgot__buttons--reset{
+    margin-top: 3rem;
 }
