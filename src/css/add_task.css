@@ -1,0 +1,25 @@
+.add-task {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 25px;
+
+    position: absolute;
+    width: 561px;
+    height: 1056px;
+    left: 320px;
+    top: 137px;
+}
+
+.form-width {
+    width: 422px;
+    height: 74px;
+    border-bottom: 1px solid #D1D1D1;
+    padding: 13px 21px;
+    gap: 10px;
+}
+
+.add-task-form {
+
+}

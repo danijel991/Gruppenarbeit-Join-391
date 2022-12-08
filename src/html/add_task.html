@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
     <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
@@ -28,62 +29,41 @@
         <div w3-include-html="../templates/sidebar.html"></div>
         <!-- SIDEBAR END  -->
 
-        <!-- BOARD START -->
-        <!-- <main class="board">
-            <div class="top-container" >
-                <div class="row justify-content-around" id="greeting-content">
+        <!-- ADD TASK START -->
 
-                    <div class="col-12 d-flex justify-content-center" id="greeting">
-                        <div class="text-black">
-                            <h2>Good Morning</h2>
-                        </div>
-                        <div class="text-danger">
-                            <h1>FirstName LastName</h1>
-                        </div>
+        <main class="add-task">
+
+            <form class="add-task-form">
+                <div class="form-width">
+                    <input class="add-title" type="text" placeholder="Enter a title">
+                </div>
+                <div class="">
+                    <select name="" id=""></select>
+                </div>
+                <div class="date-area">
+                    <span>Due date</span>
+                    <input class="" type="date">
+                </div>
+                <div class="category-area">
+                    <span>Category</span>
+                    <select name="" id=""></select>
+                </div>
+                <div class="button-area">
+                    <button></button><button></button><button></button>
+                </div>
+                <div class="description-area">
+                    <span>Description</span>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <div class="subtasks-area">
+                        <span>subtasks</span>
                     </div>
-
                 </div>
 
-                <div class="container justify-content-between d-flex gap-3">
-                    <div class="col-9 alert-card">
-                        <img src="../img/time_clock.png" alt="">
-                        <p class="card-text">Tasks urgent</p>
-                    </div>
-                    <div class="col-2 task-to-do-card">
-                        <img src="../img/dash_board.png" alt="">
-                        <p class="card-text">Tasks To-do</p>
-                    </div>
-                </div>
-                <div class="container justify-content-between d-flex gap-3">
-                    <div class="col-2 to-do-card">
-                        <img src="../img/dash_board.png" alt="">
-                        
-                        <p class="card-text">Task in Board</p>
-                  
-                    </div>
-                    <div class="col-2 to-do-card">
-                        <img src="../img/in_progress.png" alt="">
-                        <div class="card-body-to-do">
-                        <p class="card-text">Some quick </p>
-                    </div> 
-                    </div>
-                    <div class="col-2 to-do-card">
-                        <img src="../img/awaiting_feedback.png" alt="">
-                        <div class="card-body-alert">
-                        <p class="card-text">Some quick </p>
-                    </div> 
-                    </div>
-                    <div class="col-2 to-do-card">
-                        <img src="../img/done.png" alt="">
-                        <div class="card-body-to-do">
-                        <p class="card-text">Some quick</p>
-                    </div> 
-                    </div>
-                </div>
-            </div>
+            </form>
 
-        </main> -->
-        <!-- BOARD END  -->
+        </main>
+
+        <!-- ADD TASK END  -->
 
     </div>
 
