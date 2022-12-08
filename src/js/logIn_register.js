@@ -74,19 +74,20 @@ function toSummaryPage() {
 
 
 // Sign Up Functions
-function addNewUser() {
-    getUserInfo();
+async function addNewUser() {
+    await getUserInfo();
     cleanInput();
+    backToLogIn()
 }
 
 
 function backToLogIn() {
+    toLogInPage();
     // showConfirmation();
-    // toLogInPage();
 }
 
 
-function getUserInfo() {
+async function getUserInfo() {
     let newName = document.getElementById('newUser-name').value;
     let newEmail = document.getElementById('newUser-email').value;
     let newPassword = document.getElementById('newUser-password').value;
@@ -105,7 +106,7 @@ function getUserInfo() {
 
     };
     usersArray.push(newUser);
-    saveInBackend();
+    await saveInBackend();
 }
 
 
@@ -154,22 +155,31 @@ function getIndex(index) {
     return index;
 }
 
-function resetPasswordUser(indexReset) {
+
+async function resetPasswordUser(indexReset) {
     let oldPass = usersArray[indexReset];
     let newPass = document.getElementById('user__newPassword-1').value;
     let confirmPass = document.getElementById('user__newPassword-2').value;
     if (indexReset >= 0 && newPass === confirmPass) {
         oldPass['userPassword'] = newPass;
-        saveInBackend();
-        newPass = '';
-        confirmPass = '';
+        await saveInBackend();
+        backToLogIn();
         // setTimeout(toLogInPage(), 1000);
+    } else {
+        alert('The password do not match')
     }
+    clearInputNewPassword();
 }
 
 function changeDivReset() {
     document.getElementById('forgot__request').classList.add('d-none')
     document.getElementById('forgot__newPassword').classList.remove('d-none')
+}
+
+
+function clearInputNewPassword() {
+    document.getElementById('user__newPassword-1').value = '';
+    document.getElementById('user__newPassword-2').value = '';
 }
 
 
@@ -188,6 +198,6 @@ function allowResetPassword(index) {
 }
 
 
-// function toLogInPage() {
-//     window.location.href = './../../index.html';
-// }
+function toLogInPage() {
+    window.location.href = './../../index.html';
+}
