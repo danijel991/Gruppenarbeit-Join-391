@@ -103,12 +103,27 @@ async function getUserInfo() {
         "userPhone": "",
         "userContacts": [],
         "userColor": String(newColor),
-
     };
-    usersArray.push(newUser);
-    await saveInBackend();
+    addToDatabase(newUser, newEmail);
 }
 
+
+async function addToDatabase(newUser, newEmail) {
+    let z = checkIfAlreadyRegistered(newEmail);
+    if (z == undefined) {
+        usersArray.push(newUser);
+        await saveInBackend();
+    } else {
+        alert('Email Already Registered')
+    }
+}
+
+
+function checkIfAlreadyRegistered(newEmail) {
+    let emailArray = usersArray.map((email) => email.userEmail);
+    let findEmail = emailArray.find(email => email == newEmail);
+    return findEmail;
+}
 
 
 function cleanInput() {
