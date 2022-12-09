@@ -20,6 +20,64 @@
     gap: 10px;
 }
 
-.add-task-form {
+.add-task-form {}
 
+.uniform-sizing {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    border: 0;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-title {
+    width: 422px;
+    height: 74px;
+    padding: 13px 21px;
+    gap: 10px;
+    border: 0;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.input-title-font {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 120%;
+    color: #D1D1D1;
+    border: 0;
+}
+
+.text-19pt {
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
+}
+
+.description-area {
+    padding: 0px;
+    gap: 8px;
+    width: 422px;
+    height: 154px;
+}
+
+.description-area textarea {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 18px 21px;
+    gap: 10px;
+    isolation: isolate;
+    width: 422px;
+    height: 103px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 0px 10px 10px 10px;
 }
