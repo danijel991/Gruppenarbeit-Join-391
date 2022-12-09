@@ -34,34 +34,44 @@
         <main class="add-task">
 
             <form class="add-task-form">
-                <div class="form-width input-title">
+                <div class="form-width input-title margin-btn-25">
                     <input class="add-title input-title-font" type="text" placeholder="Enter a title">
                 </div>
-                <div class="">
+                <div class="margin-btn-25">
                     <select class="uniform-sizing text-19pt" name="" id="">
                         <option value="">Select contacts to assign</option>
                     </select>
                 </div>
-                <div class="date-area flex-column">
-                    <span>Due date</span>
-                    <input class="uniform-sizing" type="date">
+                <div class="date-area flex-column margin-btn-45">
+                    <span class="category-header">Due date</span>
+                    <input class="uniform-sizing gray-fonts" type="date">
                 </div>
-                <div class="category-area flex-column">
-                    <span>Category</span>
+                <div class="category-area flex-column margin-btn-45">
+                    <span class="category-header">Category</span>
                     <select class="uniform-sizing text-19pt" name="" id="">
                         <option value="">Select task category</option>
                     </select>
                 </div>
-                <div class="button-area">
-                    <button><span class="priority-button-text text-19pt">Urgent</span><img src="../img/prio_bnt_urgent.png" alt=""></button>
-                    <button><span class="priority-button-text text-19pt">Medium</span><img src="../img/prio_bnt_medium.png" alt=""></button>
-                    <button><span class="priority-button-text text-19pt">Low</span><img src="../img/prio_bnt_low.png" alt=""></button>
+                <div class="button-area margin-btn-25">
+                    <button><span class="priority-button-text text-19pt">Urgent</span><img
+                            src="../img/prio_bnt_urgent.png" alt=""></button>
+                    <button><span class="priority-button-text text-19pt">Medium</span><img
+                            src="../img/prio_bnt_medium.png" alt=""></button>
+                    <button><span class="priority-button-text text-19pt">Low</span><img src="../img/prio_bnt_low.png"
+                            alt=""></button>
                 </div>
-                <div class="description-area flex-column">
-                    <span>Description</span>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter a Description"></textarea>
-                    <div class="subtasks-area">
-                        <span>subtasks</span>
+                <div class="description-area flex-column margin-btn-45">
+                    <span class="category-header">Description</span>
+                    <textarea class="gray-fonts" name="" id="" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="subtasks-area">
+                    <div class="subtasks-input-area">
+                        <span class="category-header">Subtasks</span>
+                        <input class="noborder subtasks-input-border-input gray-fonts" type="text" placeholder="Add  new subtask">
+                    </div>
+                    <div>
+                        <input type="checkbox">
+                        <label class="" for="">Subtask 1</label>
                     </div>
                 </div>
             </form>
