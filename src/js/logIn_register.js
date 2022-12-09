@@ -1,9 +1,12 @@
+/***    Variables   ***/
+let indexActiveUser;
+let indexReset;
 
 function logoAnimation() {
     transitionLogo();
     setTimeout(changeBg, 350);
     setTimeout(showCardAndHeader, 400);
-    init();
+    startPage();
 }
 
 
@@ -27,17 +30,17 @@ function showCardAndHeader() {
 
 
 /***    Log In  ***/
-function logInUser() {
+async function logInUser() {
     let emailUser = document.getElementById('email').value;
     let passwordUser = document.getElementById('password').value;
-    let acces = checkIfExists(emailUser, passwordUser);
+    let acces = await checkIfExists(emailUser, passwordUser);
     goToSummary(acces);
     emailUser.value = "";
     passwordUser = "";
 }
 
 // Check if the user exists
-function checkIfExists(emailUser, passwordUser) {
+async function checkIfExists(emailUser, passwordUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
     let passwordArray = usersArray.map((password) => password.userPassword);
     let findEmail = emailArray.find(email => email == emailUser);
@@ -45,16 +48,43 @@ function checkIfExists(emailUser, passwordUser) {
     if (findEmail === undefined || findPassword === undefined) {
         return false;
     } else {
+        await setActiveUser(emailUser);
         return true;
     }
 }
+
+
+async function setActiveUser(userEmail) {
+    let index = checkIfEmailExists(userEmail)
+    indexActiveUser = index;
+    activeUser = usersArray[indexActiveUser];
+    activeUser['quickAcces'] = true;
+    saveLocalActiveUser(activeUser);
+}
+
+
+async function logInActiveUser() {
+    let emailUser = activeUser['userEmail'];
+    let passwordUser = activeUser['userPassword'];
+    let acces = await checkIfExists(emailUser, passwordUser);
+    goToSummary(acces);
+    emailUser.value = "";
+    passwordUser = "";
+}
+
 
 function goToSummary(acces) {
     if (acces == true) {
         toSummaryPage();
     } else {
-        alert('Acces denied')
+        alert('User not registered')
     }
+}
+
+async function logOut() {
+    activeUser['quickAcces'] = false;
+    await saveLocalActiveUser(activeUser);
+    toLogInPage()
 }
 
 
@@ -95,14 +125,15 @@ async function getUserInfo() {
     let newInitials = getInitials(newName);
     let newColor = getColor();
     let newUser = {
-        "userName": String(newName),
-        "userEmail": String(newEmail),
-        "userPassword": String(newPassword),
-        "userID": String(newID),
-        "userInitials": String(newInitials),
+        "userName": newName,
+        "userEmail": newEmail,
+        "userPassword": newPassword,
+        "userID": newID,
+        "userInitials": newInitials,
         "userPhone": "",
         "userContacts": [],
-        "userColor": String(newColor),
+        "userColor": newColor,
+        "quickAcces": false,
     };
     addToDatabase(newUser, newEmail);
 }
@@ -154,9 +185,6 @@ function getInitials(newName) {
 
 
 /*** Reset Password functions ***/
-let indexReset;
-
-
 function toResetPassword() {
     let emailUser = document.getElementById('forgot__password--email').value
     let index = checkIfEmailExists(emailUser);

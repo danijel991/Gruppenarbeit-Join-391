@@ -9,10 +9,17 @@
 
 /***    Array       ***/
 let usersArray = [];
+let activeUser = [];
 
 /***    Functions   ***/
+async function startPage() {
+    await loadUsersFromBackend();
+    await ifSomethingLocal();
+}
+
 
 async function init() {
+    getLocalActiveUser()
     await includeHTML();
     await loadUsersFromBackend();
     await showSelectedLink();
@@ -34,8 +41,37 @@ async function includeHTML() {
     }
 }
 
+// Local Storage & Active user
+function saveLocalActiveUser(activeUser) {
+    let stringStorage = JSON.stringify(activeUser);
+    localStorage.setItem('activeUser', stringStorage);
+}
+
+
+function getLocalActiveUser() {
+    let stringStorage = localStorage.getItem('activeUser');
+    activeUser = JSON.parse(stringStorage);
+}
+
+
+async function ifSomethingLocal() {
+    if (localStorage.getItem("activeUser") !== null) {
+        getLocalActiveUser();
+        let logIn = await checkIfQuickAcces();
+        if( logIn === true){
+            logInActiveUser();
+        }
+    }
+}
+
+
+async function checkIfQuickAcces() {
+    goLogIn = activeUser['quickAcces'];
+    return goLogIn;
+}
+
 // Backend functions    
-async function loadUsersFromBackend(){
+async function loadUsersFromBackend() {
     await downloadFromServer();
     usersArray = JSON.parse(backend.getItem('usersArray')) || [];
 }
