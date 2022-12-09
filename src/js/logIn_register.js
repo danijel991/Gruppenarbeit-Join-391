@@ -113,6 +113,7 @@ async function addNewUser() {
 
 function backToLogIn() {
     toLogInPage();
+    logoAnimation();
     // showConfirmation();
 }
 
