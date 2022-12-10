@@ -9,7 +9,7 @@ function logoAnimation() {
     startPage();
 }
 
-
+// Function for the Animation
 function changeBg() {
     document.getElementById('initial__file--wrapper').style.background = 'white'
 }
@@ -57,6 +57,7 @@ async function checkIfExists(emailUser, passwordUser) {
 async function setActiveUser(userEmail) {
     let index = checkIfEmailExists(userEmail)
     indexActiveUser = index;
+    console.log(indexActiveUser);
     activeUser = usersArray[indexActiveUser];
     activeUser['quickAcces'] = true;
     saveLocalActiveUser(activeUser);
@@ -67,6 +68,7 @@ async function logInActiveUser() {
     let emailUser = activeUser['userEmail'];
     let passwordUser = activeUser['userPassword'];
     let acces = await checkIfExists(emailUser, passwordUser);
+    await setActiveUser(emailUser);
     goToSummary(acces);
     emailUser.value = "";
     passwordUser = "";
@@ -107,14 +109,6 @@ function toSummaryPage() {
 async function addNewUser() {
     await getUserInfo();
     cleanInput();
-    backToLogIn()
-}
-
-
-function backToLogIn() {
-    toLogInPage();
-    logoAnimation();
-    // showConfirmation();
 }
 
 
@@ -136,18 +130,21 @@ async function getUserInfo() {
         "userColor": newColor,
         "quickAcces": false,
     };
-    addToDatabase(newUser, newEmail);
+    let z = checkIfAlreadyRegistered(newEmail);
+    if (z == undefined) {
+        await addToDatabase(newUser, newEmail);
+        setTimeout(toLogInPage, 1250);
+        setTimeout(resetConfirmation, 1250);
+    } else {
+        alert('Email Already Registered')
+    }
 }
 
 
 async function addToDatabase(newUser, newEmail) {
-    let z = checkIfAlreadyRegistered(newEmail);
-    if (z == undefined) {
         usersArray.push(newUser);
         await saveInBackend();
-    } else {
-        alert('Email Already Registered')
-    }
+        showConfirmation();
 }
 
 
@@ -185,6 +182,20 @@ function getInitials(newName) {
 };
 
 
+function showConfirmation(){
+    document.getElementById('signUp__id--main').classList.add('blur');
+    document.getElementById('signUp__id--response').classList.remove('d-none')
+    document.getElementById('signUp__id--response').style.transform = "translateY(-20vh)"
+}
+
+
+function resetConfirmation(){
+    document.getElementById('signUp__id--main').classList.remove('blur');
+    document.getElementById('signUp__id--response').classList.add('d-none')
+    document.getElementById('signUp__id--response').style.transform = "translateY(0vh)"
+}
+
+
 /*** Reset Password functions ***/
 function toResetPassword() {
     let emailUser = document.getElementById('forgot__password--email').value
@@ -207,8 +218,7 @@ async function resetPasswordUser(indexReset) {
     if (indexReset >= 0 && newPass === confirmPass) {
         oldPass['userPassword'] = newPass;
         await saveInBackend();
-        backToLogIn();
-        // setTimeout(toLogInPage(), 1000);
+        toLogInPage();
     } else {
         alert('The password do not match')
     }

@@ -22,6 +22,10 @@ a {
     display: none !important;
 }
 
+.blur{
+    filter: blur(2px);
+}
+
 
 /* Classes for the Logo and "To Sign Up"  */
 .initial__file--wrapper{
@@ -86,6 +90,22 @@ a {
     top: 50vh;
     transition: all 550ms ease-in-out;
 }
+
+
+.response__signIn--rapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    top: 70vh;
+    transition: transform 600ms ease-in-out ;
+}
+
+
+
 
 /* Classe for the Log In Area */
 .logIn__wrapper {
@@ -298,11 +318,11 @@ form img {
 
 /* Classe for forgot password */
 .forgot__file--wrapper{
-    width: 100% ;
-    min-height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100% ;
+    min-height: inherit;
     background-color: #4589FF;
 }
 
