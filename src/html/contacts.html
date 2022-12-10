@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contacts.css">
+    <link rel="stylesheet" href="/src/css/log_in.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
     <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
-
     <!-- BOOTSTRAP INTEGRATION START-->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,7 +23,7 @@
     <title>Contacts</title>
 </head>
 
-<body onload="init(), loadContacts()">
+<body onload=" loadAllContacts()">
 
     <div class="container-fluid mh-100 d-flex flex-column">
         <!-- HEADER START -->
@@ -36,26 +36,44 @@
 
         <!-- MODAL ADD NEW USER START-->
         <!-- MODAL BUTTON  -->
-        <button class="add-contact-button" onclick="openAddContactDialog()">
+        <button class="add-contact-button" onclick="onclick=openAddContactDialog()">
             <span>New contact</span><img src="../img/addcontact.png">
         </button>
 
         <!-- MODAL CONTENT -->
         <div class="overlay d-none" onclick="closeAddContactDialog()" id="overlay">
-            <div class="add-contact-modal" onclick="event.stopPropagation()"" id="add-contact-modal">
+            <div class="add-contact-modal" onclick="event.stopPropagation()" id="add-contact-modal">
                 <div class="contact-dialog-top">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                   
+                
+                       <h2 class="contact-title" id="exampleModalLabel">Add contact</h2> 
+                      
+                        <h4>Tasks are better with a team!</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    
+                </div>
+                <div class="contact-dialog-bottom">
+                    <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
+                    <div class="form">
+                        <form class="add-contact_form" onsubmit="addNewContact(); return false;">
+                            <div class="add-contact-input-field">
+                                <input id="new-contact-name" class="contact-form-control contacts_input " type="text"
+                                    placeholder="Name" required>
+                                <img src="/src/img/input_name.png" alt="">
+                            </div>
+                            <div class="add-contact-input-field">
+                                <input id="new-contact-email" class="contact-form-control contacts_input " type="email"
+                                    placeholder="Email" required>
+                                <img src="/src/img/input_mail.png" alt="">
+                            </div>
+                            <div class="add-contact-input-field">
+                                <input id="new-contact-phone" class="contact-form-control contacts_input " type="number" pattern="" placeholder="Phone" required>
+                                <img src="/src/img/phone_icon.png" alt="">
+                            </div>
+                            <button class="create-contact-button" required >
+                                <span>Create contact</span><img src="../img/addcontact.png">
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
