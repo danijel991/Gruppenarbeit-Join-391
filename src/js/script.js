@@ -20,9 +20,9 @@ async function startPage() {
 
 async function init() {
     getLocalActiveUser()
+    await showSelectedLink();
     await includeHTML();
     await loadUsersFromBackend();
-    await showSelectedLink();
     changeDepartmentColor();
 }
 
