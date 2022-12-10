@@ -86,7 +86,8 @@ function loadAllContacts() {
 }
 
 async function addNewUserContact() {
-  let activeUserContactsArray = usersArray[1]["userContacts"]; // replace [1] later with 'indexActiveUser'
+  let indexActiveUser = activeUser['userID'];
+  let activeUserContactsArray = usersArray[indexActiveUser]['userContacts']; // replace [1] later with 'indexActiveUser'
   
 
   activeUserContactsArray.push(getContactInfo());
