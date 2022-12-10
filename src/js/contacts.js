@@ -92,8 +92,9 @@ async function addNewUserContact() {
   activeUserContactsArray.push(getContactInfo());
   // console.log(activeUserContactsArray.push(getContactInfo()));
   await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
-
   // show new Contact Detail
+  
+  loadAllContacts(); // refreshing contacts in contacts.html
 }
 
 function getContactInfo() {
