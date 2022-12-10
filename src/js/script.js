@@ -23,7 +23,8 @@ async function init() {
     await showSelectedLink();
     await includeHTML();
     await loadUsersFromBackend();
-    changeDepartmentColor();
+    loadAllContacts();  // scrip is in contacts.js
+    // changeDepartmentColor();
 }
 
 

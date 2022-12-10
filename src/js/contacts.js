@@ -63,11 +63,11 @@ function addNewContact() {
 }
 
 function loadAllContacts() {
-  let allContactsAsString = localStorage.getItem("allContacts");
-  allContacts = JSON.parse(allContactsAsString);
+  let activeUserID = activeUser["userID"];
 
-  console.log("Loaded all contacts: ", allContacts);
-
+  let activeUserContacts = usersArray[activeUserID]["userContacts"];
+  
+  let allContacts = activeUserContacts;
   let content = document.getElementById("contact-list");
   content.innerHTML = "";
 
@@ -86,9 +86,8 @@ function loadAllContacts() {
 }
 
 async function addNewUserContact() {
-  let indexActiveUser = activeUser['userID'];
-  let activeUserContactsArray = usersArray[indexActiveUser]['userContacts']; // replace [1] later with 'indexActiveUser'
-  
+  let indexActiveUser = activeUser["userID"];
+  let activeUserContactsArray = usersArray[indexActiveUser]["userContacts"]; // replace [1] later with 'indexActiveUser'
 
   activeUserContactsArray.push(getContactInfo());
   // console.log(activeUserContactsArray.push(getContactInfo()));
