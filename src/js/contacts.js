@@ -45,12 +45,11 @@ function addNewContact() {
   let newContactPhone = document.getElementById("new-contact-phone");
 
   let newcontact = {
-    "name": newContactName.value,   //dadurch, dass ich hier erste .value hinzufüge, anstatt oben beim getElemenByIDd kann ich nach dieser declaration die felder im HTML leeren und auch sonst felxibler mit der Variable arbeiten, weil ich z. B. .src oder .innerHTML usw. anhägen kann - je nach Bedarf!!! 
-    "email": newContactEmail.value,
-    "phone": newContactPhone.value,
-    "createdAt": new Date().getTime(),
+    name: newContactName.value, //dadurch, dass ich hier erste .value hinzufüge, anstatt oben beim getElemenByIDd kann ich nach dieser declaration die felder im HTML leeren und auch sonst felxibler mit der Variable arbeiten, weil ich z. B. .src oder .innerHTML usw. anhägen kann - je nach Bedarf!!!
+    email: newContactEmail.value,
+    phone: newContactPhone.value,
+    createdAt: new Date().getTime(),
   };
-
 
   allContacts.push(newcontact);
 
@@ -58,9 +57,9 @@ function addNewContact() {
   localStorage.setItem("allContacts", allContactsAsString);
   console.log("current contacts are: ", allContacts);
 
-  newContactName.value = '';  
-  newContactEmail.value = '';
-  newContactPhone.value = '';
+  newContactName.value = "";
+  newContactEmail.value = "";
+  newContactPhone.value = "";
 }
 
 function loadAllContacts() {
@@ -71,7 +70,7 @@ function loadAllContacts() {
 
   let content = document.getElementById("contact-list");
   content.innerHTML = "";
-  
+
   for (let i = 0; i < allContacts.length; i++) {
     content.innerHTML += `
       <div class="contact-box">
@@ -87,26 +86,25 @@ function loadAllContacts() {
 }
 
 async function addNewUserContact() {
-  let activeUserContactsArray = usersArray[1]['userContacts'];
-  // console.log(activeUserContactsArray);
+  let activeUserContactsArray = usersArray[1]["userContacts"]; // replace [1] later with 'indexActiveUser'
+  
 
   activeUserContactsArray.push(getContactInfo());
   // console.log(activeUserContactsArray.push(getContactInfo()));
-  await saveInBackend() // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
-  
+  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+
   // show new Contact Detail
 }
 
 function getContactInfo() {
-  let newName = document.getElementById('new-contact-name');
-  let newEmail = document.getElementById('new-contact-email');
-  let newPhone = document.getElementById('new-contact-phone');
+  let newName = document.getElementById("new-contact-name");
+  let newEmail = document.getElementById("new-contact-email");
+  let newPhone = document.getElementById("new-contact-phone");
 
   let newContact = {
-    'name': newName.value,
-    'email': newEmail.value,
-    'phone': newPhone.value,
-  }
+    name: newName.value,
+    email: newEmail.value,
+    phone: newPhone.value,
+  };
   return newContact;
-
 }
