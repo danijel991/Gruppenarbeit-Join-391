@@ -86,3 +86,27 @@ function loadAllContacts() {
   }
 }
 
+async function addNewUserContact() {
+  let activeUserContactsArray = usersArray[1]['userContacts'];
+  // console.log(activeUserContactsArray);
+
+  activeUserContactsArray.push(getContactInfo());
+  // console.log(activeUserContactsArray.push(getContactInfo()));
+  await saveInBackend() // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  
+  // show new Contact Detail
+}
+
+function getContactInfo() {
+  let newName = document.getElementById('new-contact-name');
+  let newEmail = document.getElementById('new-contact-email');
+  let newPhone = document.getElementById('new-contact-phone');
+
+  let newContact = {
+    'name': newName.value,
+    'email': newEmail.value,
+    'phone': newPhone.value,
+  }
+  return newContact;
+
+}

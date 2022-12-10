@@ -20,11 +20,11 @@
     <script src="../js/script.js"></script>
     <script src="../js/contacts.js"></script>
     <script defer src="../js/sidebar.js"></script>
-    <script src="/src/js/logIn_register.js"></script>
+    <script src="../js/logIn_register.js"></script>
     <title>Contacts</title>
 </head>
 
-<body onload=" loadAllContacts()">
+<body onload="init()">
 
     <div class="container-fluid mh-100 d-flex flex-column">
         <!-- HEADER START -->
@@ -56,7 +56,7 @@
                 <div class="contact-dialog-bottom">
                     <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
                     <div class="form">
-                        <form class="add-contact_form" onsubmit="addNewContact(); return false;">
+                        <form class="add-contact_form" onsubmit="addNewUserContact(); return false;">
                             <div class="add-contact-input-field">
                                 <input id="new-contact-name" class="contact-form-control contacts_input " type="text"
                                     placeholder="Name" required>
