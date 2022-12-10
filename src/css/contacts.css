@@ -119,6 +119,29 @@
   box-shadow: rgb(170, 170, 170) 2px 2px 3px 1px;
 }
 
+.create-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  position: absolute;
+  width: 240px;
+  height: 53px;
+  right: 40px;
+  bottom: 50px;
+  background-color: #005dff;
+  border: 1px solid #005dff;
+  border-radius: 10px;
+  font-size: 23px;
+  color: white;
+  transition: all 225ms ease-in-out;
+}
+
+.create-contact-button:hover {
+  box-shadow: rgb(170, 170, 170) 2px 2px 3px 1px;
+}
+
 .add-contact-button img {
   width: 33px;
   padding-left: 5px;
@@ -137,3 +160,117 @@
     border-radius: 0px 30px 0 0;
     top: 0px;
 }
+
+.contact-title{
+  color: white;
+}
+
+.add-contact_form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.contact-dialog-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 580px;
+}
+
+.add-contact-input-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 420px;
+  margin: auto;
+  border-bottom: 1px solid #D1D1D1;
+}
+
+
+.add-contact-input-field img {
+  margin-inline-start: 10px;
+  width: 20px;
+}
+
+.user-avatar{
+  margin: 30px 30px;
+  background-color: #D1D1D1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+}
+
+
+input{
+  color: red;
+}
+
+.contacts_input {
+  display: flex;
+  flex-grow: 1;
+  height: 30px;
+  padding-inline: 10px;
+  width: max-content;
+  border: none;
+  color: #E8E8E8;
+  outline-color: #E8E8E8;
+}
+
+
+.contact-form-control {
+  font-size: 1.2rem !important;
+  border: none !important;
+  max-width: 85% !important;
+}
+
+
+.contact-form-control::placeholder {
+  opacity: 0.4 !important;
+}
+
+.form-control {
+  font-size: 1.2rem !important;
+  border: none !important;
+  max-width: 85% !important;
+}
+
+input[type=text]{
+  color: black;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+}
+input[type=email]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+}
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+}
+
+input:focus {
+  background-color: lightblue;
+}
+
+/* STYLING ALL FORM FIELDS */
+/* https://www.w3schools.com/css/css_form.asp*/
+
