@@ -45,10 +45,10 @@ async function logInUser() {
 // Check if the user exists
 async function checkIfExists(emailUser, passwordUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
-    let passwordArray = usersArray.map((password) => password.userPassword);
+    // let passwordArray = usersArray.map((password) => password.userPassword);
     let findEmail = emailArray.find((email) => email == emailUser);
-    let findPassword = passwordArray.find((password) => password == passwordUser);
-    if (findEmail === undefined || findPassword === undefined) {
+    // let findPassword = passwordArray.find((password) => password == passwordUser);
+    if (findEmail === undefined) {
         return false;
     } else {
         let checkbox = callCheckBox();
