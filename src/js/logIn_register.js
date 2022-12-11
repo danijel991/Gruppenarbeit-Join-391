@@ -3,37 +3,19 @@ let indexActiveUser;
 let indexReset;
 
 
-
 function logoAnimation() {
     transitionLogo();
     setTimeout(changeBg, 350);
     setTimeout(showCardAndHeader, 400);
     startPage();
-    callCheckBox();
 }
-
-function callCheckBox(){
-    let checkbox = document.getElementById('rememberMe');
-    checkbox.addEventListener('change', e=>{
-        if(e.target.checked){
-            checkbox.setAttribute('checked', true );
-            console.log(e.target.checked);
-        } else{
-            checkbox.removeAttribute('checked');
-            console.log(e.target.checked);
-        }
-        
-    })
-}
-
-
-
 
 
 // Function for the Animation
 function changeBg() {
     document.getElementById("initial__file--wrapper").style.background = "white";
 }
+
 
 function transitionLogo() {
     document.getElementById("logo__img").style.left = "0px";
@@ -42,10 +24,12 @@ function transitionLogo() {
     document.getElementById("logo__img").style.opacity = "0";
 }
 
+
 function showCardAndHeader() {
     document.getElementById("logIn__frame").style.display = "flex";
     document.getElementById("to__sign-in--wrapper").style.display = "flex";
 }
+
 
 /***    Log In  ***/
 async function logInUser() {
@@ -57,6 +41,7 @@ async function logInUser() {
     passwordUser = "";
 }
 
+
 // Check if the user exists
 async function checkIfExists(emailUser, passwordUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
@@ -64,13 +49,36 @@ async function checkIfExists(emailUser, passwordUser) {
     let findEmail = emailArray.find((email) => email == emailUser);
     let findPassword = passwordArray.find((password) => password == passwordUser);
     if (findEmail === undefined || findPassword === undefined) {
-        await setActiveUser(emailUser);
         return false;
     } else {
-        await setActiveUser(emailUser);
-        return true;
+        let checkbox = callCheckBox();
+        if (checkbox == true) {
+            await setActiveUser(emailUser);
+            return true;
+        } else {
+            return true;
+        }
     }
 }
+
+
+//If "Remember me" is active
+function callCheckBox() {
+    let checkbox = document.getElementById('rememberMe');
+    let result = checkbox.checked;
+    checkbox.addEventListener('change', e => {
+        if (e.target.checked) {
+            checkbox.setAttribute('checked', true);
+            result = e.target.checked;
+            return result;
+        } else {
+            result = e.target.checked;
+            return result;
+        }
+    })
+    return result;
+}
+
 
 async function setActiveUser(userEmail) {
     let index = checkIfEmailExists(userEmail)
@@ -80,6 +88,7 @@ async function setActiveUser(userEmail) {
     activeUser['quickAcces'] = true;
     saveLocalActiveUser(activeUser);
 }
+
 
 async function logInActiveUser() {
     let emailUser = activeUser['userEmail'];
@@ -91,6 +100,7 @@ async function logInActiveUser() {
     passwordUser = "";
 }
 
+
 function goToSummary(acces) {
     if (acces == true) {
         toSummaryPage();
@@ -99,11 +109,13 @@ function goToSummary(acces) {
     }
 }
 
+
 async function logOut() {
     activeUser["quickAcces"] = false;
     await saveLocalActiveUser(activeUser);
     toLogInPage();
 }
+
 
 // Guest User Function
 function logInUserGuest() {
@@ -114,6 +126,7 @@ function logInUserGuest() {
     logInUser();
 }
 
+
 function toSummaryPage() {
     location.href = "./src/html/summary.html";
 }
@@ -123,6 +136,7 @@ async function addNewUser() {
     await getUserInfo();
     cleanInput();
 }
+
 
 async function getUserInfo() {
     let newName = document.getElementById('newUser-name').value;
@@ -152,11 +166,13 @@ async function getUserInfo() {
     }
 }
 
+
 async function addToDatabase(newUser, newEmail) {
     usersArray.push(newUser);
     await saveInBackend();
     showConfirmation();
 }
+
 
 function checkIfAlreadyRegistered(newEmail) {
     let emailArray = usersArray.map((email) => email.userEmail);
@@ -164,11 +180,13 @@ function checkIfAlreadyRegistered(newEmail) {
     return findEmail;
 }
 
+
 function cleanInput() {
     document.getElementById("newUser-name").value = "";
     document.getElementById("newUser-email").value = "";
     document.getElementById("newUser-password").value = "";
 }
+
 
 function getColor() {
     let r = Math.floor(Math.random() * 256);
@@ -177,6 +195,7 @@ function getColor() {
     let color = `rgb(${r}, ${g}, ${b})`;
     return color;
 }
+
 
 function getInitials(newName) {
     var names = newName.split(" "),
@@ -188,6 +207,7 @@ function getInitials(newName) {
     }
     return initials;
 }
+
 
 function showConfirmation() {
     document.getElementById('signUp__id--main').classList.add('blur');
@@ -212,9 +232,11 @@ function toResetPassword() {
     return indexReset;
 }
 
+
 function getIndex(index) {
     return index;
 }
+
 
 async function resetPasswordUser(indexReset) {
     let oldPass = usersArray[indexReset];
@@ -230,21 +252,25 @@ async function resetPasswordUser(indexReset) {
     clearInputNewPassword();
 }
 
+
 function changeDivReset() {
     document.getElementById("forgot__request").classList.add("d-none");
     document.getElementById("forgot__newPassword").classList.remove("d-none");
 }
+
 
 function clearInputNewPassword() {
     document.getElementById("user__newPassword-1").value = "";
     document.getElementById("user__newPassword-2").value = "";
 }
 
+
 function checkIfEmailExists(emailUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
     let findEmailIndex = emailArray.findIndex((email) => email == emailUser);
     return findEmailIndex;
 }
+
 
 function allowResetPassword(index) {
     if (index >= 0) {
@@ -253,6 +279,7 @@ function allowResetPassword(index) {
         alert("Email not registered");
     }
 }
+
 
 function toLogInPage() {
     window.location.href = "./../../index.html";
