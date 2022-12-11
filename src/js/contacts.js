@@ -14,19 +14,20 @@ function closeAddContactDialog() {
   }, 200);
 }
 
-function loadAllContacts() {
+async function loadAllContacts() {
+  await init();
   let activeUserID = activeUser["userID"];
 
   let activeUserContacts = usersArray[0]["userContacts"];
 
   let allContacts = activeUserContacts;
   let content = document.getElementById("contact-list");
-  content.innerHTML = "";
+  content.innerHTML = " ";
 
   for (let i = 0; i < allContacts.length; i++) {
     content.innerHTML += `
       <div class="contact-box">
-      <div class="letters">LG</div>
+      <div class="letters">${allContacts[i]["initials"]}</div>
       <div>
       <div class="contact-name">${allContacts[i]["name"]}</div>
       <div class="contact-name">${allContacts[i]["email"]}</div>
@@ -46,18 +47,30 @@ async function addNewUserContact() {
   await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
   // show new Contact Detail
 
-  loadAllContacts(); // refreshing contacts in contacts.html
+  await loadAllContacts(); // refreshing contacts in contacts.html
 }
 
 function getContactInfo() {
-  let newName = document.getElementById("new-contact-name");
-  let newEmail = document.getElementById("new-contact-email");
-  let newPhone = document.getElementById("new-contact-phone");
-
+  let newName = document.getElementById("new-contact-name").value;
+  let newEmail = document.getElementById("new-contact-email").value;
+  let newPhone = document.getElementById("new-contact-phone").value;
+  let initials = setContactInitials(newName);
   let newContact = {
-    name: newName.value,
-    email: newEmail.value,
-    phone: newPhone.value,
+    name: newName,
+    initials: initials,
+    email: newEmail,
+    phone: newPhone,
   };
   return newContact;
+}
+
+function setContactInitials(newName) {
+  var names = newName.split(" "),
+    initials = names[0].substring(0, 1).toUpperCase();
+  if (names.length > 1) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+  } else if (names.length == 1) {
+    initials = newName.substring(0, 2).toUpperCase();
+  }
+  return initials;
 }
