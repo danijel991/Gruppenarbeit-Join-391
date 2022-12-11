@@ -24,7 +24,7 @@
     <title>Contacts</title>
 </head>
 
-<body onload="init()">
+<body onload="includeHTML(),loadAllContacts()">
 
     <div class="container-fluid mh-100 d-flex flex-column">
         <!-- HEADER START -->
@@ -84,12 +84,8 @@
         <!-- MAIN START -->
         <main class="main">
             <div class="contacts-container">
-                <div class="contact-list" id="contact-list">fdsa</div>
+                <div class="contact-list" id="contact-list">No contacts so far!</div>
                 <div class="contact" id="contact">
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error soluta, quaerat autem vel non neque
-                    eum facere adipisci in deleniti culpa rerum quisquam aut alias a atque magni corrupti maxime.
-<button onclick="loadAllContacts()">Load Contacts</button>
                 </div>
             </div>
         </main>
