@@ -110,6 +110,11 @@ function goToSummary(acces) {
 }
 
 
+function toLogInPage() {
+    window.location.href = "./../../index.html";
+}
+
+
 async function logOut() {
     activeUser["quickAcces"] = false;
     await saveLocalActiveUser(activeUser);
@@ -245,7 +250,8 @@ async function resetPasswordUser(indexReset) {
     if (indexReset >= 0 && newPass === confirmPass) {
         oldPass['userPassword'] = newPass;
         await saveInBackend();
-        toLogInPage();
+        showNewPasswordConfirmed();
+        setTimeout(toLogInPage, 1000);
     } else {
         alert('The password do not match')
     }
@@ -274,13 +280,54 @@ function checkIfEmailExists(emailUser) {
 
 function allowResetPassword(index) {
     if (index >= 0) {
-        changeDivReset();
+        showSendEmail();
+        setTimeout(changeDivReset, 1500);
     } else {
         alert("Email not registered");
     }
 }
 
 
-function toLogInPage() {
-    window.location.href = "./../../index.html";
+function showSendEmail(){
+    document.querySelector('.forgot__file--wrapper').classList.add('blur')
+    document.querySelector('.response__forgot--container').classList.remove('d-none')
+    document.getElementById('email__sent').classList.remove('d-none');
+    setTimeout(animateSentEmail, 1);
+}
+
+
+function resetSentEmail(){
+    document.querySelector('.forgot__file--wrapper').classList.remove('blur')
+    document.querySelector('.response__forgot--container').classList.add('d-none')
+    document.getElementById('email__sent').classList.add('d-none');
+    document.getElementById('email__sent').style.transform = "translateX(-50%) translateY(0vh)";
+}
+
+
+function animateSentEmail(){
+    document.getElementById('email__sent').style.transition = "all 750ms ease-in-out";
+    document.getElementById('email__sent').style.transform = "translateX(-50%) translateY(-20vh)";
+    setTimeout(resetSentEmail, 1000);
+}
+
+function showNewPasswordConfirmed(){
+    document.querySelector('.forgot__file--wrapper').classList.add('blur')
+    document.querySelector('.response__forgot--container').classList.remove('d-none')
+    document.getElementById('reset__confirmed').classList.remove('d-none');
+    setTimeout(animatePasswordConfirmed, 1);
+}
+
+
+function resetPasswordConfirmed(){
+    document.querySelector('.forgot__file--wrapper').classList.remove('blur')
+    document.querySelector('.response__forgot--container').classList.add('d-none')
+    document.getElementById('reset__confirmed').classList.add('d-none');
+    document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(0vh)";
+}
+
+
+function animatePasswordConfirmed(){
+    document.getElementById('reset__confirmed').style.transition = "all 750ms ease-in-out";
+    document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(-20vh)";
+    setTimeout(resetPasswordConfirmed, 1000);
 }
