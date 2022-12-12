@@ -16,22 +16,19 @@ function closeAddContactDialog() {
 
 async function loadAllContacts() {
   await init();
-  let activeUserID = activeUser["userID"];
 
-  let activeUserContacts = usersArray[0]["userContacts"];
-
-  let allContacts = activeUserContacts;
+  let allContacts = usersArray[activeUser['userID']]["userContacts"];
   let content = document.getElementById("contact-list");
   content.innerHTML = " ";
 
   for (let i = 0; i < allContacts.length; i++) {
     content.innerHTML += `
-      <div class="contact-box">
+      <div class="contact-box" onclick="openContactDetail(${i})">
       <div class="letters" style="background-color: ${allContacts[i]["initialsColor"]}">${allContacts[i]["initials"]}</div>
       <div>
-      <div class="contact-name">${allContacts[i]["name"]}</div>
-      <div class="contact-name">${allContacts[i]["email"]}</div>
-      <div class="contact-name">${allContacts[i]["phone"]}</div>
+      <div>${allContacts[i]["name"]}</div>
+      <div>${allContacts[i]["email"]}</div>
+      <div>${allContacts[i]["phone"]}</div>
       </div>
       </div>
       `;
@@ -83,7 +80,6 @@ function setColorForInitial(initials) {
     let letterNumber = initials.charCodeAt(i) - 64;
     number = number + letterNumber;
   }
-  debugger;
   let remainder = number % 5;
  if (remainder === 0) {
    return 'rgb(221,70,60)';
@@ -95,4 +91,46 @@ function setColorForInitial(initials) {
   return 'rgb(253,197,38)';
 } else 
   return 'rgb(128,168,77)';
+}
+
+function openContactDetail(index) {
+  let content = document.getElementById("contact-detail");
+  content.innerHTML = " ";
+  let allContacts = usersArray[activeUser['userID']]["userContacts"];
+  let contact = allContacts[index];
+  const { name, initials, initialsColor, email, phone } = contact;
+  console.log(name, initials, initialsColor, email, phone);
+  
+  content.innerHTML += `
+  <div class="contact-detail-header">
+  <div class="letters-large" style="background-color: ${initialsColor}">${initials}
+  </div>
+  <div>
+      <div class="contact-detail-header-right">
+          <div class="contact-name">${name}</div>
+          <div class="add-task-link"><img src="../img/plus_icon_small.png">Add Task</div>
+      </div>
+
+  </div>
+  </div> 
+
+<div class="contact-body">
+
+  <div class="contact-body-header">
+      <div class="contact-information">Contact Information</div>
+      <div class="edit-contact"><img src="../img/pencil_small.png">Edit Contact</div>
+  </div>
+  <div class="contact-email">Email</div>
+  <div>${email}</div>
+  <div class="contact-phone">Phone</div>
+  <div>894300289490500ß3</div>
+</div>
+
+
+
+
+      
+      `;
+  
+
 }

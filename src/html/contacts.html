@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contacts.css">
     <link rel="stylesheet" href="/src/css/log_in.css">
-    <!-- <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
-    <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf"> -->
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
     <!-- BOOTSTRAP INTEGRATION START-->
@@ -18,8 +16,8 @@
     <!-- BOOTSTRAP INTEGRATION START-->
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
-    <script  src="../js/contacts.js"></script>
-    <script  src="../js/sidebar.js"></script>
+    <script src="../js/contacts.js"></script>
+    <script src="../js/sidebar.js"></script>
     <script src="../js/logIn_register.js"></script>
     <title>Contacts</title>
 </head>
@@ -45,13 +43,12 @@
         <div class="overlay d-none" onclick="closeAddContactDialog()" id="overlay">
             <div class="add-contact-modal" onclick="event.stopPropagation()" id="add-contact-modal">
                 <div class="contact-dialog-top">
-                   
-                <img src="../img/join-logo.png" >
-                       <h2 class="contact-title" id="exampleModalLabel">Add contact</h2> 
-                      
-                        <h4>Tasks are better with a team!</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    
+                    <img class="close-icon" src="../img/close_icon.png" onclick="closeAddContactDialog()">
+                    <img src="../img/join-logo.png">
+                    <h2 class="contact-title" id="exampleModalLabel">Add contact</h2>
+
+                    <h4 id="info-text" class="info-text">Tasks are better with a team!</h4>
+
                 </div>
                 <div class="contact-dialog-bottom">
                     <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
@@ -68,10 +65,11 @@
                                 <img src="/src/img/input_mail.png" alt="">
                             </div>
                             <div class="add-contact-input-field">
-                                <input id="new-contact-phone" class="contact-form-control contacts_input " type="number" pattern="" placeholder="Phone" required>
+                                <input id="new-contact-phone" class="contact-form-control contacts_input " type="number"
+                                    pattern="" placeholder="Phone" required>
                                 <img src="/src/img/phone_icon.png" alt="">
                             </div>
-                            <button class="create-contact-button" required >
+                            <button class="create-contact-button" required>
                                 <span>Create contact</span><img src="../img/addcontact.png">
                             </button>
                         </form>
@@ -85,7 +83,26 @@
         <main class="main">
             <div class="contacts-container">
                 <div class="contact-list" id="contact-list">No contacts so far!</div>
-                <div class="contact" id="contact">
+                <div class="contact-detail" id="contact-detail">
+
+
+                    <!-- <div class="contact-detail-header">
+                        <div class="initial"></div>
+                        <div class="contact-detail-header-right">
+                            <div class="contact-name"></div>
+                            <div class="add-task-link"></div>
+                        </div>
+                    </div>
+                    <div class="contact-body">
+                        <div class="contact-body-header">
+                            <div class="contact-information">Contact Information</div>
+                            <div class="edit-contact">Edit Contact</div>
+                        </div>
+                        <div class="contact-email">Email</div>
+                        <div>as@fdsadfsa.de</div>
+                        <div class="contact-phone">Phone</div>
+                        <div>894300289490500ß3</div>
+                    </div> -->
                 </div>
             </div>
         </main>

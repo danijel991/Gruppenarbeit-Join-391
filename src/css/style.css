@@ -21,7 +21,7 @@ h1 {
   line-height: 120%;
 }
 
-.d-none{
+.d-none {
   display: none;
 }
 
@@ -299,7 +299,7 @@ header img {
   height: 76px;
 }
 
-.alert-card-paleblue:hover{
+.alert-card-paleblue:hover {
   background-color: #4589ff !important;
   border-top-left-radius: 0;
   transform: scale(1.02);
@@ -308,11 +308,10 @@ header img {
 }
 
 .alert-card-paleblue:hover .copy-black,
-.alert-card-paleblue:hover .font-light{
+.alert-card-paleblue:hover .font-light {
   color: #ffffff;
   transition: all 225ms ease-in-out;
 }
-
 
 .to-do-card {
   display: flex;
@@ -334,7 +333,6 @@ header img {
   color: #ffffff;
   transition: all 225ms ease-in-out;
 }
-
 
 .to-do-card:hover .copy-black,
 .to-do-card:hover .font-light {
@@ -409,9 +407,9 @@ header img {
     height: 50px;
   }
 
-.container{
-  flex-direction: column;
-}
+  .container {
+    flex-direction: column;
+  }
 }
 
 /*/ X-Large devices (large desktops, 1200px and up) */
