@@ -7,6 +7,7 @@
 }
 
 .contact-list {
+  z-index: 3;
   width: 450px;
   max-height: calc(100vh - 100px);
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
@@ -14,13 +15,6 @@
   height: 100%;
   padding: 10px;
   overflow-y: auto;
-}
-
-.contact-detail {
-  margin: 50px;
-  width: 100%;
-  max-height: calc(100vh - 100px);
-  height: 100%;
 }
 
 .contact-box {
@@ -139,12 +133,22 @@
   font-size: 1.5rem;
 }
 
+/* ////////////// CONTACT DETAILS START ///////////////////*/
+
+.contact-detail {
+  margin: 50px;
+  max-inline-size: 100%;
+  max-height: calc(100vh - 100px);
+  height: 100%;
+}
+
 .contact-detail-container{
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
 .contact-detail-header-right{
   display: flex;
   flex-direction: column;
@@ -157,17 +161,20 @@
   flex-direction: row;
   gap: 30px;
 }
+
 .add-task-link{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   color:#005DFF ;
 }
+
 .add-task-link img{
   height: 18px;
   width: 18px;
 }
+
 .contact-name{
   font-size:46px;
   font-weight: 600;
@@ -177,6 +184,13 @@
 .contact-body{
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.contact-information{
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .contact-body-header{
@@ -185,12 +199,45 @@
   flex-direction: row;
   gap: 40px;
 }
-.contact-email {
+
+.edit-contact{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #005DFF;
+  cursor: pointer;
+}
+
+.edit-contact img{
+  height: 24px;
+}
+
+.contact-detail-bold {
+  color: #000000;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.contact-detail-medium {
   color: #4589ff;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
 }
+
+/* ////////////// CONTACT DETAILS END ///////////////////*/
+
+/* ////////////// EDIT CONTACT DETAILS START ///////////////////*/
+.edit-contact-buttons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+/* ////////////// EDIT CONTACT DETAILS END ///////////////////*/
 
 .overlay {
   background-color: rgba(255, 255, 255, 0.6);
@@ -225,9 +272,22 @@
   transition: all 225ms ease-in-out;
 }
 
-.slide-in {
-  transition: transform 500ms ease-in-out;
-  transform: translateX(0px);
+.edit-contact-modal {
+  z-index: 5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 0px 30px 30px 30px;
+  height: 100vh;
+  width: 580px;
+  left: 0px;
+  transform: translateX(-580px);
+  transition: all 225ms ease-in-out;
 }
 
 .slide-in {
@@ -271,6 +331,41 @@
   bottom: 50px;
   background-color: #005dff;
   border: 1px solid #005dff;
+  border-radius: 10px;
+  font-size: 23px;
+  color: white;
+  transition: all 225ms ease-in-out;
+}
+
+.edit-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  width: 140px;
+  height: 53px;
+  right: 40px;
+  bottom: 50px;
+  background-color: #005dff;
+  border: 1px solid #005dff;
+  border-radius: 10px;
+  font-size: 23px;
+  color: white;
+  transition: all 225ms ease-in-out;
+}
+.delete-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  width: 140px;
+  height: 53px;
+  right: 40px;
+  bottom: 50px;
+  background-color: #d1d1d1;
+  border: 1px solid #d1d1d1;
   border-radius: 10px;
   font-size: 23px;
   color: white;
@@ -391,6 +486,7 @@ input[type="text"] {
   outline: none;
 }
 input[type="email"] {
+  color: black;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -399,6 +495,7 @@ input[type="email"] {
   outline: none;
 }
 input[type="number"] {
+  color: black;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -406,7 +503,6 @@ input[type="number"] {
   border: 1px solid #555;
   outline: none;
 }
-
 input:focus {
   background-color: lightblue;
 }

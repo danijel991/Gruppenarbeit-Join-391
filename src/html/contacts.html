@@ -39,7 +39,7 @@
             <span>New contact</span><img src="../img/addcontact.png">
         </button>
 
-        <!-- MODAL CONTENT -->
+        <!-- MODAL CONTENT NEW CONTACT-->
         <div class="overlay d-none" onclick="closeAddContactDialog()" id="overlay">
             <div class="add-contact-modal" onclick="event.stopPropagation()" id="add-contact-modal">
                 <div class="contact-dialog-top">
@@ -79,13 +79,56 @@
         </div>
         <!-- MODAL ADD NEW USER END-->
 
+        <!-- MODAL EDIT CONTACT START-->
+        <div class="overlay " onclick="closeEditContactDialog()" id="overlay2">
+            <div class="edit-contact-modal" onclick="event.stopPropagation()" id="edit-contact-modal">
+                <!-- <div class="contact-dialog-top">
+                    <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
+                    <img src="../img/join-logo.png">
+                    <h2 class="contact-title" id="exampleModalLabel">Edit contact</h2>
+
+                    <h4 id="info-text" class="info-text">Tasks are better with a team!</h4>
+
+                </div>
+                <div class="contact-dialog-bottom">
+                    <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
+                    <div class="form">
+                        <form class="add-contact_form" onsubmit="editUserContact(); return false;">
+                            <div class="add-contact-input-field">
+                                <input id="edit-contact-name" class="contact-form-control contacts_input" type="text"
+                                    placeholder="Name" required>
+                                <img src="/src/img/input_name.png" alt="">
+                            </div>
+                            <div class="add-contact-input-field">
+                                <input id="edit-contact-email" class="contact-form-control contacts_input " type="email"
+                                    placeholder="Email" required>
+                                <img src="/src/img/input_mail.png" alt="">
+                            </div>
+                            <div class="add-contact-input-field">
+                                <input id="edit-contact-phone" class="contact-form-control contacts_input " type="number"
+                                    pattern="" placeholder="Phone" required>
+                                <img src="/src/img/phone_icon.png" alt="">
+                            </div>
+                            <div class="edit-contact-buttons">
+                            <button class="delete-contact-button" required>
+                                <span>Delete</span><img src="../img/addcontact.png">
+                            </button>
+                            <button class="edit-contact-button" required>
+                                <span>Save</span><img src="../img/addcontact.png">
+                            </div>
+                            </button>
+                        </form>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- MODAL EDIT CONTACT END-->
+
         <!-- MAIN START -->
         <main class="main">
             <div class="contacts-container">
                 <div class="contact-list" id="contact-list">No contacts so far!</div>
                 <div class="contact-detail" id="contact-detail">
-
-
                     <!-- <div class="contact-detail-header">
                         <div class="initial"></div>
                         <div class="contact-detail-header-right">
