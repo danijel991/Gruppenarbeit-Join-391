@@ -272,12 +272,13 @@ async function resetPasswordUser(indexReset) {
     let newPass = document.getElementById('user__newPassword-1').value;
     let confirmPass = document.getElementById('user__newPassword-2').value;
     if (indexReset >= 0 && newPass === confirmPass) {
+        document.getElementById('compar__password--validation').classList.add('d-none')
         oldPass['userPassword'] = newPass;
         await saveInBackend();
         showNewPasswordConfirmed();
         setTimeout(toLogInPage, 1000);
     } else {
-        alert('The password do not match')
+        document.getElementById('compar__password--validation').classList.remove('d-none')
     }
     clearInputNewPassword();
 }
