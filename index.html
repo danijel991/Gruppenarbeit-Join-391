@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/css/log_in.css">
-    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="/src/css/log_in.css">
+    <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="/node_modules\bootstrap\dist\css\bootstrap.min.css">
-    <script src="./src/js/script.js"></script>
-    <script src="./src/js/mini_backend.js"></script>
-    <script src="./src/js/logIn_register.js"></script>
-    <script src="./src/js/sidebar.js"></script>
-    <script src="./src/js/board.js"></script>
+    <script src="/src/js/script.js"></script>
+    <script src="/src/js/mini_backend.js"></script>
+    <script src="/src/js/logIn_register.js"></script>
+    <script src="/src/js/sidebar.js"></script>
+    <script src="/src/js/board.js"></script>
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
     <title>Index</title>
 </head>
@@ -39,19 +39,19 @@
                 <form onsubmit="logInUser();return false;">
                     <div class="logIn_input--container">
                         <input class="form-control logIn__input" type="email" placeholder="Email" id="email" required>
-                        <img src="/src/img/input_mail.png" alt="">
+                        <img src="./src/img/input_mail.png" alt="">
                     </div>
                     <div class="logIn_input--container">
                         <input class="form-control logIn__input" type="password" placeholder="Password" id="password"
                             required>
-                        <img src="/src/img/input_password.png" alt="">
+                        <img src="./src/img/input_password.png" alt="">
                     </div>
+                    <div id="logIn__validation" class="logIn__validation d-none"></div>
                     <div class="logIn__selectors">
                         <div class="logIn__selector--remember">
                             <input type="checkbox" id="rememberMe" class="form-check-input" checked value="yes" minlength="4">
                             <label for="email password" class="form_check-input logIn--remember">Remember
                                 me</label>
-                                <div class="invalit-feedback"></div>
                         </div>
                         <a href="/src/html/forgot_password.html" class="btn-link logIn--forgot">Forgot my password</a>
                     </div>

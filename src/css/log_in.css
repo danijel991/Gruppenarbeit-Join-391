@@ -123,7 +123,7 @@ a {
     padding: 3rem 0px;
     gap: 2rem;
     width: 652px;
-    height: 457px;
+    height: auto;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 30px;
@@ -191,6 +191,15 @@ a {
 
 .form-control::placeholder {
     opacity: 0.5 !important;
+}
+
+
+.logIn__validation{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 1% 10%;
+    color: hsla(0, 100%, 50%, 0.742);
 }
 
 
@@ -264,6 +273,8 @@ a {
 .logIn__buttons button:nth-child(2):hover{
     background-color: none;
 }
+
+
 
 
 /* Classes for Sign up */
@@ -343,7 +354,7 @@ form img {
 .forgot__frame {
     position: relative;
     width: 761px;
-    height: 450px;
+    height: auto;
     gap: 1rem
 }
 
@@ -380,20 +391,27 @@ form img {
 }
 
 /* Classes for reset Password */
-.forgot__frame--reset{
-    height: 544px;
-}
-
-
 .reset__input--container{
-    margin-bottom: 3rem;
     border-bottom: 1px solid #D1D1D1;
     padding-bottom: 5px !important;
+}
+
+.reset__input--container2{
+    margin-top: 2rem;
+    border-bottom: 1px solid #D1D1D1;
+    padding-bottom: 5px !important;
+    margin-bottom: 2%;
 }
 
 
 .reset__input--container img{
     opacity: 0;
+}
+
+
+.password__comparison{
+    width: 100%;
+    padding: 0;
 }
 
 

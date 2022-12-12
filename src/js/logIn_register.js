@@ -35,6 +35,7 @@ function showCardAndHeader() {
 async function logInUser() {
     let emailUser = document.getElementById("email").value;
     let passwordUser = document.getElementById("password").value;
+    validatedInput(emailUser, passwordUser);
     let acces = await checkIfExists(emailUser, passwordUser);
     goToSummary(acces);
     emailUser.value = "";
@@ -50,7 +51,7 @@ async function checkIfExists(emailUser, passwordUser) {
     let findPassword = passwordArray.find((password) => password == passwordUser);
     if (findEmail === undefined) {
         return false;
-    } else if( emailUser === findEmail && passwordUser === findPassword) {
+    } else if (emailUser === findEmail && passwordUser === findPassword) {
         let checkbox = callCheckBox();
         if (checkbox == true) {
             await setActiveUser(emailUser);
@@ -58,6 +59,31 @@ async function checkIfExists(emailUser, passwordUser) {
         } else {
             return true;
         }
+    }
+}
+
+
+// Check validation on submit
+function validatedInput(emailUser, passwordUser) {
+    let validation = document.getElementById('logIn__validation');
+    let emailArray = usersArray.map((email) => email.userEmail);
+    let passwordArray = usersArray.map((password) => password.userPassword);
+    let findEmail = emailArray.find((email) => email == emailUser);
+    let findPassword = passwordArray.find((password) => password == passwordUser);
+    responseValitation(emailUser, passwordUser, validation, findEmail, findPassword);
+}
+
+
+function responseValitation(emailUser, passwordUser, validation, findEmail, findPassword){
+    if (emailUser != findEmail && passwordUser != findPassword) {
+        validation.classList.remove('d-none');
+        validation.innerHTML = 'Wrong email and password'
+    } else if (emailUser === findEmail && passwordUser != findPassword) {
+        validation.classList.remove('d-none');
+        validation.innerHTML = 'Wrong password';
+    } else if (emailUser != findEmail) {
+        validation.classList.remove('d-none');
+        validation.innerHTML = 'Wrong email';
     }
 }
 
@@ -104,8 +130,6 @@ async function logInActiveUser() {
 function goToSummary(acces) {
     if (acces == true) {
         toSummaryPage();
-    } else {
-        alert("User not registered");
     }
 }
 
@@ -280,15 +304,16 @@ function checkIfEmailExists(emailUser) {
 
 function allowResetPassword(index) {
     if (index >= 0) {
+        document.getElementById('forgot__email--validation').classList.add('d-none')
         showSendEmail();
         setTimeout(changeDivReset, 1500);
     } else {
-        alert("Email not registered");
+        document.getElementById('forgot__email--validation').classList.remove('d-none')
     }
 }
+  
 
-
-function showSendEmail(){
+function showSendEmail() {
     document.querySelector('.forgot__file--wrapper').classList.add('blur')
     document.querySelector('.response__forgot--container').classList.remove('d-none')
     document.getElementById('email__sent').classList.remove('d-none');
@@ -296,7 +321,7 @@ function showSendEmail(){
 }
 
 
-function resetSentEmail(){
+function resetSentEmail() {
     document.querySelector('.forgot__file--wrapper').classList.remove('blur')
     document.querySelector('.response__forgot--container').classList.add('d-none')
     document.getElementById('email__sent').classList.add('d-none');
@@ -304,13 +329,13 @@ function resetSentEmail(){
 }
 
 
-function animateSentEmail(){
+function animateSentEmail() {
     document.getElementById('email__sent').style.transition = "all 750ms ease-in-out";
     document.getElementById('email__sent').style.transform = "translateX(-50%) translateY(-20vh)";
     setTimeout(resetSentEmail, 1000);
 }
 
-function showNewPasswordConfirmed(){
+function showNewPasswordConfirmed() {
     document.querySelector('.forgot__file--wrapper').classList.add('blur')
     document.querySelector('.response__forgot--container').classList.remove('d-none')
     document.getElementById('reset__confirmed').classList.remove('d-none');
@@ -318,7 +343,7 @@ function showNewPasswordConfirmed(){
 }
 
 
-function resetPasswordConfirmed(){
+function resetPasswordConfirmed() {
     document.querySelector('.forgot__file--wrapper').classList.remove('blur')
     document.querySelector('.response__forgot--container').classList.add('d-none')
     document.getElementById('reset__confirmed').classList.add('d-none');
@@ -326,8 +351,11 @@ function resetPasswordConfirmed(){
 }
 
 
-function animatePasswordConfirmed(){
+function animatePasswordConfirmed() {
     document.getElementById('reset__confirmed').style.transition = "all 750ms ease-in-out";
     document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(-20vh)";
     setTimeout(resetPasswordConfirmed, 1000);
 }
+
+
+
