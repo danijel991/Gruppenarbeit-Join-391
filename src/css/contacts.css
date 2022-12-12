@@ -8,7 +8,7 @@
 
 .contact-list {
   width: 450px;
-  min-height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
   color: rgb(0, 0, 0);
   height: 100%;
@@ -19,7 +19,7 @@
 .contact-detail {
   margin: 50px;
   width: 100%;
-  min-height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
   height: 100%;
 }
 
@@ -43,6 +43,49 @@
   cursor: pointer;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-button{
+  border-style: solid;
+  height: 12px;
+  width: 12px;
+}
+/* Up */
+::-webkit-scrollbar-button:vertical:decrement
+{
+  border-width: 0px 7px 9px 7px;
+  border-color: transparent transparent #A8A8A8 transparent;
+}
+/* ::-webkit-scrollbar-button:vertical:decrement:hover
+{
+  border-color: transparent transparent #A8A8A8 transparent;
+} */
+/* Down */
+::-webkit-scrollbar-button:vertical:increment
+{
+  border-width: 9px 7px 0 7px;
+  border-color: #A8A8A8 transparent transparent transparent;
+}
+/* ::-webkit-scrollbar-button:vertical:increment:hover
+{
+  border-color: #A8A8A8 transparent transparent transparent;
+} */
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset  1px 0px 3px #A8A8A8;
+  border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A8A8A8;
+  /* border-radius: 10px; */
+  border: 6px solid #A8A8A8;
+	border-radius: 12px 12px 12px 12px;
+	margin: 10px auto;
+  
+}
 
 .close-icon-container{
   display: flex;
@@ -69,8 +112,8 @@
   color: white;
   padding: 0px;
   margin-right: 10px;
-  width: 42px;
-  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
   border: 2px solid #ffffff;
   border-radius: 100%;
   background-color: #4589ff;
