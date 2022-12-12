@@ -81,9 +81,17 @@
     margin: 0 !important;
 }
 
-.board-points img {
+.add-icon {
     height: 30px;
+    width: 30px;
+    background-image: url("../img/plus-button.png");
     cursor: pointer;
+    transition: all 125ms ease-in-out;
+}
+
+.add-icon:hover {
+    background-image: url("../img/plus-button-hover.png");
+    transition: all 125ms ease-in-out;
 }
 
 .board-bottom-container {
@@ -91,12 +99,13 @@
     width: 90%;
     justify-content: space-between;
     gap: 12px;
-    height: 50vh;
+    /* height: 50vh; */
 }
 
 .board-tasks-container {
     display: flex;
     flex-direction: column;
+    min-width: 250px;
 }
 
 .board-task {
@@ -108,6 +117,11 @@
     background-color: white;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     margin-bottom: 46px;
+    cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(2deg);
 }
 
 .department {
@@ -164,4 +178,8 @@
 
 .green {
     background-color: #02CF2F;
+}
+
+.drag-area-highlight {
+    border: 1px dashed black;
 }

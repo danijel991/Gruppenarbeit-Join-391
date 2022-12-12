@@ -20,7 +20,7 @@
     <title>Board</title>
 </head>
 
-<body onload="init()">
+<body onload="init(); updateHTML()">
     <div class="container-fluid mh-100 d-flex flex-column">
 
         <!-- HEADER START -->
@@ -42,84 +42,53 @@
                             <img src="../img/search-icon.png" alt="search-icon">
                         </span>
                     </div>
-                    <button class="btn-add-task">Add task
+                    <button class="btn-add-task" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add task
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>
+
                 <div class="main-header-bottom">
                     <div class="board-points">
                         <h3>To do</h3>
-                        <img src="../img/plus-button.png" alt="plus-icon">
+                        <div class="add-icon"></div>
                     </div>
                     <div class="board-points">
                         <h3>In progress</h3>
-                        <img src="../img/plus-button.png" alt="plus-icon">
+                        <div class="add-icon"></div>
                     </div>
                     <div class="board-points">
                         <h3>Await feedback</h3>
-                        <img src="../img/plus-button.png" alt="plus-icon">
+                        <div class="add-icon"></div>
                     </div>
                     <div class="board-points">
                         <h3>Done</h3>
-                        <img src="../img/plus-button.png" alt="plus-icon">
+                        <div class="add-icon"></div>
                     </div>
                 </div>
             </div>
 
             <div class="board-bottom-container">
-                <div class="board-tasks-container">
-                    <div class="board-task">
-                        <span class="department">Design</span>
-                        <span class="task-headline">Website redesign</span>
-                        <span class="task-description">Modify the contents of the main website..</span>
-                        <div class="contact-and-urgency">
-                            <div class="task-contacts-container">
-                                <div class="task-contacts">SM</div>
-                                <div class="task-contacts pink">MV</div>
-                                <div class="task-contacts green">EF</div>
-                            </div>
-                            <div class="task-urgency">
-                                <img src="../img/priority-low-icon.png" alt="urgency">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="board-task">
-                        <span class="department">Sales</span>
-                        <span>Call potencial clients</span>
-                        <span>Make the product presen</span>
-                    </div> -->
+                <div class="board-tasks-container" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
                 </div>
 
-                <div class="board-tasks-container">
-                    <div class="board-task">
-                        <span class="department">Sales</span>
-                        <span class="task-headline">Call potencial clients</span>
-                        <span class="task-description">Make the product presentation to prospective buyers</span>
-                    </div>
+                <div class="board-tasks-container" id="in-progress"
+                    ondrop="moveTo('in-progress'); removeHighlight('in-progress')"
+                    ondragleave="removeHighlight('in-progress')"
+                    ondragover="allowDrop(event); highlight('in-progress')">
                 </div>
 
-                <div class="board-tasks-container">
-                    <div class="board-task">
-                        <span class="department">Backoffice</span>
-                        <span class="task-headline">Accounting invoices</span>
-                        <span class="task-description">Write open invoices for customer</span>
-                    </div>
-                    <div class="board-task">
-                        <span class="department">Media</span>
-                        <span class="task-headline">Video cut</span>
-                        <span class="task-description">Edit the new company video</span>
-                    </div>
+                <div class="board-tasks-container" id="await-feedback"
+                    ondrop="moveTo('await-feedback'); removeHighlight('await-feedback')"
+                    ondragleave="removeHighlight('await-feedback')"
+                    ondragover="allowDrop(event); highlight('await-feedback')">
                 </div>
 
-                <div class="board-tasks-container">
-                    <div class="board-task">
-                        <span class="department">Marketing</span>
-                        <span class="task-headline">Social media strategy</span>
-                        <span class="task-description">Develop an ad campaign for brand positioning</span>
-                    </div>
+                <div class="board-tasks-container" id="done" ondrop="moveTo('done'); removeHighlight('done')"
+                    ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                 </div>
-
             </div>
+
         </main>
         <!-- BOARD END  -->
 
