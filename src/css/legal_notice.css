@@ -33,10 +33,19 @@
 
 .legalNotice__wrapper h3 {
     font-size: 1.5rem;
+    font-weight: 700;
+    padding-top: 0.5rem;
+}
+
+
+.legalNotice__wrapper h4{
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
 }
 
 .legalNotice__wrapper p {
     font-size: 1rem;
+    text-justify: distribute;
 }
 
 
