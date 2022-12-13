@@ -3,10 +3,7 @@ let contact = [];
 function getContactDetails(index) {
   let allContacts = usersArray[activeUser["userID"]]["userContacts"];
   let contact = allContacts[index];
-  const { name, initials, initialsColor, email, phone } = contact;
-  // console.log(name, initials, initialsColor, email, phone);
-  // return contact;
-  return contact;
+  return contact; // return contact here as a whole object and deconstruct it, where you receive it
 }
 
 
@@ -28,77 +25,39 @@ function closeAddContactDialog() {
 }
 
 async function addNewUserContact() {
-  // let indexActiveUser = activeUser["userID"];
-  let activeUserContactsArray = usersArray[0]["userContacts"]; // replace [1] later with 'indexActiveUser'
-
+  let activeUserContactsArray = usersArray[0]["userContacts"]; 
   activeUserContactsArray.push(getContactInfo());
-  // console.log(activeUserContactsArray.push(getContactInfo()));
   await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
-  // show new Contact Detail
-
   await loadAllContacts(); // refreshing contacts in contacts.html
 }
+
 /*/////////////////////// ADD NEW CONTACT END ////////////////////////////////*/
+
+
+
 /*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
 
-  getContactDetails(index);
-  console.log(contact);
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
 
-  // let allContacts = usersArray[activeUser["userID"]]["userContacts"];
-  // let contact = allContacts[index];
-  // const { name, initials, initialsColor, email, phone } = contact;
   let content = document.getElementById("edit-contact-modal");
 
-  content.innerHTML = "";
-  content.innerHTML = `
-  <div class="contact-dialog-top">
-                    <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
-                    <img src="../img/join-logo.png">
-                    <h2 class="contact-title" id="exampleModalLabel">Edit contact</h2>
+  content.innerHTML = generateContactEditDialog();
+  document.getElementById("edit-contact-name").value = `${name}`;
+  document.getElementById("edit-contact-email").value = `${email}`;
+  document.getElementById("edit-contact-phone").value = `${phone}`;
 
-                    <h4 id="info-text" class="info-text">Tasks are better with a team!</h4>
+  animateEditDialog();
+}
 
-                </div>
-                <div class="contact-dialog-bottom">
-                    <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
-                    <div class="form">
-                        <form class="add-contact_form" onsubmit="editUserContact(); return false;">
-                            <div class="add-contact-input-field">
-                                <input id="edit-contact-name" class="contact-form-control contacts_input" type="text"
-                                    placeholder="Name" required>
-                                <img src="/src/img/input_name.png" alt="">
-                            </div>
-                            <div class="add-contact-input-field">
-                                <input id="edit-contact-email" class="contact-form-control contacts_input " type="email"
-                                    placeholder="Email" required>
-                                <img src="/src/img/input_mail.png" alt="">
-                            </div>
-                            <div class="add-contact-input-field">
-                                <input id="edit-contact-phone" class="contact-form-control contacts_input " type="number"
-                                    pattern="" placeholder="Phone" required>
-                                <img src="/src/img/phone_icon.png" alt="">
-                            </div>
-                            <div class="edit-contact-buttons">
-                            <button class="delete-contact-button" required>
-                                <span>Delete</span><img src="../img/addcontact.png">
-                            </button>
-                            <button class="edit-contact-button" required>
-                                <span>Save</span><img src="../img/addcontact.png">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                `;
-                document.getElementById("edit-contact-name").value = `${name}`;
-                document.getElementById("edit-contact-email").value = `${email}`;
-                document.getElementById("edit-contact-phone").value = `${phone}`;
 
+function animateEditDialog() {
   setTimeout(() => {
     document.getElementById("edit-contact-modal").classList.add("slide-in");
   }, 10);
 }
+              
 
 function closeEditContactDialog() {
   document.getElementById("edit-contact-modal").classList.remove("slide-in");
@@ -108,9 +67,12 @@ function closeEditContactDialog() {
   }, 200);
 }
 
+
 function editUserContact(index) {
 
 }
+
+
 /*/////////////////////// EDIT CONTACT END ////////////////////////////////*/
 async function loadAllContacts() {
   await init();
@@ -180,14 +142,61 @@ function setColorForInitial(initials) {
 
 function openContactDetail(index) {
   let content = document.getElementById("contact-detail");
-  content.innerHTML = " ";
 
-  let allContacts = usersArray[activeUser["userID"]]["userContacts"];
-  let contact = allContacts[index];
-  const { name, initials, initialsColor, email, phone } = contact;
-  console.log(name, initials, initialsColor, email, phone);
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index)
 
-  content.innerHTML += `
+  content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
+}
+
+/*/////////////////////// HTML CONTENT RENDERING ////////////////////////////////*/
+
+
+
+function generateContactEditDialog(){
+  return `
+<div class="contact-dialog-top">
+                  <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
+                  <img src="../img/join-logo.png">
+                  <h2 class="contact-title" id="exampleModalLabel">Edit contact</h2>
+
+                  <h4 id="info-text" class="info-text">Tasks are better with a team!</h4>
+
+              </div>
+              <div class="contact-dialog-bottom">
+                  <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
+                  <div class="form">
+                      <form class="add-contact_form" onsubmit="editUserContact(); return false;">
+                          <div class="add-contact-input-field">
+                              <input id="edit-contact-name" class="contact-form-control contacts_input" type="text"
+                                  placeholder="Name" required>
+                              <img src="/src/img/input_name.png" alt="">
+                          </div>
+                          <div class="add-contact-input-field">
+                              <input id="edit-contact-email" class="contact-form-control contacts_input " type="email"
+                                  placeholder="Email" required>
+                              <img src="/src/img/input_mail.png" alt="">
+                          </div>
+                          <div class="add-contact-input-field">
+                              <input id="edit-contact-phone" class="contact-form-control contacts_input " type="number"
+                                  pattern="" placeholder="Phone" required>
+                              <img src="/src/img/phone_icon.png" alt="">
+                          </div>
+                          <div class="edit-contact-buttons">
+                          <button class="delete-contact-button" required>
+                              <span>Delete</span><img src="../img/addcontact.png">
+                          </button>
+                          <button class="edit-contact-button" required>
+                              <span>Save</span><img src="../img/addcontact.png">
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              `;
+}
+
+
+function generateContactDetail(index, name, initials, initialsColor, email, phone){
+  return `
   <div class="contact-detail-header">
   <div class="letters-large" style="background-color: ${initialsColor}">${initials}
   </div>
@@ -209,7 +218,7 @@ function openContactDetail(index) {
   <div class="contact-detail-bold">Email</div>
   <div class="contact-detail-medium">${email}</div>
   <div class="contact-detail-bold">Phone</div>
-  <div class="contact-detail-medium">894300289490500ß3</div>
+  <div class="contact-detail-medium">${phone}</div>
 </div>
       `;
 }
