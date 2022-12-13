@@ -104,6 +104,9 @@ function updateHTML() {
     }
     changeDepartmentColor();
     generateTemplate();
+    // updateAllProgressBar();
+    updateProgressBars();
+    updateProgressReport();
 }
 
 
@@ -113,6 +116,12 @@ function generateTodoHTML(task) {
         <span class="department">${task['department']}</span>
         <span class="task-headline">${task['headline']}</span>
         <span class="task-description">${task['description']}</span>
+        <div class="progress-container">
+            <div class="progress" style="height: 8px;">
+                <div class="progress-bar" id="progress-bar${task['id']}" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span><span class="progress-report">0</span>/3 Done</span>
+        </div>
         <div class="contact-and-urgency">
             <div class="task-contacts-container">
                 <div class="task-contacts">SM</div>
@@ -176,18 +185,68 @@ function templateTask(i) {
 
 function openAddTaskDialog() {
     document.getElementById("add-task-overlay").classList.remove("d-none");
-  
+
     setTimeout(() => {
-      document.getElementById("add-task-modal").classList.add("slide-in");
-      document.body.style.overflow = 'hidden';
+        document.getElementById("add-task-modal").classList.add("slide-in");
+        document.body.style.overflow = 'hidden';
     }, 10);
-  }
-  
-  function closeAddTaskDialog() {
+}
+
+
+function closeAddTaskDialog() {
     document.getElementById("add-task-modal").classList.remove("slide-in");
-  
+
     setTimeout(() => {
-      document.getElementById("add-task-overlay").classList.add("d-none");
-      document.body.style.overflow = 'unset';
+        document.getElementById("add-task-overlay").classList.add("d-none");
+        document.body.style.overflow = 'unset';
     }, 200);
-  }
+}
+
+
+function updateProgressBars() {
+    document.querySelectorAll('.progress-bar').forEach(e => {
+        if (boardTaskContainerId(e) == 'to-do') {
+            e.style.width = 0;
+        } else if (boardTaskContainerId(e) == 'in-progress') {
+            e.style.width = 33 + "%";
+        } else if (boardTaskContainerId(e) == 'await-feedback') {
+            e.style.width = 66 + "%";
+        } else if (boardTaskContainerId(e) == 'done') {
+            e.style.width = 100 + "%";
+        }
+    })
+}
+
+
+function updateProgressReport() {
+    document.querySelectorAll('.progress-report').forEach(e => {
+        if (boardTaskContainerId(e) == 'to-do') {
+            e.innerHTML = 0;
+        } else if (boardTaskContainerId(e) == 'in-progress') {
+            e.innerHTML = 1;
+        } else if (boardTaskContainerId(e) == 'await-feedback') {
+            e.innerHTML = 2;
+        } else if (boardTaskContainerId(e) == 'done') {
+            e.innerHTML = 3;
+        }
+    })
+}
+
+
+function boardTaskContainerId(e) {
+    return e.parentElement.parentElement.parentElement.parentElement.id;  // Id from to-do, in-progress etc. containers
+}
+
+
+// function updateAllProgressBar() {
+//     updateProgressBars('to-do', 'progress0');
+//     updateProgressBars('in-progress', 'progress33');
+//     updateProgressBars('await-feedback', 'progress66');
+//     updateProgressBars('done', 'progress100');
+// }
+
+
+// function updateProgressBars(id, classname) {
+//     let parent = document.getElementById(id).querySelectorAll('.progress-bar');
+//     console.log(parent[0].classList.add(classname));
+// }
