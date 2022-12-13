@@ -88,6 +88,9 @@
 }
 
 .button-area button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 18px 10px;
     gap: 10px;
     width: 136px;
@@ -112,6 +115,26 @@
 
 select {
     background-color: #fff;
+    appearance: none;
+    padding-right: 21px;
+    background-image: url('../img/select-arrow.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 3px) center;
+    width: 18px;
+    height: 8px;
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background-image: url('../img/date-icon.png');
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 23.3px;
+    padding-right: 15px;
+    border-width: thin;
 }
 
 .margin-btn-25 {
@@ -123,7 +146,7 @@ select {
 }
 
 .subtasks-input-area {
-    padding: 14px 0 14px 21px;
+    /* padding: 14px 0 14px 21px; */
     width: 422px;
     /* height: 74px; */
     border: 0;
@@ -131,6 +154,10 @@ select {
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
+}
+
+.subtasks-input-area>input {
+    padding: 14px 0 14px 21px
 }
 
 .subtasks-input-border-input {
@@ -154,6 +181,32 @@ select {
     font-size: 19px;
     line-height: 120%;
     color: #D1D1D1;
+}
+
+.input-check {
+    display: flex;
+    align-items: center;
+
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    /* box-shadow: 2px solid #4589FF; */
+
+    border: 0;
+    border-radius: 3px;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 2px solid #4589FF;
+}
+
+input[type="checkbox"]:checked {
+    appearance: auto;
+    -webkit-appearance: auto;
 }
 
 *:focus {
