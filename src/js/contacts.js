@@ -1,7 +1,19 @@
+let contact = [];
+
+function getContactDetails(index) {
+  let allContacts = usersArray[activeUser["userID"]]["userContacts"];
+  let contact = allContacts[index];
+  const { name, initials, initialsColor, email, phone } = contact;
+  // console.log(name, initials, initialsColor, email, phone);
+  // return contact;
+  return contact;
+}
+
+
 /*/////////////////////// ADD NEW CONTACT START ////////////////////////////////*/
 function openAddContactDialog() {
   document.getElementById("overlay").classList.remove("d-none");
-
+  
   setTimeout(() => {
     document.getElementById("add-contact-modal").classList.add("slide-in");
   }, 10);
@@ -9,19 +21,36 @@ function openAddContactDialog() {
 
 function closeAddContactDialog() {
   document.getElementById("add-contact-modal").classList.remove("slide-in");
-
+  
   setTimeout(() => {
     document.getElementById("overlay").classList.add("d-none");
   }, 200);
+}
+
+async function addNewUserContact() {
+  // let indexActiveUser = activeUser["userID"];
+  let activeUserContactsArray = usersArray[0]["userContacts"]; // replace [1] later with 'indexActiveUser'
+
+  activeUserContactsArray.push(getContactInfo());
+  // console.log(activeUserContactsArray.push(getContactInfo()));
+  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  // show new Contact Detail
+
+  await loadAllContacts(); // refreshing contacts in contacts.html
 }
 /*/////////////////////// ADD NEW CONTACT END ////////////////////////////////*/
 /*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
-  let allContacts = usersArray[activeUser["userID"]]["userContacts"];
-  let contact = allContacts[index];
-  const { name, initials, initialsColor, email, phone } = contact;
+
+  getContactDetails(index);
+  console.log(contact);
+
+  // let allContacts = usersArray[activeUser["userID"]]["userContacts"];
+  // let contact = allContacts[index];
+  // const { name, initials, initialsColor, email, phone } = contact;
   let content = document.getElementById("edit-contact-modal");
+
   content.innerHTML = "";
   content.innerHTML = `
   <div class="contact-dialog-top">
@@ -79,7 +108,9 @@ function closeEditContactDialog() {
   }, 200);
 }
 
-function editUserContact(index) {}
+function editUserContact(index) {
+
+}
 /*/////////////////////// EDIT CONTACT END ////////////////////////////////*/
 async function loadAllContacts() {
   await init();
@@ -100,18 +131,6 @@ async function loadAllContacts() {
       </div>
       `;
   }
-}
-
-async function addNewUserContact() {
-  let indexActiveUser = activeUser["userID"];
-  let activeUserContactsArray = usersArray[0]["userContacts"]; // replace [1] later with 'indexActiveUser'
-
-  activeUserContactsArray.push(getContactInfo());
-  // console.log(activeUserContactsArray.push(getContactInfo()));
-  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
-  // show new Contact Detail
-
-  await loadAllContacts(); // refreshing contacts in contacts.html
 }
 
 function getContactInfo() {
