@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/board.css">
+    <!-- <link rel="stylesheet" href="../css/contacts.css"> -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
     <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
@@ -16,6 +17,7 @@
     <script src="../js/script.js"></script>
     <script defer src="../js/sidebar.js"></script>
     <script src="../js/board.js"></script>
+    <!-- <script src="../js/contacts.js"></script> -->
     <script src="/src/js/logIn_register.js"></script>
     <title>Board</title>
 </head>
@@ -31,6 +33,23 @@
         <div w3-include-html="../templates/sidebar.html"></div>
         <!-- SIDEBAR END  -->
 
+        <!-- MODAL ADD TASK -->
+        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog()" id="add-task-overlay">
+            <div class="add-task-modal" onclick="event.stopPropagation()" id="add-task-modal">
+                <div class="add-task-header-top">
+                    <img class="close-icon" src="../img/add-task-close-icon.png" onclick="closeAddTaskDialog()">
+                    <div class="add-task-header-bottom">
+                        <h2 class="add-task-title" id="exampleModalLabel">Add Task</h2>
+                        <button class="btn-add-task btn-create-task" onclick="openAddTaskDialog()">Create task
+                            <img src="../img/check-icon.png" alt="add-icon">
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- MODAL ADD TASK END-->
+
         <!-- BOARD START -->
         <main class="board">
             <div class="board-header-container">
@@ -38,12 +57,12 @@
                     <div class="input-group input-group-lg search">
                         <input type="text" id="search" placeholder="Find Task" class="form-control"
                             aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        <div class="line"></div>
                         <span class="input-group-text" id="inputGroup-sizing-lg">
                             <img src="../img/search-icon.png" alt="search-icon">
                         </span>
                     </div>
-                    <button class="btn-add-task" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add task
+                    <button class="btn-add-task" onclick="openAddTaskDialog()">Add task
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>
@@ -51,41 +70,38 @@
                 <div class="main-header-bottom">
                     <div class="board-points">
                         <h3>To do</h3>
-                        <div class="add-icon"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
                     </div>
                     <div class="board-points">
                         <h3>In progress</h3>
-                        <div class="add-icon"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
                     </div>
                     <div class="board-points">
                         <h3>Await feedback</h3>
-                        <div class="add-icon"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
                     </div>
                     <div class="board-points">
                         <h3>Done</h3>
-                        <div class="add-icon"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
                     </div>
                 </div>
             </div>
 
             <div class="board-bottom-container">
-                <div class="board-tasks-container" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)">
+                <div class="board-tasks-container" id="to-do" ondrop="moveTo('to-do')" ondragover="allowDrop(event)"
+                    ondragstart="removeHighlight('template0')">
                 </div>
 
-                <div class="board-tasks-container" id="in-progress"
-                    ondrop="moveTo('in-progress'); removeHighlight('in-progress')"
-                    ondragleave="removeHighlight('in-progress')"
-                    ondragover="allowDrop(event); highlight('in-progress')">
+                <div class="board-tasks-container" id="in-progress" ondrop="moveTo('in-progress')"
+                    ondragstart="removeHighlight('template1')" ondragover="allowDrop(event)">
                 </div>
 
-                <div class="board-tasks-container" id="await-feedback"
-                    ondrop="moveTo('await-feedback'); removeHighlight('await-feedback')"
-                    ondragleave="removeHighlight('await-feedback')"
-                    ondragover="allowDrop(event); highlight('await-feedback')">
+                <div class="board-tasks-container" id="await-feedback" ondrop="moveTo('await-feedback')"
+                    ondragstart="removeHighlight('template2')" ondragover="allowDrop(event)">
                 </div>
 
-                <div class="board-tasks-container" id="done" ondrop="moveTo('done'); removeHighlight('done')"
-                    ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
+                <div class="board-tasks-container" id="done" ondrop="moveTo('done')"
+                    ondragstart="removeHighlight('template3')" ondragover="allowDrop(event)">
                 </div>
             </div>
 

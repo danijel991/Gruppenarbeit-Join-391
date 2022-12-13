@@ -56,7 +56,7 @@ header {
   text-align: center;
 }
 
-header img {
+.header-right-content img {
   cursor: pointer;
 }
 
