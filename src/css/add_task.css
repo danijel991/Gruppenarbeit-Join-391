@@ -2,18 +2,16 @@
     color: #D1D1D1;
 }
 
-.add-task {
+.add-task-left {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 320px;
+    margin-top: 137px;
     padding: 0px;
     gap: 25px;
-
-    position: absolute;
     width: 561px;
     height: 1056px;
-    left: 320px;
-    top: 137px;
 }
 
 .form-width {
@@ -160,4 +158,61 @@ select {
 
 *:focus {
     outline: none;
+}
+
+.add-task-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-task-right {
+    margin-top: 889px;
+    margin-left: 242px;
+    display: flex;
+}
+
+.add-task-right-button-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1px solid #647188;
+    border-radius: 10px;
+    width: 136px;
+    height: 61px;
+    margin-right: 25px;
+
+}
+
+.add-task-right-button-left>span {
+    color: #647188;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 120%;
+}
+
+.add-task-right-button-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    background: #4589FF;
+    border-radius: 10px;
+    width: 180px;
+    height: 61px;
+    border: 0;
+    border: 1px solid #4589FF;
+
+}
+
+.add-task-right-button-right>span {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 120%;
 }

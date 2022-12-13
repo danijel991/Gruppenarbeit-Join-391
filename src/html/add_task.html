@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
-    <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
+    <!-- <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
+    <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf"> -->
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
 
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
-    <script src="/src/js/logIn_register.js"></script>
     <script defer src="../js/sidebar.js"></script>
     <title>Add task</title>
 </head>
@@ -31,54 +31,66 @@
         <!-- SIDEBAR END  -->
 
         <!-- ADD TASK START -->
+        <main class="add-task-main">
+            <div class="add-task-left">
 
-        <main class="add-task">
-
-            <form class="add-task-form">
-                <div class="form-width input-title margin-btn-25">
-                    <input class="add-title input-title-font" type="text" placeholder="Enter a title">
-                </div>
-                <div class="margin-btn-25">
-                    <select class="uniform-sizing text-19pt" name="" id="">
-                        <option value="">Select contacts to assign</option>
-                    </select>
-                </div>
-                <div class="date-area flex-column margin-btn-45">
-                    <span class="category-header">Due date</span>
-                    <input class="uniform-sizing gray-fonts" type="date">
-                </div>
-                <div class="category-area flex-column margin-btn-45">
-                    <span class="category-header">Category</span>
-                    <select class="uniform-sizing text-19pt" name="" id="">
-                        <option value="">Select task category</option>
-                    </select>
-                </div>
-                <div class="button-area margin-btn-25">
-                    <button><span class="priority-button-text text-19pt">Urgent</span><img
-                            src="../img/prio_bnt_urgent.png" alt=""></button>
-                    <button><span class="priority-button-text text-19pt">Medium</span><img
-                            src="../img/prio_bnt_medium.png" alt=""></button>
-                    <button><span class="priority-button-text text-19pt">Low</span><img src="../img/prio_bnt_low.png"
-                            alt=""></button>
-                </div>
-                <div class="description-area flex-column margin-btn-45">
-                    <span class="category-header">Description</span>
-                    <textarea class="gray-fonts" name="" id="" cols="30" rows="10" placeholder="Enter a Description"></textarea>
-                </div>
-                <div class="subtasks-area">
-                    <div class="subtasks-input-area">
-                        <span class="category-header">Subtasks</span>
-                        <input class="noborder subtasks-input-border-input gray-fonts" type="text" placeholder="Add  new subtask">
+                <form class="add-task-form">
+                    <div class="form-width input-title margin-btn-25">
+                        <input class="add-title input-title-font" type="text" placeholder="Enter a title">
                     </div>
-                    <div>
-                        <input type="checkbox">
-                        <label class="" for="">Subtask 1</label>
+                    <div class="margin-btn-25">
+                        <select class="uniform-sizing text-19pt" name="" id="">
+                            <option value="">Select contacts to assign</option>
+                        </select>
                     </div>
-                </div>
-            </form>
-
+                    <div class="date-area flex-column margin-btn-45">
+                        <span class="category-header">Due date</span>
+                        <input class="uniform-sizing gray-fonts" type="date">
+                    </div>
+                    <div class="category-area flex-column margin-btn-45">
+                        <span class="category-header">Category</span>
+                        <select class="uniform-sizing text-19pt" name="" id="">
+                            <option value="">Select task category</option>
+                        </select>
+                    </div>
+                    <div class="button-area margin-btn-25">
+                        <button><span class="priority-button-text text-19pt">Urgent</span><img
+                                src="../img/prio_bnt_urgent.png" alt=""></button>
+                        <button><span class="priority-button-text text-19pt">Medium</span><img
+                                src="../img/prio_bnt_medium.png" alt=""></button>
+                        <button><span class="priority-button-text text-19pt">Low</span><img
+                                src="../img/prio_bnt_low.png" alt=""></button>
+                    </div>
+                    <div class="description-area flex-column margin-btn-45">
+                        <span class="category-header">Description</span>
+                        <textarea class="gray-fonts" name="" id="" cols="30" rows="10"
+                            placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div class="subtasks-area">
+                        <div class="subtasks-input-area">
+                            <span class="category-header">Subtasks</span>
+                            <input class="noborder subtasks-input-border-input gray-fonts" type="text"
+                                placeholder="Add  new subtask">
+                        </div>
+                        <div>
+                            <input type="checkbox">
+                            <label class="" for="">Subtask 1</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="add-task-right">
+                <button class="add-task-right-button-left">
+                    <span>Clear</span>
+                    <span>&#10005</span>
+                </button>
+                <button class="add-task-right-button-right">
+                    <span>Create Task</span>
+                    <span>&#10003</span>
+                </button>
+            </div>
         </main>
-
         <!-- ADD TASK END  -->
 
     </div>
