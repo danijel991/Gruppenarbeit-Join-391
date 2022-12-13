@@ -103,12 +103,13 @@ function updateHTML() {
         document.getElementById('done').innerHTML += generateTodoHTML(element);
     }
     changeDepartmentColor();
+    generateTemplate();
 }
 
 
 function generateTodoHTML(task) {
     return `
-    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask()" class="board-task">
+    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask(); highlight()" class="board-task">
         <span class="department">${task['department']}</span>
         <span class="task-headline">${task['headline']}</span>
         <span class="task-description">${task['description']}</span>
@@ -122,7 +123,8 @@ function generateTodoHTML(task) {
                 <img src="../img/priority-${task['priority']}-icon.png" alt="urgency">
             </div>
         </div>
-    </div>`;
+    </div>
+    `;
 }
 
 
@@ -142,8 +144,10 @@ function moveTo(category) {
 }
 
 
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+function highlight() {
+    document.querySelectorAll('.template-task').forEach(template => {
+        template.classList.add('drag-area-highlight');
+    });
 }
 
 
@@ -156,3 +160,34 @@ function rotateTask() {
     document.getElementById(currentDraggedElement).classList.add('rotate');
 }
 
+
+function generateTemplate() {
+    document.getElementById('to-do').innerHTML += templateTask(0);
+    document.getElementById('in-progress').innerHTML += templateTask(1);
+    document.getElementById('await-feedback').innerHTML += templateTask(2);
+    document.getElementById('done').innerHTML += templateTask(3);
+}
+
+
+function templateTask(i) {
+    return `<div id="template${i}" class="template-task"><div>`;
+}
+
+
+function openAddTaskDialog() {
+    document.getElementById("add-task-overlay").classList.remove("d-none");
+  
+    setTimeout(() => {
+      document.getElementById("add-task-modal").classList.add("slide-in");
+      document.body.style.overflow = 'hidden';
+    }, 10);
+  }
+  
+  function closeAddTaskDialog() {
+    document.getElementById("add-task-modal").classList.remove("slide-in");
+  
+    setTimeout(() => {
+      document.getElementById("add-task-overlay").classList.add("d-none");
+      document.body.style.overflow = 'unset';
+    }, 200);
+  }
