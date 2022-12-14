@@ -2,6 +2,10 @@
     color: #D1D1D1;
 }
 
+main {
+    cursor: default;
+}
+
 .add-task-left {
     display: flex;
     flex-direction: column;
@@ -268,4 +272,31 @@ input[type="checkbox"]:checked {
     font-weight: 400;
     font-size: 23px;
     line-height: 120%;
+}
+
+button, select, input {
+    cursor: pointer;
+}
+
+.subtask-input-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 21px;
+    padding-right: 21.58px;
+    margin-bottom: 14px;
+}
+
+#add-task-btn-small {
+    background-color: transparent;
+    border: 0;
+    color: #4589ff;
+    rotate: 45deg;
+    font-size: 16.49px;
+    font-weight: 700;
+}
+
+.urgency-btn:hover {
+    background-color: #4589FF;
+    transition: all 125ms ease-in-out;
 }

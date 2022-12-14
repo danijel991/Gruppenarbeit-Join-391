@@ -16,6 +16,7 @@
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
     <script defer src="../js/sidebar.js"></script>
+    <script src="../js/add_task.js"></script>
     <title>Add task</title>
 </head>
 
@@ -45,7 +46,7 @@
                     </div>
                     <div class="date-area flex-column margin-btn-45">
                         <span class="category-header">Due date</span>
-                        <input class="uniform-sizing gray-fonts" type="date" >
+                        <input id="date-input-form" class="uniform-sizing gray-fonts" type="date">
                     </div>
                     <div class="category-area flex-column margin-btn-45">
                         <span class="category-header">Category</span>
@@ -54,11 +55,11 @@
                         </select>
                     </div>
                     <div class="button-area margin-btn-25">
-                        <button><span class="priority-button-text text-19pt">Urgent</span><img
+                        <button onclick="changeUrgencyColor()" class="urgency-btn" id="urgency-btn-1"><span class="priority-button-text text-19pt">Urgent</span><img
                                 src="../img/prio_bnt_urgent.png" alt=""></button>
-                        <button><span class="priority-button-text text-19pt">Medium</span><img
+                        <button onclick="changeUrgencyColor()" class="urgency-btn" id="urgency-btn-2"><span class="priority-button-text text-19pt">Medium</span><img
                                 src="../img/prio_bnt_medium.png" alt=""></button>
-                        <button><span class="priority-button-text text-19pt">Low</span><img
+                        <button onclick="changeUrgencyColor()" class="urgency-btn" id="urgency-btn-3"><span class="priority-button-text text-19pt">Low</span><img
                                 src="../img/prio_bnt_low.png" alt=""></button>
                     </div>
                     <div class="description-area flex-column margin-btn-45">
@@ -69,8 +70,11 @@
                     <div class="subtasks-area">
                         <div class="subtasks-input-area">
                             <span class="category-header">Subtasks</span>
+                            <div class="subtask-input-field">
                             <input class="noborder subtasks-input-border-input gray-fonts" type="text"
-                                placeholder="Add  new subtask">
+                                placeholder="Add new subtask">
+                                <button onclick="addSubtask()" id="add-task-btn-small">&#10005</button>
+                            </div>
                         </div>
                         <div class="input-check">
                             <input type="checkbox">
@@ -81,11 +85,11 @@
             </div>
             
             <div class="add-task-right">
-                <button class="add-task-right-button-left">
+                <button onclick="clearForm()" class="add-task-right-button-left">
                     <span>Clear</span>
                     <span>&#10005</span>
                 </button>
-                <button class="add-task-right-button-right">
+                <button onclick="addTask()" class="add-task-right-button-right">
                     <span>Create Task</span>
                     <span>&#10003</span>
                 </button>
