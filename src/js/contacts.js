@@ -40,6 +40,22 @@ async function addNewUserContact() {
 
 
 /*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
+async function updateUserContact(index) {
+  let contact = getContactDetails(index);
+  console.log(contact);
+  
+  await activeUserContactsArray.push(contact);
+  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  await loadAllContacts(); // refreshing contacts in contacts.html
+  openContactDetail(activeUserContactsArray.length -1);
+}
+
+async function deleteUserContact(index) {
+  debugger
+  console.log('This is user', index);
+}
+
+
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
 
@@ -47,7 +63,7 @@ function openEditContactDialog(index) {
 
   let content = document.getElementById("edit-contact-modal");
 
-  content.innerHTML = generateContactEditDialog();
+  content.innerHTML = generateContactEditDialog(index);
   document.getElementById("edit-contact-name").value = `${name}`;
   document.getElementById("edit-contact-email").value = `${email}`;
   document.getElementById("edit-contact-phone").value = `${phone}`;
@@ -69,11 +85,6 @@ function closeEditContactDialog() {
   setTimeout(() => {
     document.getElementById("overlay2").classList.add("d-none");
   }, 200);
-}
-
-
-function editUserContact(index) {
-
 }
 
 
@@ -156,7 +167,7 @@ function openContactDetail(index) {
 
 
 
-function generateContactEditDialog(){
+function generateContactEditDialog(index){
   return `
 <div class="contact-dialog-top">
                   <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
@@ -169,7 +180,7 @@ function generateContactEditDialog(){
               <div class="contact-dialog-bottom">
                   <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
                   <div class="form">
-                      <form class="add-contact_form" onsubmit="editUserContact(); return false;">
+                      <form class="add-contact_form" onsubmit="updateUserContact(${index}); return false;">
                           <div class="add-contact-input-field">
                               <input id="edit-contact-name" class="contact-form-control contacts_input" type="text"
                                   placeholder="Name" required>
@@ -186,11 +197,12 @@ function generateContactEditDialog(){
                               <img src="/src/img/phone_icon.png" alt="">
                           </div>
                           <div class="edit-contact-buttons">
-                          <button class="delete-contact-button" required>
+                          <button class="delete-contact-button" onclick="deleteUserContact(${index})">
                               <span>Delete</span><img src="../img/addcontact.png">
                           </button>
                           <button class="edit-contact-button" required>
                               <span>Save</span><img src="../img/addcontact.png">
+                          </button>
                           </div>
                       </form>
                   </div>
