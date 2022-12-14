@@ -1,11 +1,25 @@
 // This function will change bg-color of urgency button
-changeUrgencyColor()
+function changeUrgencyHigh() {
+    document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
+    document.getElementById('urgency-btn-1').style.color = "#FFFFFF";
+    document.getElementById('img-prio-high').style.backgroundImage = "url('../img/prio_high_white.png')";
+    document.getElementById('img-prio-high').style.backgroundRepeat = "no-repeat";
+    event.preventDefault();
+}
+
+function changeUrgencyMedium() {}
+
+function changeUrgencyLow() {}
 
 // This function will add subtask
-addSubtask()
+function addSubtask() {}
 
 // This function will add form-data
-addTask()
+function addTask() {
+console.log('add task');
+}
 
 // This function will clear form
-clearForm()
+function clearForm() {
+    console.log('clearForm');
+}
