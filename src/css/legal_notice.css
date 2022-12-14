@@ -6,6 +6,7 @@
     margin-top: 12rem;
     min-height: calc(100vh - 15rem);
     width: calc(100% - 25rem);
+    text-align: justify;
 }
 
 
@@ -19,7 +20,6 @@
     color: #4589FF;
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 2rem;
 }
 
 
@@ -27,6 +27,7 @@
     color: #005DFF;
     font-size: 2rem;
     font-weight: 700;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -45,7 +46,6 @@
 
 .legalNotice__wrapper p {
     font-size: 1rem;
-    text-justify: distribute;
 }
 
 
@@ -58,8 +58,6 @@
     padding-inline-start: 0%;
 }
 
-.legalNotice__impressum--container ul {
-}
 
 .legalNotice__impressum--container li {
     display: flex;
