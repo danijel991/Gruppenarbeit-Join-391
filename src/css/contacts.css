@@ -9,7 +9,7 @@
 .contact-list {
   z-index: 3;
   width: 450px;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px); /* wenn es noch keine Kontakte gibt, müsste die Höhe auf min-height gesetzt werden. Aber dann haben wir am Ende ganz rechts einen Skrollbalken*/
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
   color: rgb(0, 0, 0);
   height: 100%;
@@ -41,26 +41,24 @@
 ::-webkit-scrollbar {
   width: 12px;
 }
-::-webkit-scrollbar-button{
+::-webkit-scrollbar-button {
   border-style: solid;
   height: 12px;
   width: 12px;
 }
 /* Up */
-::-webkit-scrollbar-button:vertical:decrement
-{
+::-webkit-scrollbar-button:vertical:decrement {
   border-width: 0px 7px 9px 7px;
-  border-color: transparent transparent #A8A8A8 transparent;
+  border-color: transparent transparent #a8a8a8 transparent;
 }
 /* ::-webkit-scrollbar-button:vertical:decrement:hover
 {
   border-color: transparent transparent #A8A8A8 transparent;
 } */
 /* Down */
-::-webkit-scrollbar-button:vertical:increment
-{
+::-webkit-scrollbar-button:vertical:increment {
   border-width: 9px 7px 0 7px;
-  border-color: #A8A8A8 transparent transparent transparent;
+  border-color: #a8a8a8 transparent transparent transparent;
 }
 /* ::-webkit-scrollbar-button:vertical:increment:hover
 {
@@ -68,20 +66,19 @@
 } */
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset  1px 0px 3px #A8A8A8;
+  box-shadow: inset 1px 0px 3px #a8a8a8;
   border-radius: 10px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #A8A8A8;
+  background: #a8a8a8;
   /* border-radius: 10px; */
-  border: 6px solid #A8A8A8;
-	border-radius: 12px 12px 12px 12px;
-	margin: 10px auto;
-  
+  border: 6px solid #a8a8a8;
+  border-radius: 12px 12px 12px 12px;
+  margin: 10px auto;
 }
 
-.close-icon-container{
+.close-icon-container {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -94,7 +91,7 @@
   top: 30px;
 }
 
-.close-icon:hover{
+.close-icon:hover {
   cursor: pointer;
   filter: invert(100%);
 }
@@ -128,7 +125,7 @@
   font-size: 38px;
 }
 
-.info-text{
+.info-text {
   color: white;
   font-size: 1.5rem;
 }
@@ -142,74 +139,74 @@
   height: 100%;
 }
 
-.contact-detail-container{
+.contact-detail-container {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.contact-detail-header-right{
+.contact-detail-header-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
-.contact-detail-header{
+.contact-detail-header {
   display: flex;
   flex-direction: row;
   gap: 30px;
 }
 
-.add-task-link{
+.add-task-link {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color:#005DFF ;
+  color: #005dff;
 }
 
-.add-task-link img{
+.add-task-link img {
   height: 18px;
   width: 18px;
 }
 
-.contact-name{
-  font-size:46px;
+.contact-name {
+  font-size: 46px;
   font-weight: 600;
   line-height: 120%;
 }
 
-.contact-body{
+.contact-body {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   margin-left: 10px;
 }
 
-.contact-information{
+.contact-information {
   font-size: 24px;
   font-weight: 700;
 }
 
-.contact-body-header{
+.contact-body-header {
   width: 100%;
   display: flex;
   flex-direction: row;
   gap: 40px;
 }
 
-.edit-contact{
+.edit-contact {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color: #005DFF;
+  color: #005dff;
   cursor: pointer;
 }
 
-.edit-contact img{
+.edit-contact img {
   height: 24px;
 }
 
@@ -231,7 +228,7 @@
 /* ////////////// CONTACT DETAILS END ///////////////////*/
 
 /* ////////////// EDIT CONTACT DETAILS START ///////////////////*/
-.edit-contact-buttons{
+.edit-contact-buttons {
   display: flex;
   justify-content: space-around;
   align-items: center;

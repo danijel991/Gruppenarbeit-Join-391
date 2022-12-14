@@ -25,10 +25,14 @@ function closeAddContactDialog() {
 }
 
 async function addNewUserContact() {
-  let activeUserContactsArray = usersArray[0]["userContacts"]; 
-  activeUserContactsArray.push(getContactInfo());
+  let activeUserContactsArray = usersArray[activeUser['userID']]["userContacts"]; 
+  
+  let newContact = getContactInfo();
+
+  activeUserContactsArray.push(newContact);
   await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
   await loadAllContacts(); // refreshing contacts in contacts.html
+  openContactDetail(activeUserContactsArray.length -1);
 }
 
 /*/////////////////////// ADD NEW CONTACT END ////////////////////////////////*/
