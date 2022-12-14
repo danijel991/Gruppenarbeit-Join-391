@@ -34,21 +34,67 @@
         <!-- SIDEBAR END  -->
 
         <!-- MODAL ADD TASK -->
-        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog()" id="add-task-overlay">
+        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')"
+            id="add-task-overlay">
             <div class="add-task-modal" onclick="event.stopPropagation()" id="add-task-modal">
                 <div class="add-task-header-top">
-                    <img class="close-icon" src="../img/add-task-close-icon.png" onclick="closeAddTaskDialog()">
+                    <img class="close-icon" src="../img/add-task-close-icon.png"
+                        onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')">
                     <div class="add-task-header-bottom">
                         <h2 class="add-task-title" id="exampleModalLabel">Add Task</h2>
-                        <button class="btn-add-task btn-create-task" onclick="openAddTaskDialog()">Create task
+                        <button class="btn-add-task btn-create-task" onclick="createTask()">Create task
                             <img src="../img/check-icon.png" alt="add-icon">
                         </button>
                     </div>
+                    <div>asdfasdfdsfsdf</div>
                 </div>
 
             </div>
         </div>
         <!-- MODAL ADD TASK END-->
+
+        <!-- MODAL TASK -->
+        <div class="task-overlay d-none" onclick="closeAddTaskDialog('task-modal', 'task-overlay')" id="task-overlay">
+            <div class="task-modal" onclick="event.stopPropagation()" id="task-modal">
+                <div class="task-modal-container">
+                    <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
+                        onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
+                    <!-- <div class="add-task-header-bottom"> -->
+                    <span class="department department-overlay">Design</span>
+                    <h3 class="task-headline-overlay">Website redesign</h3>
+                    <span class="task-description-overlay">Make the product presentation to prospective buyers</span>
+                    <div class="due-date-container">
+                        <span>Due date:</span>
+                        <span>05-08-2022</span>
+                    </div>
+                    <div class="prio-container">
+                        <span>Priority:</span>
+                        <img src="../img/prio-overlay-high.png" alt="prio-overlay">
+                    </div>
+                    <div class="assigned-to-container">
+                        <span>Assigned To:</span>
+                        <div class="assigned-contacts">
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay">SM</div>
+                                <span>Stefan Meier</span>
+                            </div>
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay pink">MV</div>
+                                <span>Marvin Vogel</span>
+                            </div>
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay green">EF</div>
+                                <span>Elisabeth Friedrich</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edit-btn"></div>
+                    <!-- </div> -->
+                </div>
+
+            </div>
+        </div>
+        <!-- MODAL TASK END -->
 
         <!-- BOARD START -->
         <main class="board">
@@ -62,7 +108,8 @@
                             <img src="../img/search-icon.png" alt="search-icon">
                         </span>
                     </div>
-                    <button class="btn-add-task" onclick="openAddTaskDialog()">Add task
+                    <button class="btn-add-task" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')">Add
+                        task
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>
@@ -70,19 +117,19 @@
                 <div class="main-header-bottom">
                     <div class="board-points">
                         <h3>To do</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
                     </div>
                     <div class="board-points">
                         <h3>In progress</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
                     </div>
                     <div class="board-points">
                         <h3>Await feedback</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
                     </div>
                     <div class="board-points">
                         <h3>Done</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog()"></div>
+                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
                     </div>
                 </div>
             </div>

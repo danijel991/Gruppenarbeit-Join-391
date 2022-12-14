@@ -112,13 +112,13 @@ function updateHTML() {
 
 function generateTodoHTML(task) {
     return `
-    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask(); highlight()" class="board-task">
+    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal')" class="board-task">
         <span class="department">${task['department']}</span>
         <span class="task-headline">${task['headline']}</span>
         <span class="task-description">${task['description']}</span>
         <div class="progress-container">
             <div class="progress" style="height: 8px;">
-                <div class="progress-bar" id="progress-bar${task['id']}" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <span><span class="progress-report">0</span>/3 Done</span>
         </div>
@@ -170,6 +170,11 @@ function rotateTask() {
 }
 
 
+// addEventListener('dragstart', () => {
+//     generateTemplate();
+// })
+
+
 function generateTemplate() {
     document.getElementById('to-do').innerHTML += templateTask(0);
     document.getElementById('in-progress').innerHTML += templateTask(1);
@@ -183,21 +188,27 @@ function templateTask(i) {
 }
 
 
-function openAddTaskDialog() {
-    document.getElementById("add-task-overlay").classList.remove("d-none");
-
+function openAddTaskDialog(id, id2) {
+    document.getElementById(id).classList.remove("d-none");
     setTimeout(() => {
-        document.getElementById("add-task-modal").classList.add("slide-in");
+        if (id2 == 'task-modal') {
+            document.getElementById(id2).classList.add("slide-in-bottom");
+        } else {
+            document.getElementById(id2).classList.add("slide-in");
+        }
         document.body.style.overflow = 'hidden';
     }, 10);
 }
 
 
-function closeAddTaskDialog() {
-    document.getElementById("add-task-modal").classList.remove("slide-in");
-
+function closeAddTaskDialog(id, id2) {
+    if (id == 'task-modal') {
+        document.getElementById(id).classList.remove("slide-in-bottom");
+    } else {
+        document.getElementById(id).classList.remove("slide-in");
+    }
     setTimeout(() => {
-        document.getElementById("add-task-overlay").classList.add("d-none");
+        document.getElementById(id2).classList.add("d-none");
         document.body.style.overflow = 'unset';
     }, 200);
 }
