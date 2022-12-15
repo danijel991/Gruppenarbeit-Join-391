@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/add_task.css">
     <!-- <link rel="stylesheet" href="../css/contacts.css"> -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
@@ -46,7 +47,56 @@
                             <img src="../img/check-icon.png" alt="add-icon">
                         </button>
                     </div>
-                    <div>asdfasdfdsfsdf</div>
+                    <form class="add-task-form">
+                        <div class="form-width input-title margin-btn-25">
+                            <input class="add-title input-title-font" type="text" placeholder="Enter a title">
+                        </div>
+                        <div class="margin-btn-25">
+                            <select class="uniform-sizing text-19pt" name="" id="">
+                                <option value="">Select contacts to assign</option>
+                            </select>
+                        </div>
+                        <div class="date-area flex-column margin-btn-45">
+                            <span class="category-header">Due date</span>
+                            <input class="uniform-sizing gray-fonts" type="date" >
+                        </div>
+                        <div class="category-area flex-column margin-btn-45">
+                            <span class="category-header">Category</span>
+                            <select class="uniform-sizing text-19pt" name="" id="">
+                                <option value="">Select task category</option>
+                            </select>
+                        </div>
+                        <div class="button-area margin-btn-25">
+                            <button class="add-task-prio-high">
+                                <span class="priority-button-text text-19pt">Urgent</span>
+                                <img src="../img/prio_bnt_urgent.png" alt="">
+                            </button>
+                            <button class="add-task-prio-medium">
+                                <span class="priority-button-text text-19pt">Medium</span>
+                                <img src="../img/prio_bnt_medium.png" alt="">
+                            </button>
+                            <button class="add-task-prio-low">
+                                <span class="priority-button-text text-19pt">Low</span>
+                                <img src="../img/prio_bnt_low.png" alt="">
+                            </button>
+                        </div>
+                        <div class="description-area description-area-overlay flex-column margin-btn-45">
+                            <span class="category-header">Description</span>
+                            <textarea class="gray-fonts" name="" id="" cols="30" rows="10"
+                                placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="subtasks-area">
+                            <div class="subtasks-input-area">
+                                <span class="category-header">Subtasks</span>
+                                <input class="noborder subtasks-input-border-input gray-fonts" type="text"
+                                    placeholder="Add  new subtask">
+                            </div>
+                            <div class="input-check">
+                                <input type="checkbox">
+                                <label class="" for="ckeck">Subtask 1</label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -56,10 +106,9 @@
         <!-- MODAL TASK -->
         <div class="task-overlay d-none" onclick="closeAddTaskDialog('task-modal', 'task-overlay')" id="task-overlay">
             <div class="task-modal" onclick="event.stopPropagation()" id="task-modal">
-                <div class="task-modal-container">
+                <!-- <div class="task-modal-container">
                     <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                         onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
-                    <!-- <div class="add-task-header-bottom"> -->
                     <span class="department department-overlay">Design</span>
                     <h3 class="task-headline-overlay">Website redesign</h3>
                     <span class="task-description-overlay">Make the product presentation to prospective buyers</span>
@@ -89,9 +138,7 @@
                         </div>
                     </div>
                     <div class="edit-btn"></div>
-                    <!-- </div> -->
-                </div>
-
+                </div> -->
             </div>
         </div>
         <!-- MODAL TASK END -->

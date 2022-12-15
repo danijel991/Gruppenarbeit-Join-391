@@ -260,6 +260,10 @@
     transition: all 225ms ease-in-out;
 }
 
+.description-area-overlay {
+    height: auto !important;
+}
+
 .task-modal {
     z-index: 5;
     display: flex;
@@ -378,6 +382,14 @@
     transition: all 125ms ease-in-out;
 }
 
+.ok-btn {
+    width: 84px;
+    height: 61px;
+    position: absolute;
+    right: 31px;
+    bottom: 44px;
+}
+
 .slide-in {
     transition: transform 500ms ease-in-out;
     transform: translateX(0px);
@@ -424,3 +436,44 @@
     font-weight: 400 !important;
     width: 180px !important;
 }
+
+.edit-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.assigned-to-area {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .button-area {
+    height: 56px;
+}
+
+.button-area button {
+    transition: all 125ms ease-in-out;
+    box-sizing: border-box !important;
+}
+
+.add-task-prio-high {
+    background-image: url('../img/add-task-btn-prio-high.png') !important;
+    background-size: cover;
+}
+
+.add-task-prio-high:hover {
+    border-bottom: 2px solid #FF3D00;
+    margin-bottom: -2px;
+    transition: all 125ms ease-in-out;
+}
+
+.add-task-prio-medium:hover {
+    border-bottom: 2px solid #FFA800;
+    transition: all 125ms ease-in-out;
+}
+
+.add-task-prio-low:hover {
+    border-bottom: 2px solid #7AE229;
+    transition: all 125ms ease-in-out;
+} */

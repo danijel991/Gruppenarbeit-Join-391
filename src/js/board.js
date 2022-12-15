@@ -16,7 +16,8 @@ let tasks = [
         description: 'Modify the contents of the main website..',
         assignedTo: [],
         priority: 'low',
-        category: 'to-do'
+        category: 'to-do',
+        dueDate: '05-08-2022'
     },
     {
         id: 1,
@@ -25,7 +26,8 @@ let tasks = [
         description: 'Make the product presentation to prospective buyers',
         assignedTo: [],
         priority: 'high',
-        category: 'in-progress'
+        category: 'in-progress',
+        dueDate: '05-08-2022'
     },
     {
         id: 2,
@@ -34,7 +36,8 @@ let tasks = [
         description: 'Write open invoices for customer',
         assignedTo: [],
         priority: 'medium',
-        category: 'await-feedback'
+        category: 'await-feedback',
+        dueDate: '05-08-2022'
     },
     {
         id: 3,
@@ -43,7 +46,8 @@ let tasks = [
         description: 'Edit the new company',
         assignedTo: [],
         priority: 'medium',
-        category: 'await-feedback'
+        category: 'await-feedback',
+        dueDate: '05-08-2022'
     },
     {
         id: 4,
@@ -52,7 +56,8 @@ let tasks = [
         description: 'Develop an ad campaign for brand positioning',
         assignedTo: [],
         priority: 'low',
-        category: 'done'
+        category: 'done',
+        dueDate: '05-08-2022'
     }
 ];
 
@@ -104,7 +109,6 @@ function updateHTML() {
     }
     changeDepartmentColor();
     generateTemplate();
-    // updateAllProgressBar();
     updateProgressBars();
     updateProgressReport();
 }
@@ -112,7 +116,7 @@ function updateHTML() {
 
 function generateTodoHTML(task) {
     return `
-    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal')" class="board-task">
+    <div id="${task['id']}" draggable="true" ondragstart="startDragging(${task['id']}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal', ${task['id']})" class="board-task">
         <span class="department">${task['department']}</span>
         <span class="task-headline">${task['headline']}</span>
         <span class="task-description">${task['description']}</span>
@@ -188,10 +192,13 @@ function templateTask(i) {
 }
 
 
-function openAddTaskDialog(id, id2) {
+function openAddTaskDialog(id, id2, taskID) {
     document.getElementById(id).classList.remove("d-none");
+    // debugger;
     setTimeout(() => {
         if (id2 == 'task-modal') {
+            document.getElementById('task-modal').innerHTML = generateTaskModalHTML(tasks[taskID]);
+            changeDepartmentColor();
             document.getElementById(id2).classList.add("slide-in-bottom");
         } else {
             document.getElementById(id2).classList.add("slide-in");
@@ -249,15 +256,93 @@ function boardTaskContainerId(e) {
 }
 
 
-// function updateAllProgressBar() {
-//     updateProgressBars('to-do', 'progress0');
-//     updateProgressBars('in-progress', 'progress33');
-//     updateProgressBars('await-feedback', 'progress66');
-//     updateProgressBars('done', 'progress100');
-// }
+function generateTaskModalHTML(task) {
+    return `
+        <div class="task-modal-container">
+                    <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
+                        onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
+                    <span class="department department-overlay">${task['department']}</span>
+                    <h3 class="task-headline-overlay">${task['headline']}</h3>
+                    <span class="task-description-overlay">${task['description']}</span>
+                    <div class="due-date-container">
+                        <span>Due date:</span>
+                        <span>${task['dueDate']}</span>
+                    </div>
+                    <div class="prio-container">
+                        <span>Priority:</span>
+                        <img src="../img/prio-overlay-${task['priority']}.png" alt="prio-overlay">
+                    </div>
+                    <div class="assigned-to-container">
+                        <span>Assigned To:</span>
+                        <div class="assigned-contacts">
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay">SM</div>
+                                <span>Stefan Meier</span>
+                            </div>
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay pink">MV</div>
+                                <span>Marvin Vogel</span>
+                            </div>
+                            <div class="assigned-contact-row">
+                                <div class="task-contacts-overlay green">EF</div>
+                                <span>Elisabeth Friedrich</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edit-btn" onclick="editTasks(${task['id']})"></div>
+                </div>
+    `;
+}
 
 
-// function updateProgressBars(id, classname) {
-//     let parent = document.getElementById(id).querySelectorAll('.progress-bar');
-//     console.log(parent[0].classList.add(classname));
-// }
+function editTasks(taskID) {
+    document.getElementById('task-modal').innerHTML = generateEditTaskHTML(tasks[taskID]);
+}
+
+
+function generateEditTaskHTML(task) {
+    return `
+    <div class="task-modal-container">
+                    <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
+                        onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
+                        <form class="edit-task">
+                        <div class="form-width input-title margin-btn-25">
+                            <input class="add-title input-title-font" type="text" placeholder="Enter a title">
+                        </div>
+                        <div class="description-area description-area-overlay flex-column margin-btn-45">
+                            <span class="category-header">Description</span>
+                            <textarea class="gray-fonts" name="" id="" cols="30" rows="10"
+                                placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="date-area flex-column margin-btn-45">
+                            <span class="category-header">Due date</span>
+                            <input class="uniform-sizing gray-fonts" type="date" >
+                        </div>
+                        <div class="button-area margin-btn-25">
+                            <button class="add-task-prio-high">
+                                <span class="priority-button-text text-19pt">Urgent</span>
+                                <img src="../img/prio_bnt_urgent.png" alt="">
+                            </button>
+                            <button class="add-task-prio-medium">
+                                <span class="priority-button-text text-19pt">Medium</span>
+                                <img src="../img/prio_bnt_medium.png" alt="">
+                            </button>
+                            <button class="add-task-prio-low">
+                                <span class="priority-button-text text-19pt">Low</span>
+                                <img src="../img/prio_bnt_low.png" alt="">
+                            </button>
+                        </div>
+                        <div class="assigned-to-area margin-btn-25">
+                            <span class="category-header">Assigned To:</span>
+                            <select class="uniform-sizing text-19pt" name="" id="">
+                                <option value="">Select contacts to assign</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button class="btn-add-task ok-btn" onclick="editTasks(${task['id']})">
+                        Ok
+                        <img src="../img/check-icon.png" alt="add-icon">
+                    </button>
+                </div>
+    `;
+}
