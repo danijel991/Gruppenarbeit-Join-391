@@ -23,12 +23,11 @@ function closeAddContactDialog() {
   }, 200);
 }
 
-
 async function addNewUserContact() {
   let newContact = getContactInfo();
 
   activeUserContacts.push(newContact);
-  await saveInBackendUserContacts(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(activeUserContacts.length - 1);
 }
@@ -37,13 +36,15 @@ async function addNewUserContact() {
 
 /*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
 async function updateUserContact(index) {
-  let contact = getNewContactDetails(index);
-  let activeUserContactsArray = usersArray[activeUser["userID"]]["userContacts"];
-debugger
-  activeUserContactsArray[index] = contact;
-  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  newContactData = getNewContactInfo();
+
+  activeUserContacts.splice(index, 1, newContactData);
+  console.log(activeUserContacts);
+
+  await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
-  openContactDetail(activeUserContactsArray.length - 1);
+  debugger
+  openContactDetail(activeUserContacts[index]);
 }
 
 function openEditContactDialog(index) {
@@ -103,6 +104,24 @@ function getContactInfo() {
   let newName = document.getElementById("new-contact-name").value;
   let newEmail = document.getElementById("new-contact-email").value;
   let newPhone = document.getElementById("new-contact-phone").value;
+  let initials = setContactInitials(newName);
+  let initialsColor = setColorForInitial(initials);
+  let newContact = {
+    // id: activeUser,
+    name: newName,
+    initials: initials,
+    initialsColor: initialsColor,
+    email: newEmail,
+    phone: newPhone,
+  };
+  return newContact;
+}
+
+function getNewContactInfo() {
+  // activeUser = activeUser.userEmail;
+  let newName = document.getElementById("edit-contact-name").value;
+  let newEmail = document.getElementById("edit-contact-email").value;
+  let newPhone = document.getElementById("edit-contact-phone").value;
   let initials = setContactInitials(newName);
   let initialsColor = setColorForInitial(initials);
   let newContact = {
