@@ -39,11 +39,10 @@ async function updateUserContact(index) {
   newContactData = getNewContactInfo();
 
   activeUserContacts.splice(index, 1, newContactData);
+  
   console.log(activeUserContacts);
-
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
-  debugger
   openContactDetail(activeUserContacts[index]);
 }
 

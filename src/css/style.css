@@ -1,7 +1,6 @@
 html,
 body {
   width: 100%;
-  min-height: 100vh;
   scroll-behavior: smooth;
 }
 
@@ -91,6 +90,8 @@ header {
 
 .container-fluid {
   padding: 0px !important;
+  height: 100vh!important;
+  overflow: hidden;
 }
 
 /* SIDEBAR */
@@ -162,7 +163,8 @@ header {
   align-items: center;
   margin-left: 232px;
   margin-top: 100px;
-  min-height: calc(100vh - 100px);
+  /* min-height: calc(100vh - 100px); */
+  height: 100%;
   width: calc(100% - 232px);
 }
 

@@ -97,3 +97,9 @@ async function deleteUserContacts() {
     console.log("Deleted all contacts of: ", activeUserEmail);
 
 }
+
+    
+    async function saveInBackendUserTasks(index) {
+        activeUserEmail = activeUser['userEmail'];
+        await backend.setItem(`${activeUserEmail}_task${index}`, JSON.stringify(activeUserContacts));
+    }

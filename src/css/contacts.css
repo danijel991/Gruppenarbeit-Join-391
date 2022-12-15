@@ -9,10 +9,11 @@
 .contact-list {
   z-index: 3;
   width: 450px;
-  max-height: calc(100vh - 100px); /* wenn es noch keine Kontakte gibt, müsste die Höhe auf min-height gesetzt werden. Aber dann haben wir am Ende ganz rechts einen Skrollbalken*/
+ /* min-height: calc(100vh - 100px); wenn es noch keine Kontakte gibt, müsste die Höhe auf min-height gesetzt werden. Aber dann haben wir am Ende ganz rechts einen Skrollbalken */
+  height: 100%;
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
   color: rgb(0, 0, 0);
-  height: 100%;
+  height: calc(100vh - 100px);
   padding: 10px;
   overflow-y: auto;
 }
