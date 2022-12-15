@@ -91,3 +91,9 @@ async function loadUserContactsFromBackend() {
     await downloadFromServer();
     activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }
+
+async function deleteUserContacts() {
+    await backend.deleteItem(`${activeUserEmail}`);
+    console.log("Deleted all contacts of: ", activeUserEmail);
+
+}

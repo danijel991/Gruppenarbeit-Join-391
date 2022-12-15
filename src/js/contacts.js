@@ -46,10 +46,6 @@ debugger
   openContactDetail(activeUserContactsArray.length - 1);
 }
 
-async function deleteUserContact(index) {
-  console.log("This is user", index);
-}
-
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
 
@@ -197,7 +193,7 @@ function generateContactEditDialog(index) {
                               <img src="/src/img/phone_icon.png" alt="">
                           </div>
                           <div class="edit-contact-buttons">
-                          <button type="button" class="delete-contact-button" onclick="deleteUserContact(${index})">
+                          <button type="button" class="delete-contact-button" onclick="deleteUserContacts()">
                               <span>Delete</span><img src="../img/addcontact.png">
                           </button>
                           <button type="submit" class="edit-contact-button" required>
