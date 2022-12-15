@@ -10,6 +10,7 @@
 /***    Array       ***/
 let usersArray = [];
 let activeUser = [];
+let activeUserContacts = [];
 
 /***    Functions   ***/
 async function startPage() {
@@ -23,6 +24,7 @@ async function init() {
     await includeHTML();
     await showSelectedLink();
     await loadUsersFromBackend();
+    await loadUserContactsFromBackend()
 }
 
 
@@ -77,4 +79,15 @@ async function loadUsersFromBackend() {
 
 async function saveInBackend() {
     await backend.setItem('usersArray', JSON.stringify(usersArray));
+}
+
+async function saveInBackendUserContacts() {
+    activeUserEmail = activeUser['userEmail'];
+    await backend.setItem(`${activeUserEmail}`, JSON.stringify(activeUserContacts));
+}
+
+async function loadUserContactsFromBackend() {
+    activeUserEmail = activeUser['userEmail'];
+    await downloadFromServer();
+    activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }

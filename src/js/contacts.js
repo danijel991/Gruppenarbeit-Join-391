@@ -1,16 +1,15 @@
 let contact = [];
 
 function getContactDetails(index) {
-  let allContacts = usersArray[activeUser["userID"]]["userContacts"];
+  let allContacts = activeUserContacts;
   let contact = allContacts[index];
   return contact; // return contact here as a whole object and deconstruct it, where you receive it
 }
 
-
 /*/////////////////////// ADD NEW CONTACT START ////////////////////////////////*/
 function openAddContactDialog() {
   document.getElementById("overlay").classList.remove("d-none");
-  
+
   setTimeout(() => {
     document.getElementById("add-contact-modal").classList.add("slide-in");
   }, 10);
@@ -18,48 +17,44 @@ function openAddContactDialog() {
 
 function closeAddContactDialog() {
   document.getElementById("add-contact-modal").classList.remove("slide-in");
-  
+
   setTimeout(() => {
     document.getElementById("overlay").classList.add("d-none");
   }, 200);
 }
 
+
 async function addNewUserContact() {
-  let activeUserContactsArray = usersArray[activeUser['userID']]["userContacts"]; 
-  
   let newContact = getContactInfo();
 
-  activeUserContactsArray.push(newContact);
-  await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
+  activeUserContacts.push(newContact);
+  await saveInBackendUserContacts(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
   await loadAllContacts(); // refreshing contacts in contacts.html
-  openContactDetail(activeUserContactsArray.length -1);
+  openContactDetail(activeUserContacts.length - 1);
 }
 
 /*/////////////////////// ADD NEW CONTACT END ////////////////////////////////*/
 
-
-
 /*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
 async function updateUserContact(index) {
-  let contact = getContactDetails(index);
-  console.log(contact);
-  
-  await activeUserContactsArray.push(contact);
+  let contact = getNewContactDetails(index);
+  let activeUserContactsArray = usersArray[activeUser["userID"]]["userContacts"];
+debugger
+  activeUserContactsArray[index] = contact;
   await saveInBackend(); // wichtig, bevor weitergeleitet wird auf z. B. Contact Detail View
   await loadAllContacts(); // refreshing contacts in contacts.html
-  openContactDetail(activeUserContactsArray.length -1);
+  openContactDetail(activeUserContactsArray.length - 1);
 }
 
 async function deleteUserContact(index) {
-  debugger
-  console.log('This is user', index);
+  console.log("This is user", index);
 }
-
 
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
 
-  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+  let { name, initials, initialsColor, email, phone } =
+    getContactDetails(index);
 
   let content = document.getElementById("edit-contact-modal");
 
@@ -71,13 +66,11 @@ function openEditContactDialog(index) {
   animateEditDialog();
 }
 
-
 function animateEditDialog() {
   setTimeout(() => {
     document.getElementById("edit-contact-modal").classList.add("slide-in");
   }, 10);
 }
-              
 
 function closeEditContactDialog() {
   document.getElementById("edit-contact-modal").classList.remove("slide-in");
@@ -87,12 +80,11 @@ function closeEditContactDialog() {
   }, 200);
 }
 
-
 /*/////////////////////// EDIT CONTACT END ////////////////////////////////*/
 async function loadAllContacts() {
   await init();
 
-  let allContacts = usersArray[activeUser["userID"]]["userContacts"];
+  let allContacts = activeUserContacts;
   let content = document.getElementById("contact-list");
   content.innerHTML = " ";
 
@@ -111,12 +103,14 @@ async function loadAllContacts() {
 }
 
 function getContactInfo() {
+  // activeUser = activeUser.userEmail;
   let newName = document.getElementById("new-contact-name").value;
   let newEmail = document.getElementById("new-contact-email").value;
   let newPhone = document.getElementById("new-contact-phone").value;
   let initials = setContactInitials(newName);
   let initialsColor = setColorForInitial(initials);
   let newContact = {
+    // id: activeUser,
     name: newName,
     initials: initials,
     initialsColor: initialsColor,
@@ -158,16 +152,22 @@ function setColorForInitial(initials) {
 function openContactDetail(index) {
   let content = document.getElementById("contact-detail");
 
-  let { name, initials, initialsColor, email, phone } = getContactDetails(index)
+  let { name, initials, initialsColor, email, phone } =
+    getContactDetails(index);
 
-  content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
+  content.innerHTML = generateContactDetail(
+    index,
+    name,
+    initials,
+    initialsColor,
+    email,
+    phone
+  );
 }
 
 /*/////////////////////// HTML CONTENT RENDERING ////////////////////////////////*/
 
-
-
-function generateContactEditDialog(index){
+function generateContactEditDialog(index) {
   return `
 <div class="contact-dialog-top">
                   <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
@@ -197,10 +197,10 @@ function generateContactEditDialog(index){
                               <img src="/src/img/phone_icon.png" alt="">
                           </div>
                           <div class="edit-contact-buttons">
-                          <button class="delete-contact-button" onclick="deleteUserContact(${index})">
+                          <button type="button" class="delete-contact-button" onclick="deleteUserContact(${index})">
                               <span>Delete</span><img src="../img/addcontact.png">
                           </button>
-                          <button class="edit-contact-button" required>
+                          <button type="submit" class="edit-contact-button" required>
                               <span>Save</span><img src="../img/addcontact.png">
                           </button>
                           </div>
@@ -210,8 +210,14 @@ function generateContactEditDialog(index){
               `;
 }
 
-
-function generateContactDetail(index, name, initials, initialsColor, email, phone){
+function generateContactDetail(
+  index,
+  name,
+  initials,
+  initialsColor,
+  email,
+  phone
+) {
   return `
   <div class="contact-detail-header">
   <div class="letters-large" style="background-color: ${initialsColor}">${initials}
