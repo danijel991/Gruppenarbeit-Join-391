@@ -106,7 +106,7 @@
 }
 
 .add-icon:hover {
-    background-image: url("../img/plus-button-hover.png");
+    background-image: url("../img/plus-button-hover.png") !important;
     transition: all 125ms ease-in-out;
 }
 
@@ -446,6 +446,40 @@
 .assigned-to-area {
     display: flex;
     flex-direction: column;
+}
+
+.margin-btn-56 {
+    margin-bottom: 56px;
+}
+
+.input-title-font::placeholder {
+    font-weight: 400;
+    color: #D1D1D1;
+    /* width: 500px; */
+}
+
+.input-title-font {
+    font-weight: 700 !important;
+    color: black !important;
+    width: 500px;
+}
+
+.date {
+    font-size: 19px;
+}
+
+.task-contacts-overlay-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 19px;
+}
+
+.font-size21 {
+    font-size: 21px;
+}
+
+.select-contact{
+    /* display: none; */
 }
 
 /* .button-area {

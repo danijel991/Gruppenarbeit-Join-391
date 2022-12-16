@@ -52,8 +52,13 @@
                             <input class="add-title input-title-font" type="text" placeholder="Enter a title">
                         </div>
                         <div class="margin-btn-25">
-                            <select class="uniform-sizing text-19pt" name="" id="">
+                            <select class="uniform-sizing text-19pt select-contact" name="" id="">
                                 <option value="">Select contacts to assign</option>
+                                <!-- <label for="you">You</label>
+                                <input type="radio" id="you" name="you" value="you"> -->
+                                <option value="">You</option>
+                                <option value="">Maximilian Vogel</option>
+                                <option value="">Invite new contact</option>
                             </select>
                         </div>
                         <div class="date-area flex-column margin-btn-45">
@@ -164,19 +169,19 @@
                 <div class="main-header-bottom">
                     <div class="board-points">
                         <h3>To do</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
+                        <div class="add-icon" id="add-icon0" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(0)"></div>
                     </div>
                     <div class="board-points">
                         <h3>In progress</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
+                        <div class="add-icon" id="add-icon1" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(1)"></div>
                     </div>
                     <div class="board-points">
                         <h3>Await feedback</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
+                        <div class="add-icon" id="add-icon2" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(2)"></div>
                     </div>
                     <div class="board-points">
                         <h3>Done</h3>
-                        <div class="add-icon" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')"></div>
+                        <div class="add-icon"  id="add-icon3" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(3)"></div>
                     </div>
                 </div>
             </div>

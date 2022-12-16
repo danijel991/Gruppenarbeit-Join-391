@@ -17,7 +17,7 @@ let tasks = [
         assignedTo: [],
         priority: 'low',
         category: 'to-do',
-        dueDate: '05-08-2022'
+        dueDate: '2022-08-05'
     },
     {
         id: 1,
@@ -27,7 +27,7 @@ let tasks = [
         assignedTo: [],
         priority: 'high',
         category: 'in-progress',
-        dueDate: '05-08-2022'
+        dueDate: '2022-08-05'
     },
     {
         id: 2,
@@ -37,17 +37,17 @@ let tasks = [
         assignedTo: [],
         priority: 'medium',
         category: 'await-feedback',
-        dueDate: '05-08-2022'
+        dueDate: '2022-08-05'
     },
     {
         id: 3,
         department: 'Media',
         headline: 'Video cut',
-        description: 'Edit the new company',
+        description: 'Edit the new company video',
         assignedTo: [],
         priority: 'medium',
         category: 'await-feedback',
-        dueDate: '05-08-2022'
+        dueDate: '2022-08-05'
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ let tasks = [
         assignedTo: [],
         priority: 'low',
         category: 'done',
-        dueDate: '05-08-2022'
+        dueDate: '2022-08-05'
     }
 ];
 
@@ -174,6 +174,21 @@ function rotateTask() {
 }
 
 
+function markAddIconAsActive(i) {
+    let addIcon = document.getElementById(`add-icon${i}`);
+    addIcon.style.backgroundImage = 'url("../img/plus-button-inactive.png")';
+    addIcon.style.transition = 'all 125ms ease-in-out';
+}
+
+
+function resetAddIcon() {
+    document.querySelectorAll('.add-icon').forEach(add => {
+        add.style.backgroundImage = 'url("../img/plus-button.png")';
+        add.style.transition = 'all 125ms ease-in-out';
+    });
+}
+
+
 // addEventListener('dragstart', () => {
 //     generateTemplate();
 // })
@@ -217,6 +232,7 @@ function closeAddTaskDialog(id, id2) {
     setTimeout(() => {
         document.getElementById(id2).classList.add("d-none");
         document.body.style.overflow = 'unset';
+        resetAddIcon();
     }, 200);
 }
 
@@ -307,18 +323,18 @@ function generateEditTaskHTML(task) {
                         onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
                         <form class="edit-task">
                         <div class="form-width input-title margin-btn-25">
-                            <input class="add-title input-title-font" type="text" placeholder="Enter a title">
+                            <input id="edit-headline${task['id']}" class="add-title input-title-font" type="text" placeholder="Enter a title" value="${task['headline']}">
                         </div>
                         <div class="description-area description-area-overlay flex-column margin-btn-45">
                             <span class="category-header">Description</span>
-                            <textarea class="gray-fonts" name="" id="" cols="30" rows="10"
-                                placeholder="Enter a Description"></textarea>
+                            <textarea class="" name="" id="edit-description${task['id']}" cols="30" rows="10"
+                                placeholder="Enter a Description">${task['description']}</textarea>
                         </div>
                         <div class="date-area flex-column margin-btn-45">
                             <span class="category-header">Due date</span>
-                            <input class="uniform-sizing gray-fonts" type="date" >
+                            <input id="edit-date${task['id']}" class="uniform-sizing date" type="date" value="${task['dueDate']}">
                         </div>
-                        <div class="button-area margin-btn-25">
+                        <div class="button-area margin-btn-56">
                             <button class="add-task-prio-high">
                                 <span class="priority-button-text text-19pt">Urgent</span>
                                 <img src="../img/prio_bnt_urgent.png" alt="">
@@ -337,12 +353,29 @@ function generateEditTaskHTML(task) {
                             <select class="uniform-sizing text-19pt" name="" id="">
                                 <option value="">Select contacts to assign</option>
                             </select>
+                            <div class="task-contacts-overlay-container">
+                                <div class="task-contacts-overlay font-size21">SM</div>
+                                <div class="task-contacts-overlay font-size21">MV</div>
+                                <div class="task-contacts-overlay font-size21">EF</div>
+                            </div>
                         </div>
                     </form>
-                    <button class="btn-add-task ok-btn" onclick="editTasks(${task['id']})">
+                    <button class="btn-add-task ok-btn" onclick="saveTasks(${task['id']})">
                         Ok
                         <img src="../img/check-icon.png" alt="add-icon">
                     </button>
                 </div>
     `;
+}
+
+
+function saveTasks(taskID) {
+    let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
+    let editDescription = document.getElementById(`edit-description${taskID}`).value;
+    let editDate = document.getElementById(`edit-date${taskID}`).value;
+    tasks[taskID]['headline'] = editHeadline;
+    tasks[taskID]['description'] = editDescription;
+    tasks[taskID]['dueDate'] = editDate;
+    closeAddTaskDialog('task-modal', 'task-overlay');
+    updateHTML();
 }
