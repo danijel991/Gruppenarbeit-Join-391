@@ -90,7 +90,7 @@ header {
 
 .container-fluid {
   padding: 0px !important;
-  height: 100vh!important;
+  height: 100vh !important;
   overflow: hidden;
 }
 
@@ -178,6 +178,7 @@ header {
   font-size: 33px;
   /* line-height: 120%; */
 }
+
 .font-light {
   font-weight: 400;
   font-size: 23px;
@@ -353,12 +354,10 @@ header {
 // No media query for `xs` since this is the default in Bootstrap */
 
 /*/ Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-}
+@media (min-width: 576px) {}
 
 /*/ Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 /*/ Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
@@ -415,9 +414,37 @@ header {
 }
 
 /*/ X-Large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
-}
+@media (max-width: 1200px) {}
 
 /*/ XX-Large devices (larger desktops, 1400px and up) */
-@media (max-width: 1400px) {
+@media (max-width: 1400px) {}
+
+
+
+/* Header Changes Cosrneliu */
+.logOut__btn--container {
+  position: absolute;
+  top: 95%;
+  right: 39px;
+  width: 137px;
+  height: 59px;
+
+
+  /* white */
+
+  background: #FFFFFF;
+  /* stronger */
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 0px 20px 20px;
+}
+
+
+.logOut__btn--container button{
+  width: 100%;
+  height: 100%;
+  font-size: 19px;
+  border: none;
+  background: unset;
+  border-radius: 20px 0px 20px 20px;
 }

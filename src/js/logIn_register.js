@@ -1,6 +1,7 @@
 /***    Variables   ***/
 let indexActiveUser;
 let indexReset;
+let showLogOut = true;
 
 
 function logoAnimation() {
@@ -32,16 +33,8 @@ function showCardAndHeader() {
 
 
 /***    Log In  ***/
-async function logInUser() {
-    let emailUser = document.getElementById("email").value;
-    let passwordUser = document.getElementById("password").value;
-    validatedInput(emailUser, passwordUser);
-    let acces = await checkIfExists(emailUser, passwordUser);
-    goToSummary(acces);
-    emailUser.value = "";
-    passwordUser = "";
-}
 
+// Main function in script.js
 
 // Check if the user exists
 async function checkIfExists(emailUser, passwordUser) {
@@ -74,7 +67,7 @@ function validatedInput(emailUser, passwordUser) {
 }
 
 
-function responseValitation(emailUser, passwordUser, validation, findEmail, findPassword){
+function responseValitation(emailUser, passwordUser, validation, findEmail, findPassword) {
     if (emailUser != findEmail && passwordUser != findPassword) {
         validation.classList.remove('d-none');
         validation.innerHTML = 'Wrong email and password'
@@ -139,12 +132,19 @@ function toLogInPage() {
 }
 
 
-async function logOut() {
-    activeUser["quickAcces"] = false;
-    await saveLocalActiveUser(activeUser);
-    toLogInPage();
+function toLogOut() {
+    const target = document.getElementById('userPhoto');
+    document.addEventListener('click', (event) => {
+        const withinBoundaries = event.composedPath().includes(target)
+        const tologOut = document.getElementById('logOut__btn--container');
+        if (withinBoundaries) {
+            tologOut.classList.remove('d-none');
+        } else {
+            tologOut.classList.add('d-none');
+        }
+    }
+    )
 }
-
 
 // Guest User Function
 function logInUserGuest() {
@@ -312,7 +312,7 @@ function allowResetPassword(index) {
         document.getElementById('forgot__email--validation').classList.remove('d-none')
     }
 }
-  
+
 
 function showSendEmail() {
     document.querySelector('.forgot__file--wrapper').classList.add('blur')
@@ -357,6 +357,3 @@ function animatePasswordConfirmed() {
     document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(-20vh)";
     setTimeout(resetPasswordConfirmed, 1000);
 }
-
-
-
