@@ -1,28 +1,16 @@
 let contact = [];
 
+async function loadAllContacts() {
+  await init();
+  renderContactList();
+}
+
 function getContactDetails(index) {
-  let allContacts = activeUserContacts;
-  let contact = allContacts[index];
+    contact = activeUserContacts[index];
   return contact; // return contact here as a whole object and deconstruct it, where you receive it
 }
 
-/*/////////////////////// ADD NEW CONTACT START ////////////////////////////////*/
-function openAddContactDialog() {
-  document.getElementById("overlay").classList.remove("d-none");
-
-  setTimeout(() => {
-    document.getElementById("add-contact-modal").classList.add("slide-in");
-  }, 10);
-}
-
-function closeAddContactDialog() {
-  document.getElementById("add-contact-modal").classList.remove("slide-in");
-
-  setTimeout(() => {
-    document.getElementById("overlay").classList.add("d-none");
-  }, 200);
-}
-
+/*// ADD NEW CONTACT ////////////////////////////////*/
 async function addNewUserContact() {
   let newContact = getContactInfo();
 
@@ -32,70 +20,16 @@ async function addNewUserContact() {
   openContactDetail(activeUserContacts.length - 1);
 }
 
-/*/////////////////////// ADD NEW CONTACT END ////////////////////////////////*/
-
-/*/////////////////////// EDIT CONTACT START ////////////////////////////////*/
+/*//EDIT CONTACT ////////////////////////////////*/
 async function updateUserContact(index) {
   newContactData = getNewContactInfo();
 
   activeUserContacts.splice(index, 1, newContactData);
-  
+
   console.log(activeUserContacts);
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(activeUserContacts[index]);
-}
-
-function openEditContactDialog(index) {
-  document.getElementById("overlay2").classList.remove("d-none");
-
-  let { name, initials, initialsColor, email, phone } =
-    getContactDetails(index);
-
-  let content = document.getElementById("edit-contact-modal");
-
-  content.innerHTML = generateContactEditDialog(index);
-  document.getElementById("edit-contact-name").value = `${name}`;
-  document.getElementById("edit-contact-email").value = `${email}`;
-  document.getElementById("edit-contact-phone").value = `${phone}`;
-
-  animateEditDialog();
-}
-
-function animateEditDialog() {
-  setTimeout(() => {
-    document.getElementById("edit-contact-modal").classList.add("slide-in");
-  }, 10);
-}
-
-function closeEditContactDialog() {
-  document.getElementById("edit-contact-modal").classList.remove("slide-in");
-
-  setTimeout(() => {
-    document.getElementById("overlay2").classList.add("d-none");
-  }, 200);
-}
-
-/*/////////////////////// EDIT CONTACT END ////////////////////////////////*/
-async function loadAllContacts() {
-  await init();
-
-  let allContacts = activeUserContacts;
-  let content = document.getElementById("contact-list");
-  content.innerHTML = " ";
-
-  for (let i = 0; i < allContacts.length; i++) {
-    content.innerHTML += `
-      <div class="contact-box" onclick="openContactDetail(${i})">
-      <div class="letters" style="background-color: ${allContacts[i]["initialsColor"]}">${allContacts[i]["initials"]}</div>
-      <div>
-      <div>${allContacts[i]["name"]}</div>
-      <div>${allContacts[i]["email"]}</div>
-      <div>${allContacts[i]["phone"]}</div>
-      </div>
-      </div>
-      `;
-  }
 }
 
 function getContactInfo() {
@@ -114,6 +48,14 @@ function getContactInfo() {
     phone: newPhone,
   };
   return newContact;
+}
+
+function sorryEmailAlreadyExists() {
+  document.getElementById("info-text").classList.remove("info-text");
+  document.getElementById("info-text").innerHTML = `Sorry, a contact with this e-mail already exists!`;
+  document.getElementById("info-text").classList.add("info-text-alert");
+  // const myTimeout = setTimeout(openAddContactDialog(), 2000);
+
 }
 
 function getNewContactInfo() {
@@ -166,20 +108,83 @@ function setColorForInitial(initials) {
 function openContactDetail(index) {
   let content = document.getElementById("contact-detail");
 
-  let { name, initials, initialsColor, email, phone } =
-    getContactDetails(index);
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
 
-  content.innerHTML = generateContactDetail(
-    index,
-    name,
-    initials,
-    initialsColor,
-    email,
-    phone
-  );
+  content.innerHTML = '';
+  content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
 }
 
-/*/////////////////////// HTML CONTENT RENDERING ////////////////////////////////*/
+/*// HTML RENDERING & ANIMATION ////////////////////////////////*/
+function renderContactList() {
+  let content = document.getElementById("contact-list");
+  content.innerHTML = " ";
+
+  for (let i = 0; i < activeUserContacts.length; i++) {
+    content.innerHTML += `
+      <div class="contact-box" onclick="openContactDetail(${i})">
+      <div class="letters" style="background-color: ${activeUserContacts[i]["initialsColor"]}">${activeUserContacts[i]["initials"]}</div>
+      <div>
+      <div>${activeUserContacts[i]["name"]}</div>
+      <div>${activeUserContacts[i]["email"]}</div>
+      <div>${activeUserContacts[i]["phone"]}</div>
+      </div>
+      </div>
+      `;
+  }
+}
+
+function openAddContactDialog() {
+  clearContent();
+
+  setTimeout(() => {
+    document.getElementById("add-contact-modal").classList.add("slide-in");
+  }, 10);
+
+}
+
+function closeAddContactDialog() {
+  document.getElementById("add-contact-modal").classList.remove("slide-in");
+
+  setTimeout(() => {
+    document.getElementById("overlay").classList.add("d-none");
+  }, 200);
+}
+
+function clearContent() {
+  document.getElementById("overlay").classList.remove("d-none");
+  document.getElementById('info-text').classList.remove('info-text-alert');
+  document.getElementById('info-text').classList.add('info-text');
+  document.getElementById('info-text').innerHTML = 'Tasks are better with a team!';
+}
+
+function openEditContactDialog(index) {
+  document.getElementById("overlay2").classList.remove("d-none");
+
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+
+  let content = document.getElementById("edit-contact-modal");
+
+  content.innerHTML = generateContactEditDialog(index);
+  document.getElementById("edit-contact-name").value = `${name}`;
+  document.getElementById("edit-contact-email").value = `${email}`;
+  document.getElementById("edit-contact-phone").value = `${phone}`;
+
+  animateEditDialog();
+}
+
+function animateEditDialog() {
+  setTimeout(() => {
+    document.getElementById("edit-contact-modal").classList.add("slide-in");
+  }, 10);
+}
+
+function closeEditContactDialog() {
+  document.getElementById("edit-contact-modal").classList.remove("slide-in");
+
+  setTimeout(() => {
+    document.getElementById("overlay2").classList.add("d-none");
+  }, 200);
+}
 
 function generateContactEditDialog(index) {
   return `
@@ -224,14 +229,7 @@ function generateContactEditDialog(index) {
               `;
 }
 
-function generateContactDetail(
-  index,
-  name,
-  initials,
-  initialsColor,
-  email,
-  phone
-) {
+function generateContactDetail(index, name, initials, initialsColor, email, phone) {
   return `
   <div class="contact-detail-header">
   <div class="letters-large" style="background-color: ${initialsColor}">${initials}
@@ -257,4 +255,4 @@ function generateContactDetail(
   <div class="contact-detail-medium">${phone}</div>
 </div>
       `;
-}
+  }

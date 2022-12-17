@@ -90,8 +90,7 @@ header {
 
 .container-fluid {
   padding: 0px !important;
-  height: 100vh !important;
-  overflow: hidden;
+  height: 100vh!important;
 }
 
 /* SIDEBAR */
