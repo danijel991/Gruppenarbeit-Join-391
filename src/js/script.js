@@ -103,3 +103,23 @@ async function deleteUserContacts() {
         activeUserEmail = activeUser['userEmail'];
         await backend.setItem(`${activeUserEmail}_task${index}`, JSON.stringify(activeUserContacts));
     }
+
+
+/***    Log In  &  Log Out  ***/
+
+async function logInUser() {
+    let emailUser = document.getElementById("email").value;
+    let passwordUser = document.getElementById("password").value;
+    validatedInput(emailUser, passwordUser);
+    let acces = await checkIfExists(emailUser, passwordUser);
+    goToSummary(acces);
+    emailUser.value = "";
+    passwordUser = "";
+}
+
+
+async function logOut() {
+    activeUser["quickAcces"] = false;
+    await saveLocalActiveUser(activeUser);
+    toLogInPage();
+}
