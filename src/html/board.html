@@ -20,6 +20,7 @@
     <script src="../js/board.js"></script>
     <!-- <script src="../js/contacts.js"></script> -->
     <script src="/src/js/logIn_register.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <title>Board</title>
 </head>
 
@@ -51,30 +52,60 @@
                         <div class="form-width input-title margin-btn-25">
                             <input class="add-title input-title-font" type="text" placeholder="Enter a title">
                         </div>
-                        <div class="margin-btn-25">
-                            <select class="uniform-sizing text-19pt select-contact" name="" id="">
-                                <option value="">Select contacts to assign</option>
-                                <!-- <label for="you">You</label>
-                                <input type="radio" id="you" name="you" value="you"> -->
-                                <option value="">You</option>
-                                <option value="">Maximilian Vogel</option>
-                                <option value="">Invite new contact</option>
-                            </select>
+                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts">
+                            <span>Select contacts to assign</span>
+                            <img src="../img/select-arrow.png" alt="">
+                        </div>
+                        <div class="margin-btn-25 assign-contact-container">
+                            <div class="dropdown-contacts-container collapse" id="collapseContacts">
+                                <div class="dropdown-contact">
+                                    <label for="you">You</label>
+                                    <input type="checkbox" id="you" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="vogel">Maximilian Vogel</label>
+                                    <input type="checkbox" id="vogel" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="mustermann">Max Mustermann</label>
+                                    <input type="checkbox" id="mustermann" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="musterfrau">Heid Musterfrau</label>
+                                    <input type="checkbox" id="musterfrau" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="musterfrau">Invite new contact</label>
+                                    <img src="../img/new-contact-icon.png" alt="">
+                                </div>
+                            </div>
                         </div>
                         <div class="date-area flex-column margin-btn-45">
                             <span class="category-header">Due date</span>
                             <input id="date" class="uniform-sizing gray-fonts" type="date">
                         </div>
-                        <div class="category-area flex-column margin-btn-45">
-                            <span class="category-header">Category</span>
-                            <select class="uniform-sizing text-19pt" name="" id="">
-                                <option value="">Select task category</option>
-                            </select>
+                        <span class="category-header">Category</span>
+                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                            <span>Select task category</span>
+                            <img src="../img/select-arrow.png" alt="">
+                        </div>
+                        <div class="margin-btn-25 assign-contact-container">
+                            <div class="dropdown-contacts-container collapse" id="collapseCategory">
+                                <div class="dropdown-category">
+                                    <label for="you">New category</label>
+                                </div>
+                                <div class="dropdown-category">
+                                    <label for="vogel">Sales</label>
+                                    <div class="category-color-pink"></div>
+                                </div>
+                                <div class="dropdown-category">
+                                    <label for="mustermann">Backoffice</label>
+                                    <div class="category-color-turqoise"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="button-area margin-btn-25">
                             <button type="button" value="high" class="add-task-prio-high" id="high" onclick="checkButton('high')" onmouseover="hoverButton('high')" onmouseleave="leaveHoverButton('high')">
-                                <!-- <span class="priority-button-text text-19pt">Urgent</span>
-                                <img src="../img/prio_bnt_urgent.png" alt=""> -->
                                 <input type="radio" id="high-prio" name="prio">
                                 <label for="high-prio">
                                     <span class="priority-button-text text-19pt">Urgent</span>
@@ -82,8 +113,6 @@
                                 </label>
                             </button>
                             <button type="button" value="medium" class="add-task-prio-medium" id="medium" onclick="checkButton('medium')" onmouseover="hoverButton('medium')" onmouseleave="leaveHoverButton('medium')">
-                                <!-- <span class="priority-button-text text-19pt">Medium</span>
-                                <img src="../img/prio_bnt_medium.png" alt=""> -->
                                 <input type="radio" id="medium-prio" name="prio">
                                 <label for="medium-prio">
                                     <span class="priority-button-text text-19pt">Medium</span>
@@ -91,8 +120,6 @@
                                 </label>
                             </button>
                             <button type="button" value="low" class="add-task-prio-low" id="low" onclick="checkButton('low')" onmouseover="hoverButton('low')" onmouseleave="leaveHoverButton('low')">
-                                <!-- <span class="priority-button-text text-19pt">Low</span>
-                                <img src="../img/prio_bnt_low.png" alt=""> -->
                                 <input type="radio" id="low-prio" name="prio">
                                 <label for="low-prio">
                                     <span class="priority-button-text text-19pt">Low</span>

@@ -258,6 +258,8 @@
     right: 0px;
     transform: translateX(580px);
     transition: all 225ms ease-in-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .description-area-overlay {
@@ -538,4 +540,132 @@ button:has(input[type="radio"]:checked):last-of-type  {
 
 .container-fluid {
     overflow: initial;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 21px !important;
+    cursor: pointer;
+}
+
+.dropdown img {
+    height: 8px;
+    width: 16px;
+}
+
+.assign-contact-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+    width: 422px;
+}
+
+.dropdown-contacts-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11.25px 21px;
+    transition: all 125ms ease-in-out;
+}
+
+.dropdown-category {
+    display: flex;
+    padding: 11.25px 21px;
+    align-items: center;
+    gap: 10px;
+    transition: all 125ms ease-in-out;
+}
+
+.category-color-pink {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #FC71FF;
+}
+
+.category-color-turqoise {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #1FD7C1;
+}
+
+.dropdown-contact:last-of-type,
+.dropdown-category:last-of-type {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-right: 19px;
+}
+
+.dropdown-contact,
+.dropdown-contact *,
+.dropdown-category,
+.dropdown-category * {
+    cursor: pointer;
+}
+
+.dropdown-contact:hover,
+.dropdown-category:hover {
+    background-color: #D2E3FF;
+    transition: all 125ms ease-in-out;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    /* appearance: none;
+    -webkit-appearance: none; */
+    height: 16px;
+    width: 16px;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    border: 0;
+    border-radius: 3px;
+    margin-right: 0 !important;
+    cursor: pointer;
+    border: 2px solid #4589FF;
+}
+
+input[type="checkbox"]:checked {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background: white !important;
+    /* content: url('../img/select-arrow.png') */
+}
+
+/* input[type="checkbox"]:checked:after { */
+    /* Heres your symbol replacement - this is a tick in Unicode. */
+    content: "\2713";
+    color: #fff;
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
 }

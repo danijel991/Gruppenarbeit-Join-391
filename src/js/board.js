@@ -409,7 +409,6 @@ function leaveHoverButton(id) {
 
 
 function checkButton(id) {
-    // debugger;
     let button = document.getElementById(id);
     button.firstElementChild.checked = true;
 }
