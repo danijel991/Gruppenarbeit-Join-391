@@ -90,7 +90,7 @@ header {
 
 .container-fluid {
   padding: 0px !important;
-  height: 100vh!important;
+  height: 100vh !important;
 }
 
 /* SIDEBAR */
@@ -420,7 +420,8 @@ header {
 
 
 
-/* Header Changes Corneliu */
+/***  Changes Corneliu  ***/
+/* Header */
 .logOut__btn--container {
   position: absolute;
   display: flex;
@@ -437,8 +438,15 @@ header {
 }
 
 
-.logOut__btn--container button{
-text-align: center;
+.logOut__btn--container a:hover,
+.logOut__btn--container button:hover {
+  color: #005dff;
+  font-weight: 600;
+}
+
+
+.logOut__btn--container button {
+  text-align: center;
   width: 100%;
   height: 100%;
   font-size: 19px;
@@ -449,48 +457,50 @@ text-align: center;
 }
 
 
-.legalHelp{
+.legalHelp {
   display: none;
   text-decoration: none;
   font-size: 19px;
 }
 
 
-@Media(max-width: 576px){
-  #legal-notice{
+/* Media Header & Sidebar */
+@Media(max-width: 576px) {
+  #legal-notice {
     display: none;
   }
 
 
-  .header-right-content{
+  .header-right-content {
     justify-content: flex-end;
   }
 
 
-  .header-right-content span, .help-icon{
+  .header-right-content span,
+  .help-icon {
     display: none;
   }
 
 
-  .logOut__btn--container{
+  .logOut__btn--container {
     height: 137px;
     justify-content: space-evenly;
   }
 
-  .legalHelp{
+
+  .legalHelp {
     display: unset;
   }
 
 
-  .logOut__btn--container button{
+  .logOut__btn--container button {
     width: min-content;
     white-space: nowrap;
     height: unset;
   }
 
 
-  /* Sidebar */
-  .sidebar{
+  .sidebar {
     height: auto;
     width: 100%;
     top: unset;
@@ -498,17 +508,37 @@ text-align: center;
     padding: unset;
   }
 
-  .menu{
+
+  .menu {
     flex-direction: row;
     gap: unset;
   }
 
-  .menu a{
+
+  .menu a {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
     min-width: 90px;
     padding-block: 12px;
     padding-inline: 8px;
+  }
+}
+
+
+@Media(max-width:375px) {
+  .menu a {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    min-width: 65px;
+    gap: 5px;
+    padding-block: 5px;
+    padding-inline: 5px;
+  }
+
+  
+  .menu-btns span {
+    font-size: 0.8rem;
   }
 }
