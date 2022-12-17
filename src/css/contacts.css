@@ -14,7 +14,7 @@
 
 .contact-list {
   z-index: 3;
-  width: 450px;
+  width: 500px;
  /* min-height: calc(100vh - 100px); wenn es noch keine Kontakte gibt, müsste die Höhe auf min-height gesetzt werden. Aber dann haben wir am Ende ganz rechts einen Skrollbalken */
   height: 100%;
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
@@ -315,7 +315,7 @@
   width: 220px;
   height: 53px;
   right: 40px;
-  bottom: 50px;
+  bottom: 100px;
   background-color: #005dff;
   border: 1px solid #005dff;
   border-radius: 10px;
@@ -326,6 +326,63 @@
 
 .add-contact-button:hover {
   box-shadow: rgb(170, 170, 170) 2px 2px 3px 1px;
+}
+
+.delete-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  gap: 10px;
+  position: fixed;
+  width: 220px;
+  height: 40px;
+  right: 40px;
+  bottom: 50px;
+  background-color: #d1d1d1;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.delete-contact-button img {
+height: 20px;
+}
+
+.delete-contact-button-alert{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  /* gap: 10px; */
+  position: fixed;
+  width: 220px;
+  height: 80px;
+  right: 40px;
+  bottom: 10px;
+  background-color: #fb0000;
+  border: 1px solid #fb0000;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.delete-contact-button-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  margin-top: 5px;
+  gap: 30px;
+}
+
+.delete-contact-button-bottom a:hover {
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .create-contact-button {
@@ -364,23 +421,7 @@
   color: white;
   transition: all 225ms ease-in-out;
 }
-.delete-contact-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 10px;
-  gap: 10px;
-  width: 140px;
-  height: 53px;
-  right: 40px;
-  bottom: 50px;
-  background-color: #d1d1d1;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
-  font-size: 23px;
-  color: white;
-  transition: all 225ms ease-in-out;
-}
+
 
 .create-contact-button:hover {
   box-shadow: rgb(170, 170, 170) 2px 2px 3px 1px;

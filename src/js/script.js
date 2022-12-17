@@ -92,12 +92,25 @@ async function loadUserContactsFromBackend() {
     activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }
 
-async function deleteUserContacts() {
-    await backend.deleteItem(`${activeUserEmail}`);
-    console.log("Deleted all contacts of: ", activeUserEmail);
-
+function deleteUserContacts() {
+    document.getElementById('delete-contact-button').classList.add('d-none');
+    document.getElementById('delete-contact-button-alert').classList.remove('d-none');  
 }
 
+function abortDeleteContacts() {
+    document.getElementById('delete-contact-button').classList.remove('d-none');
+    document.getElementById('delete-contact-button-alert').classList.add('d-none');
+}
+
+async function executeDeleteContacts() {
+    document.getElementById('delete-contact-button-alert').classList.add('d-none');
+
+    await backend.deleteItem(`${activeUserEmail}`);
+
+    document.getElementById('contact-list').innerHTML = '';
+    document.getElementById('contact-detail').innerHTML = '';
+    console.log("Deleted all contacts of: ", activeUserEmail);
+}
     
     async function saveInBackendUserTasks(index) {
         activeUserEmail = activeUser['userEmail'];

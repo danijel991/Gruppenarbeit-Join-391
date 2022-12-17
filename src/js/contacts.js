@@ -6,7 +6,7 @@ async function loadAllContacts() {
 }
 
 function getContactDetails(index) {
-    contact = activeUserContacts[index];
+  contact = activeUserContacts[index];
   return contact; // return contact here as a whole object and deconstruct it, where you receive it
 }
 
@@ -15,8 +15,11 @@ async function addNewUserContact() {
   let newContact = getContactInfo();
 
   activeUserContacts.push(newContact);
+  document.getElementById('delete-contact-button').classList.remove('d-none');
+  
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
+  document.getElementById('delete-contact-button').classList.remove('d-none');
   openContactDetail(activeUserContacts.length - 1);
 }
 
@@ -29,7 +32,7 @@ async function updateUserContact(index) {
   console.log(activeUserContacts);
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
-  openContactDetail(activeUserContacts[index]);
+  openContactDetail(index);
 }
 
 function getContactInfo() {
@@ -55,7 +58,6 @@ function sorryEmailAlreadyExists() {
   document.getElementById("info-text").innerHTML = `Sorry, a contact with this e-mail already exists!`;
   document.getElementById("info-text").classList.add("info-text-alert");
   // const myTimeout = setTimeout(openAddContactDialog(), 2000);
-
 }
 
 function getNewContactInfo() {
@@ -107,10 +109,9 @@ function setColorForInitial(initials) {
 
 function openContactDetail(index) {
   let content = document.getElementById("contact-detail");
-
   let { name, initials, initialsColor, email, phone } = getContactDetails(index);
 
-  content.innerHTML = '';
+  content.innerHTML = "";
   content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
 }
 
@@ -139,7 +140,6 @@ function openAddContactDialog() {
   setTimeout(() => {
     document.getElementById("add-contact-modal").classList.add("slide-in");
   }, 10);
-
 }
 
 function closeAddContactDialog() {
@@ -152,9 +152,12 @@ function closeAddContactDialog() {
 
 function clearContent() {
   document.getElementById("overlay").classList.remove("d-none");
-  document.getElementById('info-text').classList.remove('info-text-alert');
-  document.getElementById('info-text').classList.add('info-text');
-  document.getElementById('info-text').innerHTML = 'Tasks are better with a team!';
+  document.getElementById("info-text").classList.remove("info-text-alert");
+  document.getElementById("info-text").classList.add("info-text");
+  document.getElementById("info-text").innerHTML = "Tasks are better with a team!";
+  document.getElementById("new-contact-name").value = "";
+  document.getElementById("new-contact-email").value = "";
+  document.getElementById("new-contact-phone").value = "";
 }
 
 function openEditContactDialog(index) {
@@ -216,9 +219,6 @@ function generateContactEditDialog(index) {
                               <img src="/src/img/phone_icon.png" alt="">
                           </div>
                           <div class="edit-contact-buttons">
-                          <button type="button" class="delete-contact-button" onclick="deleteUserContacts()">
-                              <span>Delete</span><img src="../img/addcontact.png">
-                          </button>
                           <button type="submit" class="edit-contact-button" required>
                               <span>Save</span><img src="../img/addcontact.png">
                           </button>
@@ -255,4 +255,4 @@ function generateContactDetail(index, name, initials, initialsColor, email, phon
   <div class="contact-detail-medium">${phone}</div>
 </div>
       `;
-  }
+}
