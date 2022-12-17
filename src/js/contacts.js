@@ -1,4 +1,6 @@
 let contact = [];
+let newmail;
+let newContact = {};
 
 async function loadAllContacts() {
   await init();
@@ -13,6 +15,11 @@ function getContactDetails(index) {
 /*// ADD NEW CONTACT ////////////////////////////////*/
 async function addNewUserContact() {
   let newContact = getContactInfo();
+  newmail = newContact['email'];
+  if (checkIfNewContactEmailExists(newmail)){
+    sorryEmailAlreadyExists(newmail);
+    return;
+  } 
 
   activeUserContacts.push(newContact);
   document.getElementById('delete-contact-button').classList.remove('d-none');
@@ -22,6 +29,16 @@ async function addNewUserContact() {
   document.getElementById('delete-contact-button').classList.remove('d-none');
   openContactDetail(activeUserContacts.length - 1);
 }
+
+function checkIfNewContactEmailExists(newmail) {
+  let mailarray = activeUserContacts.map((email) => email.email);
+  for (let i = 0; i < mailarray.length; i++) {
+    let mail = mailarray[i];
+    if (mail == newmail) {
+      return (true, newmail);
+    }
+  }
+};
 
 /*//EDIT CONTACT ////////////////////////////////*/
 async function updateUserContact(index) {
@@ -53,9 +70,9 @@ function getContactInfo() {
   return newContact;
 }
 
-function sorryEmailAlreadyExists() {
+function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.remove("info-text");
-  document.getElementById("info-text").innerHTML = `Sorry, a contact with this e-mail already exists!`;
+  document.getElementById("info-text").innerHTML = `Sorry, a contact with this e-mail ${newmail} already exists!`;
   document.getElementById("info-text").classList.add("info-text-alert");
   // const myTimeout = setTimeout(openAddContactDialog(), 2000);
 }

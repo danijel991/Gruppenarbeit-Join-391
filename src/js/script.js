@@ -106,7 +106,7 @@ async function executeDeleteContacts() {
     document.getElementById('delete-contact-button-alert').classList.add('d-none');
 
     await backend.deleteItem(`${activeUserEmail}`);
-
+    activeUserContacts = [];
     document.getElementById('contact-list').innerHTML = '';
     document.getElementById('contact-detail').innerHTML = '';
     console.log("Deleted all contacts of: ", activeUserEmail);
