@@ -379,3 +379,68 @@ function saveTasks(taskID) {
     closeAddTaskDialog('task-modal', 'task-overlay');
     updateHTML();
 }
+
+
+function hoverButton(id) {
+    // debugger;
+    let hover = document.getElementById(id);
+    if (!hover.firstElementChild.checked) {
+        if (id == 'high') {
+            hover.classList.add('btn-high-hover');
+        } else if (id == 'medium') {
+            hover.classList.add('btn-medium-hover');
+        } else if (id == 'low') {
+            hover.classList.add('btn-low-hover');
+        }
+    }
+}
+
+
+function leaveHoverButton(id) {
+    let hover = document.getElementById(id);
+    if (id == 'high') {
+        hover.classList.remove('btn-high-hover');
+    } else if (id == 'medium') {
+        hover.classList.remove('btn-medium-hover');
+    } else if (id == 'low') {
+        hover.classList.remove('btn-low-hover');
+    }
+}
+
+
+function checkButton(id) {
+    // debugger;
+    let button = document.getElementById(id);
+    button.firstElementChild.checked = true;
+}
+
+
+// function uncheckButton(id) {
+//     let button = document.getElementById(id);
+//     button.addEventListener("click", () => {
+//         timesClicked++;
+//         if (timesClicked % 2 == 0) {
+//             button.firstElementChild.checked = false;
+//         } else {
+//             button.firstElementChild.checked = true;
+//         }
+//     })
+//     console.log(timesClicked);
+// }
+
+
+// function showActiveButton(id) {
+//     // debugger;
+//     let active = document.getElementById(id);
+//     if (id == 'high') {
+//         active.style.backgroundColor = '#FF3D00';
+//         active.lastElementChild.src = '../img/prio-high-active.png';
+//     } else if (id == 'medium') {
+//         active.style.backgroundColor = '#FFA800';
+//         active.lastElementChild.src = '../img/prio-medium-active.png';
+//     } else if (id == 'low') {
+//         active.style.backgroundColor = '#7AE229';
+//         active.lastElementChild.src = '../img/prio-low-active.png';
+//     }
+//     active.firstElementChild.style.color = 'white';
+// }

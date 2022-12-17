@@ -479,35 +479,63 @@
 }
 
 .select-contact{
-    /* display: none; */
+    border: none;
 }
 
-/* .button-area {
-    height: 56px;
+.button-area {
+    height: 53px;
 }
 
-.button-area button {
-    transition: all 125ms ease-in-out;
-    box-sizing: border-box !important;
+.button-area button > * {
+    cursor: pointer !important;
 }
 
-.add-task-prio-high {
-    background-image: url('../img/add-task-btn-prio-high.png') !important;
-    background-size: cover;
+.btn-high-hover {
+    height: 53px !important;
+    border-bottom: 2px solid #FF3D00 !important;
 }
 
-.add-task-prio-high:hover {
-    border-bottom: 2px solid #FF3D00;
-    margin-bottom: -2px;
-    transition: all 125ms ease-in-out;
+.btn-medium-hover {
+    height: 53px !important;
+    border-bottom: 2px solid #FFA800 !important;
 }
 
-.add-task-prio-medium:hover {
-    border-bottom: 2px solid #FFA800;
-    transition: all 125ms ease-in-out;
+.btn-low-hover {
+    height: 53px !important;
+    border-bottom: 2px solid #7AE229 !important;
 }
 
-.add-task-prio-low:hover {
-    border-bottom: 2px solid #7AE229;
-    transition: all 125ms ease-in-out;
-} */
+input[name=prio] {
+    display: none
+}
+
+button:has(input[type="radio"]:checked):first-of-type  {
+    background:#FF3D00;
+    color: white;
+}
+
+button:has(input[type="radio"]:checked):nth-of-type(2)  {
+    background:#FFA800;
+    color: white;
+}
+
+button:has(input[type="radio"]:checked):last-of-type  {
+    background:#7AE229;
+    color: white;
+}
+
+#high-prio[type="radio"]:checked + label > img {
+    content: url('../img/prio-high-active.png');
+}
+
+#medium-prio[type="radio"]:checked + label > img {
+    content: url('../img/prio-medium-active.png');
+}
+
+#low-prio[type="radio"]:checked + label:last-of-type > img {
+    content: url('../img/prio-low-active.png');
+}
+
+.container-fluid {
+    overflow: initial;
+}

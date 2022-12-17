@@ -63,7 +63,7 @@
                         </div>
                         <div class="date-area flex-column margin-btn-45">
                             <span class="category-header">Due date</span>
-                            <input class="uniform-sizing gray-fonts" type="date" >
+                            <input id="date" class="uniform-sizing gray-fonts" type="date">
                         </div>
                         <div class="category-area flex-column margin-btn-45">
                             <span class="category-header">Category</span>
@@ -72,17 +72,32 @@
                             </select>
                         </div>
                         <div class="button-area margin-btn-25">
-                            <button class="add-task-prio-high">
-                                <span class="priority-button-text text-19pt">Urgent</span>
-                                <img src="../img/prio_bnt_urgent.png" alt="">
+                            <button type="button" value="high" class="add-task-prio-high" id="high" onclick="checkButton('high')" onmouseover="hoverButton('high')" onmouseleave="leaveHoverButton('high')">
+                                <!-- <span class="priority-button-text text-19pt">Urgent</span>
+                                <img src="../img/prio_bnt_urgent.png" alt=""> -->
+                                <input type="radio" id="high-prio" name="prio">
+                                <label for="high-prio">
+                                    <span class="priority-button-text text-19pt">Urgent</span>
+                                    <img src="../img/prio_bnt_urgent.png" alt="">
+                                </label>
                             </button>
-                            <button class="add-task-prio-medium">
-                                <span class="priority-button-text text-19pt">Medium</span>
-                                <img src="../img/prio_bnt_medium.png" alt="">
+                            <button type="button" value="medium" class="add-task-prio-medium" id="medium" onclick="checkButton('medium')" onmouseover="hoverButton('medium')" onmouseleave="leaveHoverButton('medium')">
+                                <!-- <span class="priority-button-text text-19pt">Medium</span>
+                                <img src="../img/prio_bnt_medium.png" alt=""> -->
+                                <input type="radio" id="medium-prio" name="prio">
+                                <label for="medium-prio">
+                                    <span class="priority-button-text text-19pt">Medium</span>
+                                    <img src="../img/prio_bnt_medium.png" alt="">
+                                </label>
                             </button>
-                            <button class="add-task-prio-low">
-                                <span class="priority-button-text text-19pt">Low</span>
-                                <img src="../img/prio_bnt_low.png" alt="">
+                            <button type="button" value="low" class="add-task-prio-low" id="low" onclick="checkButton('low')" onmouseover="hoverButton('low')" onmouseleave="leaveHoverButton('low')">
+                                <!-- <span class="priority-button-text text-19pt">Low</span>
+                                <img src="../img/prio_bnt_low.png" alt=""> -->
+                                <input type="radio" id="low-prio" name="prio">
+                                <label for="low-prio">
+                                    <span class="priority-button-text text-19pt">Low</span>
+                                    <img src="../img/prio_bnt_low.png" alt="">
+                                </label>
                             </button>
                         </div>
                         <div class="description-area description-area-overlay flex-column margin-btn-45">
@@ -111,39 +126,6 @@
         <!-- MODAL TASK -->
         <div class="task-overlay d-none" onclick="closeAddTaskDialog('task-modal', 'task-overlay')" id="task-overlay">
             <div class="task-modal" onclick="event.stopPropagation()" id="task-modal">
-                <!-- <div class="task-modal-container">
-                    <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
-                        onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
-                    <span class="department department-overlay">Design</span>
-                    <h3 class="task-headline-overlay">Website redesign</h3>
-                    <span class="task-description-overlay">Make the product presentation to prospective buyers</span>
-                    <div class="due-date-container">
-                        <span>Due date:</span>
-                        <span>05-08-2022</span>
-                    </div>
-                    <div class="prio-container">
-                        <span>Priority:</span>
-                        <img src="../img/prio-overlay-high.png" alt="prio-overlay">
-                    </div>
-                    <div class="assigned-to-container">
-                        <span>Assigned To:</span>
-                        <div class="assigned-contacts">
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay">SM</div>
-                                <span>Stefan Meier</span>
-                            </div>
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay pink">MV</div>
-                                <span>Marvin Vogel</span>
-                            </div>
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay green">EF</div>
-                                <span>Elisabeth Friedrich</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="edit-btn"></div>
-                </div> -->
             </div>
         </div>
         <!-- MODAL TASK END -->
@@ -160,8 +142,8 @@
                             <img src="../img/search-icon.png" alt="search-icon">
                         </span>
                     </div>
-                    <button class="btn-add-task" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')">Add
-                        task
+                    <button class="btn-add-task" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')">
+                        Add task
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>
