@@ -52,11 +52,22 @@
                         <div class="form-width input-title margin-btn-25">
                             <input class="add-title input-title-font" type="text" placeholder="Enter a title">
                         </div>
-                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts">
+                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
                             <span>Select contacts to assign</span>
                             <img src="../img/select-arrow.png" alt="">
                         </div>
-                        <div class="margin-btn-25 assign-contact-container">
+                        <div class="subtasks-input-area d-none" id="contact-input-area">
+                            <input class="" type="email" placeholder="Contact email" id="contact-input" required>
+                            <div class="subtask-icons">
+                                <img onclick="closeContactInput()" class="cursor-pointer"
+                                    src="../img/cancel-subtask.png" alt="">
+                                <img src="../img/subtask-line.png" alt="">
+                                <img onclick="addContact()" class="cursor-pointer" src="../img/check-subtask.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="margin-btn-25 assign-contact-container" id="contact-container">
                             <div class="dropdown-contacts-container collapse" id="collapseContacts">
                                 <div class="dropdown-contact">
                                     <label for="you">You</label>
@@ -74,24 +85,47 @@
                                     <label for="musterfrau">Heid Musterfrau</label>
                                     <input type="checkbox" id="musterfrau" name="assign-contacts">
                                 </div>
-                                <div class="dropdown-contact">
-                                    <label for="musterfrau">Invite new contact</label>
+                                <div class="dropdown-contact" onclick="openContactInput()" role="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
+                                    <label for="">Invite new contact</label>
                                     <img src="../img/new-contact-icon.png" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="date-area flex-column margin-btn-45">
                             <span class="category-header">Due date</span>
-                            <input id="date" class="uniform-sizing gray-fonts" type="date">
+                            <input id="date" class="uniform-sizing" type="date" required>
                         </div>
                         <span class="category-header">Category</span>
-                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory" id="category-dropdown">
                             <span>Select task category</span>
                             <img src="../img/select-arrow.png" alt="">
                         </div>
+                        <div class="category-container d-none" id="category-input-area">
+                            <div class="subtasks-input-area">
+                                <input class="" type="email" placeholder="New category name" id="category-input" required>
+                                <div class="subtask-icons">
+                                    <img onclick="closeCategoryInput()" class="cursor-pointer"
+                                        src="../img/cancel-subtask.png" alt="">
+                                    <img src="../img/subtask-line.png" alt="">
+                                    <img onclick="" class="cursor-pointer" src="../img/check-subtask.png"
+                                        alt="">
+                                </div>
+                            </div>
+                            <div class="category-color-container">
+                                <div class="category-color lightblue"></div>
+                                <div class="category-color red"></div>
+                                <div class="category-color green"></div>
+                                <div class="category-color orange"></div>
+                                <div class="category-color violet"></div>
+                                <div class="category-color blue"></div>
+                            </div>
+                        </div>
                         <div class="margin-btn-25 assign-contact-container">
                             <div class="dropdown-contacts-container collapse" id="collapseCategory">
-                                <div class="dropdown-category">
+                                <div onclick="openCategoryInput()" class="dropdown-category" role="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
                                     <label for="you">New category</label>
                                 </div>
                                 <div class="dropdown-category">
@@ -105,21 +139,27 @@
                             </div>
                         </div>
                         <div class="button-area margin-btn-25">
-                            <button type="button" value="high" class="add-task-prio-high" id="high" onclick="checkButton('high')" onmouseover="hoverButton('high')" onmouseleave="leaveHoverButton('high')">
+                            <button type="button" value="high" class="add-task-prio-high" id="high"
+                                onclick="checkButton('high')" onmouseover="hoverButton('high')"
+                                onmouseleave="leaveHoverButton('high')">
                                 <input type="radio" id="high-prio" name="prio">
                                 <label for="high-prio">
                                     <span class="priority-button-text text-19pt">Urgent</span>
                                     <img src="../img/prio_bnt_urgent.png" alt="">
                                 </label>
                             </button>
-                            <button type="button" value="medium" class="add-task-prio-medium" id="medium" onclick="checkButton('medium')" onmouseover="hoverButton('medium')" onmouseleave="leaveHoverButton('medium')">
+                            <button type="button" value="medium" class="add-task-prio-medium" id="medium"
+                                onclick="checkButton('medium')" onmouseover="hoverButton('medium')"
+                                onmouseleave="leaveHoverButton('medium')">
                                 <input type="radio" id="medium-prio" name="prio">
                                 <label for="medium-prio">
                                     <span class="priority-button-text text-19pt">Medium</span>
                                     <img src="../img/prio_bnt_medium.png" alt="">
                                 </label>
                             </button>
-                            <button type="button" value="low" class="add-task-prio-low" id="low" onclick="checkButton('low')" onmouseover="hoverButton('low')" onmouseleave="leaveHoverButton('low')">
+                            <button type="button" value="low" class="add-task-prio-low" id="low"
+                                onclick="checkButton('low')" onmouseover="hoverButton('low')"
+                                onmouseleave="leaveHoverButton('low')">
                                 <input type="radio" id="low-prio" name="prio">
                                 <label for="low-prio">
                                     <span class="priority-button-text text-19pt">Low</span>
@@ -129,18 +169,31 @@
                         </div>
                         <div class="description-area description-area-overlay flex-column margin-btn-45">
                             <span class="category-header">Description</span>
-                            <textarea class="gray-fonts" name="" id="" cols="30" rows="10"
+                            <textarea class="description-text" name="" id="" cols="30" rows="10"
                                 placeholder="Enter a Description"></textarea>
                         </div>
-                        <div class="subtasks-area">
-                            <div class="subtasks-input-area">
-                                <span class="category-header">Subtasks</span>
-                                <input class="noborder subtasks-input-border-input gray-fonts" type="text"
-                                    placeholder="Add  new subtask">
+                        <div class="subtasks-area margin-btn-45">
+                            <span class="category-header">Subtasks</span>
+                            <div class="subtasks-input-area gray-fonts cursor-pointer" id="subtasks-area"
+                                onclick="openSubtaskInput()">
+                                <span>Add new subtask</span>
+                                <img src="../img/subtask-icon.png" alt="">
                             </div>
-                            <div class="input-check">
-                                <input type="checkbox">
-                                <label class="" for="ckeck">Subtask 1</label>
+                            <div class="subtasks-input-area d-none" id="subtasks-input-area">
+                                <input class="" type="text" placeholder="Add new subtask" id="subtask-input" required>
+                                <div class="subtask-icons">
+                                    <img onclick="closeSubtaskInput()" class="cursor-pointer"
+                                        src="../img/cancel-subtask.png" alt="">
+                                    <img src="../img/subtask-line.png" alt="">
+                                    <img onclick="addSubtask()" class="cursor-pointer" src="../img/check-subtask.png"
+                                        alt="">
+                                </div>
+                            </div>
+                            <div class="input-check" id="subtask-container">
+                                <div class="subtask">
+                                    <input type="checkbox">
+                                    <label class="" for="ckeck">Subtask 1</label>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -178,19 +231,27 @@
                 <div class="main-header-bottom">
                     <div class="board-points">
                         <h3>To do</h3>
-                        <div class="add-icon" id="add-icon0" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(0)"></div>
+                        <div class="add-icon" id="add-icon0"
+                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(0)">
+                        </div>
                     </div>
                     <div class="board-points">
                         <h3>In progress</h3>
-                        <div class="add-icon" id="add-icon1" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(1)"></div>
+                        <div class="add-icon" id="add-icon1"
+                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(1)">
+                        </div>
                     </div>
                     <div class="board-points">
                         <h3>Await feedback</h3>
-                        <div class="add-icon" id="add-icon2" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(2)"></div>
+                        <div class="add-icon" id="add-icon2"
+                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(2)">
+                        </div>
                     </div>
                     <div class="board-points">
                         <h3>Done</h3>
-                        <div class="add-icon"  id="add-icon3" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(3)"></div>
+                        <div class="add-icon" id="add-icon3"
+                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(3)">
+                        </div>
                     </div>
                 </div>
             </div>

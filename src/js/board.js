@@ -335,17 +335,26 @@ function generateEditTaskHTML(task) {
                             <input id="edit-date${task['id']}" class="uniform-sizing date" type="date" value="${task['dueDate']}">
                         </div>
                         <div class="button-area margin-btn-56">
-                            <button class="add-task-prio-high">
+                            <button type="button" value="high" class="add-task-prio-high" id="edit-high" onclick="checkButton('edit-high')" onmouseover="hoverButton('edit-high')" onmouseleave="leaveHoverButton('edit-high')">
+                            <input type="radio" id="edit-high-prio" name="prio">
+                            <label for="edit-high-prio">
                                 <span class="priority-button-text text-19pt">Urgent</span>
                                 <img src="../img/prio_bnt_urgent.png" alt="">
+                            </label>
                             </button>
-                            <button class="add-task-prio-medium">
-                                <span class="priority-button-text text-19pt">Medium</span>
-                                <img src="../img/prio_bnt_medium.png" alt="">
+                            <button type="button" value="medium" class="add-task-prio-medium" id="edit-medium" onclick="checkButton('edit-medium')" onmouseover="hoverButton('edit-medium')" onmouseleave="leaveHoverButton('edit-medium')">
+                                <input type="radio" id="edit-medium-prio" name="prio">
+                                <label for="edit-medium-prio">
+                                    <span class="priority-button-text text-19pt">Medium</span>
+                                    <img src="../img/prio_bnt_medium.png" alt="">
+                                </label>
                             </button>
-                            <button class="add-task-prio-low">
-                                <span class="priority-button-text text-19pt">Low</span>
-                                <img src="../img/prio_bnt_low.png" alt="">
+                            <button type="button" value="low" class="add-task-prio-low" id="edit-low" onclick="checkButton('edit-low')" onmouseover="hoverButton('edit-low')" onmouseleave="leaveHoverButton('edit-low')">
+                                <input type="radio" id="edit-low-prio" name="prio">
+                                <label for="edit-low-prio">
+                                    <span class="priority-button-text text-19pt">Low</span>
+                                    <img src="../img/prio_bnt_low.png" alt="">
+                                </label>
                             </button>
                         </div>
                         <div class="assigned-to-area margin-btn-25">
@@ -385,11 +394,11 @@ function hoverButton(id) {
     // debugger;
     let hover = document.getElementById(id);
     if (!hover.firstElementChild.checked) {
-        if (id == 'high') {
+        if (id == 'high' || id == 'edit-high') {
             hover.classList.add('btn-high-hover');
-        } else if (id == 'medium') {
+        } else if (id == 'medium' || id == 'edit-medium') {
             hover.classList.add('btn-medium-hover');
-        } else if (id == 'low') {
+        } else if (id == 'low' || id == 'edit-low') {
             hover.classList.add('btn-low-hover');
         }
     }
@@ -398,11 +407,11 @@ function hoverButton(id) {
 
 function leaveHoverButton(id) {
     let hover = document.getElementById(id);
-    if (id == 'high') {
+    if (id == 'high' || id == 'edit-high') {
         hover.classList.remove('btn-high-hover');
-    } else if (id == 'medium') {
+    } else if (id == 'medium' || id == 'edit-medium') {
         hover.classList.remove('btn-medium-hover');
-    } else if (id == 'low') {
+    } else if (id == 'low' || id == 'edit-low') {
         hover.classList.remove('btn-low-hover');
     }
 }
@@ -412,6 +421,103 @@ function checkButton(id) {
     let button = document.getElementById(id);
     button.firstElementChild.checked = true;
 }
+
+
+function openSubtaskInput() {
+    document.getElementById('subtasks-area').classList.add('d-none');
+    document.getElementById('subtasks-input-area').classList.remove('d-none');
+    document.getElementById('subtask-input').value = '';
+    document.getElementById('subtask-input').focus();
+}
+
+
+function closeSubtaskInput() {
+    document.getElementById('subtasks-input-area').classList.add('d-none');
+    document.getElementById('subtasks-area').classList.remove('d-none');
+    document.getElementById('subtask-input').value = '';
+}
+
+
+function addSubtask() {
+    let input = document.getElementById('subtask-input').value;
+    if (input) {
+        document.getElementById('subtask-container').innerHTML += createSubtaskHTML(input);
+        closeSubtaskInput();
+    }
+}
+
+
+function createSubtaskHTML(subtask) {
+    return `
+    <div class="subtask">
+        <input type="checkbox">
+        <label class="" for="ckeck">${subtask}</label>
+    </div>
+    `;
+}
+
+
+function openContactInput() {
+    document.getElementById('contact-dropdown').classList.add('d-none');
+    document.getElementById('contact-input-area').classList.remove('d-none');
+    document.getElementById('contact-input').value = '';
+    document.getElementById('contact-input').focus();
+}
+
+
+function closeContactInput() {
+    document.getElementById('contact-input-area').classList.add('d-none');
+    document.getElementById('contact-dropdown').classList.remove('d-none');
+    document.getElementById('contact-input').value = '';
+}
+
+
+function addContact() {
+    let input = document.getElementById('contact-input').value;
+    if (input) {
+        document.getElementById('contact-container').innerHTML += createContactHTML();
+        closeContactInput();
+    }
+}
+
+
+function createContactHTML() {
+    return `
+    <div class="task-contacts-overlay-container">
+        <div class="task-contacts-overlay font-size21">SM</div>
+        <div class="task-contacts-overlay font-size21">MV</div>
+        <div class="task-contacts-overlay font-size21">EF</div>
+    </div>
+    `;
+}
+
+
+function openCategoryInput() {
+    document.getElementById('category-dropdown').classList.add('d-none');
+    document.getElementById('category-input-area').classList.remove('d-none');
+    document.getElementById('category-input').value = '';
+    document.getElementById('category-input').focus();
+}
+
+
+function closeCategoryInput() {
+    document.getElementById('category-input-area').classList.add('d-none');
+    document.getElementById('category-dropdown').classList.remove('d-none');
+    document.getElementById('category-input').value = '';
+}
+
+// function createSubtaskHTML() {
+//     return `
+//     <div class="subtasks-input-area">
+//         <input class="" type="text" placeholder="Add new subtask">
+//         <div class="subtask-icons">
+//             <img class="cursor-pointer" src="../img/cancel-subtask.png" alt="">
+//             <img src="../img/subtask-line.png" alt="">
+//             <img class="cursor-pointer" src="../img/check-subtask.png" alt="">
+//         </div>
+//     </div>
+//     `;
+// }
 
 
 // function uncheckButton(id) {
