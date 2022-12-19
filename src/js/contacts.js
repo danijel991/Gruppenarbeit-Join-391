@@ -1,6 +1,8 @@
 let contact = [];
 let newmail;
 let newContact = {};
+let alphabetLetters = []; //takes all first letters of activeUserContacts in alphabetically order
+let priorLetter; //sets the last letter for the Alphabet Registery
 
 async function loadAllContacts() {
   await init();
@@ -22,6 +24,7 @@ async function addNewUserContact() {
   } 
 
   activeUserContacts.push(newContact);
+  
   document.getElementById('delete-contact-button').classList.remove('d-none');
   
   await saveInBackendUserContacts();
@@ -29,6 +32,22 @@ async function addNewUserContact() {
   document.getElementById('delete-contact-button').classList.remove('d-none');
   openContactDetail(activeUserContacts.length - 1);
 }
+
+function sortActiveUserContacts() {
+  activeUserContacts.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  });
+}
+
 
 function checkIfNewContactEmailExists(newmail) {
   let mailarray = activeUserContacts.map((email) => email.email);
@@ -133,11 +152,18 @@ function openContactDetail(index) {
 }
 
 /*// HTML RENDERING & ANIMATION ////////////////////////////////*/
+
+
+
 function renderContactList() {
+  sortActiveUserContacts();
+  let firstLetters = activeUserContacts.map((item) => item.initials[0]);
+
   let content = document.getElementById("contact-list");
   content.innerHTML = " ";
 
   for (let i = 0; i < activeUserContacts.length; i++) {
+    renderRegistery(i,firstLetters);
     content.innerHTML += `
       <div class="contact-box" onclick="openContactDetail(${i})">
       <div class="letters" style="background-color: ${activeUserContacts[i]["initialsColor"]}">${activeUserContacts[i]["initials"]}</div>
@@ -149,6 +175,19 @@ function renderContactList() {
       </div>
       `;
   }
+}
+
+
+function renderRegistery(i,firstLetters) {  
+  if (firstLetters[i] == priorLetter) {
+    return;
+  } else {
+    document.getElementById("contact-list").innerHTML += `
+  <div class="contact-registery">${firstLetters[i]}
+  `;
+    priorLetter = firstLetters[i];
+  }
+
 }
 
 function openAddContactDialog() {
