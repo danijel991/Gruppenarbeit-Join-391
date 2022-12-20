@@ -15,10 +15,9 @@ function renderDayGreeting() {
     document.getElementById('day-time').innerHTML = greeting;
 }
 
-function renderTodaysDate(){
-let {day, month, year} =  createDate();
-document.getElementById('date-of-today').innerHTML = `${month} ${day},  ${year}`; 
-}
+function renderTodaysDate()
+let (month, day, year) = createDate();
+document.getElementById('date-of-today').innerHTML = `${month} ' '${day} ', '${year}`; 
 
 function getDayTime() {
     let date = new Date();
@@ -34,12 +33,10 @@ return 'Good afternoon, '
 
 function createDate() {
     let date = new Date();
-    let fullDate = {
-        day: date.getDate(),
-        month: months[date.getMonth()],
-        year: date.getFullYear()
-    } 
-    return fullDate;
+    let day = date.getDate();
+    let month = months[date.getMonth()];
+    let year = date.getFullYear();
+    return (month, day, year);
 }
 
 // function getWeekday() {
