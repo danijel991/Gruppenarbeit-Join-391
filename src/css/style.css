@@ -474,9 +474,29 @@ header {
     z-index: 10;
   }
 
+  
   #legal-notice {
     display: none;
   }
+
+
+  .legalHelp {
+    display: unset;
+  }
+
+
+  .logOut__btn--container {
+    height: 137px;
+    justify-content: space-evenly;
+  }
+
+
+  .logOut__btn--container button {
+    width: min-content;
+    white-space: nowrap;
+    height: unset;
+  }
+
 
   .menu {
     flex-direction: row;
@@ -515,24 +535,6 @@ header {
   .header-right-content span,
   .help-icon {
     display: none;
-  }
-
-
-  .logOut__btn--container {
-    height: 137px;
-    justify-content: space-evenly;
-  }
-
-
-  .legalHelp {
-    display: unset;
-  }
-
-
-  .logOut__btn--container button {
-    width: min-content;
-    white-space: nowrap;
-    height: unset;
   }
 
 

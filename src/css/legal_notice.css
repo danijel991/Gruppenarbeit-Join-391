@@ -94,6 +94,12 @@
 
 
 @Media(max-width:768px) {
+    .legalNotice__wrapper {
+        margin: 10rem 2rem;
+        width: auto;
+    }
+
+    
     .legalNotice__wrapper h1 {
         font-size: 2rem;
     }
@@ -122,10 +128,6 @@
     .legalNotice__back--button{
         right: 0px;
         top: -6%;
-    }
-    .legalNotice__wrapper {
-        margin: 10rem 2rem;
-        width: auto;
     }
 
 
