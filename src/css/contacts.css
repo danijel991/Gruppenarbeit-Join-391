@@ -509,7 +509,7 @@
 }
 
 input {
-  color: red;
+  color: black;
 }
 
 .contacts_input {
@@ -539,7 +539,7 @@ input {
   max-width: 85% !important;
 }
 
-input[type="text"] {
+input[type="text"], [type="email"], [type="number"] {
   color: black;
   width: 100%;
   padding: 12px 20px;
@@ -548,7 +548,7 @@ input[type="text"] {
   border: 1px solid #555;
   outline: none;
 }
-input[type="email"] {
+/* input[type="email"] {
   color: black;
   width: 100%;
   padding: 12px 20px;
@@ -565,7 +565,7 @@ input[type="number"] {
   box-sizing: border-box;
   border: 1px solid #555;
   outline: none;
-}
+} */
 input:focus {
   background-color: lightblue;
 }

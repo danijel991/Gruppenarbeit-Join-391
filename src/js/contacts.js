@@ -1,4 +1,5 @@
 let contact = [];
+let emails = [];
 let newmail;
 let newContact = {};
 let alphabetLetters = []; //takes all first letters of activeUserContacts in alphabetically order
@@ -7,6 +8,7 @@ let priorLetter; //sets the last letter for the Alphabet Registery
 async function loadAllContacts() {
   await init();
   renderContactList();
+  showDeleteButton();
 }
 
 function getContactDetails(index) {
@@ -17,20 +19,21 @@ function getContactDetails(index) {
 /*// ADD NEW CONTACT ////////////////////////////////*/
 async function addNewUserContact() {
   let newContact = getContactInfo();
-  newmail = newContact['email'];
-  if (checkIfNewContactEmailExists(newmail)){
+  newmail = newContact["email"];
+  if (checkIfNewContactEmailExists(newmail)) {
     sorryEmailAlreadyExists(newmail);
     return;
-  } 
+  }
 
   activeUserContacts.push(newContact);
-  
-  document.getElementById('delete-contact-button').classList.remove('d-none');
-  
+
+  // document.getElementById("delete-contact-button").classList.remove("d-none");
+
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
-  document.getElementById('delete-contact-button').classList.remove('d-none');
-  openContactDetail(activeUserContacts.length - 1);
+  document.getElementById("delete-contact-button").classList.remove("d-none");
+  let j = getIndexOfEmail(newmail);
+  openContactDetail(j);
 }
 
 function sortActiveUserContacts() {
@@ -48,16 +51,15 @@ function sortActiveUserContacts() {
   });
 }
 
-
 function checkIfNewContactEmailExists(newmail) {
   let mailarray = activeUserContacts.map((email) => email.email);
   for (let i = 0; i < mailarray.length; i++) {
     let mail = mailarray[i];
     if (mail == newmail) {
-      return (true, newmail);
+      return true, newmail;
     }
   }
-};
+}
 
 /*//EDIT CONTACT ////////////////////////////////*/
 async function updateUserContact(index) {
@@ -91,9 +93,9 @@ function getContactInfo() {
 
 function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.remove("info-text");
-  document.getElementById("info-text").innerHTML = `Sorry, a contact with this e-mail ${newmail} already exists!`;
+  document.getElementById("new-contact-email").style.color = "red";
+  document.getElementById("info-text").innerHTML = `Sorry, the e-mail ${newmail} already exists!`;
   document.getElementById("info-text").classList.add("info-text-alert");
-  // const myTimeout = setTimeout(openAddContactDialog(), 2000);
 }
 
 function getNewContactInfo() {
@@ -151,9 +153,21 @@ function openContactDetail(index) {
   content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
 }
 
+/*// HELPER FUNCTIONS ////////////////////////////////*/
+function getEmails() {
+  emails = activeUserContacts.map((element) => {
+    return element.email;
+  });
+  return emails;
+}
 /*// HTML RENDERING & ANIMATION ////////////////////////////////*/
-
-
+function showDeleteButton() {
+  if (getEmails()) {
+    document.getElementById("delete-contact-button").classList.remove("d-none");
+  } else {
+    document.getElementById("delete-contact-button").classList.add("d-none");
+  }
+}
 
 function renderContactList() {
   sortActiveUserContacts();
@@ -163,7 +177,7 @@ function renderContactList() {
   content.innerHTML = " ";
 
   for (let i = 0; i < activeUserContacts.length; i++) {
-    renderRegistery(i,firstLetters);
+    renderRegistery(i, firstLetters);
     content.innerHTML += `
       <div class="contact-box" onclick="openContactDetail(${i})">
       <div class="letters" style="background-color: ${activeUserContacts[i]["initialsColor"]}">${activeUserContacts[i]["initials"]}</div>
@@ -177,8 +191,7 @@ function renderContactList() {
   }
 }
 
-
-function renderRegistery(i,firstLetters) {  
+function renderRegistery(i, firstLetters) {
   if (firstLetters[i] == priorLetter) {
     return;
   } else {
@@ -187,7 +200,14 @@ function renderRegistery(i,firstLetters) {
   `;
     priorLetter = firstLetters[i];
   }
+}
 
+function getIndexOfEmail(newmail) {
+  let emails = activeUserContacts.map((element) => {
+    return element.email;
+  });
+  let i = emails.indexOf(newmail);
+  return i;
 }
 
 function openAddContactDialog() {
@@ -214,6 +234,7 @@ function clearContent() {
   document.getElementById("new-contact-name").value = "";
   document.getElementById("new-contact-email").value = "";
   document.getElementById("new-contact-phone").value = "";
+  document.getElementById("new-contact-email").style.color = "black";
 }
 
 function openEditContactDialog(index) {
