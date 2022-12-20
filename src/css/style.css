@@ -17,7 +17,6 @@ h1 {
   color: #4589ff;
   font-weight: 700 !important;
   font-size: 64px;
-  line-height: 120%;
 }
 
 .d-none {
@@ -28,7 +27,7 @@ h2 {
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
-  line-height: 120%;
+  margin-right: 15px;
 }
 
 /* HEADER */

@@ -5,15 +5,23 @@ let newContact = {};
 let alphabetLetters = []; //takes all first letters of activeUserContacts in alphabetically order
 let priorLetter; //sets the last letter for the Alphabet Registery
 
+/**
+ * -loads all contacts into contact-details and checks. If contacts do exist, a contact delete button will be displayed 
+ */
 async function loadAllContacts() {
   await init();
   renderContactList();
   showDeleteButton();
 }
 
+/**
+ * 
+ * @param {integer} index -the index of a specific contact
+ * @returns {oject array} -returns a sincle complete contact as object
+ */
 function getContactDetails(index) {
   contact = activeUserContacts[index];
-  return contact; // return contact here as a whole object and deconstruct it, where you receive it
+  return contact; 
 }
 
 /*// ADD NEW CONTACT ////////////////////////////////*/
