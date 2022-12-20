@@ -24,7 +24,10 @@ function getContactDetails(index) {
   return contact; 
 }
 
-/*// ADD NEW CONTACT ////////////////////////////////*/
+/**
+ * 
+ * @returns pushes new user oject into activeUserContacts and saves it into the backend
+ */
 async function addNewUserContact() {
   let newContact = getContactInfo();
   newmail = newContact["email"];
@@ -154,11 +157,19 @@ function setColorForInitial(initials) {
 }
 
 function openContactDetail(index) {
+  setTimeout(() => {
+    document.getElementById("contact-detail").classList.remove("slide-in");
+  }, 20);
+
   let content = document.getElementById("contact-detail");
   let { name, initials, initialsColor, email, phone } = getContactDetails(index);
 
   content.innerHTML = "";
   content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
+  setTimeout(() => {
+    document.getElementById("contact-detail").classList.add("slide-in");
+  }, 200);
+
 }
 
 /*// HELPER FUNCTIONS ////////////////////////////////*/
@@ -175,6 +186,10 @@ function showDeleteButton() {
   } else {
     document.getElementById("delete-contact-button").classList.add("d-none");
   }
+}
+
+function slideOut(){
+  document.getElementById("contact-detail").classList.remove("slide-in");
 }
 
 function renderContactList() {
@@ -233,6 +248,22 @@ function closeAddContactDialog() {
     document.getElementById("overlay").classList.add("d-none");
   }, 200);
 }
+
+// function openContactDetail() {
+//   clearContent();
+
+//   setTimeout(() => {
+//     document.getElementById("contact-detail").classList.add("slide-in");
+//   }, 10);
+// }
+
+// function closeContactDetail() {
+//   document.getElementById("add-contact-modal").classList.remove("slide-in");
+
+//   setTimeout(() => {
+//     document.getElementById("overlay").classList.add("d-none");
+//   }, 200);
+// }
 
 function clearContent() {
   document.getElementById("overlay").classList.remove("d-none");
@@ -316,6 +347,7 @@ function generateContactEditDialog(index) {
 
 function generateContactDetail(index, name, initials, initialsColor, email, phone) {
   return `
+  <div onclick="slideOut()" class="contact-detail-mobile" id="contact-detail-mobile"><img src="../img/arrow_forward.png" alt=""></div>
   <div class="contact-detail-header">
   <div class="letters-large" style="background-color: ${initialsColor}">${initials}
   </div>

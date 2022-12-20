@@ -1,3 +1,6 @@
+body{
+  overflow: hidden;
+}
 .container-fluid {
   padding: 0px !important;
   height: 100vh !important;
@@ -161,7 +164,11 @@
   margin: 50px;
   max-inline-size: 100%;
   max-height: calc(100vh - 100px);
+  width: 100%;
   height: 100%;
+  transform: translateX(100vw);
+  transition: all 225ms ease-in-out;
+  z-index: 7;
 }
 
 .contact-detail-container {
@@ -265,7 +272,7 @@
 .overlay {
   background-color: rgba(255, 255, 255, 0.6);
   position: fixed;
-  z-index: 5;
+  z-index: 8;
   left: 0px;
   right: 0;
   bottom: 0;
@@ -318,7 +325,25 @@
   transform: translateX(0px);
 }
 
+.slide-out {
+  transition: transform 500ms ease-in-out;
+  transform: translateX(100vw);
+}
+
+.contact-detail-mobile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.contact-detail-mobile:hover {
+  filter: invert(60%);
+  cursor: pointer;
+}
+
 .add-contact-button {
+  z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -342,6 +367,7 @@
 }
 
 .delete-contact-button {
+  z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -539,7 +565,9 @@ input {
   max-width: 85% !important;
 }
 
-input[type="text"], [type="email"], [type="number"] {
+input[type="text"],
+[type="email"],
+[type="number"] {
   color: black;
   width: 100%;
   padding: 12px 20px;
@@ -566,9 +594,77 @@ input[type="number"] {
   border: 1px solid #555;
   outline: none;
 } */
+
 input:focus {
   background-color: lightblue;
 }
 
 /* STYLING ALL FORM FIELDS */
 /* https://www.w3schools.com/css/css_form.asp*/
+
+/* Media Header & Sidebar */
+@media (max-width: 768px) {
+  .contact-list {
+    
+    width: 100%;
+    height: 100%;
+    height: calc(100vh - 190px);
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .contact-detail{
+    position: absolute;
+    margin: 0px;
+    padding: 25px;
+    top: 100px;
+    max-height: calc(100vh - 100px);
+    background-color: white;
+    z-index: 8;
+  }
+
+  /* 
+  .contact-registery {
+    border-bottom: 1px solid #d1d1d1;
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-left: 25px;
+  }
+  
+  .contact-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .letters {
+    margin-right: 2px;
+    min-width: 42px;
+    min-height: 42px;
+    border: 2px solid #ffffff;
+    border-radius: 100%;
+    background-color: #4589ff;
+    object-fit: cover;
+  }
+  
+  .letters-large {
+    
+    margin-right: 5px;
+    min-width: 90px;
+    min-height: 90px;
+    border: 3px solid #ffffff;
+    border-radius: 100%;
+    background-color: #4589ff;
+    font-size: 38px;
+    object-fit: cover;
+  } */
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 375px) {
+}
