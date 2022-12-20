@@ -20,7 +20,7 @@
     <title>Title</title>
 </head>
 
-<body onload="init(), renderGreeting()">
+<body onload="init(), renderGreeting(), renderTodaysDate()">
     <div class="container-fluid mh-100 d-flex flex-column">
 
         <!-- HEADER START -->
@@ -61,7 +61,7 @@
                         <div class="vertical-line"></div>
 
                         <div>
-                            <div class="top-box font-medium">Weekday 00, 0000</div>
+                            <div class="top-box font-medium" id="date-of-today">Weekday 00, 0000</div>
                             <span class="copy-white font-light bottom-box">Upcoming Deadline
                             </span>
                         </div>
