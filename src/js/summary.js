@@ -1,3 +1,8 @@
+function renderGreeting() {
+    renderActiveUserName();
+    renderDayGreeting();
+}
+
 function renderActiveUserName() {
     document.getElementById('active-user-name').innerHTML = activeUser.userName;
 }

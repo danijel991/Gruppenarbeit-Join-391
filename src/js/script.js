@@ -21,8 +21,6 @@ async function startPage() {
 
 async function init() {
     getLocalActiveUser();
-    renderActiveUserName();
-    renderDayGreeting();
     await includeHTML();
     await showSelectedLink();
     await loadUsersFromBackend();
