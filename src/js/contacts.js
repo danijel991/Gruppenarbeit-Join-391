@@ -17,7 +17,7 @@ async function loadAllContacts() {
 /**
  * 
  * @param {integer} index -the index of a specific contact
- * @returns {oject array} -returns a sincle complete contact as object
+ * @returns {object array} -returns a sincle complete contact as object
  */
 function getContactDetails(index) {
   contact = activeUserContacts[index];
@@ -35,11 +35,7 @@ async function addNewUserContact() {
     sorryEmailAlreadyExists(newmail);
     return;
   }
-
   activeUserContacts.push(newContact);
-
-  // document.getElementById("delete-contact-button").classList.remove("d-none");
-
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   document.getElementById("delete-contact-button").classList.remove("d-none");
@@ -47,21 +43,11 @@ async function addNewUserContact() {
   openContactDetail(j);
 }
 
-function sortActiveUserContacts() {
-  activeUserContacts.sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    // names must be equal
-    return 0;
-  });
-}
-
+/**
+ * 
+ * @param {object} newmail 
+ * @returns true if the newmail already exists in the activeUserContacts array
+ */
 function checkIfNewContactEmailExists(newmail) {
   let mailarray = activeUserContacts.map((email) => email.email);
   for (let i = 0; i < mailarray.length; i++) {
@@ -72,7 +58,11 @@ function checkIfNewContactEmailExists(newmail) {
   }
 }
 
-/*//EDIT CONTACT ////////////////////////////////*/
+/**
+ * Editing of existing contact
+ * Function reads updated form fields and replaces specified contact object in object array
+ * @param {integer} index 
+ */
 async function updateUserContact(index) {
   newContactData = getNewContactInfo();
 
@@ -84,6 +74,10 @@ async function updateUserContact(index) {
   openContactDetail(index);
 }
 
+/**
+ * Function reads the newly submitted form fields when adding a new contact and 
+ * @returns new contact as object
+ */
 function getContactInfo() {
   // activeUser = activeUser.userEmail;
   let newName = document.getElementById("new-contact-name").value;
@@ -102,6 +96,10 @@ function getContactInfo() {
   return newContact;
 }
 
+/**
+ * Function is called when adding a new contact and if submitted new contacts email already exists in contacts array
+ * @param {string} newmail 
+ */
 function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.remove("info-text");
   document.getElementById("new-contact-email").style.color = "red";
@@ -109,15 +107,14 @@ function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.add("info-text-alert");
 }
 
+
 function getNewContactInfo() {
-  // activeUser = activeUser.userEmail;
   let newName = document.getElementById("edit-contact-name").value;
   let newEmail = document.getElementById("edit-contact-email").value;
   let newPhone = document.getElementById("edit-contact-phone").value;
   let initials = setContactInitials(newName);
   let initialsColor = setColorForInitial(initials);
   let newContact = {
-    // id: activeUser,
     name: newName,
     initials: initials,
     initialsColor: initialsColor,
@@ -125,6 +122,42 @@ function getNewContactInfo() {
     phone: newPhone,
   };
   return newContact;
+}
+
+
+/*// HELPER FUNCTIONS ////////////////////////////////*/
+
+/**
+ * sorts the contacts array in alphabetical order
+ */
+function sortActiveUserContacts() {
+  activeUserContacts.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  });
+}
+
+function getEmails() {
+  emails = activeUserContacts.map((element) => {
+    return element.email;
+  });
+  return emails;
+}
+
+function getIndexOfEmail(newmail) {
+  let emails = activeUserContacts.map((element) => {
+    return element.email;
+  });
+  let i = emails.indexOf(newmail);
+  return i;
 }
 
 function setContactInitials(newName) {
@@ -156,6 +189,8 @@ function setColorForInitial(initials) {
   } else return "rgb(128,168,77)";
 }
 
+/*// HTML RENDERING & ANIMATION ////////////////////////////////*/
+
 function openContactDetail(index) {
   setTimeout(() => {
     document.getElementById("contact-detail").classList.remove("slide-in");
@@ -172,14 +207,6 @@ function openContactDetail(index) {
 
 }
 
-/*// HELPER FUNCTIONS ////////////////////////////////*/
-function getEmails() {
-  emails = activeUserContacts.map((element) => {
-    return element.email;
-  });
-  return emails;
-}
-/*// HTML RENDERING & ANIMATION ////////////////////////////////*/
 function showDeleteButton() {
   if (getEmails()) {
     document.getElementById("delete-contact-button").classList.remove("d-none");
@@ -225,14 +252,6 @@ function renderRegistery(i, firstLetters) {
   }
 }
 
-function getIndexOfEmail(newmail) {
-  let emails = activeUserContacts.map((element) => {
-    return element.email;
-  });
-  let i = emails.indexOf(newmail);
-  return i;
-}
-
 function openAddContactDialog() {
   clearContent();
 
@@ -248,22 +267,6 @@ function closeAddContactDialog() {
     document.getElementById("overlay").classList.add("d-none");
   }, 200);
 }
-
-// function openContactDetail() {
-//   clearContent();
-
-//   setTimeout(() => {
-//     document.getElementById("contact-detail").classList.add("slide-in");
-//   }, 10);
-// }
-
-// function closeContactDetail() {
-//   document.getElementById("add-contact-modal").classList.remove("slide-in");
-
-//   setTimeout(() => {
-//     document.getElementById("overlay").classList.add("d-none");
-//   }, 200);
-// }
 
 function clearContent() {
   document.getElementById("overlay").classList.remove("d-none");
