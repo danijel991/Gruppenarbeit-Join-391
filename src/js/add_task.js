@@ -7,16 +7,16 @@ function changeUrgencyHigh() {
     event.preventDefault();
 }
 
-function changeUrgencyMedium() {}
+function changeUrgencyMedium() { }
 
-function changeUrgencyLow() {}
+function changeUrgencyLow() { }
 
 // This function will add subtask
-function addSubtask() {}
+function addSubtask() { }
 
 // This function will add form-data
 function addTask() {
-console.log('add task');
+    console.log('add task');
 }
 
 // This function will clear form
@@ -24,7 +24,23 @@ function clearForm() {
     console.log('clearForm');
 }
 
-function checkButtonColor(id) {
-    let div = document.getElementById(id);
-    div.firstElementChild.checked = true;
+// function checkButtonColor(id) {
+//     let div = document.getElementById(id);
+//     div.firstElementChild.checked = true;
+// }
+
+function checkButtonColor() {
+    if (document.getElementById('lightblue').checked) {
+        document.getElementById('shadowLightblue').classList.add('checkedRadio');
+    } else if (document.getElementById('red').checked) {
+        document.getElementById('shadowRed').classList.add('checkedRadio');
+    } else if (document.getElementById('green').checked) {
+        document.getElementById('shadowGreen').classList.add('checkedRadio');
+    } else if (document.getElementById('orange').checked) {
+        document.getElementById('shadowOrange').classList.add('checkedRadio');
+    } else if (document.getElementById('violet').checked) {
+        document.getElementById('shadowViolet').classList.add('checkedRadio');
+    } else if (document.getElementById('blue').checked) {
+        document.getElementById('shadowBlue').classList.add('checkedRadio');
+    }
 }

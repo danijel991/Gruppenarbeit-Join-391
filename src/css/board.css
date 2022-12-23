@@ -599,11 +599,6 @@ button:has(input[type="radio"]:checked):last-of-type {
     background-color: #FC71FF;
 }
 
-.category-color:active {
-    border: 2px solid #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .category-color-turqoise {
     height: 20px;
     width: 20px;
