@@ -23,3 +23,8 @@ console.log('add task');
 function clearForm() {
     console.log('clearForm');
 }
+
+function checkButtonColor(id) {
+    let div = document.getElementById(id);
+    div.firstElementChild.checked = true;
+}

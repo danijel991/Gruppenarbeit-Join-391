@@ -241,7 +241,7 @@
     align-items: center;
     transition: all 250ms ease-in-out;
 }
-  
+
 .add-task-modal {
     z-index: 5;
     display: flex;
@@ -396,7 +396,7 @@
     transition: transform 500ms ease-in-out;
     transform: translateX(0px);
 }
-  
+
 .slide-in-bottom {
     transition: transform 225ms ease-in-out;
     transform: translateY(0px);
@@ -480,7 +480,7 @@
     font-size: 21px;
 }
 
-.select-contact{
+.select-contact {
     border: none;
 }
 
@@ -488,7 +488,7 @@
     height: 53px;
 }
 
-.button-area button > * {
+.button-area button>* {
     cursor: pointer !important;
 }
 
@@ -511,37 +511,37 @@ input[name="prio"] {
     display: none
 }
 
-button:has(input[type="radio"]:checked):first-of-type  {
-    background:#FF3D00;
+button:has(input[type="radio"]:checked):first-of-type {
+    background: #FF3D00;
     color: white;
 }
 
-button:has(input[type="radio"]:checked):nth-of-type(2)  {
-    background:#FFA800;
+button:has(input[type="radio"]:checked):nth-of-type(2) {
+    background: #FFA800;
     color: white;
 }
 
-button:has(input[type="radio"]:checked):last-of-type  {
-    background:#7AE229;
+button:has(input[type="radio"]:checked):last-of-type {
+    background: #7AE229;
     color: white;
 }
 
-#high-prio[type="radio"]:checked + label > img,
-#edit-high-prio[type="radio"]:checked + label > img {
+#high-prio[type="radio"]:checked+label>img,
+#edit-high-prio[type="radio"]:checked+label>img {
     content: url('../img/prio-high-active.png');
 }
 
-#medium-prio[type="radio"]:checked + label > img,
-#edit-medium-prio[type="radio"]:checked + label > img {
+#medium-prio[type="radio"]:checked+label>img,
+#edit-medium-prio[type="radio"]:checked+label>img {
     content: url('../img/prio-medium-active.png');
 }
 
-#low-prio[type="radio"]:checked + label:last-of-type > img,
-#edit-low-prio[type="radio"]:checked + label:last-of-type > img {
+#low-prio[type="radio"]:checked+label:last-of-type>img,
+#edit-low-prio[type="radio"]:checked+label:last-of-type>img {
     content: url('../img/prio-low-active.png');
 }
 
-.button-area button > label {
+.button-area button>label {
     display: flex;
     align-items: center;
 }
@@ -597,6 +597,11 @@ button:has(input[type="radio"]:checked):last-of-type  {
     border-radius: 50%;
     border: 2px solid white;
     background-color: #FC71FF;
+}
+
+.category-color:active {
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .category-color-turqoise {
@@ -767,20 +772,20 @@ input[type="checkbox"]:checked {
 }
 
 /* input[type="checkbox"]:checked:after { */
-    /* Heres your symbol replacement - this is a tick in Unicode. */
-    content: "\2713";
-    color: #fff;
-    /* The following positions my tick in the center, 
+/* Heres your symbol replacement - this is a tick in Unicode. */
+content: "\2713";
+color: #fff;
+/* The following positions my tick in the center, 
      * but you could just overlay the entire box
      * with a full after element with a background if you want to */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    /*
+position: absolute;
+left: 50%;
+top: 50%;
+-webkit-transform: translate(-50%, -50%);
+-moz-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+/*
      * If you want to fully change the check appearance, use the following:
      * content: " ";
      * width: 100%;

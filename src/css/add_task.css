@@ -220,6 +220,7 @@ input[type="checkbox"]:checked {
 .add-task-main {
     display: flex;
     flex-direction: row;
+    background-color: #F5F5F5;
 }
 
 .add-task-right {
@@ -253,16 +254,18 @@ input[type="checkbox"]:checked {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
+
 .add-task-right-button-left:active {
     background: #FFFFFF;
     /* Ligth blue */
-    
+
     border: 1px solid #005DFF;
     /* stronger */
-    
+
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
+
 .add-task-right-button-left:active {
     color: #005DFF !important;
 }
@@ -302,7 +305,7 @@ input[type="checkbox"]:checked {
     color: #4589FF;
 }
 
-.add-task-right-button-right>span:active{
+.add-task-right-button-right>span:active {
     color: #4589FF;
 }
 
@@ -357,6 +360,7 @@ input {
     background-color: #0d6efd;
     border-color: #0d6efd;
 }
+
 /* 
 body > div > main > div.add-task-left > form > div.subtasks-area > div.input-check > input[type=checkbox] {
     background-image: url('../img/check-icon.png');
@@ -366,44 +370,54 @@ body > div > main > div.add-task-left > form > div.subtasks-area > div.input-che
     border-color: #0d6efd;
 } */
 
-.button-area button > label {
+.button-area button>label {
     display: flex;
     align-items: center;
 }
-.button-area button > * {
+
+.button-area button>* {
     cursor: pointer !important;
 }
 
-button:has(input[type="radio"]:checked):first-of-type  {
-    background:#FF3D00;
+button:has(input[type="radio"]:checked):first-of-type {
+    background: #FF3D00;
     color: white;
 }
 
-button:has(input[type="radio"]:checked):nth-of-type(2)  {
-    background:#FFA800;
+button:has(input[type="radio"]:checked):nth-of-type(2) {
+    background: #FFA800;
     color: white;
 }
 
-button:has(input[type="radio"]:checked):last-of-type  {
-    background:#7AE229;
+button:has(input[type="radio"]:checked):last-of-type {
+    background: #7AE229;
     color: white;
 }
 
-#high-prio[type="radio"]:checked + label > img,
-#edit-high-prio[type="radio"]:checked + label > img {
+#high-prio[type="radio"]:checked+label>img,
+#edit-high-prio[type="radio"]:checked+label>img {
     content: url('../img/prio-high-active.png');
 }
 
-#medium-prio[type="radio"]:checked + label > img,
-#edit-medium-prio[type="radio"]:checked + label > img {
+#medium-prio[type="radio"]:checked+label>img,
+#edit-medium-prio[type="radio"]:checked+label>img {
     content: url('../img/prio-medium-active.png');
 }
 
-#low-prio[type="radio"]:checked + label:last-of-type > img,
-#edit-low-prio[type="radio"]:checked + label:last-of-type > img {
+#low-prio[type="radio"]:checked+label:last-of-type>img,
+#edit-low-prio[type="radio"]:checked+label:last-of-type>img {
     content: url('../img/prio-low-active.png');
 }
 
 input[name="prio"] {
+    display: none;
+}
+
+input,
+textarea {
+    background-color: #F5F5F5 !important;
+}
+
+.category-color>input[type='radio'] {
     display: none;
 }
