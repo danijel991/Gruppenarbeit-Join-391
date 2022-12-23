@@ -29,18 +29,28 @@ function clearForm() {
 //     div.firstElementChild.checked = true;
 // }
 
-function checkButtonColor() {
-    if (document.getElementById('lightblue').checked) {
-        document.getElementById('shadowLightblue').classList.add('checkedRadio');
-    } else if (document.getElementById('red').checked) {
-        document.getElementById('shadowRed').classList.add('checkedRadio');
-    } else if (document.getElementById('green').checked) {
-        document.getElementById('shadowGreen').classList.add('checkedRadio');
-    } else if (document.getElementById('orange').checked) {
-        document.getElementById('shadowOrange').classList.add('checkedRadio');
-    } else if (document.getElementById('violet').checked) {
-        document.getElementById('shadowViolet').classList.add('checkedRadio');
-    } else if (document.getElementById('blue').checked) {
-        document.getElementById('shadowBlue').classList.add('checkedRadio');
-    }
-}
+// function checkButtonColor() {
+//     remove();
+//     if (document.getElementById('lightblue').checked) {
+//         document.getElementById('shadowLightblue').classList.add('checkedRadio');
+//     } else if (document.getElementById('red').checked) {
+//         document.getElementById('shadowRed').classList.add('checkedRadio');
+//     } else if (document.getElementById('green').checked) {
+//         document.getElementById('shadowGreen').classList.add('checkedRadio');
+//     } else if (document.getElementById('orange').checked) {
+//         document.getElementById('shadowOrange').classList.add('checkedRadio');
+//     } else if (document.getElementById('violet').checked) {
+//         document.getElementById('shadowViolet').classList.add('checkedRadio');
+//     } else if (document.getElementById('blue').checked) {
+//         document.getElementById('shadowBlue').classList.add('checkedRadio');
+//     }
+// }
+
+// function remove() {
+//     document.getElementById('shadowLightblue').classList.remove('checkedRadio');
+//     document.getElementById('shadowRed').classList.remove('checkedRadio');
+//     document.getElementById('shadowGreen').classList.remove('checkedRadio');
+//     document.getElementById('shadowOrange').classList.remove('checkedRadio');
+//     document.getElementById('shadowViolet').classList.remove('checkedRadio');
+//     document.getElementById('shadowBlue').classList.remove('checkedRadio');
+// };
