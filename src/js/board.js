@@ -506,6 +506,54 @@ function closeCategoryInput() {
     document.getElementById('category-input').value = '';
 }
 
+
+function createTask() {
+    let title = document.getElementById('title').value;
+    // let contacts = 
+    let date = document.getElementById('date').value;
+    // let category = 
+    let urgency = document.querySelector('input[name="prio"]:checked').value;
+    let description = document.getElementById('description-text').value;
+    new CreateTask(tasks.length, title, description, urgency, date);
+    updateHTML();
+    taskAddedToBoard();
+    setTimeout(() => {
+        closeAddTaskDialog('add-task-modal', 'add-task-overlay');
+        closeTaskAddedToBoard();
+        resetAddTaskForm();
+    }, 1000);
+}
+
+
+function resetAddTaskForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('date').value = '';
+    document.querySelector('input[name="prio"]:checked').checked = false;
+    document.getElementById('description-text').value = '';
+}
+
+
+function taskAddedToBoard() {
+    let taskAdded = document.getElementById('task-added');
+    taskAdded.classList.add('slide-in-bottom');
+}
+
+
+function closeTaskAddedToBoard() {
+    let taskAdded = document.getElementById('task-added');
+    taskAdded.style.transform = 'translateX(950px)';
+    taskAdded.classList.remove('slide-in-bottom');
+    setTimeout(() => {
+        resetTaskAddedToBoard();
+    }, 200);
+}
+
+
+function resetTaskAddedToBoard() {
+    let taskAdded = document.getElementById('task-added');
+    taskAdded.style.transform = '';
+}
+
 // function createSubtaskHTML() {
 //     return `
 //     <div class="subtasks-input-area">

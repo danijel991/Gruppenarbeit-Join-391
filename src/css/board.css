@@ -280,7 +280,15 @@
     width: 623px;
     border-radius: 30px;
     padding: 50px;
-    transform: translateY(580px);
+    transform: translateY(950px);
+    transition: all 225ms ease-in-out;
+}
+
+.task-added {
+    display: flex;
+    width: calc(100vw - 518px);
+    justify-content: center;
+    transform: translateY(950px);
     transition: all 225ms ease-in-out;
 }
 
@@ -738,6 +746,10 @@ input[type=date]:invalid::-webkit-datetime-edit {
 
 .blue {
     background-color: #0038FF;
+}
+
+.add-task-overlay {
+    justify-content: unset;
 }
 
 input[type="checkbox"] {
