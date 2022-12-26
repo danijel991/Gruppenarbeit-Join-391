@@ -17,6 +17,7 @@
     <script src="../js/mini_backend.js"></script>
     <script src="../js/script.js"></script>
     <script defer src="../js/sidebar.js"></script>
+    <script src="../models/create-task.class.js"></script>
     <script src="../js/board.js"></script>
     <!-- <script src="../js/contacts.js"></script> -->
     <script src="/src/js/logIn_register.js"></script>
@@ -36,8 +37,10 @@
         <!-- SIDEBAR END  -->
 
         <!-- MODAL ADD TASK -->
-        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')"
-            id="add-task-overlay">
+        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')" id="add-task-overlay">
+            <div class="task-added" id="task-added">
+                <img src="../img/task-added.png" alt="">
+            </div>
             <div class="add-task-modal" onclick="event.stopPropagation()" id="add-task-modal">
                 <div class="add-task-header-top">
                     <img class="close-icon" src="../img/add-task-close-icon.png"
@@ -50,7 +53,7 @@
                     </div>
                     <form class="add-task-form">
                         <div class="form-width input-title margin-btn-25">
-                            <input class="add-title input-title-font" type="text" placeholder="Enter a title">
+                            <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title">
                         </div>
                         <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
@@ -142,7 +145,7 @@
                             <button type="button" value="high" class="add-task-prio-high" id="high"
                                 onclick="checkButton('high')" onmouseover="hoverButton('high')"
                                 onmouseleave="leaveHoverButton('high')">
-                                <input type="radio" id="high-prio" name="prio">
+                                <input type="radio" id="high-prio" name="prio" value="high">
                                 <label for="high-prio">
                                     <span class="priority-button-text text-19pt">Urgent</span>
                                     <img src="../img/prio_bnt_urgent.png" alt="">
@@ -151,7 +154,7 @@
                             <button type="button" value="medium" class="add-task-prio-medium" id="medium"
                                 onclick="checkButton('medium')" onmouseover="hoverButton('medium')"
                                 onmouseleave="leaveHoverButton('medium')">
-                                <input type="radio" id="medium-prio" name="prio">
+                                <input type="radio" id="medium-prio" name="prio" value="medium">
                                 <label for="medium-prio">
                                     <span class="priority-button-text text-19pt">Medium</span>
                                     <img src="../img/prio_bnt_medium.png" alt="">
@@ -160,7 +163,7 @@
                             <button type="button" value="low" class="add-task-prio-low" id="low"
                                 onclick="checkButton('low')" onmouseover="hoverButton('low')"
                                 onmouseleave="leaveHoverButton('low')">
-                                <input type="radio" id="low-prio" name="prio">
+                                <input type="radio" id="low-prio" name="prio" value="low">
                                 <label for="low-prio">
                                     <span class="priority-button-text text-19pt">Low</span>
                                     <img src="../img/prio_bnt_low.png" alt="">
@@ -169,7 +172,7 @@
                         </div>
                         <div class="description-area description-area-overlay flex-column margin-btn-45">
                             <span class="category-header">Description</span>
-                            <textarea class="description-text" name="" id="" cols="30" rows="10"
+                            <textarea class="description-text" name="" id="description-text" cols="30" rows="10"
                                 placeholder="Enter a Description"></textarea>
                         </div>
                         <div class="subtasks-area margin-btn-45">
@@ -198,7 +201,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
         <!-- MODAL ADD TASK END-->
