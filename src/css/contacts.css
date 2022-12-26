@@ -375,13 +375,13 @@ body{
   gap: 10px;
   position: fixed;
   width: 220px;
-  height: 40px;
+  height: 53px;
   right: 40px;
-  bottom: 50px;
+  bottom: 35px;
   background-color: #d1d1d1;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 16px;
   color: white;
 }
 
@@ -604,11 +604,23 @@ input:focus {
 
 /* Media Header & Sidebar */
 @media (max-width: 768px) {
+
+  .main{
+    margin-top: 170px;
+  }
+  .contacts-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    min-height: calc(100vh);
+}
+
   .contact-list {
     
     width: 100%;
     height: 100%;
-    height: calc(100vh - 190px);
+    height: calc(100vh);
     padding: 10px;
     overflow-y: auto;
   }
@@ -617,11 +629,79 @@ input:focus {
     position: absolute;
     margin: 0px;
     padding: 25px;
-    top: 100px;
+    top: 170px;
     max-height: calc(100vh - 100px);
     background-color: white;
-    z-index: 8;
+    z-index: 4;
   }
+
+  .add-contact-button {
+    bottom: unset;
+    top: 110px;
+    left:20px;
+    right:unset;
+  }
+  
+  
+  .delete-contact-button {
+    bottom: unset;
+    top: 110px;
+
+  }
+  
+  /* .delete-contact-button img {
+    height: 20px;
+  } */
+  
+  .delete-contact-button-alert {
+    flex-direction: row;
+    padding: 12px 10px;
+    position: fixed;
+    width: 240px;
+    height: 53px;
+    right: 40px;
+    bottom: unset;
+    top: 110px;
+  }
+  
+  .delete-contact-button-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0px;
+    gap: 15px;
+  }
+  
+  /* .delete-contact-button-bottom a:hover {
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+  } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* 
   .contact-registery {
