@@ -65,10 +65,8 @@ function checkIfNewContactEmailExists(newmail) {
  */
 async function updateUserContact(index) {
   newContactData = getNewContactInfo();
-
   activeUserContacts.splice(index, 1, newContactData);
 
-  console.log(activeUserContacts);
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(index);
@@ -79,22 +77,24 @@ async function updateUserContact(index) {
  * @returns new contact as object
  */
 function getContactInfo() {
-  // activeUser = activeUser.userEmail;
+
   let newName = document.getElementById("new-contact-name").value;
   let newEmail = document.getElementById("new-contact-email").value;
   let newPhone = document.getElementById("new-contact-phone").value;
   let initials = setContactInitials(newName);
   let initialsColor = setColorForInitial(initials);
+  
   let newContact = {
-    // id: activeUser,
     name: newName,
     initials: initials,
     initialsColor: initialsColor,
     email: newEmail,
     phone: newPhone,
   };
+
   return newContact;
 }
+
 
 /**
  * Function is called when adding a new contact and if submitted new contacts email already exists in contacts array
