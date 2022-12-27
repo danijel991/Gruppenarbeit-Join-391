@@ -72,46 +72,125 @@ function changeDepartmentColor() {
 
 
 function updateHTML() {
-    let toDo = tasks.filter(t => t['category'] == 'to-do');
-
-    document.getElementById('to-do').innerHTML = '';
-
-    for (let i = 0; i < toDo.length; i++) {
-        const element = toDo[i];
-        document.getElementById('to-do').innerHTML += generateTodoHTML(element);
+    if (searchTask()) {
+        filterAllTasks();
     }
+    // let inProgress = tasks.filter(t => t['category'] == 'in-progress');
 
-    let inProgress = tasks.filter(t => t['category'] == 'in-progress');
+    // document.getElementById('in-progress').innerHTML = '';
 
-    document.getElementById('in-progress').innerHTML = '';
+    // for (let i = 0; i < inProgress.length; i++) {
+    //     const element = inProgress[i];
+    //     document.getElementById('in-progress').innerHTML += generateTodoHTML(element);
+    // }
+    // filterInProgress(tasks);
 
-    for (let i = 0; i < inProgress.length; i++) {
-        const element = inProgress[i];
-        document.getElementById('in-progress').innerHTML += generateTodoHTML(element);
-    }
+    // let awaitFeedback = tasks.filter(t => t['category'] == 'await-feedback');
 
-    let awaitFeedback = tasks.filter(t => t['category'] == 'await-feedback');
+    // document.getElementById('await-feedback').innerHTML = '';
 
-    document.getElementById('await-feedback').innerHTML = '';
+    // for (let i = 0; i < awaitFeedback.length; i++) {
+    //     const element = awaitFeedback[i];
+    //     document.getElementById('await-feedback').innerHTML += generateTodoHTML(element);
+    // }
+    // filterAwaitFeedback(tasks);
 
-    for (let i = 0; i < awaitFeedback.length; i++) {
-        const element = awaitFeedback[i];
-        document.getElementById('await-feedback').innerHTML += generateTodoHTML(element);
-    }
+    // let done = tasks.filter(t => t['category'] == 'done');
 
-    let done = tasks.filter(t => t['category'] == 'done');
+    // document.getElementById('done').innerHTML = '';
 
-    document.getElementById('done').innerHTML = '';
-
-    for (let i = 0; i < done.length; i++) {
-        const element = done[i];
-        document.getElementById('done').innerHTML += generateTodoHTML(element);
-    }
+    // for (let i = 0; i < done.length; i++) {
+    //     const element = done[i];
+    //     document.getElementById('done').innerHTML += generateTodoHTML(element);
+    // }
     changeDepartmentColor();
     generateTemplate();
     updateProgressBars();
     updateProgressReport();
 }
+
+
+function filterTasks(array, id) {
+    let filter = array.filter(t => t['category'] == id);
+    document.getElementById(id).innerHTML = '';
+    for (let i = 0; i < filter.length; i++) {
+        const element = filter[i];
+        document.getElementById(id).innerHTML += generateTodoHTML(element);
+    }
+}
+
+
+function filterAllTasks() {
+    filterTasks(tasks, 'to-do'); 
+    filterTasks(tasks, 'in-progress');
+    filterTasks(tasks, 'await-feedback');
+    filterTasks(tasks, 'done');
+}
+
+
+function findTask() {
+    resetAllTasksContainer();
+    let search = document.getElementById('search').value.toLowerCase().trim();
+    filterSearchedTasks(tasks, 'to-do', search);
+    filterSearchedTasks(tasks, 'in-progress', search);
+    filterSearchedTasks(tasks, 'await-feedback', search);
+    filterSearchedTasks(tasks, 'done', search);
+    updateHTML();
+}
+
+
+function resetAllTasksContainer() {
+    document.getElementById('to-do').innerHTML = '';
+    document.getElementById('in-progress').innerHTML = '';
+    document.getElementById('await-feedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+}
+
+
+function searchTask() {
+    return document.getElementById('search').value == '';
+}
+
+
+function filterSearchedTasks(array, id, search) {
+    let filter = array.filter(t => t['category'] == id && t['headline'].toLowerCase().match(search) || t['category'] == id && t['department'].toLowerCase().match(search));
+    for (let i = 0; i < filter.length; i++) {
+        const element = filter[i];
+        document.getElementById(id).innerHTML += generateTodoHTML(element);
+    }
+}
+
+// function findTask() {
+//     let search = document.getElementById('search').value;
+//     search = search.toLowerCase().trim();
+//     let toDo = document.getElementById('to-do');
+//     let inProgress = document.getElementById('in-progress');
+//     let awaitFeedback = document.getElementById('await-feedback');
+//     let done = document.getElementById('done');
+//     toDo.innerHTML = '';
+//     inProgress.innerHTML = '';
+//     awaitFeedback.innerHTML = '';
+//     done.innerHTML = '';
+//     for (let i = 0; i < tasks.length; i++) {
+//         let taskTitle = tasks[i]['headline'].toLowerCase();
+//         let taskDescription = tasks[i]['department'].toLowerCase();
+//         if (taskTitle.match(search) == search || taskDescription.match(search) == search) {
+//             if (tasks[i]['category'] == 'to-do') {
+//                 toDo.innerHTML += generateTodoHTML(tasks[i]);
+//             } else if (tasks[i]['category'] == 'in-progress') {
+//                 inProgress.innerHTML += generateTodoHTML(tasks[i]);
+//             } else if (tasks[i]['category'] == 'await-feedback') {
+//                 awaitFeedback.innerHTML += generateTodoHTML(tasks[i]);
+//             } else if (tasks[i]['category'] == 'done') {
+//                 done.innerHTML += generateTodoHTML(tasks[i]);
+//             }
+//         }
+//         changeDepartmentColor();
+//         // generateTemplate();
+//         updateProgressBars();
+//         updateProgressReport();
+//     }
+// }
 
 
 function generateTodoHTML(task) {
@@ -153,6 +232,7 @@ function allowDrop(ev) {
 
 function moveTo(category) {
     tasks[currentDraggedElement]['category'] = category; // z.b. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'
+    document.getElementById('search').value = '';
     updateHTML();
 }
 
@@ -357,15 +437,44 @@ function generateEditTaskHTML(task) {
                                 </label>
                             </button>
                         </div>
-                        <div class="assigned-to-area margin-btn-25">
-                            <span class="category-header">Assigned To:</span>
-                            <select class="uniform-sizing text-19pt" name="" id="">
-                                <option value="">Select contacts to assign</option>
-                            </select>
-                            <div class="task-contacts-overlay-container">
-                                <div class="task-contacts-overlay font-size21">SM</div>
-                                <div class="task-contacts-overlay font-size21">MV</div>
-                                <div class="task-contacts-overlay font-size21">EF</div>
+                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
+                            <span>Select contacts to assign</span>
+                            <img src="../img/select-arrow.png" alt="">
+                        </div>
+                        <div class="subtasks-input-area d-none" id="contact-input-area-edit">
+                            <input class="" type="email" placeholder="Contact email" id="contact-input-edit" required>
+                            <div class="subtask-icons">
+                                <img onclick="closeContactInput('contact-input-area-edit', 'contact-dropdown-edit', 'contact-input-edit')" class="cursor-pointer"
+                                    src="../img/cancel-subtask.png" alt="">
+                                <img src="../img/subtask-line.png" alt="">
+                                <img onclick="addContact()" class="cursor-pointer" src="../img/check-subtask.png"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="margin-btn-25 assign-contact-container" id="contact-container-edit">
+                            <div class="dropdown-contacts-container collapse scroll" id="collapseContactsEdit">
+                                <div class="dropdown-contact">
+                                    <label for="you">You</label>
+                                    <input type="checkbox" id="you" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="vogel">Maximilian Vogel</label>
+                                    <input type="checkbox" id="vogel" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="mustermann">Max Mustermann</label>
+                                    <input type="checkbox" id="mustermann" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact">
+                                    <label for="musterfrau">Heid Musterfrau</label>
+                                    <input type="checkbox" id="musterfrau" name="assign-contacts">
+                                </div>
+                                <div class="dropdown-contact" onclick="openContactInput('contact-dropdown-edit', 'contact-input-area-edit', 'contact-input-edit')" role="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
+                                    <label for="">Invite new contact</label>
+                                    <img src="../img/new-contact-icon.png" alt="">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -457,18 +566,18 @@ function createSubtaskHTML(subtask) {
 }
 
 
-function openContactInput() {
-    document.getElementById('contact-dropdown').classList.add('d-none');
-    document.getElementById('contact-input-area').classList.remove('d-none');
-    document.getElementById('contact-input').value = '';
-    document.getElementById('contact-input').focus();
+function openContactInput(id, id2, id3) {
+    document.getElementById(id).classList.add('d-none');
+    document.getElementById(id2).classList.remove('d-none');
+    document.getElementById(id3).value = '';
+    document.getElementById(id3).focus();
 }
 
 
-function closeContactInput() {
-    document.getElementById('contact-input-area').classList.add('d-none');
-    document.getElementById('contact-dropdown').classList.remove('d-none');
-    document.getElementById('contact-input').value = '';
+function closeContactInput(id, id2, id3) {
+    document.getElementById(id).classList.add('d-none');
+    document.getElementById(id2).classList.remove('d-none');
+    document.getElementById(id3).value = '';
 }
 
 
@@ -553,6 +662,7 @@ function resetTaskAddedToBoard() {
     let taskAdded = document.getElementById('task-added');
     taskAdded.style.transform = '';
 }
+
 
 // function createSubtaskHTML() {
 //     return `
