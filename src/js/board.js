@@ -14,7 +14,7 @@ let tasks = [
         department: 'Design',
         headline: 'Website redesign',
         description: 'Modify the contents of the main website..',
-        assignedTo: [],
+        assignedTo: ['Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich', 'Felix Müller'],
         priority: 'low',
         category: 'to-do',
         dueDate: '2022-08-05'
@@ -24,7 +24,7 @@ let tasks = [
         department: 'Sales',
         headline: 'Call potencial clients',
         description: 'Make the product presentation to prospective buyers',
-        assignedTo: [],
+        assignedTo: ['Felix Müller', 'Franziska Schütz'],
         priority: 'high',
         category: 'in-progress',
         dueDate: '2022-08-05'
@@ -34,7 +34,7 @@ let tasks = [
         department: 'Backoffice',
         headline: 'Accounting invoices',
         description: 'Write open invoices for customer',
-        assignedTo: [],
+        assignedTo: ['Max Mustermann', 'Frank Hausner', 'Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich'],
         priority: 'medium',
         category: 'await-feedback',
         dueDate: '2022-08-05'
@@ -44,7 +44,7 @@ let tasks = [
         department: 'Media',
         headline: 'Video cut',
         description: 'Edit the new company video',
-        assignedTo: [],
+        assignedTo: ['Sandra Walter', 'Theo Ochs', 'Olaf Siegfried'],
         priority: 'medium',
         category: 'await-feedback',
         dueDate: '2022-08-05'
@@ -54,7 +54,7 @@ let tasks = [
         department: 'Marketing',
         headline: 'Social media strategy',
         description: 'Develop an ad campaign for brand positioning',
-        assignedTo: [],
+        assignedTo: ['Jennifer Bern'],
         priority: 'low',
         category: 'done',
         dueDate: '2022-08-05'
@@ -114,8 +114,17 @@ function filterTasks(array, id) {
     let filter = array.filter(t => t['category'] == id);
     document.getElementById(id).innerHTML = '';
     for (let i = 0; i < filter.length; i++) {
-        const element = filter[i];
-        document.getElementById(id).innerHTML += generateTodoHTML(element);
+        const task = filter[i];
+        document.getElementById(id).innerHTML += generateTodoHTML(task);
+        // debugger;
+        for (let j = 0; j < task['assignedTo'].length; j++) {
+            const assignedContacts = task['assignedTo'][j];
+            if (j > 2) {
+                document.getElementById(`task-contacts-container${task['id']}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task['assignedTo']);
+            } else {
+                document.getElementById(`task-contacts-container${task['id']}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts));
+            }
+        }
     }
 }
 
@@ -206,10 +215,7 @@ function generateTodoHTML(task) {
             <span><span class="progress-report">0</span>/3 Done</span>
         </div>
         <div class="contact-and-urgency">
-            <div class="task-contacts-container">
-                <div class="task-contacts">SM</div>
-                <div class="task-contacts pink">MV</div>
-                <div class="task-contacts green">EF</div>
+            <div class="task-contacts-container" id="task-contacts-container${task['id']}">
             </div>
             <div class="task-urgency">
                 <img src="../img/priority-${task['priority']}-icon.png" alt="urgency">
@@ -218,6 +224,33 @@ function generateTodoHTML(task) {
     </div>
     `;
 }
+
+{/* <div class="task-contacts">SM</div>
+<div class="task-contacts pink">MV</div>
+<div class="task-contacts green">EF</div> */}
+
+
+function generateAssignedContactsHTML(contact) {
+    return `
+        <div class="task-contacts">${contact}</div>
+    `;
+}
+
+
+function generateAssignedContactsMoreThanFourHTML(contact) {
+    return `+${contact.length - 2}`;
+}
+
+
+// function getInitials(string) {
+//     var names = string.split(' '),
+//         initials = names[0].substring(0, 1).toUpperCase();
+    
+//     if (names.length > 1) {
+//         initials += names[names.length - 1].substring(0, 1).toUpperCase();
+//     }
+//     return initials;
+// };
 
 
 function startDragging(id) {
@@ -289,10 +322,14 @@ function templateTask(i) {
 
 function openAddTaskDialog(id, id2, taskID) {
     document.getElementById(id).classList.remove("d-none");
-    // debugger;
     setTimeout(() => {
         if (id2 == 'task-modal') {
             document.getElementById('task-modal').innerHTML = generateTaskModalHTML(tasks[taskID]);
+            // debugger;
+            for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
+                const contacts = tasks[taskID]['assignedTo'][i];
+                document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts);
+            }
             changeDepartmentColor();
             document.getElementById(id2).classList.add("slide-in-bottom");
         } else {
@@ -370,23 +407,34 @@ function generateTaskModalHTML(task) {
                     </div>
                     <div class="assigned-to-container">
                         <span>Assigned To:</span>
-                        <div class="assigned-contacts">
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay">SM</div>
-                                <span>Stefan Meier</span>
-                            </div>
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay pink">MV</div>
-                                <span>Marvin Vogel</span>
-                            </div>
-                            <div class="assigned-contact-row">
-                                <div class="task-contacts-overlay green">EF</div>
-                                <span>Elisabeth Friedrich</span>
-                            </div>
+                        <div class="assigned-contacts" id="assigned-contacts${task['id']}">  
                         </div>
                     </div>
                     <div class="edit-btn" onclick="editTasks(${task['id']})"></div>
                 </div>
+    `;
+}
+
+{/* <div class="assigned-contact-row">
+        <div class="task-contacts-overlay">SM</div>
+        <span>Stefan Meier</span>
+    </div>
+    <div class="assigned-contact-row">
+        <div class="task-contacts-overlay pink">MV</div>
+        <span>Marvin Vogel</span>
+    </div>
+    <div class="assigned-contact-row">
+        <div class="task-contacts-overlay green">EF</div>
+        <span>Elisabeth Friedrich</span>
+    </div> */}
+
+
+function generateTaskModalContactsHTML(contactInitials, contact) {
+    return `
+        <div class="assigned-contact-row">
+            <div class="task-contacts-overlay">${contactInitials}</div>
+            <span>${contact}</span>
+        </div>
     `;
 }
 
