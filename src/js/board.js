@@ -62,6 +62,9 @@ let tasks = [
 ];
 
 
+window.addEventListener('resize', updateHTML);
+
+
 function changeDepartmentColor() {
     let departmentColor;
     document.querySelectorAll('.department').forEach(department => {    // searches through all classes with the name of department and is iterating through nodelist
@@ -72,41 +75,24 @@ function changeDepartmentColor() {
 
 
 function updateHTML() {
+    // if (window.innerWidth < 768) {
+    //     // debugger;
+    //     generateTemplate();
+    //     if (searchTask()) {
+    //         filterAllTasks();
+    //     }
+    //     changeDepartmentColor();
+    //     updateProgressBars();
+    //     updateProgressReport();
+    // } else {
     if (searchTask()) {
         filterAllTasks();
     }
-    // let inProgress = tasks.filter(t => t['category'] == 'in-progress');
-
-    // document.getElementById('in-progress').innerHTML = '';
-
-    // for (let i = 0; i < inProgress.length; i++) {
-    //     const element = inProgress[i];
-    //     document.getElementById('in-progress').innerHTML += generateTodoHTML(element);
-    // }
-    // filterInProgress(tasks);
-
-    // let awaitFeedback = tasks.filter(t => t['category'] == 'await-feedback');
-
-    // document.getElementById('await-feedback').innerHTML = '';
-
-    // for (let i = 0; i < awaitFeedback.length; i++) {
-    //     const element = awaitFeedback[i];
-    //     document.getElementById('await-feedback').innerHTML += generateTodoHTML(element);
-    // }
-    // filterAwaitFeedback(tasks);
-
-    // let done = tasks.filter(t => t['category'] == 'done');
-
-    // document.getElementById('done').innerHTML = '';
-
-    // for (let i = 0; i < done.length; i++) {
-    //     const element = done[i];
-    //     document.getElementById('done').innerHTML += generateTodoHTML(element);
-    // }
     changeDepartmentColor();
     generateTemplate();
     updateProgressBars();
     updateProgressReport();
+    // }
 }
 
 
@@ -130,7 +116,7 @@ function filterTasks(array, id) {
 
 
 function filterAllTasks() {
-    filterTasks(tasks, 'to-do'); 
+    filterTasks(tasks, 'to-do');
     filterTasks(tasks, 'in-progress');
     filterTasks(tasks, 'await-feedback');
     filterTasks(tasks, 'done');
@@ -162,44 +148,12 @@ function searchTask() {
 
 
 function filterSearchedTasks(array, id, search) {
-    let filter = array.filter(t => t['category'] == id && t['headline'].toLowerCase().match(search) || t['category'] == id && t['department'].toLowerCase().match(search));
+    let filter = array.filter(t => t['category'] == id && t['headline'].toLowerCase().match(search) || t['category'] == id && t['description'].toLowerCase().match(search));
     for (let i = 0; i < filter.length; i++) {
         const element = filter[i];
         document.getElementById(id).innerHTML += generateTodoHTML(element);
     }
 }
-
-// function findTask() {
-//     let search = document.getElementById('search').value;
-//     search = search.toLowerCase().trim();
-//     let toDo = document.getElementById('to-do');
-//     let inProgress = document.getElementById('in-progress');
-//     let awaitFeedback = document.getElementById('await-feedback');
-//     let done = document.getElementById('done');
-//     toDo.innerHTML = '';
-//     inProgress.innerHTML = '';
-//     awaitFeedback.innerHTML = '';
-//     done.innerHTML = '';
-//     for (let i = 0; i < tasks.length; i++) {
-//         let taskTitle = tasks[i]['headline'].toLowerCase();
-//         let taskDescription = tasks[i]['department'].toLowerCase();
-//         if (taskTitle.match(search) == search || taskDescription.match(search) == search) {
-//             if (tasks[i]['category'] == 'to-do') {
-//                 toDo.innerHTML += generateTodoHTML(tasks[i]);
-//             } else if (tasks[i]['category'] == 'in-progress') {
-//                 inProgress.innerHTML += generateTodoHTML(tasks[i]);
-//             } else if (tasks[i]['category'] == 'await-feedback') {
-//                 awaitFeedback.innerHTML += generateTodoHTML(tasks[i]);
-//             } else if (tasks[i]['category'] == 'done') {
-//                 done.innerHTML += generateTodoHTML(tasks[i]);
-//             }
-//         }
-//         changeDepartmentColor();
-//         // generateTemplate();
-//         updateProgressBars();
-//         updateProgressReport();
-//     }
-// }
 
 
 function generateTodoHTML(task) {
@@ -225,10 +179,6 @@ function generateTodoHTML(task) {
     `;
 }
 
-{/* <div class="task-contacts">SM</div>
-<div class="task-contacts pink">MV</div>
-<div class="task-contacts green">EF</div> */}
-
 
 function generateAssignedContactsHTML(contact) {
     return `
@@ -240,17 +190,6 @@ function generateAssignedContactsHTML(contact) {
 function generateAssignedContactsMoreThanFourHTML(contact) {
     return `+${contact.length - 2}`;
 }
-
-
-// function getInitials(string) {
-//     var names = string.split(' '),
-//         initials = names[0].substring(0, 1).toUpperCase();
-    
-//     if (names.length > 1) {
-//         initials += names[names.length - 1].substring(0, 1).toUpperCase();
-//     }
-//     return initials;
-// };
 
 
 function startDragging(id) {
@@ -279,6 +218,10 @@ function highlight() {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
+    document.querySelectorAll('.template-task').forEach(task => {
+        task.style.display = 'unset';
+    });
+    document.getElementById(id).style.display = 'none';
 }
 
 
@@ -302,16 +245,30 @@ function resetAddIcon() {
 }
 
 
-// addEventListener('dragstart', () => {
-//     generateTemplate();
-// })
-
-
 function generateTemplate() {
     document.getElementById('to-do').innerHTML += templateTask(0);
     document.getElementById('in-progress').innerHTML += templateTask(1);
     document.getElementById('await-feedback').innerHTML += templateTask(2);
     document.getElementById('done').innerHTML += templateTask(3);
+    if (window.innerWidth < 1400) {
+        changeResponsiveTemplates();
+    }
+}
+
+
+function changeResponsiveTemplates() {
+    let template = document.getElementById('to-do').lastElementChild;
+        let toDo = document.getElementById('to-do');
+        let template1 = document.getElementById('in-progress').lastElementChild;
+        let inProgress = document.getElementById('in-progress');
+        let template2 = document.getElementById('await-feedback').lastElementChild;
+        let awaitFeedback = document.getElementById('await-feedback');
+        let template3 = document.getElementById('done').lastElementChild;
+        let done = document.getElementById('done');
+        toDo.insertBefore(template, toDo.children[0]);
+        inProgress.insertBefore(template1, inProgress.children[0]);
+        awaitFeedback.insertBefore(template2, awaitFeedback.children[0]);
+        done.insertBefore(template3, done.children[0]);
 }
 
 
@@ -415,19 +372,6 @@ function generateTaskModalHTML(task) {
     `;
 }
 
-{/* <div class="assigned-contact-row">
-        <div class="task-contacts-overlay">SM</div>
-        <span>Stefan Meier</span>
-    </div>
-    <div class="assigned-contact-row">
-        <div class="task-contacts-overlay pink">MV</div>
-        <span>Marvin Vogel</span>
-    </div>
-    <div class="assigned-contact-row">
-        <div class="task-contacts-overlay green">EF</div>
-        <span>Elisabeth Friedrich</span>
-    </div> */}
-
 
 function generateTaskModalContactsHTML(contactInitials, contact) {
     return `
@@ -441,6 +385,18 @@ function generateTaskModalContactsHTML(contactInitials, contact) {
 
 function editTasks(taskID) {
     document.getElementById('task-modal').innerHTML = generateEditTaskHTML(tasks[taskID]);
+    updateUrgencyBtns(taskID);
+}
+
+
+function updateUrgencyBtns(taskID) {
+    // debugger;
+    document.querySelectorAll('input[name="prio-edit"]').forEach(btn => {
+        if (btn.value == tasks[taskID]['priority']) {
+            btn.checked = true;
+        }
+    });
+    // console.log(document.querySelectorAll('input[name="prio"]'))
 }
 
 
@@ -464,21 +420,21 @@ function generateEditTaskHTML(task) {
                         </div>
                         <div class="button-area margin-btn-56">
                             <button type="button" value="high" class="add-task-prio-high" id="edit-high" onclick="checkButton('edit-high')" onmouseover="hoverButton('edit-high')" onmouseleave="leaveHoverButton('edit-high')">
-                            <input type="radio" id="edit-high-prio" name="prio">
+                            <input type="radio" id="edit-high-prio" name="prio-edit" value="high">
                             <label for="edit-high-prio">
                                 <span class="priority-button-text text-19pt">Urgent</span>
                                 <img src="../img/prio_bnt_urgent.png" alt="">
                             </label>
                             </button>
                             <button type="button" value="medium" class="add-task-prio-medium" id="edit-medium" onclick="checkButton('edit-medium')" onmouseover="hoverButton('edit-medium')" onmouseleave="leaveHoverButton('edit-medium')">
-                                <input type="radio" id="edit-medium-prio" name="prio">
+                                <input type="radio" id="edit-medium-prio" name="prio-edit" value="medium">
                                 <label for="edit-medium-prio">
                                     <span class="priority-button-text text-19pt">Medium</span>
                                     <img src="../img/prio_bnt_medium.png" alt="">
                                 </label>
                             </button>
                             <button type="button" value="low" class="add-task-prio-low" id="edit-low" onclick="checkButton('edit-low')" onmouseover="hoverButton('edit-low')" onmouseleave="leaveHoverButton('edit-low')">
-                                <input type="radio" id="edit-low-prio" name="prio">
+                                <input type="radio" id="edit-low-prio" name="prio-edit" value="low">
                                 <label for="edit-low-prio">
                                     <span class="priority-button-text text-19pt">Low</span>
                                     <img src="../img/prio_bnt_low.png" alt="">
@@ -507,16 +463,16 @@ function generateEditTaskHTML(task) {
                                     <input type="checkbox" id="you" name="assign-contacts">
                                 </div>
                                 <div class="dropdown-contact">
-                                    <label for="vogel">Maximilian Vogel</label>
-                                    <input type="checkbox" id="vogel" name="assign-contacts">
+                                    <label for="schönfeld">Alexander Schönfeld</label>
+                                    <input type="checkbox" id="schönfeld" name="assign-contacts" value="Alexander Schönfeld">
                                 </div>
                                 <div class="dropdown-contact">
-                                    <label for="mustermann">Max Mustermann</label>
-                                    <input type="checkbox" id="mustermann" name="assign-contacts">
+                                    <label for="zediu">Corneliu Zediu</label>
+                                    <input type="checkbox" id="zediu" name="assign-contacts" value="Corneliu Zediu">
                                 </div>
                                 <div class="dropdown-contact">
-                                    <label for="musterfrau">Heid Musterfrau</label>
-                                    <input type="checkbox" id="musterfrau" name="assign-contacts">
+                                    <label for="savkovic">Danijel Savkovic</label>
+                                    <input type="checkbox" id="savkovic" name="assign-contacts" value="Danijel Savkovic">
                                 </div>
                                 <div class="dropdown-contact" onclick="openContactInput('contact-dropdown-edit', 'contact-input-area-edit', 'contact-input-edit')" role="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
@@ -666,12 +622,13 @@ function closeCategoryInput() {
 
 function createTask() {
     let title = document.getElementById('title').value;
-    // let contacts = 
+    let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
+    console.log(contactsCheckedBoxes);
     let date = document.getElementById('date').value;
     // let category = 
     let urgency = document.querySelector('input[name="prio"]:checked').value;
     let description = document.getElementById('description-text').value;
-    new CreateTask(tasks.length, title, description, urgency, date);
+    new CreateTask(tasks.length, title, description, contactsCheckedBoxes, urgency, date);
     updateHTML();
     taskAddedToBoard();
     setTimeout(() => {
@@ -682,11 +639,30 @@ function createTask() {
 }
 
 
+// Pass the checkbox name to the function
+function getCheckedBoxes(chkboxName) {
+    let checkboxes = document.getElementsByName(chkboxName);
+    let checkboxesChecked = [];
+    // loop over them all
+    for (let i = 0; i < checkboxes.length; i++) {
+        // And stick the checked ones onto an array...
+        if (checkboxes[i].checked) {
+            checkboxesChecked.push(checkboxes[i].value);
+        }
+    }
+    // Return the array if it is non-empty, or null
+    return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+}
+
+
 function resetAddTaskForm() {
     document.getElementById('title').value = '';
     document.getElementById('date').value = '';
     document.querySelector('input[name="prio"]:checked').checked = false;
     document.getElementById('description-text').value = '';
+    document.querySelectorAll('input[name="assign-contacts"]:checked').forEach(checkbox => {
+        checkbox.checked = false;
+    });
 }
 
 
@@ -710,48 +686,3 @@ function resetTaskAddedToBoard() {
     let taskAdded = document.getElementById('task-added');
     taskAdded.style.transform = '';
 }
-
-
-// function createSubtaskHTML() {
-//     return `
-//     <div class="subtasks-input-area">
-//         <input class="" type="text" placeholder="Add new subtask">
-//         <div class="subtask-icons">
-//             <img class="cursor-pointer" src="../img/cancel-subtask.png" alt="">
-//             <img src="../img/subtask-line.png" alt="">
-//             <img class="cursor-pointer" src="../img/check-subtask.png" alt="">
-//         </div>
-//     </div>
-//     `;
-// }
-
-
-// function uncheckButton(id) {
-//     let button = document.getElementById(id);
-//     button.addEventListener("click", () => {
-//         timesClicked++;
-//         if (timesClicked % 2 == 0) {
-//             button.firstElementChild.checked = false;
-//         } else {
-//             button.firstElementChild.checked = true;
-//         }
-//     })
-//     console.log(timesClicked);
-// }
-
-
-// function showActiveButton(id) {
-//     // debugger;
-//     let active = document.getElementById(id);
-//     if (id == 'high') {
-//         active.style.backgroundColor = '#FF3D00';
-//         active.lastElementChild.src = '../img/prio-high-active.png';
-//     } else if (id == 'medium') {
-//         active.style.backgroundColor = '#FFA800';
-//         active.lastElementChild.src = '../img/prio-medium-active.png';
-//     } else if (id == 'low') {
-//         active.style.backgroundColor = '#7AE229';
-//         active.lastElementChild.src = '../img/prio-low-active.png';
-//     }
-//     active.firstElementChild.style.color = 'white';
-// }

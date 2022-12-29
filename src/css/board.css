@@ -87,6 +87,10 @@
     justify-content: space-between;
     align-items: center;
     width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 46px;
+    margin-top: 46px;
 }
 
 .board-points h3 {
@@ -94,6 +98,10 @@
     font-weight: 700 !important;
     color: #42526E;
     margin: 0 !important;
+}
+
+.board-column {
+    
 }
 
 .add-icon {
@@ -219,6 +227,7 @@
     background-color: #FFFFFF;
     padding: 16px;
     z-index: -1;
+    display: none;
 }
 
 .drag-area-highlight {
@@ -444,6 +453,9 @@
     height: 61px !important;
     font-weight: 400 !important;
     width: 180px !important;
+    position: absolute;
+    top: 78px;
+    right: 36px;
 }
 
 .edit-task {
@@ -514,7 +526,9 @@
     border-bottom: 2px solid #7AE229 !important;
 }
 
-input[name="prio"] {
+input[name="prio"],
+input[name="prio-edit"],
+input[name="category"] {
     display: none
 }
 
@@ -784,27 +798,192 @@ input[type="checkbox"]:checked {
     /* content: url('../img/select-arrow.png') */
 }
 
-/* input[type="checkbox"]:checked:after { */
-/* Heres your symbol replacement - this is a tick in Unicode. */
-content: "\2713";
-color: #fff;
-/* The following positions my tick in the center, 
-     * but you could just overlay the entire box
-     * with a full after element with a background if you want to */
-position: absolute;
-left: 50%;
-top: 50%;
--webkit-transform: translate(-50%, -50%);
--moz-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
-/*
-     * If you want to fully change the check appearance, use the following:
-     * content: " ";
-     * width: 100%;
-     * height: 100%;
-     * background: blue;
-     * top: 0;
-     * left: 0;
-     */
+.responsive-headline {
+    font-size: 19px;
+    color: #4589FF;
+    font-weight: 400;
+    display: none;
+}
+
+@media (max-width: 1400px) {
+    
+    .board-bottom-container {
+        flex-direction: column;
+        width: 60%;
+    }
+
+    .board-points {
+        width: 100%;
+        margin-top: 41px;
+        margin-bottom: 21px;
+    }
+
+    .board-task {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        width: 75%;
+    }
+
+    .template-task {
+        min-height: 120px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    
+    .board {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .btn-add-task {
+        display: none;
+    }
+
+    .search {
+        height: 41px !important;
+        margin-bottom: 21px;
+    }
+    
+    .input-group {
+        flex-wrap: nowrap !important;
+    }
+
+    .main-header {
+        flex-direction: column;
+        gap: 31px;
+        padding: 20px 0 0;
+    }
+
+    .board-bottom-container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .board-points {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 21px;
+    }
+
+    .board-task {
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        width: 80%;
+    }
+
+    .responsive-headline {
+        display: unset;
+    }
+
+    .board-column:last-of-type {
+        margin-bottom: 120px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+
+    .progress {
+        width: 70%;
+    }
+
+    .add-task-modal {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .add-task-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* width: 363px; */
+    }
+
+    .category-header {
+        align-self: flex-start;
+        font-size: 16px !important;
+    }
+
+    .input-title,
+    .input-title-font {
+        width: 363px !important;
+        font-size: 28px !important;
+    }
+
+    .uniform-sizing {
+        width: 363px !important;
+    }
+
+    .add-task-header-bottom {
+        align-items: center;
+    }
+
+    .add-task-title {
+        text-align: start !important;
+        align-items: flex-start !important;
+        align-self: flex-start !important;
+    }
+
+    .btn-high-hover {
+        height: 43px !important;
+        border-bottom: 2px solid #FF3D00 !important;
+    }
+    
+    .btn-medium-hover {
+        height: 43px !important;
+        border-bottom: 2px solid #FFA800 !important;
+    }
+    
+    .btn-low-hover {
+        height: 43px !important;
+        border-bottom: 2px solid #7AE229 !important;
+    }
+
+    .button-area {
+        height: 43px !important;
+    }
+
+    .button-area button {
+        height: 41px !important;
+        width: 111px !important;
+        font-size: 16px !important;
+    }
+
+    .description-area-overlay {
+        width: 363px !important;
+    }
+
+    .description-text {
+        width: 363px !important;
+        font-size: 16px !important;
+    }
+
+    .subtasks-area {
+        width: 363px !important;
+    }
+
+    .subtasks-input-area {
+        width: 363px !important;
+        font-size: 16px !important;
+    }
+
+    .text-19pt {
+        font-size: 16px !important;
+    }
+
+    .dropdown-contacts-container {
+        width: 363px !important;
+        margin: 0 auto;
+        font-size: 16px ;
+    }
+    
 }
