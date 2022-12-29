@@ -495,6 +495,11 @@ function saveTasks(taskID) {
     let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
     let editDescription = document.getElementById(`edit-description${taskID}`).value;
     let editDate = document.getElementById(`edit-date${taskID}`).value;
+    document.querySelectorAll('input[name="prio-edit"]').forEach(check => {
+        if (check.checked) {
+            tasks[taskID]['priority']  = check.value;
+        }
+    });
     tasks[taskID]['headline'] = editHeadline;
     tasks[taskID]['description'] = editDescription;
     tasks[taskID]['dueDate'] = editDate;
@@ -623,7 +628,7 @@ function closeCategoryInput() {
 function createTask() {
     let title = document.getElementById('title').value;
     let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
-    console.log(contactsCheckedBoxes);
+    // console.log(contactsCheckedBoxes);
     let date = document.getElementById('date').value;
     // let category = 
     let urgency = document.querySelector('input[name="prio"]:checked').value;
