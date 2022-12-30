@@ -1,3 +1,6 @@
+let selectedCategory;
+let selectedColor;
+
 // This function will change bg-color of urgency button
 function changeUrgencyHigh() {
     document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
@@ -7,50 +10,19 @@ function changeUrgencyHigh() {
     event.preventDefault();
 }
 
-function changeUrgencyMedium() { }
-
-function changeUrgencyLow() { }
-
-// This function will add subtask
-function addSubtask() { }
-
-// This function will add form-data
-function addTask() {
-    console.log('add task');
-}
-
 // This function will clear form
 function clearForm() {
-    console.log('clearForm');
+    document.getElementById('myForm').reset();
 }
 
-// function checkButtonColor(id) {
-//     let div = document.getElementById(id);
-//     div.firstElementChild.checked = true;
-// }
+function selectCategory(category, color) {
+    const pink = '#FC71FF';
+    const turqoise = '#1FD7C1;';
+    if (color == 'pink') {
+    } else {
+        
+    }
 
-// function checkButtonColor() {
-//     remove();
-//     if (document.getElementById('lightblue').checked) {
-//         document.getElementById('shadowLightblue').classList.add('checkedRadio');
-//     } else if (document.getElementById('red').checked) {
-//         document.getElementById('shadowRed').classList.add('checkedRadio');
-//     } else if (document.getElementById('green').checked) {
-//         document.getElementById('shadowGreen').classList.add('checkedRadio');
-//     } else if (document.getElementById('orange').checked) {
-//         document.getElementById('shadowOrange').classList.add('checkedRadio');
-//     } else if (document.getElementById('violet').checked) {
-//         document.getElementById('shadowViolet').classList.add('checkedRadio');
-//     } else if (document.getElementById('blue').checked) {
-//         document.getElementById('shadowBlue').classList.add('checkedRadio');
-//     }
-// }
-
-// function remove() {
-//     document.getElementById('shadowLightblue').classList.remove('checkedRadio');
-//     document.getElementById('shadowRed').classList.remove('checkedRadio');
-//     document.getElementById('shadowGreen').classList.remove('checkedRadio');
-//     document.getElementById('shadowOrange').classList.remove('checkedRadio');
-//     document.getElementById('shadowViolet').classList.remove('checkedRadio');
-//     document.getElementById('shadowBlue').classList.remove('checkedRadio');
-// };
+    document.getElementById('category-dropdown').innerHTML = '';
+    document.getElementById('category-dropdown').innerHTML = category + color;
+ };
