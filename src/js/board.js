@@ -279,6 +279,9 @@ function templateTask(i) {
 
 function openAddTaskDialog(id, id2, taskID) {
     document.getElementById(id).classList.remove("d-none");
+
+    renderContactsInDropDown();
+
     setTimeout(() => {
         if (id2 == 'task-modal') {
             document.getElementById('task-modal').innerHTML = generateTaskModalHTML(tasks[taskID]);
@@ -458,8 +461,10 @@ function generateEditTaskHTML(task) {
                         </div>
                         <div class="margin-btn-25 assign-contact-container" id="contact-container-edit">
                             <div class="dropdown-contacts-container collapse scroll" id="collapseContactsEdit">
+
+
                                 <div class="dropdown-contact">
-                                    <label for="you">You</label>
+                                    <label for="you">${activeUser['userName']}</label>
                                     <input type="checkbox" id="you" name="assign-contacts">
                                 </div>
                                 <div class="dropdown-contact">
@@ -474,6 +479,9 @@ function generateEditTaskHTML(task) {
                                     <label for="savkovic">Danijel Savkovic</label>
                                     <input type="checkbox" id="savkovic" name="assign-contacts" value="Danijel Savkovic">
                                 </div>
+
+
+
                                 <div class="dropdown-contact" onclick="openContactInput('contact-dropdown-edit', 'contact-input-area-edit', 'contact-input-edit')" role="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
                                     <label for="">Invite new contact</label>
@@ -691,3 +699,4 @@ function resetTaskAddedToBoard() {
     let taskAdded = document.getElementById('task-added');
     taskAdded.style.transform = '';
 }
+
