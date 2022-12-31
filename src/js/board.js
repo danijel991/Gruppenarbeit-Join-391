@@ -637,7 +637,17 @@ function closeCategoryInput() {
 async function createTask() {
     let title = document.getElementById('title').value;
     let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
-    // console.log(contactsCheckedBoxes);
+
+    console.log(contactsCheckedBoxes);
+
+    if (contactsCheckedBoxes == null) {
+        let validation = document.getElementById("title");
+        validation.setCustomValidity("Must set at least one contact");
+        validation.reportValidity();
+        return;
+    }
+
+
     let date = document.getElementById('date').value;
     // let category = 
     let urgency = document.querySelector('input[name="prio"]:checked').value;

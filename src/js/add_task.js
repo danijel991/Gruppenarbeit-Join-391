@@ -16,13 +16,44 @@ function clearForm() {
 }
 
 function selectCategory(category, color) {
-    const pink = '#FC71FF';
-    const turqoise = '#1FD7C1;';
-    if (color == 'pink') {
-    } else {
-        
-    }
+
+    // const color = {
+    //     pink: '#FC71FF',
+    //     turqoise: '#1FD7C1;',
+
+    // }
+
+    // let hex = colors[color];
+
+    // if (hex == undefined) {
+    //     hex = 'black'
+    // }
 
     document.getElementById('category-dropdown').innerHTML = '';
-    document.getElementById('category-dropdown').innerHTML = category + color;
- };
+    document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
+};
+
+function generateCategoryHTML(category, color) {
+    return `
+    <div onclick="selectCategory('${category}','${color}')" class="dropdown-category">
+    <label for="category-${category}">${category}</label>
+    <input type="radio" name="category" id="category-${category}" value="${category}" role="button" data-bs-toggle="collapse"
+    data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+    <div class="category-color ${color}"></div>
+    </div>
+    `;
+}
+
+function addNewCategory() {
+    let category = document.getElementById('category-input').value;
+    let color = document.querySelector("input[type=radio][name=color]:checked").value;
+
+    console.log(category,color);
+
+    document.getElementById('collapseCategory').innerHTML += generateCategoryHTML(category, color);
+
+    closeCategoryInput();
+
+    selectCategory(category, color);
+}
+
