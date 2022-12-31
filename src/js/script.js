@@ -20,7 +20,7 @@ async function init() {
   await showSelectedLink();
   await loadUsersFromBackend();
   await loadUserContactsFromBackend();
-  await updateHTML(); //loads all ActiveUserTasks from Backend and renders Content in Board.html
+  
 }
 
 async function includeHTML() {
