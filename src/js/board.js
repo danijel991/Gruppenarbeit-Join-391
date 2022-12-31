@@ -9,56 +9,56 @@ const color = {
 }
 
 let tasks = [
-    {
-        id: 0,
-        department: 'Design',
-        headline: 'Website redesign',
-        description: 'Modify the contents of the main website..',
-        assignedTo: ['Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich', 'Felix Müller'],
-        priority: 'low',
-        category: 'to-do',
-        dueDate: '2022-08-05'
-    },
-    {
-        id: 1,
-        department: 'Sales',
-        headline: 'Call potencial clients',
-        description: 'Make the product presentation to prospective buyers',
-        assignedTo: ['Felix Müller', 'Franziska Schütz'],
-        priority: 'high',
-        category: 'in-progress',
-        dueDate: '2022-08-05'
-    },
-    {
-        id: 2,
-        department: 'Backoffice',
-        headline: 'Accounting invoices',
-        description: 'Write open invoices for customer',
-        assignedTo: ['Max Mustermann', 'Frank Hausner', 'Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich'],
-        priority: 'medium',
-        category: 'await-feedback',
-        dueDate: '2022-08-05'
-    },
-    {
-        id: 3,
-        department: 'Media',
-        headline: 'Video cut',
-        description: 'Edit the new company video',
-        assignedTo: ['Sandra Walter', 'Theo Ochs', 'Olaf Siegfried'],
-        priority: 'medium',
-        category: 'await-feedback',
-        dueDate: '2022-08-05'
-    },
-    {
-        id: 4,
-        department: 'Marketing',
-        headline: 'Social media strategy',
-        description: 'Develop an ad campaign for brand positioning',
-        assignedTo: ['Jennifer Bern'],
-        priority: 'low',
-        category: 'done',
-        dueDate: '2022-08-05'
-    }
+    // {
+    //     id: 0,
+    //     department: 'Design',
+    //     headline: 'Website redesign',
+    //     description: 'Modify the contents of the main website..',
+    //     assignedTo: ['Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich', 'Felix Müller'],
+    //     priority: 'low',
+    //     category: 'to-do',
+    //     dueDate: '2022-08-05'
+    // },
+    // {
+    //     id: 1,
+    //     department: 'Sales',
+    //     headline: 'Call potencial clients',
+    //     description: 'Make the product presentation to prospective buyers',
+    //     assignedTo: ['Felix Müller', 'Franziska Schütz'],
+    //     priority: 'high',
+    //     category: 'in-progress',
+    //     dueDate: '2022-08-05'
+    // },
+    // {
+    //     id: 2,
+    //     department: 'Backoffice',
+    //     headline: 'Accounting invoices',
+    //     description: 'Write open invoices for customer',
+    //     assignedTo: ['Max Mustermann', 'Frank Hausner', 'Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich'],
+    //     priority: 'medium',
+    //     category: 'await-feedback',
+    //     dueDate: '2022-08-05'
+    // },
+    // {
+    //     id: 3,
+    //     department: 'Media',
+    //     headline: 'Video cut',
+    //     description: 'Edit the new company video',
+    //     assignedTo: ['Sandra Walter', 'Theo Ochs', 'Olaf Siegfried'],
+    //     priority: 'medium',
+    //     category: 'await-feedback',
+    //     dueDate: '2022-08-05'
+    // },
+    // {
+    //     id: 4,
+    //     department: 'Marketing',
+    //     headline: 'Social media strategy',
+    //     description: 'Develop an ad campaign for brand positioning',
+    //     assignedTo: ['Jennifer Bern'],
+    //     priority: 'low',
+    //     category: 'done',
+    //     dueDate: '2022-08-05'
+    // }
 ];
 
 
@@ -74,7 +74,7 @@ function changeDepartmentColor() {
 }
 
 
-function updateHTML() {
+async function updateHTML() {
     // if (window.innerWidth < 768) {
     //     // debugger;
     //     generateTemplate();
@@ -88,6 +88,7 @@ function updateHTML() {
     if (searchTask()) {
         filterAllTasks();
     }
+    await loadUserTasksFromBackend();
     changeDepartmentColor();
     generateTemplate();
     updateProgressBars();
@@ -499,7 +500,7 @@ function generateEditTaskHTML(task) {
 }
 
 
-function saveTasks(taskID) {
+async function saveTasks(taskID) {
     let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
     let editDescription = document.getElementById(`edit-description${taskID}`).value;
     let editDate = document.getElementById(`edit-date${taskID}`).value;
@@ -512,7 +513,7 @@ function saveTasks(taskID) {
     tasks[taskID]['description'] = editDescription;
     tasks[taskID]['dueDate'] = editDate;
     closeAddTaskDialog('task-modal', 'task-overlay');
-    updateHTML();
+    await updateHTML();
 }
 
 
@@ -633,7 +634,7 @@ function closeCategoryInput() {
 }
 
 
-function createTask() {
+async function createTask() {
     let title = document.getElementById('title').value;
     let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
     // console.log(contactsCheckedBoxes);
@@ -642,7 +643,8 @@ function createTask() {
     let urgency = document.querySelector('input[name="prio"]:checked').value;
     let description = document.getElementById('description-text').value;
     new CreateTask(tasks.length, title, description, contactsCheckedBoxes, urgency, date);
-    updateHTML();
+    await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
+    await updateHTML();
     taskAddedToBoard();
     setTimeout(() => {
         closeAddTaskDialog('add-task-modal', 'add-task-overlay');
