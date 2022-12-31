@@ -368,7 +368,7 @@ function generateTaskModalContactsHTML(contactInitials, contact) {
 }
 
 function editTasks(taskID) {
-  document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
+    document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   updateUrgencyBtns(taskID);
 }
 
@@ -439,25 +439,8 @@ function generateEditTaskHTML(task) {
                             </div>
                         </div>
                         <div class="margin-btn-25 assign-contact-container" id="contact-container-edit">
-                            <div class="dropdown-contacts-container collapse scroll" id="collapseContactsEdit">
+                            <div class="dropdown-contacts-container collapse scroll" id="collapseContacts">
 
-
-                                <div class="dropdown-contact">
-                                    <label for="you">${activeUser["userName"]}</label>
-                                    <input type="checkbox" id="you" name="assign-contacts">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="schönfeld">Alexander Schönfeld</label>
-                                    <input type="checkbox" id="schönfeld" name="assign-contacts" value="Alexander Schönfeld">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="zediu">Corneliu Zediu</label>
-                                    <input type="checkbox" id="zediu" name="assign-contacts" value="Corneliu Zediu">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="savkovic">Danijel Savkovic</label>
-                                    <input type="checkbox" id="savkovic" name="assign-contacts" value="Danijel Savkovic">
-                                </div>
 
 
 
