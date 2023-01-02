@@ -41,7 +41,7 @@
 
         <!-- ADD TASK START -->
         <main class="add-task-main">
-<!-- left side of add task form -->
+            <!-- left side of add task form -->
             <div class="add-task-left">
                 <form id="myForm" class="add-task-form" onsubmit="createTask(); return false;">
                     <div class="form-width input-title margin-btn-25">
@@ -109,7 +109,8 @@
                                 <img onclick="closeCategoryInput()" class="cursor-pointer"
                                     src="../img/cancel-subtask.png" alt="">
                                 <img src="../img/subtask-line.png" alt="">
-                                <img onclick="addNewCategory()" class="cursor-pointer" src="../img/check-subtask.png" alt="">
+                                <img onclick="addNewCategory()" class="cursor-pointer" src="../img/check-subtask.png"
+                                    alt="">
                             </div>
                         </div>
                         <div class="category-color-container radio-button">
@@ -148,8 +149,9 @@
                             </div>
                             <div onclick="selectCategory('Sales','pink')" class="dropdown-category">
                                 <label for="sales">Sales</label>
-                                <input type="radio" name="category" id="sales" value="Sales" role="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                                <input type="radio" name="category" id="sales" value="Sales" role="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
+                                    aria-controls="collapseCategory">
                                 <div class="category-color-pink"></div>
                             </div>
                             <div onclick="selectCategory('Backoffice','turqoise')" class="dropdown-category">
@@ -221,15 +223,24 @@
 
             <!-- right side of add task form -->
             <div class="add-task-right">
-                <button onclick="clearForm()" class="add-task-right-button-left">
+                <button onclick="clearForm()" class="add-task-right-button-left" id="clearForm">
                     <span>Clear</span>
                     <span>&#10005</span>
                 </button>
-                <button class="add-task-right-button-right">
+                <button class="add-task-right-button-right" id="createTask">
                     <span>Create Task</span>
                     <span>&#10003</span>
                 </button>
             </div>
+            <div class="responsive-Header">
+                <img src="../img/join_logo_blue.png" alt="Join logo responsive" id="join_logo_blue">
+            <div class="responsive-Button-AddTask">
+                <button class="add-task-right-button-right" id="createTaskResponsive">
+                    <span>Create </span>
+                    <span>&#10003</span>
+                </button>
+            </div>
+        </div>
             </form>
         </main>
 

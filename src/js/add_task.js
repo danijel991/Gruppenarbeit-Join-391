@@ -56,4 +56,3 @@ function addNewCategory() {
 
     selectCategory(category, color);
 }
-
