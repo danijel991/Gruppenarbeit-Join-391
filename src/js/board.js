@@ -544,6 +544,7 @@ function addSubtask() {
   }
 }
 
+
 function createSubtaskHTML(subtask) {
   return `
     <div class="subtask">
