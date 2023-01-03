@@ -1,6 +1,12 @@
 let selectedCategory;
 let selectedColor;
 
+// funktion, damit er versucht die kontakte bei onload zu befüllen
+
+async function init_add_task() {
+   await renderContactsInDropDown();
+}
+
 // This function will change bg-color of urgency button
 function changeUrgencyHigh() {
     document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
@@ -33,9 +39,11 @@ function selectCategory(category, color) {
     document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
 };
 
+// Hier befindet sich die New Cagetory funktion, aus input feld name + farbe 
+
 function generateCategoryHTML(category, color) {
     return `
-    <div onclick="selectCategory('${category}','${color}')" class="dropdown-category">
+    <div onclick="selectCategory('${category}','${color}')" class="dropdown-category" id="">
     <label for="category-${category}">${category}</label>
     <input type="radio" name="category" id="category-${category}" value="${category}" role="button" data-bs-toggle="collapse"
     data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
