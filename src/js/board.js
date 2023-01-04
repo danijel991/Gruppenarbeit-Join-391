@@ -1,5 +1,5 @@
 let currentDraggedElement;
-
+let tasks = [];
 const color = {
   design: "#FF7A00",
   sales: "#FC71FF",
@@ -8,60 +8,9 @@ const color = {
   media: "#FFC701",
 };
 
-let tasks = [
-  // {
-  //     id: 0,
-  //     department: 'Design',
-  //     headline: 'Website redesign',
-  //     description: 'Modify the contents of the main website..',
-  //     assignedTo: ['Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich', 'Felix Müller'],
-  //     priority: 'low',
-  //     category: 'to-do',
-  //     dueDate: '2022-08-05'
-  // },
-  // {
-  //     id: 1,
-  //     department: 'Sales',
-  //     headline: 'Call potencial clients',
-  //     description: 'Make the product presentation to prospective buyers',
-  //     assignedTo: ['Felix Müller', 'Franziska Schütz'],
-  //     priority: 'high',
-  //     category: 'in-progress',
-  //     dueDate: '2022-08-05'
-  // },
-  // {
-  //     id: 2,
-  //     department: 'Backoffice',
-  //     headline: 'Accounting invoices',
-  //     description: 'Write open invoices for customer',
-  //     assignedTo: ['Max Mustermann', 'Frank Hausner', 'Stefan Meier', 'Marvin Vogel', 'Elisabeth Friedrich'],
-  //     priority: 'medium',
-  //     category: 'await-feedback',
-  //     dueDate: '2022-08-05'
-  // },
-  // {
-  //     id: 3,
-  //     department: 'Media',
-  //     headline: 'Video cut',
-  //     description: 'Edit the new company video',
-  //     assignedTo: ['Sandra Walter', 'Theo Ochs', 'Olaf Siegfried'],
-  //     priority: 'medium',
-  //     category: 'await-feedback',
-  //     dueDate: '2022-08-05'
-  // },
-  // {
-  //     id: 4,
-  //     department: 'Marketing',
-  //     headline: 'Social media strategy',
-  //     description: 'Develop an ad campaign for brand positioning',
-  //     assignedTo: ['Jennifer Bern'],
-  //     priority: 'low',
-  //     category: 'done',
-  //     dueDate: '2022-08-05'
-  // }
-];
 
 window.addEventListener("resize", updateHTML);
+
 
 function changeDepartmentColor() {
   let departmentColor;
@@ -72,16 +21,18 @@ function changeDepartmentColor() {
   });
 }
 
+
 async function updateHTML() {
-  if (searchTask()) {
-      filterAllTasks();
-  }
   await loadUserTasksFromBackend();
+  if (searchTask()) {
+    filterAllTasks();
+  }
   changeDepartmentColor();
   generateTemplate();
   updateProgressBars();
   updateProgressReport();
 }
+
 
 function filterTasks(array, id) {
   let filter = array.filter((t) => t["category"] == id);
@@ -93,16 +44,17 @@ function filterTasks(array, id) {
     for (let j = 0; j < task["assignedTo"].length; j++) {
       const assignedContacts = task["assignedTo"][j];
       if (j > 2) {
-        document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML =
-          generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
+        document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
       } else {
-        document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(
-          getInitials(assignedContacts)
-        );
+        document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts));
+        // if (console.log(assignedContacts == activeUserContacts[j]['name'])) {
+        //   document.getElementById(`task-contacts-container${task["id"]}`).childNodes.style.backgroundColor = activeUserContacts[j]['intialsColor'];
+        // }
       }
     }
   }
 }
+
 
 function filterAllTasks() {
   filterTasks(tasks, "to-do");
@@ -110,6 +62,7 @@ function filterAllTasks() {
   filterTasks(tasks, "await-feedback");
   filterTasks(tasks, "done");
 }
+
 
 function findTask() {
   resetAllTasksContainer();
@@ -121,6 +74,7 @@ function findTask() {
   updateHTML();
 }
 
+
 function resetAllTasksContainer() {
   document.getElementById("to-do").innerHTML = "";
   document.getElementById("in-progress").innerHTML = "";
@@ -128,9 +82,11 @@ function resetAllTasksContainer() {
   document.getElementById("done").innerHTML = "";
 }
 
+
 function searchTask() {
   return document.getElementById("search").value == "";
 }
+
 
 function filterSearchedTasks(array, id, search) {
   let filter = array.filter(
@@ -143,6 +99,7 @@ function filterSearchedTasks(array, id, search) {
     document.getElementById(id).innerHTML += generateTodoHTML(element);
   }
 }
+
 
 function generateTodoHTML(task) {
   return `
@@ -167,36 +124,52 @@ function generateTodoHTML(task) {
     `;
 }
 
+
 function generateAssignedContactsHTML(contact) {
   return `
         <div class="task-contacts">${contact}</div>
     `;
 }
 
+
 function generateAssignedContactsMoreThanFourHTML(contact) {
   return `+${contact.length - 2}`;
 }
+
+
+// function changeAssignedContactsColor(assignedContacts) {
+//   for (let i = 0; i < tasks[].length; i++) {
+//     const element = tasks[][i];
+    
+//   }
+//   if (assignedContacts == activeUserContacts[])
+// }
+
 
 function startDragging(id) {
   currentDraggedElement = id;
 }
 
+
 function allowDrop(ev) {
   ev.preventDefault();
 }
+
 
 async function moveTo(category) {
   tasks[currentDraggedElement]["category"] = category; // z.b. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'
   document.getElementById("search").value = "";
   await saveInBackendUserTasks();
   updateHTML();
-}
+};
+
 
 function highlight() {
   document.querySelectorAll(".template-task").forEach((template) => {
     template.classList.add("drag-area-highlight");
   });
 }
+
 
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
@@ -206,9 +179,11 @@ function removeHighlight(id) {
   document.getElementById(id).style.display = "none";
 }
 
+
 function rotateTask() {
   document.getElementById(currentDraggedElement).classList.add("rotate");
 }
+
 
 function markAddIconAsActive(i) {
   let addIcon = document.getElementById(`add-icon${i}`);
@@ -216,12 +191,14 @@ function markAddIconAsActive(i) {
   addIcon.style.transition = "all 125ms ease-in-out";
 }
 
+
 function resetAddIcon() {
   document.querySelectorAll(".add-icon").forEach((add) => {
     add.style.backgroundImage = 'url("../img/plus-button.png")';
     add.style.transition = "all 125ms ease-in-out";
   });
 }
+
 
 function generateTemplate() {
   document.getElementById("to-do").innerHTML += templateTask(0);
@@ -232,6 +209,7 @@ function generateTemplate() {
     changeResponsiveTemplates();
   }
 }
+
 
 function changeResponsiveTemplates() {
   let template = document.getElementById("to-do").lastElementChild;
@@ -248,9 +226,11 @@ function changeResponsiveTemplates() {
   done.insertBefore(template3, done.children[0]);
 }
 
+
 function templateTask(i) {
   return `<div id="template${i}" class="template-task"><div>`;
 }
+
 
 function openAddTaskDialog(id, id2, taskID) {
   document.getElementById(id).classList.remove("d-none");
@@ -263,10 +243,7 @@ function openAddTaskDialog(id, id2, taskID) {
       // debugger;
       for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
         const contacts = tasks[taskID]["assignedTo"][i];
-        document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(
-          getInitials(contacts),
-          contacts
-        );
+        document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts);
       }
       changeDepartmentColor();
       document.getElementById(id2).classList.add("slide-in-bottom");
@@ -276,6 +253,7 @@ function openAddTaskDialog(id, id2, taskID) {
     document.body.style.overflow = "hidden";
   }, 10);
 }
+
 
 function closeAddTaskDialog(id, id2) {
   if (id == "task-modal") {
@@ -289,6 +267,7 @@ function closeAddTaskDialog(id, id2) {
     resetAddIcon();
   }, 200);
 }
+
 
 function updateProgressBars() {
   document.querySelectorAll(".progress-bar").forEach((e) => {
@@ -304,6 +283,7 @@ function updateProgressBars() {
   });
 }
 
+
 function updateProgressReport() {
   document.querySelectorAll(".progress-report").forEach((e) => {
     if (boardTaskContainerId(e) == "to-do") {
@@ -318,9 +298,11 @@ function updateProgressReport() {
   });
 }
 
+
 function boardTaskContainerId(e) {
   return e.parentElement.parentElement.parentElement.parentElement.id; // Id from to-do, in-progress etc. containers
 }
+
 
 function generateTaskModalHTML(task) {
   return `
@@ -348,6 +330,7 @@ function generateTaskModalHTML(task) {
     `;
 }
 
+
 function generateTaskModalContactsHTML(contactInitials, contact) {
   return `
         <div class="assigned-contact-row">
@@ -357,10 +340,12 @@ function generateTaskModalContactsHTML(contactInitials, contact) {
     `;
 }
 
+
 function editTasks(taskID) {
-    document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
+  document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   updateUrgencyBtns(taskID);
 }
+
 
 function updateUrgencyBtns(taskID) {
   // debugger;
@@ -371,6 +356,7 @@ function updateUrgencyBtns(taskID) {
   });
   // console.log(document.querySelectorAll('input[name="prio"]'))
 }
+
 
 function generateEditTaskHTML(task) {
   return `
@@ -450,6 +436,7 @@ function generateEditTaskHTML(task) {
     `;
 }
 
+
 async function saveTasks(taskID) {
   let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
   let editDescription = document.getElementById(`edit-description${taskID}`).value;
@@ -466,6 +453,7 @@ async function saveTasks(taskID) {
   await updateHTML();
 }
 
+
 function hoverButton(id) {
   // debugger;
   let hover = document.getElementById(id);
@@ -480,6 +468,7 @@ function hoverButton(id) {
   }
 }
 
+
 function leaveHoverButton(id) {
   let hover = document.getElementById(id);
   if (id == "high" || id == "edit-high") {
@@ -491,10 +480,12 @@ function leaveHoverButton(id) {
   }
 }
 
+
 function checkButton(id) {
   let button = document.getElementById(id);
   button.firstElementChild.checked = true;
 }
+
 
 function openSubtaskInput() {
   document.getElementById("subtasks-area").classList.add("d-none");
@@ -503,11 +494,13 @@ function openSubtaskInput() {
   document.getElementById("subtask-input").focus();
 }
 
+
 function closeSubtaskInput() {
   document.getElementById("subtasks-input-area").classList.add("d-none");
   document.getElementById("subtasks-area").classList.remove("d-none");
   document.getElementById("subtask-input").value = "";
 }
+
 
 function addSubtask() {
   let input = document.getElementById("subtask-input").value;
@@ -527,6 +520,7 @@ function createSubtaskHTML(subtask) {
     `;
 }
 
+
 function openContactInput(id, id2, id3) {
   document.getElementById(id).classList.add("d-none");
   document.getElementById(id2).classList.remove("d-none");
@@ -534,11 +528,13 @@ function openContactInput(id, id2, id3) {
   document.getElementById(id3).focus();
 }
 
+
 function closeContactInput(id, id2, id3) {
   document.getElementById(id).classList.add("d-none");
   document.getElementById(id2).classList.remove("d-none");
   document.getElementById(id3).value = "";
 }
+
 
 function addContact() {
   let input = document.getElementById("contact-input").value;
@@ -547,6 +543,7 @@ function addContact() {
     closeContactInput();
   }
 }
+
 
 function createContactHTML() {
   return `
@@ -558,6 +555,7 @@ function createContactHTML() {
     `;
 }
 
+
 function openCategoryInput() {
   document.getElementById("category-dropdown").classList.add("d-none");
   document.getElementById("category-input-area").classList.remove("d-none");
@@ -565,11 +563,13 @@ function openCategoryInput() {
   document.getElementById("category-input").focus();
 }
 
+
 function closeCategoryInput() {
   document.getElementById("category-input-area").classList.add("d-none");
   document.getElementById("category-dropdown").classList.remove("d-none");
   document.getElementById("category-input").value = "";
 }
+
 
 async function createTask() {
   let title = document.getElementById("title").value;
@@ -599,6 +599,7 @@ async function createTask() {
   }, 1000);
 }
 
+
 // Pass the checkbox name to the function
 function getCheckedBoxes(chkboxName) {
   let checkboxes = document.getElementsByName(chkboxName);
@@ -614,6 +615,7 @@ function getCheckedBoxes(chkboxName) {
   return checkboxesChecked.length > 0 ? checkboxesChecked : null;
 }
 
+
 function resetAddTaskForm() {
   document.getElementById("title").value = "";
   document.getElementById("date").value = "";
@@ -624,10 +626,12 @@ function resetAddTaskForm() {
   });
 }
 
+
 function taskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");
   taskAdded.classList.add("slide-in-bottom");
 }
+
 
 function closeTaskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");
@@ -637,6 +641,7 @@ function closeTaskAddedToBoard() {
     resetTaskAddedToBoard();
   }, 200);
 }
+
 
 function resetTaskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");

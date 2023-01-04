@@ -20,7 +20,6 @@ async function init() {
   await showSelectedLink();
   await loadUsersFromBackend();
   await loadUserContactsFromBackend();
-  
 }
 
 async function includeHTML() {
