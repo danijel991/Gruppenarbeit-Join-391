@@ -1,6 +1,7 @@
 body{
   overflow: hidden;
 }
+
 .container-fluid {
   padding: 0px !important;
   height: 100vh !important;
@@ -12,7 +13,7 @@ body{
   justify-content: flex-start;
   flex-direction: row;
   width: 100%;
-  min-height: calc(100vh - 100px);
+  /* min-height: calc(100vh - 100px); */
 }
 
 .contact-list {
@@ -343,7 +344,7 @@ body{
 }
 
 .add-contact-button {
-  z-index: 6;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -605,36 +606,60 @@ input:focus {
 
 
 
-/* Media Header & Sidebar */
-@media (max-width: 768px) {
+/* contacts */
 
-  .contacts-container {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    width: 100%;
-    min-height: calc(100vh);
+/*/ X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/*/ Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+
+/*/ Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+
+.main{
+  /* position: relative; */
+  margin: 0px;
+  /* position: relative; */
+  /* top: 125px; */
+  /* height: unset; */
+/* height: 100%; */
+  
 }
 
-  .contact-list {
-    
-    width: 100%;
-    height: 100%;
-    height: calc(100vh);
-    padding: 10px;
-    overflow-y: scroll;
-  }
+.contacts-container {
+  position: relative;
+  top: 40px;
+  /* bottom: 120px; */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 100%;
+}
 
+.contact-list {
+    position: relative;
+    /* bottom: px; */
+    width: 100%;
+    /* height: 100%; */
+    /* height: calc(100vh); */
+    /* padding: 10px; */
+    overflow-y: scroll;
+    height: calc(100vh - 260px);
+  }
+  
   .contact-detail{
     position: absolute;
     margin: 0px;
     padding: 25px;
-    top: 170px;
+    top: 160px;
     max-height: calc(100vh - 100px);
     background-color: white;
     z-index: 4;
   }
-
+  
   .add-contact-button {
     bottom: unset;
     top: 110px;
@@ -646,12 +671,9 @@ input:focus {
   .delete-contact-button {
     bottom: unset;
     top: 110px;
-
+  
   }
   
-  /* .delete-contact-button img {
-    height: 20px;
-  } */
   
   .delete-contact-button-alert {
     flex-direction: row;
@@ -672,6 +694,74 @@ input:focus {
     margin-top: 0px;
     gap: 15px;
   }
+
+
+  /* Sidebar & Header */
+  .sidebar {
+    height: auto;
+    width: 100%;
+    top: unset;
+    bottom: 0px;
+    padding: unset;
+    background-color: white;
+    z-index: 10;
+  }
+
+  
+  #legal-notice {
+    display: none;
+  }
+
+
+  .legalHelp {
+    display: unset;
+  }
+
+
+  .header-right-content span,
+  .help-icon {
+    display: none;
+  }
+
+
+
+  .logOut__btn--container {
+    height: 137px;
+    justify-content: space-evenly;
+  }
+
+
+  .logOut__btn--container button {
+    width: min-content;
+    white-space: nowrap;
+    height: unset;
+  }
+
+
+  .menu {
+    flex-direction: row;
+    gap: unset;
+  }
+
+  .menu a {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    min-width: 90px;
+    padding-block: 12px;
+    padding-inline: 8px;
+  }
+
+.main {
+  width: 100%;
+  margin-left: 0px;
+}
+}
+
+
+/*/ Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+
   
   /* .delete-contact-button-bottom a:hover {
     font-weight: 700;
