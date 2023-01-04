@@ -4,7 +4,8 @@ let selectedColor;
 // funktion, damit er versucht die kontakte bei onload zu befüllen
 
 async function init_add_task() {
-   await renderContactsInDropDown();
+    await init();
+    renderContactsInDropDown();
 }
 
 // This function will change bg-color of urgency button
@@ -22,7 +23,6 @@ function clearForm() {
 }
 
 function selectCategory(category, color) {
-
     // const color = {
     //     pink: '#FC71FF',
     //     turqoise: '#1FD7C1;',
