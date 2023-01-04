@@ -46,7 +46,7 @@ function filterTasks(array, id) {
       if (j > 2) {
         document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
       } else {
-        document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts));
+        document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts), setColorForInitial(getInitials(assignedContacts)));
         // if (console.log(assignedContacts == activeUserContacts[j]['name'])) {
         //   document.getElementById(`task-contacts-container${task["id"]}`).childNodes.style.backgroundColor = activeUserContacts[j]['intialsColor'];
         // }
@@ -125,9 +125,9 @@ function generateTodoHTML(task) {
 }
 
 
-function generateAssignedContactsHTML(contact) {
+function generateAssignedContactsHTML(contact, color) {
   return `
-        <div class="task-contacts">${contact}</div>
+        <div style="background-color:${color}" class="task-contacts">${contact}</div>
     `;
 }
 
