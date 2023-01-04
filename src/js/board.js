@@ -73,16 +73,6 @@ function changeDepartmentColor() {
 }
 
 async function updateHTML() {
-  // if (window.innerWidth < 768) {
-  //     // debugger;
-  //     generateTemplate();
-  //     if (searchTask()) {
-  //         filterAllTasks();
-  //     }
-  //     changeDepartmentColor();
-  //     updateProgressBars();
-  //     updateProgressReport();
-  // } else {
   if (searchTask()) {
       filterAllTasks();
   }
@@ -91,7 +81,6 @@ async function updateHTML() {
   generateTemplate();
   updateProgressBars();
   updateProgressReport();
-  // }
 }
 
 function filterTasks(array, id) {
@@ -196,9 +185,10 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(category) {
+async function moveTo(category) {
   tasks[currentDraggedElement]["category"] = category; // z.b. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'
   document.getElementById("search").value = "";
+  await saveInBackendUserTasks();
   updateHTML();
 }
 
