@@ -584,11 +584,14 @@ async function createTask() {
     return;
   }
 
+  // let category = document.getElementById('category-input').value;
+  // let color = document.querySelector("input[type=radio][name=color]:checked").value;
+
   let date = document.getElementById("date").value;
-  // let category =
+  let category = document.getElementById('category-input').value;
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
-  new CreateTask(tasks.length, title, description, contactsCheckedBoxes, urgency, date);
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   await updateHTML();
   taskAddedToBoard();

@@ -768,6 +768,10 @@ input[type=date]:invalid::-webkit-datetime-edit {
     background-color: #0038FF;
 }
 
+.turqoise {
+    background-color: #1FD7C1;
+}
+
 .add-task-overlay {
     justify-content: unset;
 }

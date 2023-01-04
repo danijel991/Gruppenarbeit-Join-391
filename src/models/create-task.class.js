@@ -1,8 +1,8 @@
 class CreateTask {
 
-    constructor(id, headline, description, contacts, priority, dueDate) {
+    constructor(id, department, headline, description, contacts, priority, dueDate) {
         this.id = id,
-        this.department = 'Design',
+        this.department = department,
         this.headline = headline,
         this.description = description,
         this.assignedTo = contacts,
