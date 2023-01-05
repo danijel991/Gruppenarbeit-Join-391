@@ -19,14 +19,12 @@
     <script src="../js/summary.js"></script>
     <script src="../js/contacts.js"></script>
     <script src="../models/create-task.class.js"></script>
-    <!-- <script src="../js/board.js"></script> -->
-    <!-- <script src="../js/contact.class.js"></script> -->
     <script src="../js/sidebar.js"></script>
     <script src="../js/render_contacts.js"></script>
     <title>Title</title>
 </head>
 
-<body onload="init(), renderGreeting(), renderTodaysDate()">
+<body onload="initSummary()">
     <div class="container-fluid mh-100 d-flex flex-column">
 
         <!-- HEADER START -->
@@ -59,7 +57,7 @@
                         <div>
                             <div class="top-box p-2">
                                 <div><img src="../img/time_clock.png" alt=""></div>
-                                <div class="copy-white">88</div>
+                                <div id="tasks-urgent" class="copy-white">0</div>
                             </div>
                             <div class="copy-white font-light bottom-box">Tasks urgent
                             </div>
@@ -76,7 +74,7 @@
                     <div class="alert-card-paleblue d-flex flex-column justify-content-center">
                         <div class=" copy-black d-flex justify-content-between align-items-center p-2 gap-3">
                             <div><img src="../img/dash_board.png"></div>
-                            <div>88</div>
+                            <div id="tasks-to-do">0</div>
                         </div>
                         <div><span class="copy-blue font-light bottom-box">Tasks To-do</span>
                         </div>
@@ -88,7 +86,7 @@
                         <div class="to-do-card copy-black d-flex flex-column align-items-center">
                             <div class=" copy-black top-box">
                                 <div><img src="../img/dash_board.png" alt=""></div>
-                                <div>88</div>
+                                <div id="task-in-board">0</div>
                             </div>
                             <span class="copy-blue font-light">Task in Board</span>
 
@@ -96,7 +94,7 @@
                         <div class="to-do-card  copy-black d-flex flex-column align-items-center">
                             <div class=" copy-black d-flex align-items-center gap-3">
                                 <div><img src="../img/in_progress.png" alt=""></div>
-                                <div>88</div>
+                                <div  id="task-in-progress">0</div>
                             </div>
                             <span class="copy-blue font-light">Task in Progress</span>
 
@@ -106,7 +104,7 @@
                         <div class="to-do-card copy-black d-flex flex-column align-items-center">
                             <div class=" copy-black d-flex align-items-center gap-3">
                                 <div><img src="../img/awaiting_feedback.png" alt=""></div>
-                                <div>88</div>
+                                <div id="awaiting-feedback">0</div>
                             </div>
                             <span class="copy-blue font-light">Awaiting Feedback</span>
 
@@ -114,7 +112,7 @@
                         <div class="to-do-card  copy-black d-flex flex-column align-items-center">
                             <div class=" copy-black d-flex align-items-center gap-3">
                                 <div><img src="../img/done.png" alt=""></div>
-                                <div>88</div>
+                                <div id="tasks-done">0</div>
                             </div>
                             <span class="copy-blue font-light">Tasks Done</span>
 
