@@ -66,14 +66,13 @@ function checkIfNewContactEmailExists(newmail) {
 async function updateUserContact(index) {
   newContactData = getNewContactInfo();
   activeUserContacts.splice(index, 1, newContactData);
-
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(index);
 }
 
 /**
- * Function reads the newly submitted form fields when adding a new contact and 
+ * Function reads the newly submitted form fields when adding a new contact details in "New Contact Dialog" 
  * @returns new contact as object
  */
 function getContactInfo() {
@@ -107,7 +106,10 @@ function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.add("info-text-alert");
 }
 
-
+/**
+ * Function reads the form fields when altering/editing existing contact details in "Edit Contact Dialog" 
+ * @returns new contact as object
+ */
 function getNewContactInfo() {
   let newName = document.getElementById("edit-contact-name").value;
   let newEmail = document.getElementById("edit-contact-email").value;
@@ -144,7 +146,10 @@ function sortActiveUserContacts() {
     return 0;
   });
 }
-
+/**
+ * 
+ * @returns array of emails that belong to the active user contacts
+ */
 function getEmails() {
   emails = activeUserContacts.map((element) => {
     return element.email;
@@ -152,6 +157,11 @@ function getEmails() {
   return emails;
 }
 
+/**
+ * 
+ * @param {string} newmail 
+ * @returns index of email of newly created contact
+ */
 function getIndexOfEmail(newmail) {
   let emails = activeUserContacts.map((element) => {
     return element.email;
@@ -160,6 +170,11 @@ function getIndexOfEmail(newmail) {
   return i;
 }
 
+/**
+ * 
+ * @param {string} newName 
+ * @returns Upper Case Initials of FirstName and LastName in array
+ */
 function setContactInitials(newName) {
   var names = newName.split(" "),
     initials = names[0].substring(0, 1).toUpperCase();
@@ -171,6 +186,11 @@ function setContactInitials(newName) {
   return initials;
 }
 
+/**
+ * 
+ * @param {string} initials 
+ * @returns a string that represents one of 5 possible rgb colors
+ */
 function setColorForInitial(initials) {
   let number = 0;
   for (let i = 0; i < initials.length; i++) {
