@@ -243,7 +243,7 @@ function openAddTaskDialog(id, id2, taskID) {
       // debugger;
       for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
         const contacts = tasks[taskID]["assignedTo"][i];
-        document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts);
+        document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
       }
       changeDepartmentColor();
       document.getElementById(id2).classList.add("slide-in-bottom");
@@ -331,10 +331,10 @@ function generateTaskModalHTML(task) {
 }
 
 
-function generateTaskModalContactsHTML(contactInitials, contact) {
+function generateTaskModalContactsHTML(contactInitials, contact,color) {
   return `
         <div class="assigned-contact-row">
-            <div class="task-contacts-overlay">${contactInitials}</div>
+            <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
             <span>${contact}</span>
         </div>
     `;
