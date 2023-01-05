@@ -202,6 +202,18 @@ function renderContactsInDropDown() {
     </div>`;
     };
 }
+function renderContactsInEditDropDown() {
+    content = document.getElementById('collapseContactsEdit');
+    content.innerHTML = ' '; 
+    for (let i = 0; i < activeUserContacts.length; i++) {
+        let name = activeUserContacts[i]['name'];
+        content.innerHTML += `
+        <div class="dropdown-contact">
+        <label for="${name}">${name}</label>
+        <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
+    </div>`;
+    };
+}
 
 // return `
 //     <div class="dropdown-contact">
