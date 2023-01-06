@@ -123,7 +123,7 @@
     bottom: 0px;
     padding: unset;
     background-color: white;
-    z-index: 10;
+    /* z-index: 10; */
   }
 
   

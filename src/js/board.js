@@ -203,7 +203,6 @@ function openAddTaskDialog(id, id2, taskID) {
   setTimeout(() => {
     if (id2 == "task-modal") {
       document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
-      // debugger;
       for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
         const contacts = tasks[taskID]["assignedTo"][i];
         document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
@@ -280,14 +279,16 @@ function generateTaskModalHTML(task) {
                     </div>
                     <div class="prio-container">
                         <span>Priority:</span>
-                        <img src="../img/prio-overlay-${task["priority"]}.png" alt="prio-overlay">
+                        <img id="" src="../img/prio-overlay-${task["priority"]}.png" alt="prio-overlay">
                     </div>
                     <div class="assigned-to-container">
                         <span>Assigned To:</span>
                         <div class="assigned-contacts" id="assigned-contacts${task["id"]}">  
                         </div>
                     </div>
-                    <div class="edit-btn" onclick="editTasks(${task["id"]})"></div>
+                    <button class="btn-add-task edit-btn" onclick="editTasks(${task["id"]})">
+                      <img src="../img/edit-btn-pencil.png" alt="">
+                    </button>
                 </div>
     `;
 }
