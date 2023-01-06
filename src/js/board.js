@@ -1,25 +1,8 @@
 let currentDraggedElement;
 let tasks = [];
-const color = {
-  design: "#FF7A00",
-  sales: "#FC71FF",
-  backoffice: "#1FD7C1",
-  marketing: "#0038FF",
-  media: "#FFC701",
-};
 
 
 window.addEventListener("resize", updateHTML);
-
-
-function changeDepartmentColor() {
-  let departmentColor;
-  document.querySelectorAll(".department").forEach((department) => {
-    // searches through all classes with the name of department and is iterating through nodelist
-    departmentColor = department.innerHTML.toLowerCase(); // saves value(text) from span in variable
-    department.style.backgroundColor = color[departmentColor]; // sets the background color to the correct value
-  });
-}
 
 
 async function updateHTML() {
@@ -27,7 +10,6 @@ async function updateHTML() {
   if (searchTask()) {
     filterAllTasks();
   }
-  changeDepartmentColor();
   generateTemplate();
   updateProgressBars();
   updateProgressReport();
@@ -40,16 +22,12 @@ function filterTasks(array, id) {
   for (let i = 0; i < filter.length; i++) {
     const task = filter[i];
     document.getElementById(id).innerHTML += generateTodoHTML(task);
-    // debugger;
     for (let j = 0; j < task["assignedTo"].length; j++) {
       const assignedContacts = task["assignedTo"][j];
       if (j > 2) {
         document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
       } else {
         document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts), setColorForInitial(getInitials(assignedContacts)));
-        // if (console.log(assignedContacts == activeUserContacts[j]['name'])) {
-        //   document.getElementById(`task-contacts-container${task["id"]}`).childNodes.style.backgroundColor = activeUserContacts[j]['intialsColor'];
-        // }
       }
     }
   }
@@ -89,11 +67,7 @@ function searchTask() {
 
 
 function filterSearchedTasks(array, id, search) {
-  let filter = array.filter(
-    (t) =>
-      (t["category"] == id && t["headline"].toLowerCase().match(search)) ||
-      (t["category"] == id && t["description"].toLowerCase().match(search))
-  );
+  let filter = array.filter((t) => (t["category"] == id && t["headline"].toLowerCase().match(search)) || (t["category"] == id && t["description"].toLowerCase().match(search)));
   for (let i = 0; i < filter.length; i++) {
     const element = filter[i];
     document.getElementById(id).innerHTML += generateTodoHTML(element);
@@ -104,7 +78,7 @@ function filterSearchedTasks(array, id, search) {
 function generateTodoHTML(task) {
   return `
     <div id="${task["id"]}" draggable="true" ondragstart="startDragging(${task["id"]}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal', ${task["id"]})" class="board-task">
-        <span class="department">${task["department"]}</span>
+        <span class="department ${task["color"]}">${task["department"]}</span>
         <span class="task-headline">${task["headline"]}</span>
         <span class="task-description">${task["description"]}</span>
         <div class="progress-container">
@@ -135,15 +109,6 @@ function generateAssignedContactsHTML(contact, color) {
 function generateAssignedContactsMoreThanFourHTML(contact) {
   return `+${contact.length - 2}`;
 }
-
-
-// function changeAssignedContactsColor(assignedContacts) {
-//   for (let i = 0; i < tasks[].length; i++) {
-//     const element = tasks[][i];
-    
-//   }
-//   if (assignedContacts == activeUserContacts[])
-// }
 
 
 function startDragging(id) {
@@ -234,9 +199,7 @@ function templateTask(i) {
 
 function openAddTaskDialog(id, id2, taskID) {
   document.getElementById(id).classList.remove("d-none");
-
   renderContactsInDropDown();
-
   setTimeout(() => {
     if (id2 == "task-modal") {
       document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
@@ -245,7 +208,6 @@ function openAddTaskDialog(id, id2, taskID) {
         const contacts = tasks[taskID]["assignedTo"][i];
         document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
       }
-      changeDepartmentColor();
       document.getElementById(id2).classList.add("slide-in-bottom");
     } else {
       document.getElementById(id2).classList.add("slide-in");
@@ -309,7 +271,7 @@ function generateTaskModalHTML(task) {
         <div class="task-modal-container">
                     <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                         onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
-                    <span class="department department-overlay">${task["department"]}</span>
+                    <span class="department department-overlay ${task["color"]}">${task["department"]}</span>
                     <h3 class="task-headline-overlay">${task["headline"]}</h3>
                     <span class="task-description-overlay">${task["description"]}</span>
                     <div class="due-date-container">
@@ -331,7 +293,7 @@ function generateTaskModalHTML(task) {
 }
 
 
-function generateTaskModalContactsHTML(contactInitials, contact,color) {
+function generateTaskModalContactsHTML(contactInitials, contact, color) {
   return `
         <div class="assigned-contact-row">
             <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
@@ -349,13 +311,11 @@ function editTasks(taskID) {
 
 
 function updateUrgencyBtns(taskID) {
-  // debugger;
   document.querySelectorAll('input[name="prio-edit"]').forEach((btn) => {
     if (btn.value == tasks[taskID]["priority"]) {
       btn.checked = true;
     }
   });
-  // console.log(document.querySelectorAll('input[name="prio"]'))
 }
 
 
@@ -455,6 +415,7 @@ async function saveTasks(taskID) {
   tasks[taskID]["description"] = editDescription;
   tasks[taskID]["dueDate"] = editDate;
   closeAddTaskDialog("task-modal", "task-overlay");
+  await saveInBackendUserTasks();
   await updateHTML();
 }
 
@@ -579,24 +540,18 @@ function closeCategoryInput() {
 async function createTask() {
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
-
-  console.log(contactsCheckedBoxes);
-
   if (contactsCheckedBoxes == null) {
     let validation = document.getElementById("title");
     validation.setCustomValidity("Must set at least one contact");
     validation.reportValidity();
     return;
   }
-
-  // let category = document.getElementById('category-input').value;
-  // let color = document.querySelector("input[type=radio][name=color]:checked").value;
-
   let date = document.getElementById("date").value;
-  let category = document.getElementById('category-input').value;
+  let category = document.getElementById('category-dropdown').textContent;
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
-  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date);
+  let color = document.querySelector("input[type=radio][name=color]:checked").value;
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   await updateHTML();
   taskAddedToBoard();
@@ -632,6 +587,9 @@ function resetAddTaskForm() {
   document.querySelectorAll('input[name="assign-contacts"]:checked').forEach((checkbox) => {
     checkbox.checked = false;
   });
+  document.querySelector("input[type=radio][name=color]:checked").checked = false;
+  document.getElementById('category-dropdown').innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
+  document.getElementById('category-dropdown').classList.remove('dropdown-active');
 }
 
 

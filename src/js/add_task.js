@@ -37,6 +37,8 @@ function selectCategory(category, color) {
 
     document.getElementById('category-dropdown').innerHTML = '';
     document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
+    document.getElementById('category-dropdown').classList.add('dropdown-active');
+    document.getElementById(color).checked = true;
 };
 
 // Hier befindet sich die New Cagetory funktion, aus input feld name + farbe 

@@ -760,7 +760,7 @@ input[type=date]:invalid::-webkit-datetime-edit {
     background-color: #FF8A00;
 }
 
-.violet {
+.pink {
     background-color: #E200BE;
 }
 
@@ -768,8 +768,12 @@ input[type=date]:invalid::-webkit-datetime-edit {
     background-color: #0038FF;
 }
 
-.turqoise {
+.turquoise {
     background-color: #1FD7C1;
+}
+
+.yellow {
+    background-color: #FFC701;
 }
 
 .add-task-overlay {
@@ -807,6 +811,11 @@ input[type="checkbox"]:checked {
     color: #4589FF;
     font-weight: 400;
     display: none;
+}
+
+.dropdown-active {
+    justify-content: unset !important;
+    gap: 10px !important;
 }
 
 @media (max-width: 1400px) {

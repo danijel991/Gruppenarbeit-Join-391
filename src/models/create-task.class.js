@@ -1,6 +1,6 @@
 class CreateTask {
 
-    constructor(id, department, headline, description, contacts, priority, dueDate) {
+    constructor(id, department, headline, description, contacts, priority, dueDate, color) {
         this.id = id,
         this.department = department,
         this.headline = headline,
@@ -8,7 +8,8 @@ class CreateTask {
         this.assignedTo = contacts,
         this.priority = priority,
         this.category = 'to-do',
-        this.dueDate = dueDate
+        this.dueDate = dueDate,
+        this.color = color
         this.pushTask();
     }
 

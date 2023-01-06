@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/style_media.css">
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/add_task.css">
-    <!-- <link rel="stylesheet" href="../css/contacts.css"> -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="fonts" href="../src/fonts/OpenSans-VariableFont_wdth,wght.ttf">
     <link rel="fonts" href="../src/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf">
@@ -50,9 +49,6 @@
                         onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')">
                     <div class="add-task-header-bottom">
                         <h2 class="add-task-title" id="exampleModalLabel">Add Task</h2>
-                        <!-- <button class="btn-add-task btn-create-task">Create task
-                            <img src="../img/check-icon.png" alt="add-icon">
-                        </button> -->
                     </div>
                     <form class="add-task-form" onsubmit="createTask(); return false;">
                         <button class="btn-add-task btn-create-task">Create task
@@ -78,23 +74,6 @@
                         </div>
                         <div class="margin-btn-25 assign-contact-container" id="contact-container">
                             <div class="dropdown-contacts-container collapse" id="collapseContacts" required>
-                                <!-- <div class="dropdown-contact">
-                                    <label for="you">You</label>
-                                    <input type="checkbox" id="you" name="assign-contacts" value="You">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="schönfeld">Alexander Schönfeld</label>
-                                    <input type="checkbox" id="schönfeld" name="assign-contacts" value="Alexander Schönfeld">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="zediu">Corneliu Zediu</label>
-                                    <input type="checkbox" id="zediu" name="assign-contacts" value="Corneliu Zediu">
-                                </div>
-                                <div class="dropdown-contact">
-                                    <label for="savkovic">Danijel Savkovic</label>
-                                    <input type="checkbox" id="savkovic" name="assign-contacts" value="Danijel Savkovic">
-                                </div> -->
-
                                 <div class="dropdown-contact" onclick="openContactInput('contact-dropdown', 'contact-input-area', 'contact-input')" role="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
                                     <label for="">Invite new contact</label>
@@ -115,7 +94,7 @@
                         </div>
                         <div class="category-container d-none" id="category-input-area">
                             <div class="subtasks-input-area">
-                                <input class="" type="email" placeholder="New category name" id="category-input">
+                                <input class="" type="text" placeholder="New category name" id="category-input">
                                 <div class="subtask-icons">
                                     <img onclick="closeCategoryInput()" class="cursor-pointer"
                                         src="../img/cancel-subtask.png" alt="">
@@ -141,13 +120,17 @@
                                     <input value="orange" type="radio" id="orange" name="color">
                                     <label for="orange"></label>
                                 </div>
-                                <div id="shadowViolet" class="category-color violet">
-                                    <input value="violet" type="radio" id="violet" name="color">
-                                    <label for="violet"></label>
+                                <div id="shadowViolet" class="category-color pink">
+                                    <input value="pink" type="radio" id="pink" name="color">
+                                    <label for="pink"></label>
                                 </div>
                                 <div id="shadowBlue" class="category-color blue">
                                     <input value="blue" type="radio" id="blue" name="color">
                                     <label for="blue"></label>
+                                </div>
+                                <div id="shadowTurquoise" class="category-color turquoise">
+                                    <input value="turquoise" type="radio" id="turquoise" name="color">
+                                    <label for="turquoise"></label>
                                 </div>
                             </div>
                         </div>
@@ -157,16 +140,6 @@
                                 data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
                                     <label for="new-category">New category</label>
                                 </div>
-                                <!-- <div class="dropdown-category">
-                                    <label for="sales">Sales</label>
-                                    <input type="radio" name="category" id="sales" value="Sales">
-                                    <div class="category-color-pink"></div>
-                                </div>
-                                <div class="dropdown-category">
-                                    <label for="backoffice">Backoffice</label>
-                                    <input type="radio" name="category" id="backoffice" value="Backoffice">
-                                    <div class="category-color-turqoise"></div>
-                                </div> -->
                                 <div onclick="selectCategory('Sales','pink')" class="dropdown-category">
                                     <label for="sales">Sales</label>
                                     <input type="radio" name="category" id="sales" value="Sales" role="button"
@@ -174,7 +147,7 @@
                                         aria-controls="collapseCategory">
                                     <div class="category-color-pink"></div>
                                 </div>
-                                <div onclick="selectCategory('Backoffice','turqoise')" class="dropdown-category">
+                                <div onclick="selectCategory('Backoffice','turquoise')" class="dropdown-category">
                                     <label for="backoffice">Backoffice</label>
                                     <input type="radio" name="category" id="backoffice" value="Backoffice">
                                     <div class="category-color-turqoise"></div>
@@ -270,34 +243,6 @@
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>
-
-                <!-- <div class="main-header-bottom">
-                    <div class="board-points">
-                        <h3>To do</h3>
-                        <div class="add-icon" id="add-icon0"
-                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(0)">
-                        </div>
-                    </div>
-                    
-                    <div class="board-points">
-                        <h3>In progress</h3>
-                        <div class="add-icon" id="add-icon1"
-                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(1)">
-                        </div>
-                    </div>
-                    <div class="board-points">
-                        <h3>Await feedback</h3>
-                        <div class="add-icon" id="add-icon2"
-                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(2)">
-                        </div>
-                    </div>
-                    <div class="board-points">
-                        <h3>Done</h3>
-                        <div class="add-icon" id="add-icon3"
-                            onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal'); markAddIconAsActive(3)">
-                        </div>
-                    </div>
-                </div> -->
             </div>
 
             <div class="board-bottom-container">
