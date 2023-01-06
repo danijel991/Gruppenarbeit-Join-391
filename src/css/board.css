@@ -747,6 +747,10 @@ input[type=date]:invalid::-webkit-datetime-edit {
     padding-left: ;
 } */
 
+.turqoise {
+    background-color: #1FD7C1;
+}
+
 .lightblue {
     background-color: #8AA4FF;
 }

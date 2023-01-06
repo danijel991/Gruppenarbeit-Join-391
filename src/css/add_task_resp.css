@@ -7,6 +7,7 @@
     position: fixed;
     height: 96px;
     background-color: white;
+    z-index: 10;
 }
 
 #createTaskResponsive {
@@ -64,6 +65,56 @@
 @media (max-width: 1024px) {}
 
 @media (max-width: 768px) {
+
+    .responsive_text {
+        display: block;
+        color: #4589FF;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 120%;
+        width: 363px;
+        height: 23px;
+    }
+
+    .uniform-sizing,
+    .description-text,
+    #high>label>span,
+    #medium>label>span,
+    #low>label>span {
+        font-weight: 400;
+        font-size: 16px !important;
+        line-height: 120%;
+    }
+
+    textarea::placeholder {
+        font-size: 16px !important;
+    }
+
+
+    .category-header {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
+    .dropdown-contacts-container,
+    .dropdown-contact {
+        width: 363px;
+    }
+
+    .add-title {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 120%;
+    }
+
+    #high>label>img,
+    #medium>label>img,
+    #low>label>img {
+        width: 20px;
+        height: 14.51px;
+    }
+
     .uniform-sizing textarea {
         width: 363px;
     }
@@ -73,7 +124,7 @@
     }
 
     .add-task-left {
-        margin-top: 171px;
+        margin-top: 114px;
         margin-left: 25%;
         margin-right: 25%;
         align-items: center;
@@ -81,6 +132,60 @@
 
     .responsive-Header {
         height: 81px;
+    }
+
+    .subtasks-input-area {
+        border-bottom: 1px solid #D1D1D1;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+        width: 363px;
+        height: 41px;
+        padding: 11px 21px;
+        gap: 10px;
+
+    }
+
+    .form-width {
+        width: 363px;
+        height: 56px
+    }
+
+    .uniform-sizing {
+        width: 363px;
+        height: 41px;
+    }
+
+    .input-title {
+        width: 363px;
+        height: 56px;
+    }
+
+    .description-area {
+        width: 363px;
+    }
+
+    .description-area textarea {
+        width: 363px;
+        height: 93px;
+    }
+
+    .button-area {
+        padding: 0px;
+        gap: 10px;
+        width: 354px;
+        height: 51px;
+    }
+
+    .button-area button {
+        width: 111px;
+        height: 41px;
+    }
+
+    .margin-btn-45 {
+        margin-bottom: 16px;
+    }
+}
+@media (max-width: 576px) {63#myForm > span.category-header {
+        margin-left: 33px !important;
     }
 }
 
