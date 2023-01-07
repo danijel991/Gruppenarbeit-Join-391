@@ -43,7 +43,7 @@ function generateTaskModalHTML(task) {
                       </div>
                       <div class="prio-container">
                           <span>Priority:</span>
-                          <img id="" src="../img/prio-overlay-${task["priority"]}.png" alt="prio-overlay">
+                          <img id="prio-overlay" src="../img/prio-overlay-${task["priority"]}.png" alt="prio-overlay">
                       </div>
                       <div class="assigned-to-container">
                           <span>Assigned To:</span>

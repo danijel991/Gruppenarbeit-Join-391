@@ -24,12 +24,17 @@ function filterTasks(array, id) {
     document.getElementById(id).innerHTML += generateTodoHTML(task);
     for (let j = 0; j < task["assignedTo"].length; j++) {
       const assignedContacts = task["assignedTo"][j];
-      if (j > 2) {
-        document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
-      } else {
-        document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts), setColorForInitial(getInitials(assignedContacts)));
-      }
+      renderAllAssignedContacts(j, task, assignedContacts);
     }
+  }
+}
+
+
+function renderAllAssignedContacts(j, task, assignedContacts) {
+  if (j > 2) {
+    document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
+  } else {
+    document.getElementById(`task-contacts-container${task["id"]}`).innerHTML += generateAssignedContactsHTML(getInitials(assignedContacts), setColorForInitial(getInitials(assignedContacts)));
   }
 }
 
@@ -170,22 +175,33 @@ function openAddTaskDialog(id, id2, taskID) {
   document.getElementById(id).classList.remove("d-none");
   renderContactsInDropDown();
   setTimeout(() => {
-    if (id2 == "task-modal") {
-      document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
-      for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
-        const contacts = tasks[taskID]["assignedTo"][i];
-        document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
-      }
-      if (window.innerWidth > 768) {
-        document.getElementById(id2).classList.add("slide-in-bottom");
-      } else {
-        document.getElementById(id2).classList.add("slide-in");
-      }
-    } else {
-      document.getElementById(id2).classList.add("slide-in");
-    }
+    showTaskModal(id2, taskID);
     document.body.style.overflow = "hidden";
   }, 10);
+}
+
+
+function showTaskModal(id2, taskID) {
+  if (id2 == "task-modal") {
+    document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
+    for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
+      const contacts = tasks[taskID]["assignedTo"][i];
+      document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
+    }
+    responsiveTaskModalAnimation(id2);
+  } else {
+    document.getElementById(id2).classList.add("slide-in");
+  }
+}
+
+
+function responsiveTaskModalAnimation(id2) {
+  if (window.innerWidth > 768) {
+    document.getElementById(id2).classList.add("slide-in-bottom");
+  } else {
+    document.getElementById(id2).classList.add("slide-in");
+    document.getElementById('prio-overlay')
+  }
 }
 
 
@@ -255,9 +271,18 @@ function updateUrgencyBtns(taskID) {
 
 
 async function saveTasks(taskID) {
+  getValueFromEditInputs(taskID);
+  closeAddTaskDialog("task-modal", "task-overlay");
+  await saveInBackendUserTasks();
+  await updateHTML();
+}
+
+
+function getValueFromEditInputs(taskID) {
   let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
   let editDescription = document.getElementById(`edit-description${taskID}`).value;
   let editDate = document.getElementById(`edit-date${taskID}`).value;
+  let contactsCheckedBoxes = getCheckedBoxes("assign-contacts")
   document.querySelectorAll('input[name="prio-edit"]').forEach((check) => {
     if (check.checked) {
       tasks[taskID]["priority"] = check.value;
@@ -266,14 +291,11 @@ async function saveTasks(taskID) {
   tasks[taskID]["headline"] = editHeadline;
   tasks[taskID]["description"] = editDescription;
   tasks[taskID]["dueDate"] = editDate;
-  closeAddTaskDialog("task-modal", "task-overlay");
-  await saveInBackendUserTasks();
-  await updateHTML();
+  tasks[taskID]["assignedTo"] = contactsCheckedBoxes;
 }
 
 
 function hoverButton(id) {
-  // debugger;
   let hover = document.getElementById(id);
   if (!hover.firstElementChild.checked) {
     if (id == "high" || id == "edit-high") {
@@ -369,6 +391,7 @@ function closeCategoryInput() {
 
 
 async function createTask() {
+  debugger;
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   if (contactsCheckedBoxes == null) {
@@ -382,7 +405,12 @@ async function createTask() {
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color);
+}
+
+
+async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
+  new CreateTask(array.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   await updateHTML();
   taskAddedToBoard();
