@@ -56,18 +56,18 @@
                             </button>
                         </div>
                     </div>
-                    <span class="responsive_text">Kanban Project Management Tool</span>
-                    <div class="form-width input-title margin-btn-25">
+                    <span class="responsive_text static">Kanban Project Management Tool</span>
+                    <div class="form-width input-title margin-btn-25 static">
                         <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title"
                             required>
                     </div>
-                    <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
+                    <div class="uniform-sizing text-19pt dropdown static" role="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts"
                         id="contact-dropdown">
                         <span>Select contacts to assign</span>
                         <img src="../img/select-arrow.png" alt="">
                     </div>
-                    <div class="subtasks-input-area d-none" id="contact-input-area">
+                    <div class="subtasks-input-area d-none static" id="contact-input-area">
                         <input class="" type="email" placeholder="Contact email" id="contact-input">
                         <div class="subtask-icons">
                             <img onclick="closeContactInput('contact-input-area', 'contact-dropdown', 'contact-input')"
@@ -76,7 +76,7 @@
                             <img onclick="addContact()" class="cursor-pointer" src="../img/check-subtask.png" alt="">
                         </div>
                     </div>
-                    <div class="margin-btn-25 assign-contact-container" id="contact-container">
+                    <div class="margin-btn-25 assign-contact-container static" id="contact-container">
                         <div class="dropdown-contacts-container collapse" id="collapseContacts" required>
                             <!-- <div class="dropdown-contact">
                                 <label for="you">You</label>
@@ -104,11 +104,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="date-area flex-column margin-btn-45">
+                    <div class="date-area flex-column margin-btn-45 static">
                         <span class="category-header">Due date</span>
                         <input id="date" class="uniform-sizing" type="date" required>
                     </div>
-                    <div>
+                    <div class="static">
                         <span class="category-header">Category</span>
                         <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"
@@ -117,7 +117,7 @@
                             <img src="../img/select-arrow.png" alt="">
                         </div>
                     </div>
-                    <div class="category-container d-none" id="category-input-area">
+                    <div class="category-container d-none static" id="category-input-area">
                         <div class="subtasks-input-area">
                             <input class="" type="email" placeholder="New category name" id="category-input">
                             <div class="subtask-icons">
@@ -128,7 +128,7 @@
                                     alt="">
                             </div>
                         </div>
-                        <div class="category-color-container radio-button">
+                        <div class="category-color-container radio-button static">
                             <div id="shadowLightblue" class="category-color lightblue">
                                 <input value="lightblue" type="radio" id="lightblue" name="color">
                                 <label for="lightblue"></label>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="margin-btn-25 assign-contact-container">
+                    <div class="margin-btn-25 assign-contact-container static">
                         <div class="dropdown-contacts-container collapse" id="collapseCategory">
                             <div onclick="openCategoryInput()" class="dropdown-category" role="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="button-area margin-btn-25">
+                    <div class="button-area margin-btn-25 static">
                         <button type="button" value="high" class="add-task-prio-high" id="high"
                             onclick="checkButton('high')" onmouseover="hoverButton('high')"
                             onmouseleave="leaveHoverButton('high')">
@@ -205,12 +205,12 @@
                             </label>
                         </button>
                     </div>
-                    <div class="description-area description-area-overlay flex-column margin-btn-45">
+                    <div class="description-area description-area-overlay flex-column margin-btn-45 static">
                         <span class="category-header">Description</span>
                         <textarea class="description-text" name="" id="description-text" cols="30" rows="10"
                             placeholder="Enter a Description"></textarea>
                     </div>
-                    <div class="subtasks-area margin-btn-45">
+                    <div class="subtasks-area margin-btn-45 static">
                         <span class="category-header">Subtasks</span>
                         <div class="subtasks-input-area gray-fonts cursor-pointer" id="subtasks-area"
                             onclick="openSubtaskInput()">
