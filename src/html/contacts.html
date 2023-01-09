@@ -34,10 +34,13 @@
         <div w3-include-html="../templates/sidebar.html"></div>
         <!-- MODAL ADD NEW USER START-->
         <!-- MODAL BUTTON  -->
-        <button class="add-contact-button" onclick="openAddContactDialog()">
-            <span>New contact</span><img src="../img/addcontact.png">
-        </button>
-        <button type="button" id="delete-contact-button" class="delete-contact-button d-none" onclick="deleteUserContacts()">
+        <div class="flex-right-btn">
+            <button class="add-contact-button" onclick="openAddContactDialog()">
+                <span>New contact</span><img src="../img/addcontact.png">
+            </button>
+        </div>
+        <button type="button" id="delete-contact-button" class="delete-contact-button d-none"
+            onclick="deleteUserContacts()">
             <span>Delete all your contacts</span>
         </button>
         <div id="delete-contact-button-alert" class="delete-contact-button-alert d-none">
@@ -45,7 +48,7 @@
             <span><b>Sure to delete all contacts?</b></span>
             <div class="delete-contact-button-bottom">
                 <div><a onclick="executeDeleteContacts()">YES</a></div>
-                
+
                 <div><a onclick="abortDeleteContacts()">NO</a></div>
             </div>
 
@@ -57,7 +60,7 @@
             <div class="add-contact-modal" onclick="event.stopPropagation()" id="add-contact-modal">
                 <div class="contact-dialog-top">
                     <img class="close-icon" src="../img/close_icon.png" onclick="closeAddContactDialog()">
-                    <img src="../img/join-logo.png">
+                    <img class="join-logo-contacts" src="../img/join-logo.png">
                     <h2 class="contact-title" id="exampleModalLabel">Add contact</h2>
 
                     <h4 id="info-text" class="info-text">Tasks are better with a team!</h4>
@@ -82,9 +85,11 @@
                                     pattern="" placeholder="Phone" required>
                                 <img src="/src/img/phone_icon.png" alt="">
                             </div>
+                            <div class="create-btn-flexdiv">
                             <button class="create-contact-button" type="submit" required>
                                 <span>Create contact</span><img src="../img/addcontact.png">
                             </button>
+                        </div>
                         </form>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
 
 @media (max-width: 768px) {
     .main {
-        margin-top: 30%;
+        margin-top: 35%;
     }
 
     .container {
@@ -22,19 +22,11 @@
     .main {
         margin-top: 40%;
     }
-
-    .container {
-        padding-bottom: 60px;
-    }
 }
 
 @media (max-width: 500px) {
     .main {
         margin-top: 50%;
-    }
-
-    .container {
-        padding-bottom: 30px;
     }
 }
 
@@ -42,18 +34,10 @@
     .main {
         margin-top: 60%;
     }
-
-    .container {
-        padding-bottom: 30px;
-    }
 }
 
 @media (max-width: 380px) {
     .main {
         margin-top: 70%;
-    }
-
-    .container {
-        padding-bottom: 30px;
     }
 }
