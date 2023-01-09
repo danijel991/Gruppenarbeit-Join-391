@@ -47,6 +47,15 @@
             <div class="add-task-left">
 
                 <form id="myForm" class="add-task-form" onsubmit="createTask(); return false;">
+                    <div class="responsive-header">
+                        <img src="../img/join_logo_blue.png" alt="Join logo responsive" id="join_logo_blue">
+                        <div class="responsive-Button-AddTask">
+                            <button class="add-task-right-button-right" id="createTaskResponsive">
+                                <span>Create </span>
+                                <span>&#10003</span>
+                            </button>
+                        </div>
+                    </div>
                     <span class="responsive_text">Kanban Project Management Tool</span>
                     <div class="form-width input-title margin-btn-25">
                         <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title"
@@ -224,30 +233,22 @@
                                 <label class="" for="ckeck">Subtask 1</label>
                             </div>
                         </div>
-                    </div>
-            </div>
 
-            <!-- right side of add task form -->
-            <div class="add-task-right">
-                <button onclick="clearForm()" class="add-task-right-button-left" id="clearForm">
-                    <span>Clear</span>
-                    <span>&#10005</span>
-                </button>
-                <button class="add-task-right-button-right" id="createTask">
-                    <span>Create Task</span>
-                    <span>&#10003</span>
-                </button>
-            </div>
-            <div class="responsive-Header">
-                <img src="../img/join_logo_blue.png" alt="Join logo responsive" id="join_logo_blue">
-                <div class="responsive-Button-AddTask">
-                    <button class="add-task-right-button-right" id="createTaskResponsive">
-                        <span>Create </span>
-                        <span>&#10003</span>
-                    </button>
-                </div>
-            </div>
-            </form>
+                    </div>
+
+                    <!-- right side of add task form -->
+                    <div class="add-task-right">
+                        <button onclick="clearForm()" class="add-task-right-button-left" id="clearForm">
+                            <span>Clear</span>
+                            <span>&#10005</span>
+                        </button>
+                        <button class="add-task-right-button-right" id="createTask">
+                            <span>Create Task</span>
+                            <span>&#10003</span>
+                        </button>
+                    </div>
+
+                </form>
         </main>
 
         <!-- ADD TASK END  -->

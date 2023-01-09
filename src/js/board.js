@@ -233,7 +233,6 @@ function updateProgressBars() {
   });
 }
 
-
 function updateProgressReport() {
   document.querySelectorAll(".progress-report").forEach((e) => {
     if (boardTaskContainerId(e) == "to-do") {
@@ -268,7 +267,6 @@ function updateUrgencyBtns(taskID) {
     }
   });
 }
-
 
 async function saveTasks(taskID) {
   getValueFromEditInputs(taskID);
