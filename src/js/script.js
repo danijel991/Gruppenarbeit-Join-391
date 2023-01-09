@@ -45,6 +45,7 @@ async function saveLocalActiveUser(activeUser) {
 }
 
 function getLocalActiveUser() {
+  // if ()
   let stringStorage = localStorage.getItem("activeUser");
   activeUser = JSON.parse(stringStorage);
 }
@@ -83,6 +84,11 @@ async function saveActiveUserInBackend() {
   await backend.setItem(`${activeUserEmail}_active`, JSON.stringify(activeUser));
 }
 
+
+async function loadActiveUserFromBackend() {
+  activeUserEmail = activeUser["userEmail"];
+  await backend.getItem(`${activeUserEmail}_active`, JSON.stringify(activeUser));
+}
 async function loadActiveUserInBackend() {
   activeUserTasks = `${activeUser["userEmail"]}_task`;
   await downloadFromServer();
@@ -154,7 +160,9 @@ async function logInUser() {
   let passwordUser = document.getElementById("password").value;
   validatedInput(emailUser, passwordUser);
   let acces = await checkIfExists(emailUser, passwordUser);
+  console.log("Log In Before:", activeUser);
   goToSummary(acces);
+  console.log("Log In After:", activeUser);
   emailUser.value = "";
   passwordUser = "";
 }
