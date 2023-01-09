@@ -38,9 +38,10 @@ async function includeHTML() {
 }
 
 // Local Storage & Active user
-function saveLocalActiveUser(activeUser) {
+async function saveLocalActiveUser(activeUser) {
   let stringStorage = JSON.stringify(activeUser);
   localStorage.setItem("activeUser", stringStorage);
+  // await saveActiveUserInBackend(activeUser);
 }
 
 function getLocalActiveUser() {
@@ -72,6 +73,29 @@ async function loadUsersFromBackend() {
 async function saveInBackend() {
   await backend.setItem("usersArray", JSON.stringify(usersArray));
 }
+
+
+
+
+//// BACKEND SaveActiveUser
+async function saveActiveUserInBackend() {
+  activeUserEmail = activeUser["userEmail"];
+  await backend.setItem(`${activeUserEmail}_active`, JSON.stringify(activeUser));
+}
+
+async function loadActiveUserInBackend() {
+  activeUserTasks = `${activeUser["userEmail"]}_task`;
+  await downloadFromServer();
+  tasks = JSON.parse(backend.getItem(activeUserTasks)) || [];
+}
+
+async function deleteActiveUserInBackend() {
+  await backend.deleteItem(`${activeUserEmail}_active`);
+  activeUser = [];
+  console.log("Deleted active user in Backend: ", activeUserEmail);
+}
+
+
 
 ///////// Backend Contacts
 async function saveInBackendUserContacts() {
@@ -138,5 +162,6 @@ async function logInUser() {
 async function logOut() {
   activeUser["quickAcces"] = false;
   await saveLocalActiveUser(activeUser);
+  await deleteActiveUserInBackend();
   toLogInPage();
 }
