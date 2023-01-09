@@ -105,7 +105,7 @@ async function setActiveUser(userEmail) {
     console.log(indexActiveUser);
     activeUser = usersArray[indexActiveUser];
     activeUser['quickAcces'] = true;
-    saveLocalActiveUser(activeUser);
+    // saveLocalActiveUser(activeUser);
     await saveActiveUserInBackend(activeUser);
 }
 
