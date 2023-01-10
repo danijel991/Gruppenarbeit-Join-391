@@ -205,17 +205,42 @@ function renderContactsInDropDown() {
     </div>`;
     };
 }
-function renderContactsInEditDropDown() {
+
+
+function renderContactsInEditDropDown(taskID) {
     content = document.getElementById('collapseContactsEdit');
     content.innerHTML = ' '; 
     for (let i = 0; i < activeUserContacts.length; i++) {
+      
         let name = activeUserContacts[i]['name'];
+      if (assignedToContactTrue(taskID, name)) {
+        content.innerHTML += `
+        <div class="dropdown-contact">
+        <label for="${name}">${name}</label>
+        <input type="checkbox" checked="checked" id="${name}" name="assign-contacts" value="${name}">
+    </div>`;
+      } else {
         content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
+        
+      }
+      
     };
+}
+
+function assignedToContactTrue(taskID, name) {
+  let checkedNames = []; 
+  for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
+    checkedNames.push(tasks[taskID]['assignedTo'][i]);
+  }
+  if (checkedNames.includes(name)) {
+    return true;    
+  } else {
+    return false;
+  }
 }
 
 // return `

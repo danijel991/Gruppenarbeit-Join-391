@@ -255,8 +255,9 @@ function boardTaskContainerId(e) {
 
 function editTasks(taskID) {
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
-  renderContactsInEditDropDown();
+  renderContactsInEditDropDown(taskID);
   updateUrgencyBtns(taskID);
+  checkCheckBoxInCollapseContacts(taskID);
 }
 
 
