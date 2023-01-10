@@ -408,7 +408,7 @@ async function createTask() {
 
 
 async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-  new CreateTask(array.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   await updateHTML();
   taskAddedToBoard();
