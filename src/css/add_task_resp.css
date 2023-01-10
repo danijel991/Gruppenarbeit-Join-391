@@ -18,6 +18,21 @@
     padding: 0;
 }
 
+.add-task-btn-create {
+    height: 61px;
+    padding: 18px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #4589FF;
+    border: 1px solid #4589FF;
+    color: white;
+    font-size: 23px;
+    width: 180px;
+}
+
 #join_logo_blue {
 
 }
