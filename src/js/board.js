@@ -403,7 +403,7 @@ async function createTask() {
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-  createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
 }
 
 
