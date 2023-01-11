@@ -255,8 +255,9 @@ function boardTaskContainerId(e) {
 
 function editTasks(taskID) {
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
-  renderContactsInEditDropDown();
+  renderContactsInEditDropDown(taskID);
   updateUrgencyBtns(taskID);
+  checkCheckBoxInCollapseContacts(taskID);
 }
 
 
@@ -403,12 +404,12 @@ async function createTask() {
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-  createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
 }
 
 
 async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-  new CreateTask(array.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   await updateHTML();
   taskAddedToBoard();

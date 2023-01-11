@@ -2,6 +2,14 @@ body {
   overflow: hidden;
 }
 
+.span-display-none {
+  display: none;
+}
+
+.edit-contact-responsive {
+  display: none;
+}
+
 .container-fluid {
   padding: 0px !important;
   height: 100vh !important;
@@ -147,6 +155,7 @@ body {
   /* max-width: 90px;
   max-height: 90px; */
   border: 3px solid #ffffff;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 16%);
   border-radius: 100%;
   background-color: #4589ff;
   font-size: 38px;
@@ -205,6 +214,7 @@ body {
   justify-content: center;
   gap: 15px;
   color: #005dff;
+  margin-top: 13px;
 }
 
 .add-task-link img {
@@ -461,8 +471,8 @@ body {
   height: 53px;
   right: 40px;
   bottom: 50px;
-  background-color: #005dff;
-  border: 1px solid #005dff;
+  background-color: #4589FF;
+  border: 1px solid #4589FF;
   border-radius: 10px;
   font-size: 23px;
   color: white;
@@ -514,6 +524,7 @@ body {
   align-items: center;
   flex-direction: column;
   width: 580px;
+  margin-top: 50%;
 }
 
 .add-contact-input-field {
@@ -532,7 +543,6 @@ body {
 }
 
 .user-avatar {
-  margin: 30px 30px;
   background-color: #d1d1d1;
   display: flex;
   justify-content: center;
@@ -540,6 +550,8 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 100%;
+  position: absolute;
+  top: 405.48px;
 }
 
 input {
@@ -627,12 +639,20 @@ input:focus {
     display: none !important;
   }
 
-  .add-contact-modal {
-    width: 100vw; /* viewport width */
-    height: 100vh; /* viewport height */
+  .user-avatar {
+    
+  }
+
+  .add-contact-modal,
+  .edit-contact-modal {
+    width: 100vw;
+    /* viewport width */
+    height: 100vh;
+    /* viewport height */
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
 }
 
 /*/ Large devices (desktops, 992px and up) */
@@ -642,7 +662,45 @@ input:focus {
     width: 327px;
   }
 
-  .add-contact-modal {
+  .contact-name {
+    font-size: 33px;
+  }
+
+  .letters-large {
+    min-width: 80px;
+    min-height: 80px;
+    font-size: 27px;
+  }
+
+  .contact-information {
+    font-size: 19px;
+  }
+
+  .add-task-link,
+  .contact-detail-medium,
+  .contact-detail-bold {
+    font-size: 16px;
+  }
+
+  .sidebar {
+    z-index: 11 !important;
+  }
+
+  .span-display-none {
+    display: block;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
+    color: #4589FF;
+    margin-bottom: 125px;
+  }
+
+  header {
+    z-index: 11;
+  }
+
+  .add-contact-modal,
+  .edit-contact-modal {
     border-radius: 0;
   }
 
@@ -656,9 +714,9 @@ input:focus {
     margin-bottom: 48px;
   }
 
-  .user-avatar {
-    margin: -64px 30px;
-  }
+  /* .contact-dialog-top img {
+    display: none;
+  } */
 
   .form {
     margin-top: 62px;
@@ -676,9 +734,9 @@ input:focus {
 
 
 
-.contact-list {
-  box-shadow: none;
-}
+  .contact-list {
+    box-shadow: none;
+  }
 
   .contacts-container {
     position: relative;
@@ -702,13 +760,36 @@ input:focus {
   }
 
   .contact-detail {
-    position: absolute;
-    margin: 0px;
-    padding: 25px;
-    top: 160px;
-    max-height: calc(100vh - 100px);
+    top: 12%;
+    z-index: 10;
+    background: white;
     background-color: white;
-    z-index: 4;
+    position: fixed;
+    margin: 0px;
+    padding: 49px 25px;
+    max-height: calc(100vh - 100px);
+  }
+
+  .edit-contact {
+    display: none;
+  }
+
+  .edit-contact-responsive {
+    display: block;
+    right: 40px;
+    bottom: 114px;
+    position: absolute;
+  }
+
+  .contact-detail-mobile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 16px;
+    height: 15.56px;
+    position: fixed;
+    right: 34px;
+    top: 160.22px;
   }
 
   .add-contact-button {
@@ -831,10 +912,11 @@ input:focus {
     font-size: 1rem;
   }
 
-  .add-contact-modal {
+  .add-contact-modal,
+  .edit-contact-modal {
     position: fixed;
     top: 0;
-    bottom:0;
+    bottom: 0;
   }
 
 
@@ -913,7 +995,8 @@ input:focus {
     display: none;
   }
 
-  .add-contact-modal {
+  .add-contact-modal,
+  .edit-contact-modal {
     text-align: center;
   }
 

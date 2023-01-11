@@ -161,6 +161,7 @@ function openContactDetail(index) {
   function generateContactDetail(index, name, initials, initialsColor, email, phone) {
     return `
     <div onclick="slideOut()" class="contact-detail-mobile" id="contact-detail-mobile"><img src="../img/arrow_forward.png" alt=""></div>
+    <span class="span-display-none">Kanban Project Management Tool</span>
     <div class="contact-detail-header">
     <div class="letters-large" style="background-color: ${initialsColor}">${initials}
     </div>
@@ -183,6 +184,8 @@ function openContactDetail(index) {
     <div class="contact-detail-medium">${email}</div>
     <div class="contact-detail-bold">Phone</div>
     <div class="contact-detail-medium">${phone}</div>
+    <div class="edit-contact-responsive" onclick="openEditContactDialog(${index})"><img  onclick="openEditContactDialog()"src="../img/edit_contact_responsive_icon.png"></div>
+    </div>
   </div>
         `;
   }
@@ -202,17 +205,42 @@ function renderContactsInDropDown() {
     </div>`;
     };
 }
-function renderContactsInEditDropDown() {
+
+
+function renderContactsInEditDropDown(taskID) {
     content = document.getElementById('collapseContactsEdit');
     content.innerHTML = ' '; 
     for (let i = 0; i < activeUserContacts.length; i++) {
+      
         let name = activeUserContacts[i]['name'];
+      if (assignedToContactTrue(taskID, name)) {
+        content.innerHTML += `
+        <div class="dropdown-contact">
+        <label for="${name}">${name}</label>
+        <input type="checkbox" checked="checked" id="${name}" name="assign-contacts" value="${name}">
+    </div>`;
+      } else {
         content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
+        
+      }
+      
     };
+}
+
+function assignedToContactTrue(taskID, name) {
+  let checkedNames = []; 
+  for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
+    checkedNames.push(tasks[taskID]['assignedTo'][i]);
+  }
+  if (checkedNames.includes(name)) {
+    return true;    
+  } else {
+    return false;
+  }
 }
 
 // return `

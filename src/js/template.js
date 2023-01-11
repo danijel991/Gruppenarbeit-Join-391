@@ -130,8 +130,7 @@ function generateEditTaskHTML(task) {
                           </div>
                           <div class="margin-btn-25 assign-contact-container" id="contact-container-edit">
                               <div class="dropdown-contacts-container collapse scroll" id="collapseContactsEdit">
-  
-  
+
   
   
                                   <div class="dropdown-contact" onclick="openContactInput('contact-dropdown-edit', 'contact-input-area-edit', 'contact-input-edit')" role="button" data-bs-toggle="collapse"
