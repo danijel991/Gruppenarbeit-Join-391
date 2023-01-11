@@ -7,12 +7,14 @@ window.addEventListener("resize", updateHTML);
 
 async function updateHTML() {
   await loadUserTasksFromBackend();
-  if (searchTask()) {
-    filterAllTasks();
-  }
-  generateTemplate();
-  updateProgressBars();
-  updateProgressReport();
+  setTimeout(() => {
+    if (searchTask()) {
+      filterAllTasks();
+    }
+    generateTemplate();
+    updateProgressBars();
+    updateProgressReport();
+  }, 300)
 }
 
 

@@ -9,19 +9,29 @@ let activeUser = [];
 let activeUserContacts = [];
 
 /***    Functions   ***/
-async function startPage() {
-  await loadUsersFromBackend();
-  await ifSomethingLocal();
+function logoAnimation() {
+  transitionLogo();
+  setTimeout(changeBg, 350);
+  setTimeout(showCardAndHeader, 400);
+  startPage();
 }
 
+
+async function startPage() {
+  await loadUsersFromBackend();
+  // await getActiveUser();
+}
+
+
 async function init() {
-  getLocalActiveUser();
+  await loadUsersFromBackend();
+  await getActiveUser();
   await includeHTML();
   await showSelectedLink();
-  await loadUsersFromBackend();
   await loadUserContactsFromBackend();
   await loadUserTasksFromBackend();
 }
+
 
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
@@ -37,39 +47,45 @@ async function includeHTML() {
   }
 }
 
+
 // Local Storage & Active user
 async function saveLocalActiveUser(activeUser) {
-  let stringStorage = JSON.stringify(activeUser);
+  let stringStorage = await JSON.stringify(activeUser);
   localStorage.setItem("activeUser", stringStorage);
   // await saveActiveUserInBackend(activeUser);
 }
 
-function getLocalActiveUser() {
-  // if ()
-  let stringStorage = localStorage.getItem("activeUser");
-  activeUser = JSON.parse(stringStorage);
-}
 
-async function ifSomethingLocal() {
+async function getActiveUser() {
   if (localStorage.getItem("activeUser") !== null) {
-    getLocalActiveUser();
-    let logIn = await checkIfQuickAcces();
-    if (logIn === true) {
-      logInActiveUser();
-    }
+    let stringStorage = localStorage.getItem("activeUser");
+    activeUser = await JSON.parse(stringStorage);
+    // let logIn = await checkIfQuickAcces();
+    // if (logIn === true) {
+    //   logInActiveUser();
+    // }
+  } else if (localStorage.getItem("activeUser") === null) {
+    console.log("No Local Storage");
+    var params = new URLSearchParams(window.location.search);
+    var first = params.get("first");
+    var userEmail = JSON.parse(params.get("second"));
+    setActiveUser(userEmail)
   }
 }
+
 
 async function checkIfQuickAcces() {
   goLogIn = activeUser["quickAcces"];
   return goLogIn;
 }
 
+
 //////////////// Backend functions /////////////
 async function loadUsersFromBackend() {
   await downloadFromServer();
   usersArray = JSON.parse(backend.getItem("usersArray")) || [];
 }
+
 
 async function saveInBackend() {
   await backend.setItem("usersArray", JSON.stringify(usersArray));
@@ -161,7 +177,8 @@ async function logInUser() {
   validatedInput(emailUser, passwordUser);
   let acces = await checkIfExists(emailUser, passwordUser);
   console.log("Log In Before:", activeUser);
-  goToSummary(acces);
+  await checkIfRmemberMe(emailUser);
+  goToSummary(acces, emailUser);
   console.log("Log In After:", activeUser);
   emailUser.value = "";
   passwordUser = "";
@@ -172,4 +189,11 @@ async function logOut() {
   await saveLocalActiveUser(activeUser);
   await deleteActiveUserInBackend();
   toLogInPage();
+}
+
+async function checkIfRmemberMe(emailUser) {
+  let checkbox = callCheckBox();
+  if (checkbox == true) {
+    setActiveUser(emailUser);
+  }
 }

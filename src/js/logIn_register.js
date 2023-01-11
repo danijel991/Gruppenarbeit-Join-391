@@ -5,14 +5,6 @@ let showLogOut = true;
 let passwordVisible = false;
 
 
-function logoAnimation() {
-    transitionLogo();
-    setTimeout(changeBg, 350);
-    setTimeout(showCardAndHeader, 400);
-    startPage();
-}
-
-
 // Function for the Animation
 function changeBg() {
     document.getElementById("initial__file--wrapper").style.background = "white";
@@ -46,14 +38,9 @@ async function checkIfExists(emailUser, passwordUser) {
     if (findEmail === undefined) {
         return false;
     } else if (emailUser === findEmail && passwordUser === findPassword) {
-        let checkbox = callCheckBox();
-        if (checkbox == true) {
-            await setActiveUser(emailUser);
-            return true;
-        } else {
-            return true;
-        }
+        return true;
     }
+
 }
 
 
@@ -103,11 +90,11 @@ function callCheckBox() {
 async function setActiveUser(userEmail) {
     let index = checkIfEmailExists(userEmail)
     indexActiveUser = index;
-    console.log(indexActiveUser);
+    // console.log(indexActiveUser);
     activeUser = usersArray[indexActiveUser];
     activeUser['quickAcces'] = true;
     saveLocalActiveUser(activeUser);
-    await saveActiveUserInBackend(activeUser);
+    // await saveActiveUserInBackend(activeUser);
 }
 
 
@@ -122,9 +109,9 @@ async function logInActiveUser() {
 }
 
 
-function goToSummary(acces) {
+function goToSummary(acces, emailUser) {
     if (acces == true) {
-        toSummaryPage();
+        toSummaryPage(emailUser);
     }
 }
 
@@ -158,8 +145,14 @@ function logInUserGuest() {
 }
 
 
-function toSummaryPage() {
-    location.href = "./src/html/summary.html";
+function toSummaryPage(emailUser) {
+    var first = "email";
+    var second = `${emailUser}`;
+    let params = new URLSearchParams();
+    params.append("first", first);
+    params.append("second", JSON.stringify(second));
+
+    location.href = "./src/html/summary.html?" + params.toString();
 }
 
 // Sign Up Functions
@@ -360,7 +353,8 @@ function animatePasswordConfirmed() {
     setTimeout(resetPasswordConfirmed, 1000);
 }
 
-function checkPassImg() {
+
+function checkPasswordImg() {
     setInterval(() => {
         let a = 0;
         let input = document.getElementById('password');
@@ -376,6 +370,7 @@ function checkPassImg() {
         }
     }, 100)
 }
+
 
 function changeViewPassword() {
     if (passwordVisible === false) {
