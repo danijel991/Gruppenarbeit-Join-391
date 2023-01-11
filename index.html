@@ -18,7 +18,7 @@
     <!-- <script src="/src/js/board.js"></script> -->
     <!-- <script src="src/js/contact.class.js"></script> -->
     <link rel="shortcut icon" href="/src/img/logo_blue.png" type="image/x-icon">
-    <title>Index</title>
+    <title>Join</title>
 </head>
 
 <body onload="logoAnimation()">
@@ -48,7 +48,7 @@
                     <div class="logIn_input--container">
                         <input class="form-control logIn__input" type="password" placeholder="Password" id="password"
                             required>
-                        <img src="./src/img/input_password.png" alt="">
+                        <img onload="checkPassImg()" onclick="changeViewPassword()" id="password__img" src="./src/img/input_password.png" alt="" checked="yes">
                     </div>
                     <div id="logIn__validation" class="logIn__validation d-none"></div>
                     <div class="logIn__selectors">

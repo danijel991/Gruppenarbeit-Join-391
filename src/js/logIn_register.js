@@ -2,6 +2,7 @@
 let indexActiveUser;
 let indexReset;
 let showLogOut = true;
+let passwordVisible = false;
 
 
 function logoAnimation() {
@@ -357,4 +358,29 @@ function animatePasswordConfirmed() {
     document.getElementById('reset__confirmed').style.transition = "all 750ms ease-in-out";
     document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(-20vh)";
     setTimeout(resetPasswordConfirmed, 1000);
+}
+
+function checkPassImg() {
+    setInterval(() => {
+        let a = 0;
+        let input = document.getElementById('password');
+        let img = document.getElementById('password__img');
+        if (input.value.length > a && passwordVisible) {
+            img.src = "./src/img/icon_password_visible.png";
+            input.type = "text";
+        } else if (input.value.length > a && !passwordVisible) {
+            img.src = "./src/img/icon_password_nonvisible.png";
+            input.type = "password";
+        } else {
+            img.src = "./src/img/input_password.png";
+        }
+    }, 100)
+}
+
+function changeViewPassword() {
+    if (passwordVisible === false) {
+        passwordVisible = true;
+    } else {
+        passwordVisible = false;
+    }
 }
