@@ -1,0 +1,24 @@
+/* Please dont add this to other html files, use it only for add_task.html */
+
+.add-task-header-top {
+    padding: 0 !important;
+}
+
+.add-task-form {
+    width: 422px !important;
+}
+
+#myForm>div.add-task-left {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.add-task-btn-area {
+    display: flex;
+    flex-direction: row;
+    max-width: 341px;
+    max-height: 61px;
+    position: relative;
+    left: 650px;
+    top: -100px;
+}
