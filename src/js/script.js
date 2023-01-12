@@ -26,6 +26,7 @@ async function startPage() {
 async function init() {
   await loadUsersFromBackend();
   await getActiveUser();
+  // await saveActiveUserInBackend()
   await includeHTML();
   await showSelectedLink();
   await loadUserContactsFromBackend();
@@ -55,7 +56,7 @@ async function saveLocalActiveUser(activeUser) {
   // await saveActiveUserInBackend(activeUser);
 }
 
-async function deleteLocalActiveUser(activeUser){
+async function deleteLocalActiveUser(activeUser) {
   window.localStorage.clear();
   activeUser = [];
 }
@@ -65,17 +66,19 @@ async function getActiveUser() {
   if (localStorage.getItem("activeUser") !== null) {
     let stringStorage = localStorage.getItem("activeUser");
     activeUser = await JSON.parse(stringStorage);
-    // let logIn = await checkIfQuickAcces();
-    // if (logIn === true) {
-    //   logInActiveUser();
-    // }
   } else if (localStorage.getItem("activeUser") === null) {
     console.log("No Local Storage");
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
-    setActiveUser(userEmail)
+    // await loadActiveUserFromBackend();
+    setActiveUser(collectActiveUserFromURL())
   }
+}
+
+function collectActiveUserFromURL() {
+  // debugger;
+  var params = new URLSearchParams(window.location.search);
+  var first = params.get("first");
+  var userEmail = JSON.parse(params.get("second"));
+  return userEmail;
 }
 
 
@@ -107,9 +110,11 @@ async function saveActiveUserInBackend() {
 
 
 async function loadActiveUserFromBackend() {
-  activeUserEmail = activeUser["userEmail"];
-  await backend.getItem(`${activeUserEmail}_active`, JSON.stringify(activeUser));
+  key = `${activeUserEmail}_active`;
+  await downloadFromServer();
+  activeUser = JSON.parse(backend.getItem(key)) || [];
 }
+
 async function loadActiveUserInBackend() {
   activeUserTasks = `${activeUser["userEmail"]}_task`;
   await downloadFromServer();

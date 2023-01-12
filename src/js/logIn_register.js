@@ -90,10 +90,7 @@ function callCheckBox() {
 async function setActiveUser(userEmail) {
     let index = checkIfEmailExists(userEmail)
     indexActiveUser = index;
-    // console.log(indexActiveUser);
     activeUser = usersArray[indexActiveUser];
-    activeUser['quickAcces'] = true;
-    // await saveActiveUserInBackend(activeUser);
 }
 
 
@@ -110,7 +107,7 @@ async function logInActiveUser() {
 
 function goToSummary(acces, emailUser) {
     if (acces == true) {
-        toSummaryPage(emailUser);
+        getActiveUserURL(emailUser);
     }
 }
 
@@ -144,14 +141,20 @@ function logInUserGuest() {
 }
 
 
-function toSummaryPage(emailUser) {
+async function getActiveUserURL(emailUser) {
     var first = "email";
     var second = `${emailUser}`;
     let params = new URLSearchParams();
     params.append("first", first);
     params.append("second", JSON.stringify(second));
+    return params;
+}
 
-    location.href = "./src/html/summary.html?" + params.toString();
+async function goToSummary(acces, emailUser) {
+    if (acces == true) {
+        let params = await getActiveUserURL(emailUser)
+        location.href = "./src/html/summary.html?" + params.toString();
+    }
 }
 
 // Sign Up Functions

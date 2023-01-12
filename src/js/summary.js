@@ -16,6 +16,7 @@ const months = [
 
 async function initSummary() {
   await init();
+  // await loadActiveUserFromBackend();
   renderGreeting();
   renderTodaysDate();
   renderBoardStatistics();
