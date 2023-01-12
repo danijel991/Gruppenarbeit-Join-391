@@ -4,40 +4,13 @@
     display: none;
 }
 
-.static {
-    position: static;
+#join_logo_blue {}
+
+@media (max-width: 1360px) {
+    .add-task-btn-area {
+        left: 430px;
+    }
 }
-
-#createTaskResponsive {
-    width: 113px;
-    height: 51px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 120%;
-    padding: 0;
-}
-
-.add-task-btn-create {
-    height: 61px;
-    padding: 18px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    border-radius: 10px;
-    background-color: #4589FF;
-    border: 1px solid #4589FF;
-    color: white;
-    font-size: 23px;
-    width: 180px;
-}
-
-#join_logo_blue {
-
-}
-
-@media (max-width: 1400px) {}
 
 @media (max-width: 1230px) {
 
@@ -45,25 +18,8 @@
         background-color: white;
     }
 
-    .header-right-content {
-        display: none;
-    }
-
-    .add-task-right {
-        display: none;
-    }
-
     header {
         display: none;
-    }
-
-    #createTaskResponsive {
-        display: block;
-        position: fixed;
-        top: 15px;
-        right: 25px;
-        z-index: 99 !important;
-        margin-top: 0;
     }
 
     .responsive-header {
@@ -82,46 +38,59 @@
     }
 }
 
-@media (max-width: 1024px) {}
+@media (max-width: 1128px) {
+    .d-none-resp {
+        display: none;
+    }
 
-@media (max-width: 768px) {
+    .add-task-right-button-right {
+        width: 113px;
+        height: 51px;
+        position: fixed;
+        top: 23px;
+        z-index: 100;
+        right: 5%;
+    }
 
     .responsive_text {
         display: block;
-        color: #4589FF;
         font-weight: 400;
         font-size: 19px;
         line-height: 120%;
-        width: 363px;
-        height: 23px;
+        color: #4589FF;
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
     }
 
-    .uniform-sizing,
-    .description-text,
-    #high>label>span,
-    #medium>label>span,
-    #low>label>span {
+    .add-title {
         font-weight: 400;
-        font-size: 16px !important;
+        font-size: 28px;
+        line-height: 120%;
+        width: 363px;
+    }
+
+    .add-title::placeholder {
+        font-weight: 400;
+        font-size: 28px;
         line-height: 120%;
     }
 
-    #collapseContacts {
+    .uniform-sizing {
+        font-weight: 400;
         font-size: 16px;
+        line-height: 120%;
+        width: 363px;
     }
 
-    .dropdown-category {
+    .uniform-sizing::placeholder {
+        font-weight: 400;
         font-size: 16px;
+        line-height: 120%;
     }
-
-    #category-dropdown {
-        width: 363px !important;
-    }
-
-    textarea::placeholder {
-        font-size: 16px !important;
-    }
-
 
     .category-header {
         font-weight: 700;
@@ -129,97 +98,127 @@
         line-height: 120%;
     }
 
-    .dropdown-contacts-container,
-    .dropdown-contact {
-        width: 363px;
+    .priority-button-text {
+        font-weight: 400 !important;
+        font-size: 16px !important;
+        line-height: 120% !important;
     }
 
-    .add-title {
+    .button-area {
+        width: 354px;
+        height: 51px;
+    }
+
+    #high,
+    #low {
+        width: 111px;
+        height: 41px;
         font-weight: 400;
-        font-size: 28px;
+        font-size: 16px;
         line-height: 120%;
     }
 
-    #high>label>img,
-    #medium>label>img,
-    #low>label>img {
-        width: 20px;
-        height: 14.51px;
-    }
-
-    .uniform-sizing textarea {
-        width: 363px;
-    }
-
-    .add-task-main {
-        justify-content: center;
-    }
-
-    .add-task-left {
-        margin-top: 114px;
-        margin-left: 25%;
-        margin-right: 25%;
-        align-items: center;
-    }
-
-    .responsive-header {
-        height: 81px;
-    }
-
-    .subtasks-input-area {
-        border-bottom: 1px solid #D1D1D1;
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
-        width: 363px;
+    #medium {
+        width: 112px;
         height: 41px;
-        padding: 11px 21px;
-        gap: 10px;
-
-    }
-
-    .form-width {
-        width: 363px;
-        height: 56px
-    }
-
-    .uniform-sizing {
-        width: 363px;
-        height: 41px;
-    }
-
-    .input-title {
-        width: 363px;
-        height: 56px;
-    }
-
-    .description-area {
-        width: 363px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
     }
 
     .description-area textarea {
         width: 363px;
         height: 93px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
     }
 
-    .button-area {
-        padding: 0px;
-        gap: 10px;
-        width: 354px;
-        height: 51px;
+    .description-area textarea::placeholder {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
     }
 
-    .button-area button {
-        width: 111px;
-        height: 41px;
+    .subtasks-input-area {
+        width: 363px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
+    .subtasks-input-area::placeholder {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
+    .input-title,
+    .uniform-sizing,
+    #date,
+    .description-area textarea,
+    .subtasks-input-area {
+        padding: 11px 21px !important;
+    }
+
+    .subtask {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
+    .margin-btn-25 {
+        margin-bottom: 21px;
     }
 
     .margin-btn-45 {
-        margin-bottom: 16px;
+        margin-bottom: 27px;
+    }
+
+    .form-width,
+    .add-task-left {
+        width: 363px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .add-task-left {
+        margin-left: 0;
+    }
+
+    .add-task-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 @media (max-width: 576px) {
-    63#myForm>span.category-header {
-        margin-left: 33px !important;
+
+    .form-width,
+    .add-task-left,
+    .subtasks-input-area,
+    .add-title,
+    .description-area textarea,
+    .add-task-main,
+    .button-area,
+    .add-task-form {
+        width: 300px !important;
+    }
+
+    .button-area > button {
+        width: 90px !important;
+    }
+
+    .add-task-main {
+        margin-left:auto;
+        margin-right:auto;
+        width: 100px;
+    }
+
+    .form-width {
+        margin-top: 0;
     }
 }
 
