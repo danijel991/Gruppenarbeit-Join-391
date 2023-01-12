@@ -55,6 +55,11 @@ async function saveLocalActiveUser(activeUser) {
   // await saveActiveUserInBackend(activeUser);
 }
 
+async function deleteLocalActiveUser(activeUser){
+  window.localStorage.clear();
+  activeUser = [];
+}
+
 
 async function getActiveUser() {
   if (localStorage.getItem("activeUser") !== null) {
@@ -186,7 +191,9 @@ async function logInUser() {
 
 async function logOut() {
   activeUser["quickAcces"] = false;
-  await saveLocalActiveUser(activeUser);
+  if (localStorage.getItem("activeUser") !== null) {
+    await saveLocalActiveUser(activeUser);
+  }
   await deleteActiveUserInBackend();
   toLogInPage();
 }
@@ -194,6 +201,9 @@ async function logOut() {
 async function checkIfRmemberMe(emailUser) {
   let checkbox = callCheckBox();
   if (checkbox == true) {
-    setActiveUser(emailUser);
+    await setActiveUser(emailUser)
+    await saveLocalActiveUser(activeUser);
+  } else {
+    await deleteLocalActiveUser(activeUser);
   }
 }
