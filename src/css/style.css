@@ -61,6 +61,7 @@ header {
 .join-logo img {
   height: 58px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .header-right-content {
