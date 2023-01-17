@@ -392,7 +392,6 @@ function closeCategoryInput() {
 
 
 async function createTask() {
-  debugger;
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   if (contactsCheckedBoxes == null) {
