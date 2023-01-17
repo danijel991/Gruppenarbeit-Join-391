@@ -188,7 +188,7 @@ async function logInUser() {
   let acces = await checkIfExists(emailUser, passwordUser);
   console.log("Log In Before:", activeUser);
   await checkIfRmemberMe(emailUser);
-  goToSummary(acces, emailUser);
+  goToSummary(acces, emailUser); // goes to login-register.js line 154 to pass email with url
   console.log("Log In After:", activeUser);
   emailUser.value = "";
   passwordUser = "";
@@ -206,9 +206,9 @@ async function logOut() {
 async function checkIfRmemberMe(emailUser) {
   let checkbox = callCheckBox();
   if (checkbox == true) {
-    await setActiveUser(emailUser)
-    await saveLocalActiveUser(activeUser);
+    await setActiveUser(emailUser) // goes to line 91,  stores actual user in active user variable
+    // await saveLocalActiveUser(activeUser); // goes to line 53, stores new active user variable in localstorage
   } else {
     await deleteLocalActiveUser(activeUser);
   }
-}
+} // goes line 191 to proceed. 
