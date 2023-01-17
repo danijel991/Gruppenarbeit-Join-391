@@ -612,7 +612,7 @@ input[type="text"],
 }
 
 .form {
-  padding-top: 50px;
+  padding-top: 5%;
 }
 
 /* input[type="email"] {
@@ -660,12 +660,12 @@ input:focus {
 
 
   .contact-dialog-bottom {
-    padding-top: 0;
+    padding-top: 25%;
   }
 
-  .user-avatar {
+  /* .user-avatar {
     margin-top: -50px;
-  }
+  } */
 
   .add-contact-modal,
   .edit-contact-modal {
@@ -743,7 +743,7 @@ input:focus {
   } */
 
   .form {
-    margin-top: 62px;
+    margin-top: 5%;
   }
 
   .main {
