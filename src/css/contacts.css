@@ -2,6 +2,21 @@ body {
   overflow: hidden;
 }
 
+.add-contact-modal {
+  overflow-y: scroll;
+}
+
+.add-contact-modal::-webkit-scrollbar {
+  display: none;
+}
+.edit-contact-modal {
+  overflow-y: scroll;
+}
+
+.edit-contact-modal::-webkit-scrollbar {
+  display: none;
+}
+
 .span-display-none {
   display: none;
 }
