@@ -130,16 +130,15 @@ async function saveInBackend() {
 
 ///////// Backend Contacts
 /**
- * The functions is saving the "Contacts" in backend.
+ * function saves all specific contacts of active user in Backend under the key 'activeUserEmail'
  */
 async function saveInBackendUserContacts() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}`, JSON.stringify(activeUserContacts));
 }
 
-
 /**
- * The functions is providing the "Contacts" from backend.
+ * function loads all spedific contacts of active user from Backend
  */
 async function loadUserContactsFromBackend() {
   activeUserEmail = activeUser["userEmail"];
@@ -147,27 +146,24 @@ async function loadUserContactsFromBackend() {
   activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }
 
-
 /**
- * The function is showing the follow up question if it should deleting all user "Contacts".
+ * function displays red alert button before final deletion of all active user contacts in Backend 
  */
 function deleteUserContacts() {
   document.getElementById("delete-contact-button").classList.add("d-none");
   document.getElementById("delete-contact-button-alert").classList.remove("d-none");
 }
 
-
 /**
- * The function remove the follow up question from HTML.
+ * function aborts deletion
  */
 function abortDeleteContacts() {
   document.getElementById("delete-contact-button").classList.remove("d-none");
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
 }
 
-
 /**
- * The function is deleting all user "Contacts".
+ * function deletes all specific active user contacts in Backend, which are save under this key 'activeUserEmail'
  */
 async function executeDeleteContacts() {
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
@@ -181,16 +177,15 @@ async function executeDeleteContacts() {
 
 //// BACKEND Tasks
 /**
- * The function is saving the "Task" in backend.
+ * function saves all tasks of active user in Backend under this key 'activeUserEmail_task'
  */
 async function saveInBackendUserTasks() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}_task`, JSON.stringify(tasks));
 }
 
-
 /**
- * The function is providing all "Task" from backend.
+ * function loads all active user tasks from Backend
  */
 async function loadUserTasksFromBackend() {
   activeUserTasks = `${activeUser["userEmail"]}_task`;

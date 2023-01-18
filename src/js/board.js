@@ -14,7 +14,7 @@ async function updateHTML() {
     generateTemplate();
     updateProgressBars();
     updateProgressReport();
-  }, 300)
+  }, 1000)
 }
 
 
@@ -259,7 +259,11 @@ function editTasks(taskID) {
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   renderContactsInEditDropDown(taskID);
   updateUrgencyBtns(taskID);
-  checkCheckBoxInCollapseContacts(taskID);
+  // checkCheckBoxInCollapseContacts(taskID);
+  for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
+    const contacts = tasks[taskID]["assignedTo"][i];
+    document.getElementById('assigned-contacts').innerHTML += generateTaskModalContactsInitialsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
+  }
 }
 
 
@@ -392,7 +396,6 @@ function closeCategoryInput() {
 
 
 async function createTask() {
-  debugger;
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   if (contactsCheckedBoxes == null) {
