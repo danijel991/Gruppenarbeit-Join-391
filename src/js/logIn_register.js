@@ -6,11 +6,17 @@ let passwordVisible = false;
 
 
 // Function for the Animation
+/**
+ * The function is changing the background color for the animation
+ */
 function changeBg() {
     document.getElementById("initial__file--wrapper").style.background = "white";
 }
 
 
+/**
+ * The function does the logo transition from the center to top left;
+ */
 function transitionLogo() {
     document.getElementById("logo__img").style.left = "0px";
     document.getElementById("logo__img").style.top = "0px";
@@ -19,6 +25,9 @@ function transitionLogo() {
 }
 
 
+/**
+ * The functions changes the display style for proper possition;
+ */
 function showCardAndHeader() {
     document.getElementById("logIn__frame").style.display = "flex";
     document.getElementById("to__sign-in--wrapper").style.display = "flex";
@@ -26,36 +35,39 @@ function showCardAndHeader() {
 
 
 /***    Log In  ***/
-
 // Main function in script.js
 
-// Check if the user exists
+/**
+ * The function is checking if the input data coresponds to an already sign up user; 
+ * 
+ * @param {string} emailUser - Email provided by the user;
+ * @param {string} passwordUser - Password provided by the user;
+ * 
+ * @returns - If user already registered, true, otherwise false;
+ */
 async function checkIfExists(emailUser, passwordUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
     let passwordArray = usersArray.map((password) => password.userPassword);
     let findEmail = emailArray.find((email) => email == emailUser);
     let findPassword = passwordArray.find((password) => password == passwordUser);
     if (findEmail === undefined) {
+        responseValitation(emailUser, passwordUser, findEmail, findPassword)
         return false;
     } else if (emailUser === findEmail && passwordUser === findPassword) {
         return true;
     }
-
 }
 
 
-// Check validation on submit
-function validatedInput(emailUser, passwordUser) {
+/**
+ * The functions provides the given format if email and/or password is incorect.
+ * @param {string} emailUser - Email provided by the user.
+ * @param {string} passwordUser - Password provided by the user.
+ * @param {string} findEmail - Email from database.
+ * @param {string} findPassword - Password from database.
+ */
+function responseValitation(emailUser, passwordUser, findEmail, findPassword) {
     let validation = document.getElementById('logIn__validation');
-    let emailArray = usersArray.map((email) => email.userEmail);
-    let passwordArray = usersArray.map((password) => password.userPassword);
-    let findEmail = emailArray.find((email) => email == emailUser);
-    let findPassword = passwordArray.find((password) => password == passwordUser);
-    responseValitation(emailUser, passwordUser, validation, findEmail, findPassword);
-}
-
-
-function responseValitation(emailUser, passwordUser, validation, findEmail, findPassword) {
     if (emailUser != findEmail && passwordUser != findPassword) {
         validation.classList.remove('d-none');
         validation.innerHTML = 'Wrong email and password'
@@ -69,7 +81,11 @@ function responseValitation(emailUser, passwordUser, validation, findEmail, find
 }
 
 
-//If "Remember me" is active
+/**
+ * The function register the selection of "Remember me" checkbox.
+ * 
+ * @returns If checked, return true, otherwise false.
+ */
 function callCheckBox() {
     let checkbox = document.getElementById('rememberMe');
     let result = checkbox.checked;
@@ -87,6 +103,11 @@ function callCheckBox() {
 }
 
 
+/**
+ * The function selects the user from the user database and is giving the value to activeUser;
+ * 
+ * @param {string} userEmail - The value coresponds to the email provided by the user.
+ */
 async function setActiveUser(userEmail) {
     let index = checkIfEmailExists(userEmail)
     indexActiveUser = index;
@@ -94,29 +115,34 @@ async function setActiveUser(userEmail) {
 }
 
 
-async function logInActiveUser() {
-    let emailUser = activeUser['userEmail'];
-    let passwordUser = activeUser['userPassword'];
-    let acces = await checkIfExists(emailUser, passwordUser);
-    await setActiveUser(emailUser);
-    goToSummary(acces);
-    emailUser.value = "";
-    passwordUser = "";
-}
+// async function logInActiveUser() {
+//     let emailUser = activeUser['userEmail'];
+//     let passwordUser = activeUser['userPassword'];
+//     let acces = await checkIfExists(emailUser, passwordUser);
+//     await setActiveUser(emailUser);
+//     goToSummary(acces);
+//     emailUser.value = "";
+//     passwordUser = "";
+// }
+
+// function goToSummary(acces, emailUser) {
+//     if (acces == true) {
+//         getActiveUserURL(emailUser);
+//     }
+// }
 
 
-function goToSummary(acces, emailUser) {
-    if (acces == true) {
-        getActiveUserURL(emailUser);
-    }
-}
-
-
+/**
+ * The function forwards to "Log In" page.
+ */
 function toLogInPage() {
     window.location.href = "./../../index.html";
 }
 
 
+/**
+ * The function shows the HTML element where the "Log Out" button is situated.
+ */
 function toLogOut() {
     const target = document.getElementById('userPhoto');
     document.addEventListener('click', (event) => {
@@ -127,11 +153,13 @@ function toLogOut() {
         } else {
             tologOut.classList.add('d-none');
         }
-    }
-    )
+    });
 }
 
-// Guest User Function
+
+/**
+ * The funtion is adding the corresponding email and password of a "Guest User".
+ */
 function logInUserGuest() {
     let guestEmail = "guestemail@gmail.com";
     let guestPassword = "guestpassword";
@@ -141,15 +169,29 @@ function logInUserGuest() {
 }
 
 
+/**
+ * The funtion transform a copy of the email into variable "param".
+ * 
+ * @param {string} emailUser - Value coresponding to the email given by the user.
+ * @returns URL params value.
+ */
 async function getActiveUserURL(emailUser) {
     var first = "email";
     var second = `${emailUser}`;
     let params = new URLSearchParams();
     params.append("first", first);
     params.append("second", JSON.stringify(second));
+    console.log(params)
     return params;
 }
 
+
+/**
+ * The function forwards to "Summary" page.
+ * 
+ * @param {boolean} acces - If acces is granted or not.
+ * @param {*} emailUser - Value coresponding to the email given by the user.
+ */
 async function goToSummary(acces, emailUser) {
     if (acces == true) {
         let params = await getActiveUserURL(emailUser)
@@ -157,13 +199,18 @@ async function goToSummary(acces, emailUser) {
     }
 }
 
-// Sign Up Functions
+
+/**
+ * The function is adding a new user to database.
+ */
 async function addNewUser() {
     await getUserInfo();
     cleanInput();
 }
 
-
+/**
+ * The function is creating an object with the informations of the new user.
+ */
 async function getUserInfo() {
     let newName = document.getElementById('newUser-name').value;
     let newEmail = document.getElementById('newUser-email').value;
@@ -182,24 +229,46 @@ async function getUserInfo() {
         "userColor": newColor,
         "quickAcces": false,
     };
+    await processNewUserInfo(newEmail, newUser);
+}
+
+
+/**
+ * The function provide the feedback if "New user" has been succesfully created or not.
+ * 
+ * @param {string} newEmail - Value coresponding to the email given by the new user.
+ * @param {object} newUser - Object with data coresponding to the new user.
+ */
+async function processNewUserInfo(newEmail, newUser) {
     let z = checkIfAlreadyRegistered(newEmail);
     if (z == undefined) {
-        await addToDatabase(newUser, newEmail);
+        await addToDatabase(newUser);
         setTimeout(toLogInPage, 1250);
         setTimeout(resetConfirmation, 1250);
     } else {
         alert('Email Already Registered')
+        showUserAlreadyRegistered();
     }
 }
 
 
-async function addToDatabase(newUser, newEmail) {
+/**
+ * The functions is adding the "New User" to the existing user database.
+ * 
+ * @param {object} newUser - Object with data coresponding to the new user.
+ */
+async function addToDatabase(newUser) {
     usersArray.push(newUser);
     await saveInBackend();
     showConfirmation();
 }
 
 
+/**
+ * 
+ * @param {*} newEmail - Value coresponding to the email given by the new user.
+ * @returns - "undefined" if nothing has been found or a string, if "newEmail" is already in database. 
+ */
 function checkIfAlreadyRegistered(newEmail) {
     let emailArray = usersArray.map((email) => email.userEmail);
     let findEmail = emailArray.find((email) => email == newEmail);
@@ -207,6 +276,9 @@ function checkIfAlreadyRegistered(newEmail) {
 }
 
 
+/**
+ * The function does clear the input fields is "Sign Up" section.
+ */
 function cleanInput() {
     document.getElementById("newUser-name").value = "";
     document.getElementById("newUser-email").value = "";
@@ -214,6 +286,11 @@ function cleanInput() {
 }
 
 
+/**
+ * The function creates a random color for the new user and provide it to "newUser". 
+ * 
+ * @returns - The color generated by the function.
+ */
 function getColor() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -223,6 +300,12 @@ function getColor() {
 }
 
 
+/**
+ * The function is taking the first letter from each word and creates a new word. 
+ * 
+ * @param {string} newName - Value coresponding to the givin name from the new user.
+ * @returns - A string made with the first letter of each word from "newName".
+ */
 function getInitials(newName) {
     var names = newName.split(" "),
         initials = names[0].substring(0, 1).toUpperCase();
@@ -235,6 +318,9 @@ function getInitials(newName) {
 }
 
 
+/**
+ * The functions is showing if the new user was succesfully registered. 
+ */
 function showConfirmation() {
     document.getElementById('signUp__id--main').classList.add('blur');
     document.getElementById('signUp__id--response').classList.remove('d-none')
@@ -242,6 +328,9 @@ function showConfirmation() {
 }
 
 
+/**
+ * The function is repositioning the confirmation field to the initial location. 
+ */
 function resetConfirmation() {
     document.getElementById('signUp__id--main').classList.remove('blur');
     document.getElementById('signUp__id--response').classList.add('d-none')
@@ -250,20 +339,24 @@ function resetConfirmation() {
 
 
 /*** Reset Password functions ***/
+/**
+ * The function is saving globally the index of the user that is requesting to change the password.
+ * 
+ * @returns - A number reprezenting the index of the user.
+ */
 function toResetPassword() {
     let emailUser = document.getElementById("forgot__password--email").value;
-    let index = checkIfEmailExists(emailUser);
-    indexReset = getIndex(index);
-    allowResetPassword(index);
+    indexReset = checkIfEmailExists(emailUser);
+    allowResetPassword(indexReset);
     return indexReset;
 }
 
 
-function getIndex(index) {
-    return index;
-}
-
-
+/**
+ * The function is calling the follow up functions to provide the password reset.
+ * 
+ * @param {*} indexReset - The value is coresponding to the index of the user.
+ */
 async function resetPasswordUser(indexReset) {
     let oldPass = usersArray[indexReset];
     let newPass = document.getElementById('user__newPassword-1').value;
@@ -281,18 +374,30 @@ async function resetPasswordUser(indexReset) {
 }
 
 
+/**
+ * The function is showing the section where is password reset is available.
+ */
 function changeDivReset() {
     document.getElementById("forgot__request").classList.add("d-none");
     document.getElementById("forgot__newPassword").classList.remove("d-none");
 }
 
 
+/**
+ *  The functions clears the input fields for password reset. 
+ */
 function clearInputNewPassword() {
     document.getElementById("user__newPassword-1").value = "";
     document.getElementById("user__newPassword-2").value = "";
 }
 
 
+/**
+ * The functions is checking if email does exist in database.
+ * 
+ * @param {string} emailUser - Email provided by the user.
+ * @returns - An index coresponding to the location in the "userArry" where the email has been found, otherwise "undefined".
+ */
 function checkIfEmailExists(emailUser) {
     let emailArray = usersArray.map((email) => email.userEmail);
     let findEmailIndex = emailArray.findIndex((email) => email == emailUser);
@@ -300,6 +405,11 @@ function checkIfEmailExists(emailUser) {
 }
 
 
+/**
+ * The function is showing the validation, if reset password can be done.
+ * 
+ * @param {*} index 
+ */
 function allowResetPassword(index) {
     if (index >= 0) {
         document.getElementById('forgot__email--validation').classList.add('d-none')
@@ -311,6 +421,9 @@ function allowResetPassword(index) {
 }
 
 
+/**
+ * The function is showing the confirmation of "Reset email" has been sended.
+ */
 function showSendEmail() {
     document.querySelector('.forgot__file--wrapper').classList.add('blur')
     document.querySelector('.response__forgot--container').classList.remove('d-none')
@@ -319,7 +432,10 @@ function showSendEmail() {
 }
 
 
-function resetSentEmail() {
+/**
+ * The function is repositioning the confirmation of "Reset email" to the initial location. 
+ */
+function resetSendEmail() {
     document.querySelector('.forgot__file--wrapper').classList.remove('blur')
     document.querySelector('.response__forgot--container').classList.add('d-none')
     document.getElementById('email__sent').classList.add('d-none');
@@ -327,11 +443,19 @@ function resetSentEmail() {
 }
 
 
+/**
+ * The function is animating the "Reset email" confirmation element.
+ */
 function animateSentEmail() {
     document.getElementById('email__sent').style.transition = "all 750ms ease-in-out";
     document.getElementById('email__sent').style.transform = "translateX(-50%) translateY(-20vh)";
-    setTimeout(resetSentEmail, 1000);
+    setTimeout(resetSendEmail, 1000);
 }
+
+
+/**
+ * The function is showing the afirmation of succesfully reseted password.
+ */
 
 function showNewPasswordConfirmed() {
     document.querySelector('.forgot__file--wrapper').classList.add('blur')
@@ -341,6 +465,9 @@ function showNewPasswordConfirmed() {
 }
 
 
+/**
+ * The function is repositioning the confirmation of "Password reseted" to the initial location. 
+ */
 function resetPasswordConfirmed() {
     document.querySelector('.forgot__file--wrapper').classList.remove('blur')
     document.querySelector('.response__forgot--container').classList.add('d-none')
@@ -349,6 +476,10 @@ function resetPasswordConfirmed() {
 }
 
 
+
+/**
+ * The function is animating the "Password reseted" element.
+ */
 function animatePasswordConfirmed() {
     document.getElementById('reset__confirmed').style.transition = "all 750ms ease-in-out";
     document.getElementById('reset__confirmed').style.transform = "translateX(-50%) translateY(-20vh)";
@@ -356,6 +487,9 @@ function animatePasswordConfirmed() {
 }
 
 
+/**
+ * The function is changeing the icon of the password
+ */
 function checkPasswordImg() {
     setInterval(() => {
         let a = 0;
@@ -380,4 +514,9 @@ function changeViewPassword() {
     } else {
         passwordVisible = false;
     }
+}
+
+
+function showUserAlreadyRegistered() {
+
 }

@@ -47,13 +47,15 @@
                     </div>
                     <div class="logIn_input--container">
                         <input class="form-control logIn__input" type="password" placeholder="Password" id="password"
-                            required>
-                        <img onload="checkPasswordImg()" onclick="changeViewPassword()" id="password__img" src="./src/img/input_password.png" alt="" checked="yes">
+                            minlength="4" required>
+                        <img onload="checkPasswordImg()" onclick="changeViewPassword()" id="password__img"
+                            src="./src/img/input_password.png" alt="" checked="yes">
                     </div>
                     <div id="logIn__validation" class="logIn__validation d-none"></div>
                     <div class="logIn__selectors">
                         <div class="logIn__selector--remember">
-                            <input type="checkbox" id="rememberMe" class="form-check-input" checked value="yes" minlength="4">
+                            <input type="checkbox" id="rememberMe" class="form-check-input" checked value="yes"
+                                minlength="4">
                             <label for="email password" class="form_check-input logIn--remember">Remember
                                 me</label>
                         </div>

@@ -6,7 +6,7 @@ let activeUserContacts = [];  // Array that holds the contacts of the active use
 /***    Functions   ***/
 
 /**
- * After openning the page, calls the functions that animate the LOGO;
+ * After openning the page, calls the functions that animate the logo;
  * 
  */
 async function logoAnimation() {
@@ -14,12 +14,11 @@ async function logoAnimation() {
   setTimeout(changeBg, 350);
   setTimeout(showCardAndHeader, 400);
   await loadUsersFromBackend();
-
 }
 
 
 /**
- * After Log In, the function is collectiong a serial if data throw the corresponding functions
+ * After "Log In", the function is collectiong a serial if data throw the corresponding functions
  */
 async function init() {
   await loadUsersFromBackend();
@@ -51,9 +50,9 @@ async function includeHTML() {
 
 // Local Storage & Active user.
 /**
- * The functions does save the Active User in Local Storage.
+ * The functions does save the active user in local storage.
  * 
- * @param {object} activeUser - The Object contains the informations of the active user.
+ * @param {object} activeUser - The object contains the informations of the active user.
  */
 async function saveLocalActiveUser(activeUser) {
   let stringStorage = await JSON.stringify(activeUser);
@@ -62,9 +61,9 @@ async function saveLocalActiveUser(activeUser) {
 
 
 /**
- * The functions is deleting the Active User in Local Storage.
+ * The functions is deleting the active user in local storage.
  * 
- * @param {*} activeUser - The Object contains the informations of the active user.
+ * @param {*} activeUser - The object contains the informations of the active user.
  */
 async function deleteLocalActiveUser(activeUser) {
   window.localStorage.clear();
@@ -73,7 +72,7 @@ async function deleteLocalActiveUser(activeUser) {
 
 
 /**
- * The function is cheking is the user was already register throw Local Storage.
+ * The function is cheking is the user was already register throw local storage.
  * If user was already registered, the data of active user are collected from the Local Storage, otherwise from the URL.
  */
 async function getActiveUser() {
@@ -101,9 +100,9 @@ function collectActiveUserFromURL() {
 
 
 /**
- * The functions provides the info if the user is allowed to Log In automatically, by comming back on the page.
+ * The functions provides the info if the user is allowed to be saved in local storage
  * 
- * @returns - True or False.
+ * @returns - "True" or "False".
  */
 async function checkIfQuickAcces() {
   goLogIn = activeUser["quickAcces"];
@@ -113,7 +112,7 @@ async function checkIfQuickAcces() {
 
 //////////////// Backend functions /////////////
 /**
- * The function is provideing the Users Data from the server.
+ * The function is provideing the users data from the server.
  */
 async function loadUsersFromBackend() {
   await downloadFromServer();
@@ -122,7 +121,7 @@ async function loadUsersFromBackend() {
 
 
 /**
- * The function is saveing the Users Data in server.
+ * The function is saveing the users data in server.
  */
 async function saveInBackend() {
   await backend.setItem("usersArray", JSON.stringify(usersArray));
@@ -130,30 +129,48 @@ async function saveInBackend() {
 
 
 ///////// Backend Contacts
+/**
+ * The functions is saving the "Contacts" in backend.
+ */
 async function saveInBackendUserContacts() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}`, JSON.stringify(activeUserContacts));
 }
 
+
+/**
+ * The functions is providing the "Contacts" from backend.
+ */
 async function loadUserContactsFromBackend() {
   activeUserEmail = activeUser["userEmail"];
   await downloadFromServer();
   activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }
 
+
+/**
+ * The function is showing the follow up question if it should deleting all user "Contacts".
+ */
 function deleteUserContacts() {
   document.getElementById("delete-contact-button").classList.add("d-none");
   document.getElementById("delete-contact-button-alert").classList.remove("d-none");
 }
 
+
+/**
+ * The function remove the follow up question from HTML.
+ */
 function abortDeleteContacts() {
   document.getElementById("delete-contact-button").classList.remove("d-none");
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
 }
 
+
+/**
+ * The function is deleting all user "Contacts".
+ */
 async function executeDeleteContacts() {
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
-
   await backend.deleteItem(`${activeUserEmail}`);
   activeUserContacts = [];
   document.getElementById("contact-list").innerHTML = "";
@@ -161,33 +178,34 @@ async function executeDeleteContacts() {
   console.log("Deleted all contacts of: ", activeUserEmail);
 }
 
+
 //// BACKEND Tasks
+/**
+ * The function is saving the "Task" in backend.
+ */
 async function saveInBackendUserTasks() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}_task`, JSON.stringify(tasks));
 }
 
+
+/**
+ * The function is providing all "Task" from backend.
+ */
 async function loadUserTasksFromBackend() {
   activeUserTasks = `${activeUser["userEmail"]}_task`;
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem(activeUserTasks)) || [];
 }
 
-// diese Variante nur nehmen, wenn jeder Task einzeiln im Backend gespeichert werden soll
-// async function saveInBackendUserTasks(index) {
-//   activeUserEmail = activeUser["userEmail"];
-//   await backend.setItem(`${activeUserEmail}_task${index}`, JSON.stringify(tasks));
-// }
-
 
 /***    Log In  &  Log Out  ***/
 /**
- * The function does the procceses for the Log In. 
+ * The function does the procceses for the "Log In". 
  */
 async function logInUser() {
   let emailUser = document.getElementById("email").value;
   let passwordUser = document.getElementById("password").value;
-  validatedInput(emailUser, passwordUser);
   let acces = await checkIfExists(emailUser, passwordUser);
   console.log("Log In Before:", activeUser);
   await checkIfRmemberMe(emailUser);
@@ -199,7 +217,7 @@ async function logInUser() {
 
 
 /**
- * The function does the procceses for the Log Out. 
+ * The function does the procceses for the "Log Out". 
  */
 async function logOut() {
   activeUser["quickAcces"] = false;
@@ -211,14 +229,14 @@ async function logOut() {
 
 
 /**
- * The funtion is checking if the user decided to Log In automatically on comming back on the page.
+ * The funtion is checking if the user decided to be saved local.
  * 
- * @param {*} emailUser 
+ * @param {string} emailUser - Value coresponding to the email given by the user.
  */
 async function checkIfRmemberMe(emailUser) {
   let checkbox = callCheckBox();
   if (checkbox == true) {
-    await setActiveUser(emailUser) // goes to line 91,  stores actual user in active user variable
+    await setActiveUser(emailUser);
   } else {
     await deleteLocalActiveUser(activeUser);
   }
