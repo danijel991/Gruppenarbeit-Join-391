@@ -318,8 +318,8 @@ function responsiveTaskModalAnimation(id2) {
 /**
  * The function is optimiting for responsive.
  * 
- * @param {*} id - Id of the Html element to be manipulated.
- * @param {*} id2 - Id of the Html element to be manipulated.
+ * @param {string} id - Id of the Html element to be manipulated.
+ * @param {string} id2 - Id of the Html element to be manipulated.
  */
 function closeAddTaskDialog(id, id2) {
   if (id == "task-modal" && window.innerWidth > 768) {
@@ -372,20 +372,24 @@ function updateProgressReport() {
 
 
 /**
- * 
- * @param {*} e 
- * @returns 
+ * The function provides the board section id.
+ * @param {string} e - Stores the id.
+ * @returns - the id of the board section.
  */
 function boardTaskContainerId(e) {
   return e.parentElement.parentElement.parentElement.parentElement.id; // Id from to-do, in-progress etc. containers
 }
 
 
+/**
+ * The function allow the selected tesk to be edited.
+ * 
+ * @param {number} taskID - Value coresponding to the task id.
+ */
 function editTasks(taskID) {
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   renderContactsInEditDropDown(taskID);
   updateUrgencyBtns(taskID);
-  // checkCheckBoxInCollapseContacts(taskID);
   for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
     const contacts = tasks[taskID]["assignedTo"][i];
     document.getElementById('assigned-contacts').innerHTML += generateTaskModalContactsInitialsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
@@ -393,6 +397,11 @@ function editTasks(taskID) {
 }
 
 
+/**
+ * The function does update the priority of the task
+ * 
+ * @param {number} taskID -  Value coresponding to the task id.
+ */
 function updateUrgencyBtns(taskID) {
   document.querySelectorAll('input[name="prio-edit"]').forEach((btn) => {
     if (btn.value == tasks[taskID]["priority"]) {
@@ -401,6 +410,12 @@ function updateUrgencyBtns(taskID) {
   });
 }
 
+
+/**
+ * The function calls a serial of functions in order to save and update the task.
+ * 
+ * @param {number} taskID -  Value coresponding to the task id. 
+ */
 async function saveTasks(taskID) {
   getValueFromEditInputs(taskID);
   closeAddTaskDialog("task-modal", "task-overlay");
@@ -409,6 +424,11 @@ async function saveTasks(taskID) {
 }
 
 
+/**
+ * The function is collecting the information from all the input fields situated in task editor.
+ * 
+ * @param {number} taskID -  Value coresponding to the task id.
+ */
 function getValueFromEditInputs(taskID) {
   let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
   let editDescription = document.getElementById(`edit-description${taskID}`).value;
@@ -426,6 +446,11 @@ function getValueFromEditInputs(taskID) {
 }
 
 
+/**
+ * The funtion does provide the hover effect for "Task priority"
+ * 
+ * @param {string} id -  Value coresponding to the button id.
+ */
 function hoverButton(id) {
   let hover = document.getElementById(id);
   if (!hover.firstElementChild.checked) {
@@ -440,6 +465,11 @@ function hoverButton(id) {
 }
 
 
+/**
+ * The function does remove the hover effect from "Task priority"
+ * 
+ * @param {string} id -  Value coresponding to the button id.
+ */
 function leaveHoverButton(id) {
   let hover = document.getElementById(id);
   if (id == "high" || id == "edit-high") {
@@ -452,12 +482,22 @@ function leaveHoverButton(id) {
 }
 
 
+
+/**
+ *The function provides the informationa that the button has been clicked.
+ *  
+ * @param {string} id -  Value coresponding to the button id.
+ */
 function checkButton(id) {
   let button = document.getElementById(id);
   button.firstElementChild.checked = true;
 }
 
 
+
+/**
+ * The function does show the "Subtask" input area.
+ */
 function openSubtaskInput() {
   document.getElementById("subtasks-area").classList.add("d-none");
   document.getElementById("subtasks-input-area").classList.remove("d-none");
@@ -466,6 +506,9 @@ function openSubtaskInput() {
 }
 
 
+/**
+ * The function remove the "Subtask" input area.
+ */
 function closeSubtaskInput() {
   document.getElementById("subtasks-input-area").classList.add("d-none");
   document.getElementById("subtasks-area").classList.remove("d-none");
@@ -473,6 +516,9 @@ function closeSubtaskInput() {
 }
 
 
+/**
+ * The function is adding a "Subtask".
+ */
 function addSubtask() {
   let input = document.getElementById("subtask-input").value;
   if (input) {
@@ -482,6 +528,13 @@ function addSubtask() {
 }
 
 
+/**
+ * The function is creating the drop-down and is showing the contact list of the user. 
+ * 
+ * @param {string} id - Value coresponding to the Html id. 
+ * @param {string} id2 - Value coresponding to the Html id. 
+ * @param {string} id3 - Value coresponding to the Html id. 
+ */
 function openContactInput(id, id2, id3) {
   document.getElementById(id).classList.add("d-none");
   document.getElementById(id2).classList.remove("d-none");
@@ -490,6 +543,13 @@ function openContactInput(id, id2, id3) {
 }
 
 
+/**
+ * The function is closing the drop-down with contacts list
+ * 
+ * @param {*} id - Value coresponding to the Html id.
+ * @param {*} id2 - Value coresponding to the Html id. 
+ * @param {*} id3 - Value coresponding to the Html id. 
+ */
 function closeContactInput(id, id2, id3) {
   document.getElementById(id).classList.add("d-none");
   document.getElementById(id2).classList.remove("d-none");
@@ -497,6 +557,9 @@ function closeContactInput(id, id2, id3) {
 }
 
 
+/**
+ * The function is adding a contact to the contact list shown in task.
+ */
 function addContact() {
   let input = document.getElementById("contact-input").value;
   if (input) {
@@ -506,6 +569,9 @@ function addContact() {
 }
 
 
+/**
+ * The function is creating the drop-down and is showing the category list.
+ */
 function openCategoryInput() {
   document.getElementById("category-dropdown").classList.add("d-none");
   document.getElementById("category-input-area").classList.remove("d-none");
@@ -514,6 +580,10 @@ function openCategoryInput() {
 }
 
 
+
+/**
+ * The function is closing the drop-down with category list.
+ */
 function closeCategoryInput() {
   document.getElementById("category-input-area").classList.add("d-none");
   document.getElementById("category-dropdown").classList.remove("d-none");
@@ -521,6 +591,11 @@ function closeCategoryInput() {
 }
 
 
+/**
+ * The function is collecting the informations added into input fields from task 
+ * 
+ * @returns The information inserted by the user.
+ */
 async function createTask() {
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
@@ -539,6 +614,18 @@ async function createTask() {
 }
 
 
+/**
+ * The function does create and save a new "Task". Afterwords does update the coresponding area. 
+ * 
+ * @param {number} array - The number of tasks.
+ * @param {string} category - The task category.
+ * @param {string} title - The task title.
+ * @param {string} description - The tast description.
+ * @param {array} contactsCheckedBoxes - List of people assigned to the task. 
+ * @param {string} urgency - The task priority.
+ * @param {string} date - The task due date.
+ * @param {string} color - the task color. 
+ */
 async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
   new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
@@ -552,6 +639,12 @@ async function createNewTask(array, category, title, description, contactsChecke
 }
 
 
+/**
+ * The functions register if a checkbox has been selected and provide the list of checked elements.
+ * 
+ * @param {string} chkboxName - Provides the name of the identifier.
+ * @returns List of people assigned to the task.
+ */
 // Pass the checkbox name to the function
 function getCheckedBoxes(chkboxName) {
   let checkboxes = document.getElementsByName(chkboxName);
@@ -568,6 +661,9 @@ function getCheckedBoxes(chkboxName) {
 }
 
 
+/**
+ * The function does crear the input fields of "Add task"
+ */
 function resetAddTaskForm() {
   document.getElementById("title").value = "";
   document.getElementById("date").value = "";
@@ -582,12 +678,18 @@ function resetAddTaskForm() {
 }
 
 
+/**
+ * The function is showing the confirmation of the task being added.
+ */
 function taskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");
   taskAdded.classList.add("slide-in-bottom");
 }
 
 
+/**
+ * The function does remove the confirmation of the task being added.
+ */
 function closeTaskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");
   taskAdded.style.transform = "translateX(950px)";
@@ -598,6 +700,9 @@ function closeTaskAddedToBoard() {
 }
 
 
+/**
+ * The function reposition the confirmation, of the task being added, to the initial position.
+ */
 function resetTaskAddedToBoard() {
   let taskAdded = document.getElementById("task-added");
   taskAdded.style.transform = "";
