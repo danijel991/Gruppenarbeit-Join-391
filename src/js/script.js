@@ -130,27 +130,42 @@ async function saveInBackend() {
 
 
 ///////// Backend Contacts
+/**
+ * function saves all specific contacts of active user in Backend under the key 'activeUserEmail'
+ */
 async function saveInBackendUserContacts() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}`, JSON.stringify(activeUserContacts));
 }
 
+/**
+ * function loads all spedific contacts of active user from Backend
+ */
 async function loadUserContactsFromBackend() {
   activeUserEmail = activeUser["userEmail"];
   await downloadFromServer();
   activeUserContacts = JSON.parse(backend.getItem(`${activeUserEmail}`)) || [];
 }
 
+/**
+ * function displays red alert button before final deletion of all active user contacts in Backend 
+ */
 function deleteUserContacts() {
   document.getElementById("delete-contact-button").classList.add("d-none");
   document.getElementById("delete-contact-button-alert").classList.remove("d-none");
 }
 
+/**
+ * function aborts deletion
+ */
 function abortDeleteContacts() {
   document.getElementById("delete-contact-button").classList.remove("d-none");
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
 }
 
+/**
+ * function deletes all specific active user contacts in Backend, which are save under this key 'activeUserEmail'
+ */
 async function executeDeleteContacts() {
   document.getElementById("delete-contact-button-alert").classList.add("d-none");
 
@@ -162,11 +177,17 @@ async function executeDeleteContacts() {
 }
 
 //// BACKEND Tasks
+/**
+ * function saves all tasks of active user in Backend under this key 'activeUserEmail_task'
+ */
 async function saveInBackendUserTasks() {
   activeUserEmail = activeUser["userEmail"];
   await backend.setItem(`${activeUserEmail}_task`, JSON.stringify(tasks));
 }
 
+/**
+ * function loads all active user tasks from Backend
+ */
 async function loadUserTasksFromBackend() {
   activeUserTasks = `${activeUser["userEmail"]}_task`;
   await downloadFromServer();
