@@ -1,6 +1,9 @@
 
 /*// HTML RENDERING & ANIMATION ////////////////////////////////*/
-
+/**
+ * function opens contact Detail Modal and calls the necessary functions to render details and HTML
+ * @param {integer} index 
+ */
 function openContactDetail(index) {
     setTimeout(() => {
       document.getElementById("contact-detail").classList.remove("slide-in");
@@ -17,6 +20,9 @@ function openContactDetail(index) {
   
   }
   
+  /**
+   * function makes the div visible that includes the delete button
+   */
   function showDeleteButton() {
     if (getEmails()) {
       document.getElementById("delete-contact-button").classList.remove("d-none");
@@ -25,10 +31,16 @@ function openContactDetail(index) {
     }
   }
   
+  /**
+   * function adds style to initiate slide-in CSS animation
+   */
   function slideOut(){
     document.getElementById("contact-detail").classList.remove("slide-in");
   }
   
+  /**
+   * function calls helper functions to render all contacts in a list
+   */
   function renderContactList() {
     sortActiveUserContacts();
     let firstLetters = activeUserContacts.map((item) => item.initials[0]);
@@ -51,6 +63,12 @@ function openContactDetail(index) {
     }
   }
   
+  /**
+   * 
+   * @param {integer} i 
+   * @param {string} firstLetters 
+   * @returns function renders initials
+   */
   function renderRegistery(i, firstLetters) {
     if (firstLetters[i] == priorLetter) {
       return;
@@ -62,6 +80,9 @@ function openContactDetail(index) {
     }
   }
   
+  /**
+   * function opens AddContactDialog Modal
+   */
   function openAddContactDialog() {
     clearContent();
   
@@ -70,6 +91,9 @@ function openContactDetail(index) {
     }, 10);
   }
   
+  /**
+   * function closes prior opend dialog
+   */
   function closeAddContactDialog() {
     document.getElementById("add-contact-modal").classList.remove("slide-in");
   
@@ -78,6 +102,9 @@ function openContactDetail(index) {
     }, 200);
   }
   
+  /**
+   * function clears form values and css classes
+   */
   function clearContent() {
     document.getElementById("overlay").classList.remove("d-none");
     document.getElementById("info-text").classList.remove("info-text-alert");
@@ -89,27 +116,34 @@ function openContactDetail(index) {
     document.getElementById("new-contact-email").style.color = "black";
   }
   
+
+  /**
+   * function opens Edit Contact Dialog
+   * @param {integer} index 
+   */
   function openEditContactDialog(index) {
     document.getElementById("overlay2").classList.remove("d-none");
-  
     let { name, initials, initialsColor, email, phone } = getContactDetails(index);
-  
     let content = document.getElementById("edit-contact-modal");
-  
     content.innerHTML = generateContactEditDialog(index);
     document.getElementById("edit-contact-name").value = `${name}`;
     document.getElementById("edit-contact-email").value = `${email}`;
     document.getElementById("edit-contact-phone").value = `${phone}`;
-  
     animateEditDialog();
   }
   
+  /**
+   * function runs animation
+   */
   function animateEditDialog() {
     setTimeout(() => {
       document.getElementById("edit-contact-modal").classList.add("slide-in");
     }, 10);
   }
   
+  /**
+   * function closes Edit Contact Dialog
+   */
   function closeEditContactDialog() {
     document.getElementById("edit-contact-modal").classList.remove("slide-in");
   
@@ -118,6 +152,11 @@ function openContactDetail(index) {
     }, 200);
   }
   
+  /**
+   * function renders the contact edit dialog modal
+   * @param {integer} index 
+   * @returns HTML code
+   */
   function generateContactEditDialog(index) {
     return `
   <div class="contact-dialog-top">
@@ -158,6 +197,16 @@ function openContactDetail(index) {
                 `;
   }
   
+  /**
+   * function renders the contact details
+   * @param {integer} index 
+   * @param {string} name 
+   * @param {string} initials 
+   * @param {string} initialsColor 
+   * @param {string} email 
+   * @param {string} phone 
+   * @returns HTML code
+   */
   function generateContactDetail(index, name, initials, initialsColor, email, phone) {
     return `
     <div onclick="slideOut()" class="contact-detail-mobile" id="contact-detail-mobile"><img src="../img/arrow_forward.png" alt=""></div>
@@ -206,7 +255,10 @@ function renderContactsInDropDown() {
     };
 }
 
-
+/**
+ * function renders all active user contacs into Contacts Edit DropDown
+ * @param {integer} taskID 
+ */
 function renderContactsInEditDropDown(taskID) {
     content = document.getElementById('collapseContactsEdit');
     content.innerHTML = ' '; 
@@ -231,6 +283,12 @@ function renderContactsInEditDropDown(taskID) {
     };
 }
 
+/**
+ * function searches task to derive contact names that are assign to task
+ * @param {integer} taskID 
+ * @param {string} name 
+ * @returns 
+ */
 function assignedToContactTrue(taskID, name) {
   let checkedNames = []; 
   for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
