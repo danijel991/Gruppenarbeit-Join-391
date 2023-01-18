@@ -46,3 +46,22 @@ function toContacts() {
     var userEmail = JSON.parse(params.get("second"));
     link.href = "../html/contacts.html?" + params.toString();
 }
+
+
+function toLegalNotice(){
+    let link = document.getElementById('legal-notice');
+    var params = new URLSearchParams(window.location.search);
+    var first = params.get("first");
+    var userEmail = JSON.parse(params.get("second"));
+    link.href = "../html/legal_notice.html?" + params.toString();
+}
+
+
+
+function toHelp(){
+    let link = document.getElementById('help');
+    var params = new URLSearchParams(window.location.search);
+    var first = params.get("first");
+    var userEmail = JSON.parse(params.get("second"));
+    link.href = "../html/help.html?" + params.toString();
+}
