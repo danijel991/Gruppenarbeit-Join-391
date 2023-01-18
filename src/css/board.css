@@ -9,6 +9,14 @@
     width: calc(100% - 232px);
 }
 
+.board {
+    overflow-y: scroll;
+}
+
+.board::-webkit-scrollbar {
+    display: none;
+}
+
 .board-header-container {
     width: 90%;
     display: flex;
