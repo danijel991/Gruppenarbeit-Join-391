@@ -5,7 +5,11 @@
 }
 
 .add-task-form {
-    width: 422px !important;
+    display: flex;
+    /* flex-direction: row; */
+    padding-right: 5vw;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #myForm>div.add-task-left {
@@ -14,11 +18,25 @@
 }
 
 .add-task-btn-area {
+    width: 341px;
+    height: 61px;
     display: flex;
     flex-direction: row;
-    max-width: 341px;
-    max-height: 61px;
-    position: relative;
-    left: 650px;
-    top: -100px;
+}
+
+.add-task-right {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    padding-bottom: 74px;
+}
+
+.add-task-left {
+    padding-bottom: 94px;
+}
+
+.add-task-middle {}
+
+body > div > main > div > form > div.add-task-left > div > div.subtasks-area.margin-btn-45 {
+    margin-bottom: 0 !important;
 }

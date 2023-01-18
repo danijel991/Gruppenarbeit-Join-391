@@ -22,8 +22,7 @@ main {
     margin-top: 137px;
     padding: 0px;
     gap: 25px;
-    width: 561px;
-    height: 1056px;
+    width: 422px;
 }
 
 .form-width {
@@ -229,17 +228,9 @@ input[type="checkbox"]:checked {
     display: flex;
     flex-direction: row;
     background-color: white;
-    position: relative;
 }
 
-.add-task-right {
-
-    display: flex;
-    position: relative;
-    right: 115px;
-    top: 889px;
-    height: 61px;
-}
+.add-task-right {}
 
 .add-task-right-button-left {
     display: flex;

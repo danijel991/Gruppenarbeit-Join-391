@@ -38,7 +38,7 @@
     }
 }
 
-@media (max-width: 1128px) {
+@media (max-width: 1200px) {
     .d-none-resp {
         display: none;
     }
@@ -187,6 +187,15 @@
         margin-left: 0;
     }
 
+    .add-task-form {
+        flex-direction: column;
+    }
+
+    body>div>main {
+        display: flex;
+        justify-content: center;
+    }
+
     .add-task-main {
         display: flex;
         flex-direction: column;
@@ -207,13 +216,13 @@
         width: 300px !important;
     }
 
-    .button-area > button {
+    .button-area>button {
         width: 90px !important;
     }
 
     .add-task-main {
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
         width: 100px;
     }
 
