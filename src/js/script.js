@@ -63,7 +63,7 @@ async function saveLocalActiveUser(activeUser) {
 /**
  * The functions is deleting the active user in local storage.
  * 
- * @param {*} activeUser - The object contains the informations of the active user.
+ * @param {array} activeUser - The object contains the informations of the active user.
  */
 async function deleteLocalActiveUser(activeUser) {
   window.localStorage.clear();

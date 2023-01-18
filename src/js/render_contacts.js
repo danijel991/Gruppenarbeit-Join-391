@@ -242,35 +242,3 @@ function assignedToContactTrue(taskID, name) {
     return false;
   }
 }
-
-// return `
-//     <div class="dropdown-contact">
-//     <label for="you">${activeUser["userName"]}</label>
-//     <input type="checkbox" id="you" name="assign-contacts">
-// </div>
-// <div class="dropdown-contact">
-//     <label for="schönfeld">Alexander Schönfeld</label>
-//     <input type="checkbox" id="schönfeld" name="assign-contacts" value="Alexander Schönfeld">
-// </div>
-// <div class="dropdown-contact">
-//     <label for="zediu">Corneliu Zediu</label>
-//     <input type="checkbox" id="zediu" name="assign-contacts" value="Corneliu Zediu">
-// </div>
-//  <div class="dropdown-contact">
-//      <label for="savkovic">Danijel Savkovic</label>
-//     <input type="checkbox" id="savkovic" name="assign-contacts" value="Danijel Savkovic">
-//  </div>
-//  `;
-
-
-// content = document.getElementById('collapseContacts');
-//     for (let i = 0; i < activeUserContacts.length; i++) {
-//         let name = activeUserContacts[i]['name'];
-//         let initials = activeUserContacts[i]['initials'];
-//         let initialsColor = activeUserContacts[i]['initialsColor'];
-//         return `
-//         <div class="dropdown-contact">
-//         <label for="you">${name}</label>
-//         <input type="checkbox" id="you" name="assign-contacts">
-//     </div>`;
-//     };

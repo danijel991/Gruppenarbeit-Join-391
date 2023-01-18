@@ -1,10 +1,14 @@
+/***    Variable    ***/
 let currentDraggedElement;
+
+
+/***    Array       ***/
 let tasks = [];
 
 
-window.addEventListener("resize", updateHTML);
-
-
+/**
+ * The function is colling the follow up functions to update the "Board".
+ */
 async function updateHTML() {
   await loadUserTasksFromBackend();
   setTimeout(() => {
@@ -18,6 +22,12 @@ async function updateHTML() {
 }
 
 
+/**
+ * The function filters the task and generate the task on board ;
+ * 
+ * @param {array} array - The array contain all tasks;
+ * @param {string} id - The id corresponds to the intendend section of the "Board"
+ */
 function filterTasks(array, id) {
   let filter = array.filter((t) => t["category"] == id);
   document.getElementById(id).innerHTML = "";
@@ -32,6 +42,13 @@ function filterTasks(array, id) {
 }
 
 
+/**
+ * The function is showing the initials of the people assigned to the task.
+ * 
+ * @param {number} j - The value is provided by the for loop;  
+ * @param {obje} task - The data corestponding to the task.
+ * @param {*} assignedContacts - The name of the person assigned to the task.
+ */
 function renderAllAssignedContacts(j, task, assignedContacts) {
   if (j > 2) {
     document.getElementById(`task-contacts-container${task["id"]}`).lastElementChild.innerHTML = generateAssignedContactsMoreThanFourHTML(task["assignedTo"]);
@@ -41,6 +58,9 @@ function renderAllAssignedContacts(j, task, assignedContacts) {
 }
 
 
+/**
+ * The funtion is colling the follow up functions in order to filter all the tasks.
+ */
 function filterAllTasks() {
   filterTasks(tasks, "to-do");
   filterTasks(tasks, "in-progress");
@@ -49,6 +69,9 @@ function filterAllTasks() {
 }
 
 
+/**
+ * The function is searching for the task given by the user.
+ */
 function findTask() {
   resetAllTasksContainer();
   let search = document.getElementById("search").value.toLowerCase().trim();
@@ -60,6 +83,9 @@ function findTask() {
 }
 
 
+/**
+ * The function clears the tasks shown on the board.
+ */
 function resetAllTasksContainer() {
   document.getElementById("to-do").innerHTML = "";
   document.getElementById("in-progress").innerHTML = "";
@@ -68,11 +94,23 @@ function resetAllTasksContainer() {
 }
 
 
+/**
+ * The function is checking if given value is null.
+ * 
+ * @returns "True" or "False".
+ */
 function searchTask() {
   return document.getElementById("search").value == "";
 }
 
 
+/**
+ * The function is searching throw all tasks and is showing on "Board" if something is found.
+ * 
+ * @param {array} array - The List of all tasks. 
+ * @param {string} id - The text coresponding to the board section.
+ * @param {string} search - The searched text given by the user.
+ */
 function filterSearchedTasks(array, id, search) {
   let filter = array.filter((t) => (t["category"] == id && t["headline"].toLowerCase().match(search)) || (t["category"] == id && t["description"].toLowerCase().match(search)));
   for (let i = 0; i < filter.length; i++) {
@@ -82,21 +120,42 @@ function filterSearchedTasks(array, id, search) {
 }
 
 
+/**
+ * The function is showing the number of the additional people assigned to the task .
+ * 
+ * @param {array} contact - List of people assigned to the task.
+ * @returns - Creates the html element.
+ */
 function generateAssignedContactsMoreThanFourHTML(contact) {
   return `+${contact.length - 2}`;
 }
 
 
+/**
+ * The function provides the id of the task.
+ * 
+ * @param {*} id 
+ */
 function startDragging(id) {
   currentDraggedElement = id;
 }
 
 
+/**
+ * The functions verifies the drop event
+ * 
+ * @param {event} ev - Drag event.
+ */
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
 
+/**
+ * The functionis being moved to the "category" follow by updating the server and the board.
+ * 
+ * @param {string} category - The section where the task is meeing moved to.
+ */
 async function moveTo(category) {
   tasks[currentDraggedElement]["category"] = category; // z.b. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'
   document.getElementById("search").value = "";
@@ -105,6 +164,9 @@ async function moveTo(category) {
 };
 
 
+/**
+ * The function is highlighting the draging area.
+ */
 function highlight() {
   document.querySelectorAll(".template-task").forEach((template) => {
     template.classList.add("drag-area-highlight");
@@ -112,6 +174,11 @@ function highlight() {
 }
 
 
+/**
+ * The function remove the starting point highlinght of the dragable element.   
+ * 
+ * @param {string} id - Dragable area id.
+ */
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
   document.querySelectorAll(".template-task").forEach((task) => {
@@ -121,11 +188,19 @@ function removeHighlight(id) {
 }
 
 
+/**
+ * The function provide an different angle to the element that is being draged.
+ */
 function rotateTask() {
   document.getElementById(currentDraggedElement).classList.add("rotate");
 }
 
 
+/**
+ * The function animates the "+" sign from each board section.
+ * 
+ * @param {number} i - Number provided in HTML text.
+ */
 function markAddIconAsActive(i) {
   let addIcon = document.getElementById(`add-icon${i}`);
   addIcon.style.backgroundImage = 'url("../img/plus-button-inactive.png")';
@@ -133,6 +208,9 @@ function markAddIconAsActive(i) {
 }
 
 
+/**
+ * The function changes all the "+" sign to its initial form.
+ */
 function resetAddIcon() {
   document.querySelectorAll(".add-icon").forEach((add) => {
     add.style.backgroundImage = 'url("../img/plus-button.png")';
@@ -141,6 +219,9 @@ function resetAddIcon() {
 }
 
 
+/**
+ * The function calls the follow up functions to generate the tasks in each board section.
+ */
 function generateTemplate() {
   document.getElementById("to-do").innerHTML += templateTask(0);
   document.getElementById("in-progress").innerHTML += templateTask(1);
@@ -152,6 +233,9 @@ function generateTemplate() {
 }
 
 
+/**
+ * The function changes the elements orientation to optimize responsive.
+ */
 function changeResponsiveTemplates() {
   let template = document.getElementById("to-do").lastElementChild;
   let toDo = document.getElementById("to-do");
@@ -168,11 +252,24 @@ function changeResponsiveTemplates() {
 }
 
 
+/**
+ * The function contains the HTML template coresponding to the tasks shown on board.
+ * 
+ * @param {number} i - Task id. 
+ * @returns HTML element
+ */
 function templateTask(i) {
   return `<div id="template${i}" class="template-task"><div>`;
 }
 
 
+/**
+ * The function is calling the follow up function in order to show the clicked task or "Add Task"
+ * 
+ * @param {string} id - Name of the id of the element to be shown.
+ * @param {string} id2 - Name of the id of the element to be compared in follow up function.
+ * @param {*} taskID 
+ */
 function openAddTaskDialog(id, id2, taskID) {
   document.getElementById(id).classList.remove("d-none");
   renderContactsInDropDown();
@@ -183,6 +280,12 @@ function openAddTaskDialog(id, id2, taskID) {
 }
 
 
+/**
+ * The function decides if task needs to be shown or the "Add Task" have to slide in.
+ * 
+ * @param {string} id2 - Id of the Html element to be compared.
+ * @param {number} taskID - The value is a number is task exists or "undefined" if new task is required.
+ */
 function showTaskModal(id2, taskID) {
   if (id2 == "task-modal") {
     document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
@@ -197,6 +300,11 @@ function showTaskModal(id2, taskID) {
 }
 
 
+/**
+ * The function is optimiting for responsive.
+ * 
+ * @param {string} id2 - Id of the Html element to be manipulated.
+ */
 function responsiveTaskModalAnimation(id2) {
   if (window.innerWidth > 768) {
     document.getElementById(id2).classList.add("slide-in-bottom");
@@ -207,6 +315,12 @@ function responsiveTaskModalAnimation(id2) {
 }
 
 
+/**
+ * The function is optimiting for responsive.
+ * 
+ * @param {*} id - Id of the Html element to be manipulated.
+ * @param {*} id2 - Id of the Html element to be manipulated.
+ */
 function closeAddTaskDialog(id, id2) {
   if (id == "task-modal" && window.innerWidth > 768) {
     document.getElementById(id).classList.remove("slide-in-bottom");
@@ -221,6 +335,9 @@ function closeAddTaskDialog(id, id2) {
 }
 
 
+/**
+ * The function modifies the Html element to show the completion of the task.
+ */
 function updateProgressBars() {
   document.querySelectorAll(".progress-bar").forEach((e) => {
     if (boardTaskContainerId(e) == "to-do") {
@@ -235,6 +352,10 @@ function updateProgressBars() {
   });
 }
 
+
+/**
+ * The function is updating the Html element to show the completion of the task.
+ */
 function updateProgressReport() {
   document.querySelectorAll(".progress-report").forEach((e) => {
     if (boardTaskContainerId(e) == "to-do") {
@@ -250,6 +371,11 @@ function updateProgressReport() {
 }
 
 
+/**
+ * 
+ * @param {*} e 
+ * @returns 
+ */
 function boardTaskContainerId(e) {
   return e.parentElement.parentElement.parentElement.parentElement.id; // Id from to-do, in-progress etc. containers
 }
