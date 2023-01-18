@@ -508,6 +508,9 @@ function checkPasswordImg() {
 }
 
 
+/**
+ * The function chnages the password from not readable to readable.
+ */
 function changeViewPassword() {
     if (passwordVisible === false) {
         passwordVisible = true;
