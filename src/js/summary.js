@@ -14,6 +14,9 @@ const months = [
   "December",
 ];
 
+/**
+ * function calls the init() and all functions to render the statistic values in the summary board
+ */
 async function initSummary() {
   await init();
   // await loadActiveUserFromBackend();
@@ -22,25 +25,41 @@ async function initSummary() {
   renderBoardStatistics();
 }
 
+/**
+ * function renders Active User Name and actual greeting according to the day time
+ */
 function renderGreeting() {
   renderActiveUserName();
   renderDayGreeting();
 }
 
+/**
+ * function renders username
+ */
 function renderActiveUserName() {
   document.getElementById("active-user-name").innerHTML = activeUser.userName;
 }
 
+/**
+ * function renders day greeting
+ */
 function renderDayGreeting() {
   let greeting = getDayTime();
   document.getElementById("day-time").innerHTML = greeting;
 }
 
+/**
+ * function renders date of today
+ */
 function renderTodaysDate() {
   let { day, month, year } = createDate();
   document.getElementById("date-of-today").innerHTML = `${month} ${day},  ${year}`;
 }
 
+/**
+ * function gets daily hour and
+ * @returns returns proper string for greeting
+ */
 function getDayTime() {
   let date = new Date();
   let hours = date.getHours();
@@ -53,6 +72,9 @@ function getDayTime() {
   }
 }
 
+/**
+ * function calls all functions to render BoardStatistics
+ */
 function renderBoardStatistics() {
   renderTaskInBoard();
   filterTasksUrgent();
@@ -101,21 +123,6 @@ function filterTasksUrgent() {
   return (document.getElementById("tasks-urgent").innerHTML = `${filteredItems.length}`);
 }
 
-// function filterProgress() {
-//     let result = tasks.filter((item) => {
-//         item.category == "in-progress";
-//     });
-//     return (document.getElementById("task-in-progress").innerHTML = `${result.length}`);
-// }
-
-// function renderTaskInProgress() {
-//     let item;
-//     const result = tasks.filter((word) => {
-//         console.log(word.)
-
-//     });
-//     document.getElementById('task-in-board').innerHTML = `${tasks.length}`;
-// }
 
 //////////////// HELPER-FUNCTIONS ////////////////////
 function createDate() {
@@ -128,9 +135,3 @@ function createDate() {
   return fullDate;
 }
 
-// function getWeekday() {
-//     let weekday = new Date();
-//     let day = weekday.getDay();
-//     let today = weekdays[day];
-//     return today;
-// }
