@@ -67,6 +67,14 @@ function generateTaskModalContactsHTML(contactInitials, contact, color) {
       `;
 }
 
+function generateTaskModalContactsInitialsHTML(contactInitials, contact, color) {
+    return `
+          <div class="assigned-contact-initials">
+              <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
+          </div>
+      `;
+}
+
 
 function generateEditTaskHTML(task) {
     return `
@@ -115,6 +123,9 @@ function generateEditTaskHTML(task) {
                               data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
                               <span>Select contacts to assign</span>
                               <img src="../img/select-arrow.png" alt="">
+                          </div>
+
+                          <div class="assigned-contacts-initials" id="assigned-contacts">  
                           </div>
   
                           

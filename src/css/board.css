@@ -392,6 +392,16 @@
     gap: 25px;
 }
 
+.assigned-contacts-initials {
+    width: 422px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    padding-top: 15px;
+}
+
 .edit-btn {
     height: 57px;
     width: 57px;
