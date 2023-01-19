@@ -24,6 +24,7 @@
     <script src="../js/contacts.js"></script>
     <script src="../js/render_contacts.js"></script>
     <script src="../js/logIn_register.js"></script>
+    <script src="/src/js/html_manipulation.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <title>Board</title>
 </head>
@@ -40,7 +41,8 @@
         <!-- SIDEBAR END  -->
 
         <!-- MODAL ADD TASK -->
-        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')" id="add-task-overlay">
+        <div class="add-task-overlay d-none" onclick="closeAddTaskDialog('add-task-modal', 'add-task-overlay')"
+            id="add-task-overlay">
             <div class="task-added" id="task-added">
                 <img src="../img/task-added.png" alt="">
             </div>
@@ -56,18 +58,20 @@
                             <img src="../img/check-icon.png" alt="add-icon">
                         </button>
                         <div class="form-width input-title margin-btn-25">
-                            <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title" required>
+                            <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title"
+                                required>
                         </div>
                         <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
+                            data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts"
+                            id="contact-dropdown">
                             <span>Select contacts to assign</span>
                             <img src="../img/select-arrow.png" alt="">
                         </div>
                         <div class="subtasks-input-area d-none" id="contact-input-area">
                             <input class="" type="email" placeholder="Contact email" id="contact-input">
                             <div class="subtask-icons">
-                                <img onclick="closeContactInput('contact-input-area', 'contact-dropdown', 'contact-input')" class="cursor-pointer"
-                                    src="../img/cancel-subtask.png" alt="">
+                                <img onclick="closeContactInput('contact-input-area', 'contact-dropdown', 'contact-input')"
+                                    class="cursor-pointer" src="../img/cancel-subtask.png" alt="">
                                 <img src="../img/subtask-line.png" alt="">
                                 <img onclick="addContact()" class="cursor-pointer" src="../img/check-subtask.png"
                                     alt="">
@@ -75,11 +79,13 @@
                         </div>
                         <div class="margin-btn-25 assign-contact-container" id="contact-container">
                             <div class="dropdown-contacts-container collapse" id="collapseContacts" required>
-                                <div class="dropdown-contact" onclick="openContactInput('contact-dropdown', 'contact-input-area', 'contact-input')" role="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
+                                <div class="dropdown-contact"
+                                    onclick="openContactInput('contact-dropdown', 'contact-input-area', 'contact-input')"
+                                    role="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts"
+                                    aria-expanded="false" aria-controls="collapseContacts" id="contact-dropdown">
                                     <label for="">Invite new contact</label>
                                     <img src="../img/new-contact-icon.png" alt="">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -89,7 +95,8 @@
                         </div>
                         <span class="category-header">Category</span>
                         <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory" id="category-dropdown">
+                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"
+                            id="category-dropdown">
                             <span>Select task category</span>
                             <img src="../img/select-arrow.png" alt="">
                         </div>
@@ -100,8 +107,8 @@
                                     <img onclick="closeCategoryInput()" class="cursor-pointer"
                                         src="../img/cancel-subtask.png" alt="">
                                     <img src="../img/subtask-line.png" alt="">
-                                    <img onclick="addNewCategory()" class="cursor-pointer" src="../img/check-subtask.png"
-                                        alt="">
+                                    <img onclick="addNewCategory()" class="cursor-pointer"
+                                        src="../img/check-subtask.png" alt="">
                                 </div>
                             </div>
                             <div class="category-color-container radio-button">
@@ -137,15 +144,16 @@
                         </div>
                         <div class="margin-btn-25 assign-contact-container">
                             <div class="dropdown-contacts-container collapse" id="collapseCategory">
-                                <div onclick="openCategoryInput()" class="dropdown-category" role="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                                <div onclick="openCategoryInput()" class="dropdown-category" role="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
+                                    aria-controls="collapseCategory">
                                     <label for="new-category">New category</label>
                                 </div>
                                 <div onclick="selectCategory('Sales','pink')" class="dropdown-category">
                                     <label for="sales">Sales</label>
                                     <input type="radio" name="category" id="sales" value="Sales" role="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
-                                        aria-controls="collapseCategory">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseCategory"
+                                        aria-expanded="false" aria-controls="collapseCategory">
                                     <div class="category-color-pink"></div>
                                 </div>
                                 <div onclick="selectCategory('Backoffice','turquoise')" class="dropdown-category">
@@ -233,7 +241,8 @@
                     <h3 class="responsive-headline">Kanban Project Managment Tool</h3>
                     <div class="input-group input-group-lg search">
                         <input type="text" id="search" placeholder="Find Task" class="form-control"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" onkeyup="findTask()">
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
+                            onkeyup="findTask()">
                         <div class="line"></div>
                         <span class="input-group-text" id="inputGroup-sizing-lg">
                             <img src="../img/search-icon.png" alt="search-icon">

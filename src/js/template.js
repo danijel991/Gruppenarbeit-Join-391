@@ -180,3 +180,14 @@ function createContactHTML() {
       </div>
       `;
 }
+
+
+/**
+ * The function contains the HTML template coresponding to the tasks shown on board.
+ * 
+ * @param {number} i - Task id. 
+ * @returns HTML element
+ */
+function templateTask(i) {
+    return `<div id="template${i}" class="template-task"><div>`;
+}

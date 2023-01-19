@@ -197,29 +197,6 @@ function rotateTask() {
 
 
 /**
- * The function animates the "+" sign from each board section.
- * 
- * @param {number} i - Number provided in HTML text.
- */
-function markAddIconAsActive(i) {
-  let addIcon = document.getElementById(`add-icon${i}`);
-  addIcon.style.backgroundImage = 'url("../img/plus-button-inactive.png")';
-  addIcon.style.transition = "all 125ms ease-in-out";
-}
-
-
-/**
- * The function changes all the "+" sign to its initial form.
- */
-function resetAddIcon() {
-  document.querySelectorAll(".add-icon").forEach((add) => {
-    add.style.backgroundImage = 'url("../img/plus-button.png")';
-    add.style.transition = "all 125ms ease-in-out";
-  });
-}
-
-
-/**
  * The function calls the follow up functions to generate the tasks in each board section.
  */
 function generateTemplate() {
@@ -230,36 +207,6 @@ function generateTemplate() {
   if (window.innerWidth < 1400) {
     changeResponsiveTemplates();
   }
-}
-
-
-/**
- * The function changes the elements orientation to optimize responsive.
- */
-function changeResponsiveTemplates() {
-  let template = document.getElementById("to-do").lastElementChild;
-  let toDo = document.getElementById("to-do");
-  let template1 = document.getElementById("in-progress").lastElementChild;
-  let inProgress = document.getElementById("in-progress");
-  let template2 = document.getElementById("await-feedback").lastElementChild;
-  let awaitFeedback = document.getElementById("await-feedback");
-  let template3 = document.getElementById("done").lastElementChild;
-  let done = document.getElementById("done");
-  toDo.insertBefore(template, toDo.children[0]);
-  inProgress.insertBefore(template1, inProgress.children[0]);
-  awaitFeedback.insertBefore(template2, awaitFeedback.children[0]);
-  done.insertBefore(template3, done.children[0]);
-}
-
-
-/**
- * The function contains the HTML template coresponding to the tasks shown on board.
- * 
- * @param {number} i - Task id. 
- * @returns HTML element
- */
-function templateTask(i) {
-  return `<div id="template${i}" class="template-task"><div>`;
 }
 
 
@@ -299,76 +246,6 @@ function showTaskModal(id2, taskID) {
   }
 }
 
-
-/**
- * The function is optimiting for responsive.
- * 
- * @param {string} id2 - Id of the Html element to be manipulated.
- */
-function responsiveTaskModalAnimation(id2) {
-  if (window.innerWidth > 768) {
-    document.getElementById(id2).classList.add("slide-in-bottom");
-  } else {
-    document.getElementById(id2).classList.add("slide-in");
-    document.getElementById('prio-overlay')
-  }
-}
-
-
-/**
- * The function is optimiting for responsive.
- * 
- * @param {string} id - Id of the Html element to be manipulated.
- * @param {string} id2 - Id of the Html element to be manipulated.
- */
-function closeAddTaskDialog(id, id2) {
-  if (id == "task-modal" && window.innerWidth > 768) {
-    document.getElementById(id).classList.remove("slide-in-bottom");
-  } else {
-    document.getElementById(id).classList.remove("slide-in");
-  }
-  setTimeout(() => {
-    document.getElementById(id2).classList.add("d-none");
-    document.body.style.overflow = "unset";
-    resetAddIcon();
-  }, 200);
-}
-
-
-/**
- * The function modifies the Html element to show the completion of the task.
- */
-function updateProgressBars() {
-  document.querySelectorAll(".progress-bar").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.style.width = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.style.width = 33 + "%";
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.style.width = 66 + "%";
-    } else if (boardTaskContainerId(e) == "done") {
-      e.style.width = 100 + "%";
-    }
-  });
-}
-
-
-/**
- * The function is updating the Html element to show the completion of the task.
- */
-function updateProgressReport() {
-  document.querySelectorAll(".progress-report").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.innerHTML = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.innerHTML = 1;
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.innerHTML = 2;
-    } else if (boardTaskContainerId(e) == "done") {
-      e.innerHTML = 3;
-    }
-  });
-}
 
 
 /**
@@ -421,36 +298,4 @@ async function saveTasks(taskID) {
   closeAddTaskDialog("task-modal", "task-overlay");
   await saveInBackendUserTasks();
   await updateHTML();
-}
-
-
-
-/**
- * The function is showing the confirmation of the task being added.
- */
-function taskAddedToBoard() {
-  let taskAdded = document.getElementById("task-added");
-  taskAdded.classList.add("slide-in-bottom");
-}
-
-
-/**
- * The function does remove the confirmation of the task being added.
- */
-function closeTaskAddedToBoard() {
-  let taskAdded = document.getElementById("task-added");
-  taskAdded.style.transform = "translateX(950px)";
-  taskAdded.classList.remove("slide-in-bottom");
-  setTimeout(() => {
-    resetTaskAddedToBoard();
-  }, 200);
-}
-
-
-/**
- * The function reposition the confirmation, of the task being added, to the initial position.
- */
-function resetTaskAddedToBoard() {
-  let taskAdded = document.getElementById("task-added");
-  taskAdded.style.transform = "";
 }
