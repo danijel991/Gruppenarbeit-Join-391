@@ -82,6 +82,7 @@ function taskAddedAnimation() {
 /**
  * This removes the task added message.
  */
+
 function taskAddedRemoveMessage() {
     document.getElementById('added-task-message').classList.add('display-none'); 
 }
@@ -291,13 +292,6 @@ async function createTask() {
     if (contactsCheckedBoxes == null) {
         let validation = document.getElementById("title");
         validation.setCustomValidity("Must set at least one contact");
-        validation.reportValidity();
-        return;
-    }
-    let categoryCheckboxes = getCheckedBoxes("category-dropdown");
-    if (categoryCheckboxes == null) {
-        let validation = document.getElementById("date");
-        validation.setCustomValidity("Must set one category");
         validation.reportValidity();
         return;
     }
