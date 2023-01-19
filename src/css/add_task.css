@@ -439,7 +439,6 @@ input[name="prio"] {
 }
 
 .added-task-message {
-    z-index: 99;
     width: 326px;
     height: 74px;
     background: #4589FF;
@@ -453,9 +452,7 @@ input[name="prio"] {
     gap: 20px;
     position: fixed;
     top: 50%;
-    transition: all 550ms ease-in-out;
-    transform: translate(-400%) ;
-    /* left: 100%; */
+    left: -50%;
 }
 
 body>div.added-task-message>span {
@@ -465,12 +462,12 @@ body>div.added-task-message>span {
     color: #FFFFFF;
 }
 
-/* .display-none {
+.display-none {
     display: none;
-} */
+}
 
 .task-added-animation {
-    /* left: 50%; */
-    transform: translate(50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: all 550ms ease-in-out;
 }
