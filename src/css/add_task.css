@@ -33,7 +33,9 @@ main {
     gap: 10px;
 }
 
-.add-task-form {}
+.add-task-form {
+    z-index: 1;
+}
 
 .uniform-sizing {
     padding-top: 14px;
