@@ -56,10 +56,14 @@ function cleanInput() {
     document.getElementById("newUser-name").value = "";
     document.getElementById("newUser-email").value = "";
     document.getElementById("newUser-password").value = "";
+    document.getElementById('signUp__validation').classList.add('d-none')
 }
 
 
 function showUserAlreadyRegistered() {
+    document.getElementById('signUp__validation').classList.remove('d-none');
+    document.getElementById('signUp__validation').innerHTML = `Email already registered.`;
+    document.getElementById('signUp__validation').parentElement.style.gap = "10px";
 
 }
 

@@ -176,7 +176,6 @@ async function goToSummary(acces, emailUser) {
  */
 async function addNewUser() {
     await getUserInfo();
-    cleanInput();
 }
 
 /**
@@ -216,8 +215,8 @@ async function processNewUserInfo(newEmail, newUser) {
         await addToDatabase(newUser);
         setTimeout(toLogInPage, 1250);
         setTimeout(resetConfirmation, 1250);
+        cleanInput();
     } else {
-        alert('Email Already Registered')
         showUserAlreadyRegistered();
     }
 }
