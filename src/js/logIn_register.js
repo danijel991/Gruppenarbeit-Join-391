@@ -87,23 +87,6 @@ async function setActiveUser(userEmail) {
 }
 
 
-// async function logInActiveUser() {
-//     let emailUser = activeUser['userEmail'];
-//     let passwordUser = activeUser['userPassword'];
-//     let acces = await checkIfExists(emailUser, passwordUser);
-//     await setActiveUser(emailUser);
-//     goToSummary(acces);
-//     emailUser.value = "";
-//     passwordUser = "";
-// }
-
-// function goToSummary(acces, emailUser) {
-//     if (acces == true) {
-//         getActiveUserURL(emailUser);
-//     }
-// }
-
-
 /**
  * The function forwards to "Log In" page.
  */
