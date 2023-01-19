@@ -214,6 +214,9 @@ async function logInUser() {
 }
 
 
+/**
+ * The function does log is the previous user, if "Remember me" was selected.
+ */
 async function logInByQuickAcces() {
   if (localStorage.getItem("activeUser") !== null) {
     let stringStorage = localStorage.getItem("activeUser");
