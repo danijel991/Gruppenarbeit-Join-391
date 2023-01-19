@@ -14,6 +14,7 @@ async function logoAnimation() {
   setTimeout(changeBg, 350);
   setTimeout(showCardAndHeader, 400);
   await loadUsersFromBackend();
+  logInByQuickAcces();
 }
 
 
@@ -72,16 +73,18 @@ async function deleteLocalActiveUser(activeUser) {
 
 
 /**
- * The function is cheking is the user was already register throw local storage.
+ * The function is checking is the user was already register throw local storage.
  * If user was already registered, the data of active user are collected from the Local Storage, otherwise from the URL.
  */
 async function getActiveUser() {
   if (localStorage.getItem("activeUser") !== null) {
     let stringStorage = localStorage.getItem("activeUser");
     activeUser = await JSON.parse(stringStorage);
+    activeUser.quickAcces = true;
   } else if (localStorage.getItem("activeUser") === null) {
     console.log("No Local Storage");
-    setActiveUser(collectActiveUserFromURL())
+    await setActiveUser(collectActiveUserFromURL())
+    await saveLocalActiveUser(activeUser)
   }
 }
 
@@ -211,11 +214,24 @@ async function logInUser() {
 }
 
 
+async function logInByQuickAcces() {
+  if (localStorage.getItem("activeUser") !== null) {
+    let stringStorage = localStorage.getItem("activeUser");
+    activeUser = await JSON.parse(stringStorage);
+  }
+  if (activeUser.quickAcces == true) {
+    let acces = activeUser.quickAcces;
+    let emailUser = activeUser.emailUser;
+    goToSummary(acces, emailUser);
+  }
+}
+
+
 /**
  * The function does the procceses for the "Log Out". 
  */
 async function logOut() {
-  activeUser["quickAcces"] = false;
+  activeUser.quickAcces = false;
   if (localStorage.getItem("activeUser") !== null) {
     await saveLocalActiveUser(activeUser);
   }
@@ -232,7 +248,9 @@ async function checkIfRmemberMe(emailUser) {
   let checkbox = callCheckBox();
   if (checkbox == true) {
     await setActiveUser(emailUser);
-  } else {
+    activeUser.quickAcces = true;
+    await saveLocalActiveUser(activeUser)
+  } else if(checkbox = false) {
     await deleteLocalActiveUser(activeUser);
   }
 } 
