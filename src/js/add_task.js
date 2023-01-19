@@ -69,9 +69,23 @@ function addNewCategory() {
 }
 
 
+/**
+ * This triggers the task added message.
+ */
+function taskAddedAnimation() {
+    document.getElementById('added-task-message').classList.remove('display-none'); 
+    setTimeout(function(){
+        document.getElementById('added-task-message').classList.add('task-added-animation');
+    }, 100);
+}
 
+/**
+ * This removes the task added message.
+ */
 
-
+function taskAddedRemoveMessage() {
+    document.getElementById('added-task-message').classList.add('display-none'); 
+}
 
 
 
