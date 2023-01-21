@@ -324,7 +324,7 @@ async function addTaskCreateTask(array, category, title, description, contactsCh
 }
 
 /**
- * The functions register if a checkbox has been selected and provide the list of checked elements.
+ * The function registers if a checkbox has been selected and provides the list of checked elements.
  *
  * @param {string} chkboxName - Provides the name of the identifier.
  * @returns List of people assigned to the task.

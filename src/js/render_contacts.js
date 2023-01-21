@@ -5,52 +5,52 @@
  * @param {integer} index 
  */
 function openContactDetail(index) {
-    setTimeout(() => {
-      document.getElementById("contact-detail").classList.remove("slide-in");
-    }, 20);
-  
-    let content = document.getElementById("contact-detail");
-    let { name, initials, initialsColor, email, phone } = getContactDetails(index);
-  
-    content.innerHTML = "";
-    content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
-    setTimeout(() => {
-      document.getElementById("contact-detail").classList.add("slide-in");
-    }, 200);
-  
-  }
-  
-  /**
-   * function makes the div visible that includes the delete button
-   */
-  function showDeleteButton() {
-    if (getEmails()) {
-      document.getElementById("delete-contact-button").classList.remove("d-none");
-    } else {
-      document.getElementById("delete-contact-button").classList.add("d-none");
-    }
-  }
-  
-  /**
-   * function adds style to initiate slide-in CSS animation
-   */
-  function slideOut(){
+  setTimeout(() => {
     document.getElementById("contact-detail").classList.remove("slide-in");
+  }, 20);
+
+  let content = document.getElementById("contact-detail");
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+
+  content.innerHTML = "";
+  content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
+  setTimeout(() => {
+    document.getElementById("contact-detail").classList.add("slide-in");
+  }, 200);
+
+}
+
+/**
+ * function makes the div visible that includes the delete button
+ */
+function showDeleteButton() {
+  if (getEmails()) {
+    document.getElementById("delete-contact-button").classList.remove("d-none");
+  } else {
+    document.getElementById("delete-contact-button").classList.add("d-none");
   }
-  
-  /**
-   * function calls helper functions to render all contacts in a list
-   */
-  function renderContactList() {
-    sortActiveUserContacts();
-    let firstLetters = activeUserContacts.map((item) => item.initials[0]);
-  
-    let content = document.getElementById("contact-list");
-    content.innerHTML = " ";
-  
-    for (let i = 0; i < activeUserContacts.length; i++) {
-      renderRegistery(i, firstLetters);
-      content.innerHTML += `
+}
+
+/**
+ * function adds style to initiate slide-in CSS animation
+ */
+function slideOut() {
+  document.getElementById("contact-detail").classList.remove("slide-in");
+}
+
+/**
+ * function calls helper functions to render all contacts in a list
+ */
+function renderContactList() {
+  sortActiveUserContacts();
+  let firstLetters = activeUserContacts.map((item) => item.initials[0]);
+
+  let content = document.getElementById("contact-list");
+  content.innerHTML = " ";
+
+  for (let i = 0; i < activeUserContacts.length; i++) {
+    renderRegistery(i, firstLetters);
+    content.innerHTML += `
         <div class="contact-box" onclick="openContactDetail(${i})">
         <div class="letters" style="background-color: ${activeUserContacts[i]["initialsColor"]}">${activeUserContacts[i]["initials"]}</div>
         <div>
@@ -60,105 +60,105 @@ function openContactDetail(index) {
         </div>
         </div>
         `;
-    }
   }
-  
-  /**
-   * 
-   * @param {integer} i 
-   * @param {string} firstLetters 
-   * @returns function renders initials
-   */
-  function renderRegistery(i, firstLetters) {
-    if (firstLetters[i] == priorLetter) {
-      return;
-    } else {
-      document.getElementById("contact-list").innerHTML += `
+}
+
+/**
+ * 
+ * @param {integer} i 
+ * @param {string} firstLetters 
+ * @returns function renders initials
+ */
+function renderRegistery(i, firstLetters) {
+  if (firstLetters[i] == priorLetter) {
+    return;
+  } else {
+    document.getElementById("contact-list").innerHTML += `
     <div class="contact-registery">${firstLetters[i]}
     `;
-      priorLetter = firstLetters[i];
-    }
+    priorLetter = firstLetters[i];
   }
-  
-  /**
-   * function opens AddContactDialog Modal
-   */
-  function openAddContactDialog() {
-    clearContent();
-  
-    setTimeout(() => {
-      document.getElementById("add-contact-modal").classList.add("slide-in");
-    }, 10);
-  }
-  
-  /**
-   * function closes prior opend dialog
-   */
-  function closeAddContactDialog() {
-    document.getElementById("add-contact-modal").classList.remove("slide-in");
-  
-    setTimeout(() => {
-      document.getElementById("overlay").classList.add("d-none");
-    }, 200);
-  }
-  
-  /**
-   * function clears form values and css classes
-   */
-  function clearContent() {
-    document.getElementById("overlay").classList.remove("d-none");
-    document.getElementById("info-text").classList.remove("info-text-alert");
-    document.getElementById("info-text").classList.add("info-text");
-    document.getElementById("info-text").innerHTML = "Tasks are better with a team!";
-    document.getElementById("new-contact-name").value = "";
-    document.getElementById("new-contact-email").value = "";
-    document.getElementById("new-contact-phone").value = "";
-    document.getElementById("new-contact-email").style.color = "black";
-  }
-  
+}
 
-  /**
-   * function opens Edit Contact Dialog
-   * @param {integer} index 
-   */
-  function openEditContactDialog(index) {
-    document.getElementById("overlay2").classList.remove("d-none");
-    let { name, initials, initialsColor, email, phone } = getContactDetails(index);
-    let content = document.getElementById("edit-contact-modal");
-    content.innerHTML = generateContactEditDialog(index);
-    document.getElementById("edit-contact-name").value = `${name}`;
-    document.getElementById("edit-contact-email").value = `${email}`;
-    document.getElementById("edit-contact-phone").value = `${phone}`;
-    animateEditDialog();
-  }
-  
-  /**
-   * function runs animation
-   */
-  function animateEditDialog() {
-    setTimeout(() => {
-      document.getElementById("edit-contact-modal").classList.add("slide-in");
-    }, 10);
-  }
-  
-  /**
-   * function closes Edit Contact Dialog
-   */
-  function closeEditContactDialog() {
-    document.getElementById("edit-contact-modal").classList.remove("slide-in");
-  
-    setTimeout(() => {
-      document.getElementById("overlay2").classList.add("d-none");
-    }, 200);
-  }
-  
-  /**
-   * function renders the contact edit dialog modal
-   * @param {integer} index 
-   * @returns HTML code
-   */
-  function generateContactEditDialog(index) {
-    return `
+/**
+ * function opens AddContactDialog Modal
+ */
+function openAddContactDialog() {
+  clearContent();
+
+  setTimeout(() => {
+    document.getElementById("add-contact-modal").classList.add("slide-in");
+  }, 10);
+}
+
+/**
+ * function closes prior opend dialog
+ */
+function closeAddContactDialog() {
+  document.getElementById("add-contact-modal").classList.remove("slide-in");
+
+  setTimeout(() => {
+    document.getElementById("overlay").classList.add("d-none");
+  }, 200);
+}
+
+/**
+ * function clears form values and css classes
+ */
+function clearContent() {
+  document.getElementById("overlay").classList.remove("d-none");
+  document.getElementById("info-text").classList.remove("info-text-alert");
+  document.getElementById("info-text").classList.add("info-text");
+  document.getElementById("info-text").innerHTML = "Tasks are better with a team!";
+  document.getElementById("new-contact-name").value = "";
+  document.getElementById("new-contact-email").value = "";
+  document.getElementById("new-contact-phone").value = "";
+  document.getElementById("new-contact-email").style.color = "black";
+}
+
+
+/**
+ * function opens Edit Contact Dialog
+ * @param {integer} index 
+ */
+function openEditContactDialog(index) {
+  document.getElementById("overlay2").classList.remove("d-none");
+  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+  let content = document.getElementById("edit-contact-modal");
+  content.innerHTML = generateContactEditDialog(index);
+  document.getElementById("edit-contact-name").value = `${name}`;
+  document.getElementById("edit-contact-email").value = `${email}`;
+  document.getElementById("edit-contact-phone").value = `${phone}`;
+  animateEditDialog();
+}
+
+/**
+ * function runs animation
+ */
+function animateEditDialog() {
+  setTimeout(() => {
+    document.getElementById("edit-contact-modal").classList.add("slide-in");
+  }, 10);
+}
+
+/**
+ * function closes Edit Contact Dialog
+ */
+function closeEditContactDialog() {
+  document.getElementById("edit-contact-modal").classList.remove("slide-in");
+
+  setTimeout(() => {
+    document.getElementById("overlay2").classList.add("d-none");
+  }, 200);
+}
+
+/**
+ * function renders the contact edit dialog modal
+ * @param {integer} index 
+ * @returns HTML code
+ */
+function generateContactEditDialog(index) {
+  return `
   <div class="contact-dialog-top">
                     <img class="close-icon" src="../img/close_icon.png" onclick="closeEditContactDialog()">
                     <img src="../img/join-logo.png">
@@ -195,20 +195,20 @@ function openContactDetail(index) {
                     </div>
                 </div>
                 `;
-  }
-  
-  /**
-   * function renders the contact details
-   * @param {integer} index 
-   * @param {string} name 
-   * @param {string} initials 
-   * @param {string} initialsColor 
-   * @param {string} email 
-   * @param {string} phone 
-   * @returns HTML code
-   */
-  function generateContactDetail(index, name, initials, initialsColor, email, phone) {
-    return `
+}
+
+/**
+ * function renders the contact details
+ * @param {integer} index 
+ * @param {string} name 
+ * @param {string} initials 
+ * @param {string} initialsColor 
+ * @param {string} email 
+ * @param {string} phone 
+ * @returns HTML code
+ */
+function generateContactDetail(index, name, initials, initialsColor, email, phone) {
+  return `
     <div onclick="slideOut()" class="contact-detail-mobile" id="contact-detail-mobile"><img src="../img/arrow_forward.png" alt=""></div>
     <span class="span-display-none">Kanban Project Management Tool</span>
     <div class="contact-detail-header">
@@ -217,7 +217,7 @@ function openContactDetail(index) {
     <div>
         <div class="contact-detail-header-right">
             <div class="contact-name">${name}</div>
-            <div class="add-task-link"><img src="../img/plus_icon_small.png">Add Task</div>
+            <div onclick ="fromContactToAddTask()"class="add-task-link"><img src="../img/plus_icon_small.png">Add Task</div>
         </div>
   
     </div>
@@ -237,22 +237,22 @@ function openContactDetail(index) {
     </div>
   </div>
         `;
-  }
-  
+}
+
 /**
  * function gets arry activeUserContacts and renders drop-down in Add-Task Dialog
  */
 function renderContactsInDropDown() {
-    content = document.getElementById('collapseContacts');
-    content.innerHTML = ' '; 
-    for (let i = 0; i < activeUserContacts.length; i++) {
-        let name = activeUserContacts[i]['name'];
-        content.innerHTML += `
+  content = document.getElementById('collapseContacts');
+  content.innerHTML = ' ';
+  for (let i = 0; i < activeUserContacts.length; i++) {
+    let name = activeUserContacts[i]['name'];
+    content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
-    };
+  };
 }
 
 /**
@@ -260,27 +260,27 @@ function renderContactsInDropDown() {
  * @param {integer} taskID 
  */
 function renderContactsInEditDropDown(taskID) {
-    content = document.getElementById('collapseContactsEdit');
-    content.innerHTML = ' '; 
-    for (let i = 0; i < activeUserContacts.length; i++) {
-      
-        let name = activeUserContacts[i]['name'];
-      if (assignedToContactTrue(taskID, name)) {
-        content.innerHTML += `
+  content = document.getElementById('collapseContactsEdit');
+  content.innerHTML = ' ';
+  for (let i = 0; i < activeUserContacts.length; i++) {
+
+    let name = activeUserContacts[i]['name'];
+    if (assignedToContactTrue(taskID, name)) {
+      content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" checked="checked" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
-      } else {
-        content.innerHTML += `
+    } else {
+      content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
-        
-      }
-      
-    };
+
+    }
+
+  };
 }
 
 /**
@@ -290,13 +290,23 @@ function renderContactsInEditDropDown(taskID) {
  * @returns 
  */
 function assignedToContactTrue(taskID, name) {
-  let checkedNames = []; 
+  let checkedNames = [];
   for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
     checkedNames.push(tasks[taskID]['assignedTo'][i]);
   }
   if (checkedNames.includes(name)) {
-    return true;    
+    return true;
   } else {
     return false;
   }
+}
+
+/**
+ * The function does forward the user to "Add Task" section.
+ */
+function fromContactToAddTask() {
+  let params = new URLSearchParams(window.location.search);
+  let first = params.get("first");
+  let userEmail = JSON.parse(params.get("second"));
+  window.location.href = "../html/add_task.html?" + params.toString();
 }

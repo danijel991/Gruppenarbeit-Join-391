@@ -28,6 +28,7 @@ async function init() {
   await showSelectedLink();
   await loadUserContactsFromBackend();
   await loadUserTasksFromBackend();
+  getHighlight();
 }
 
 
@@ -253,7 +254,7 @@ async function checkIfRmemberMe(emailUser) {
     await setActiveUser(emailUser);
     activeUser.quickAcces = true;
     await saveLocalActiveUser(activeUser)
-  } else if(checkbox = false) {
+  } else if (checkbox = false) {
     await deleteLocalActiveUser(activeUser);
   }
 } 

@@ -11,14 +11,28 @@ let tasks = [];
  */
 async function updateHTML() {
   await loadUserTasksFromBackend();
+  // setInterval(() => {
+  //   let tasksLenght = tasks.length;
+  //   if (tasksLenght != null) {
+  //     addToBoard();
+  //     clearInterval(this)
+  //   }
+  // })
   setTimeout(() => {
-    if (searchTask()) {
-      filterAllTasks();
-    }
-    generateTemplate();
-    updateProgressBars();
-    updateProgressReport();
-  }, 1000)
+    addToBoard()
+  }, 200)
+  setTimeout(() => {
+    addToBoard()
+  }, 400)
+}
+
+function addToBoard() {
+  if (searchTask()) {
+    filterAllTasks();
+  }
+  generateTemplate();
+  updateProgressBars();
+  updateProgressReport();
 }
 
 

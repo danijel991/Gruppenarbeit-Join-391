@@ -135,3 +135,10 @@ function createDate() {
   return fullDate;
 }
 
+
+function fromSummaryToBoard() {
+  let params = new URLSearchParams(window.location.search);
+  let first = params.get("first");
+  let userEmail = JSON.parse(params.get("second"));
+  window.location.href = "../html/board.html?" + params.toString();
+}

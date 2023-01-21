@@ -117,12 +117,22 @@ header {
   padding: 66px 20px;
 }
 
+.sidebar a {
+  border: 1px solid hsl(218, 25%, 100%);
+}
+
 .sidebar a:hover {
-  color: #42526e;
+  border: 1px solid #42526e;
+  box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
 }
 
 .sidebar a:visited {
   color: #42526e;
+}
+
+.sidebar__highlight {
+  border: 1px solid #42526e !important;
+  background-color: hsl(218, 25%, 95%);
 }
 
 .menu {
