@@ -11,13 +11,6 @@ let tasks = [];
  */
 async function updateHTML() {
   await loadUserTasksFromBackend();
-  // setInterval(() => {
-  //   let tasksLenght = tasks.length;
-  //   if (tasksLenght != null) {
-  //     addToBoard();
-  //     clearInterval(this)
-  //   }
-  // })
   setTimeout(() => {
     addToBoard()
   }, 200)

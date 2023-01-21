@@ -25,7 +25,6 @@ async function init() {
   await loadUsersFromBackend();
   await getActiveUser();
   await includeHTML();
-  await showSelectedLink();
   await loadUserContactsFromBackend();
   await loadUserTasksFromBackend();
   getHighlight();

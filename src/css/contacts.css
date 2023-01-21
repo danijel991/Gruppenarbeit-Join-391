@@ -281,7 +281,7 @@ body {
 }
 
 .edit-contact:hover {
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
 }
 
 .edit-contact img {

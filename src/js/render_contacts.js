@@ -300,13 +300,3 @@ function assignedToContactTrue(taskID, name) {
     return false;
   }
 }
-
-/**
- * The function does forward the user to "Add Task" section.
- */
-function fromContactToAddTask() {
-  let params = new URLSearchParams(window.location.search);
-  let first = params.get("first");
-  let userEmail = JSON.parse(params.get("second"));
-  window.location.href = "../html/add_task.html?" + params.toString();
-}

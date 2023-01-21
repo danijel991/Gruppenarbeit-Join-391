@@ -119,6 +119,7 @@ header {
 
 .sidebar a {
   border: 1px solid hsl(218, 25%, 100%);
+  background-color: unset;
 }
 
 .sidebar a:hover {
@@ -131,8 +132,12 @@ header {
 }
 
 .sidebar__highlight {
-  border: 1px solid hsl(218, 25%, 35%) !important;
-  background-color: hsl(218, 25%, 95%) !important;
+  background-color: #D2E3FF !important;
+}
+
+.legal__highlight {
+  background-color: #005dff !important;
+  color: white !important;
 }
 
 .menu {
@@ -147,7 +152,6 @@ header {
   justify-content: flex-start;
   align-items: center;
   padding: 8px 30px;
-  /* background-color: #d2e3ff; */
   border-radius: 8px;
   gap: 20px;
   text-decoration: none;
@@ -158,14 +162,11 @@ header {
   height: 22px;
 }
 
-.active {
-  background-color: #d2e3ff;
+
+#legal-notice {
+  color: #42526e;
 }
 
-.second-active {
-  background-color: #005dff;
-  color: white !important;
-}
 
 /* MAIN ///////////////////////////////////////////// */
 
@@ -217,6 +218,8 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  padding-inline: 5px;
+  white-space: break-spaces;
 }
 
 .bottom-box {
