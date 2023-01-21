@@ -33,11 +33,12 @@
 @media (max-width: 768px) {
     *::-webkit-scrollbar {
         display: none;
-      }
-      * {
+    }
+
+    * {
         -ms-overflow-style: none;
         scrollbar-width: none;
-      }
+    }
 
     .container {
         padding-bottom: 110px;
@@ -50,6 +51,11 @@
     body>div>main>div>div.d-none-not-important.headline-resp {
         display: block !important;
     }
+
+    /* .main {
+        display: flex;
+        justify-content: flex-start;
+    } */
 
 }
 
@@ -146,4 +152,15 @@
 
     .main {
         margin-top: 150px;
+    }
+
+    .alert-card,
+    #tasks-urgent,
+    .alert-card-paleblue,
+    .to-do-card,
+    #task-in-board,
+    #task-in-progress,
+    #awaiting-feedback,
+    #tasks-done {
+        font-size: 1.5rem !important;
     }
