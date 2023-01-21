@@ -19,9 +19,9 @@ async function showSelectedLink() {
 function toSummary() {
     let link = document.getElementById('summary');
     let link2 = document.getElementById('logo-reload');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/summary.html?" + params.toString();
     link2.href = "../html/summary.html?" + params.toString();
 }
@@ -32,9 +32,9 @@ function toSummary() {
  */
 function toBoard() {
     let link = document.getElementById('board');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/board.html?" + params.toString();
 }
 
@@ -44,9 +44,9 @@ function toBoard() {
  */
 function toAddTask() {
     let link = document.getElementById('task');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/add_task.html?" + params.toString();
 }
 
@@ -56,9 +56,9 @@ function toAddTask() {
  */
 function toContacts() {
     let link = document.getElementById('contacts');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/contacts.html?" + params.toString();
 }
 
@@ -66,11 +66,11 @@ function toContacts() {
 /**
  * The functions is providing the User Email to Legal Notice Page
  */
-function toLegalNotice(){
+function toLegalNotice() {
     let link = document.getElementById('legal-notice');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/legal_notice.html?" + params.toString();
 }
 
@@ -78,10 +78,35 @@ function toLegalNotice(){
 /**
  * The functions is providing the User Email to Help Page
  */
-function toHelp(){
+function toHelp() {
     let link = document.getElementById('help');
-    var params = new URLSearchParams(window.location.search);
-    var first = params.get("first");
-    var userEmail = JSON.parse(params.get("second"));
+    let params = new URLSearchParams(window.location.search);
+    let first = params.get("first");
+    let userEmail = JSON.parse(params.get("second"));
     link.href = "../html/help.html?" + params.toString();
+}
+
+
+function getHighlight() {
+    let pathname = this.location.pathname;
+    let location = getLocation(pathname);
+}
+
+
+function getLocation(pathname) {
+    if (pathname.match("summary")) {
+        document.getElementById('summary').classList.add('sidebar__highlight');
+    }
+    if (pathname.match("board")) {
+        document.getElementById('board').classList.add('sidebar__highlight');
+    }
+    if (pathname.match("task")) {
+        document.getElementById('task').classList.add('sidebar__highlight');
+    }
+    if (pathname.match("contacts")) {
+        document.getElementById('contacts').classList.add('sidebar__highlight');
+    }
+    if (pathname.match("legal_notice")) {
+        document.getElementById('legal-notice').classList.add('sidebar__highlight');
+    }
 }

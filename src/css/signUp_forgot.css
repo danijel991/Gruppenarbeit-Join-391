@@ -30,18 +30,18 @@ form img {
 }
 
 
-.signUp__frame{
+.signUp__frame {
     position: relative;
     gap: 1rem;
 }
 
 
-.signUp__title{
+.signUp__title {
     margin: auto;
 }
 
 
-.signUp__form--container{
+.signUp__form--container {
     display: flex;
     flex-direction: column;
     width: 75%;
@@ -50,7 +50,7 @@ form img {
 
 
 /* Classe for forgot password */
-.forgot__file--wrapper{
+.forgot__file--wrapper {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -58,7 +58,7 @@ form img {
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100% ;
+    width: 100%;
     min-height: inherit;
     background-color: #4589FF;
 }
@@ -79,7 +79,7 @@ form img {
     width: 72%;
 }
 
-.forgot__text--wrapper h1{
+.forgot__text--wrapper h1 {
     text-align: center;
 }
 
@@ -91,7 +91,7 @@ form img {
 }
 
 
-.forgot__form--container{
+.forgot__form--container {
     width: 55%;
 }
 
@@ -101,19 +101,19 @@ form img {
 }
 
 
-.forgot__buttons button{
+.forgot__buttons button {
     background-color: #4589FF;
     font-size: 1.2rem;
     padding: 5px 30px;
 }
 
 /* Classes for reset Password */
-.reset__input--container{
+.reset__input--container {
     border-bottom: 1px solid #D1D1D1;
     padding-bottom: 5px !important;
 }
 
-.reset__input--container2{
+.reset__input--container2 {
     margin-top: 2rem;
     border-bottom: 1px solid #D1D1D1;
     padding-bottom: 5px !important;
@@ -121,28 +121,28 @@ form img {
 }
 
 
-.reset__input--container img{
+.reset__input--container img {
     opacity: 0;
 }
 
 
-.reset__input--container2 img{
+.reset__input--container2 img {
     opacity: 0;
 }
 
 
-.password__comparison{
+.password__comparison {
     width: 100%;
     padding: 0;
 }
 
 
-.forgot__buttons--reset{
+.forgot__buttons--reset {
     margin-top: 3rem;
 }
 
 
-.response__forgot--container{
+.response__forgot--container {
     position: absolute;
     top: 0 !important;
     left: 0;
@@ -151,7 +151,7 @@ form img {
 }
 
 
-.email__sent--container{
+.email__sent--container {
     position: absolute;
     top: 70vh;
     left: 50vw;
@@ -162,57 +162,52 @@ form img {
     padding: 10px 15px;
     border-radius: 1rem;
     transition: all 250 ease-in-out;
-    transform: translate(-50%, 0vh) ;
+    transform: translate(-50%, 0vh);
 }
 
-.email__sent--container:hover{
-    background-color: #4589FF!important;
+.email__sent--container:hover {
+    background-color: #4589FF !important;
     box-shadow: unset;
     border: unset !important;
 }
 
 
 /* General Media Log In */
- /* Width base Media*/
-@Media(max-width:992px){
-    .forgot__text{
+/* Width base Media*/
+@Media(max-width:992px) {
+    .forgot__text {
         font-size: 1.2rem;
         padding-top: 1rem;
     }
 
 
-    .forgot__buttons--reset{
+    .forgot__buttons--reset {
         margin-top: 2rem;
     }
 }
 
-@Media(max-width:778px){
-    .forgot__request--wrapper{
+@Media(max-width:778px) {
+    .forgot__request--wrapper {
         width: 90vw;
     }
 
-    .signUp__title{
+    .signUp__title {
         font-size: 2rem;
     }
 }
 
 
- /* Height base Media*/
-@Media(max-height:768px){
-    .forgot__file--wrapper{
- 
-    }
-
-
-    .arrow_back{
+/* Height base Media*/
+@Media(max-height:768px) {
+    .arrow_back {
         left: 5vw;
         top: 5vh;
     }
 
 
-    .forgot__wrapper{
+    .forgot__wrapper {
         width: 80vw !important;
     }
 }
 
-@Media(max-height: )
+@Media(max-height:)
