@@ -277,6 +277,11 @@ body {
   gap: 15px;
   color: #005dff;
   cursor: pointer;
+  padding-inline: 5px;
+}
+
+.edit-contact:hover {
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.16);
 }
 
 .edit-contact img {

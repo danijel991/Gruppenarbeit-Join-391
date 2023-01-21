@@ -128,7 +128,7 @@ header {
 
 .sidebar__highlight {
   border: 1px solid #42526e !important;
-  background-color: hsl(218, 25%, 95%);
+  background-color: hsl(218, 25%, 95%) !important;
 }
 
 .menu {
