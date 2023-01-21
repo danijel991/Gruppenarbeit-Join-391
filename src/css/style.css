@@ -23,6 +23,10 @@ h1 {
   display: none;
 }
 
+.d-none-not-important {
+  display: none;
+}
+
 h2 {
   font-style: normal;
   font-weight: 400;
