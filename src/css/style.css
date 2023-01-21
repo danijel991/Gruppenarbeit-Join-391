@@ -23,6 +23,10 @@ h1 {
   display: none;
 }
 
+.d-none-not-important {
+  display: none;
+}
+
 h2 {
   font-style: normal;
   font-weight: 400;
@@ -127,7 +131,7 @@ header {
 }
 
 .sidebar__highlight {
-  border: 1px solid #42526e !important;
+  border: 1px solid hsl(218, 25%, 35%) !important;
   background-color: hsl(218, 25%, 95%) !important;
 }
 
