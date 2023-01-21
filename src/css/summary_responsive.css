@@ -127,6 +127,13 @@
 
 @media (max-width: 300px) {
 
+    .headline-resp {
+        text-align: center;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
     body>div>main>div>div.container.justify-content-between.d-flex.gap-3>div.box-left.d-flex.flex-row.gap-3,
     body>div>main>div>div.container.justify-content-between.d-flex.gap-3>div.box-right.d-flex.flex-row.gap-3 {
         flex-direction: column !important;
