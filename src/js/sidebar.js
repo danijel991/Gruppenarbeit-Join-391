@@ -87,12 +87,20 @@ function toHelp() {
 }
 
 
+/**
+ * The function is getting the location in order si highlight the sidebar.
+ */
 function getHighlight() {
     let pathname = this.location.pathname;
     let location = getLocation(pathname);
 }
 
 
+/**
+ * The function is adding a class in order to highlight the button.
+ * 
+ * @param {string} pathname - The URL path.
+ */
 function getLocation(pathname) {
     if (pathname.match("summary")) {
         document.getElementById('summary').classList.add('sidebar__highlight');
