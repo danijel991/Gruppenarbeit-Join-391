@@ -20,9 +20,9 @@ async function updateHTML() {
 }
 
 function addToBoard() {
-  if (searchTask()) {
+  // if (searchTask()) {
     filterAllTasks();
-  }
+  // }
   generateTemplate();
   updateProgressBars();
   updateProgressReport();

@@ -342,6 +342,7 @@ header {
   border-radius: 30px;
   font-weight: 700;
   font-size: 48px;
+  cursor: pointer;
 }
 
 .to-do-card:hover {
