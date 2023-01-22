@@ -20,12 +20,14 @@ async function updateHTML() {
 }
 
 function addToBoard() {
+  console.time('Board Loading Time');
   // if (searchTask()) {
     filterAllTasks();
   // }
   generateTemplate();
   updateProgressBars();
   updateProgressReport();
+  console.timeEnd('Board Loading Time');
 }
 
 

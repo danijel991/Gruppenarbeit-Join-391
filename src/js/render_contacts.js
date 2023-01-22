@@ -217,7 +217,7 @@ function generateContactDetail(index, name, initials, initialsColor, email, phon
     <div>
         <div class="contact-detail-header-right">
             <div class="contact-name">${name}</div>
-            <div onclick ="fromContactToAddTask()"class="add-task-link"><img src="../img/plus_icon_small.png">Add Task</div>
+            <div onclick ="toAddTask()"class="add-task-link"><img src="../img/plus_icon_small.png">Add Task</div>
         </div>
   
     </div>
