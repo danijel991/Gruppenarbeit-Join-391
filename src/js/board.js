@@ -104,7 +104,7 @@ function findTask() {
   filterSearchedTasks(tasks, "await-feedback", search);
   filterSearchedTasks(tasks, "done", search);
   // updateHTML();
-  addToBoard();
+  // addToBoard();
 }
 
 
