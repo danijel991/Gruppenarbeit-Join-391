@@ -11,12 +11,13 @@ let tasks = [];
  */
 async function updateHTML() {
   await loadUserTasksFromBackend();
-  setTimeout(() => {
-    addToBoard()
-  }, 400)
-  setTimeout(() => {
-    addToBoard()
-  }, 400)
+  addToBoard()
+  // setTimeout(() => {
+  //   addToBoard()
+  // }, 400)
+  // setTimeout(() => {
+  //   addToBoard()
+  // }, 400)
 }
 
 function addToBoard() {
