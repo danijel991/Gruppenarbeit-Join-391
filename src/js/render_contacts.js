@@ -95,6 +95,7 @@ function openAddContactDialog() {
  * function closes prior opend dialog
  */
 function closeAddContactDialog() {
+  clearContent();
   document.getElementById("add-contact-modal").classList.remove("slide-in");
 
   setTimeout(() => {
@@ -114,6 +115,15 @@ function clearContent() {
   document.getElementById("new-contact-email").value = "";
   document.getElementById("new-contact-phone").value = "";
   document.getElementById("new-contact-email").style.color = "black";
+}
+
+/**
+ * function clears form values and css classes
+ */
+function clearEditContent() {
+  document.getElementById("edit-contact-name").value = "";
+  document.getElementById("edit-contact-email").value = "";
+  document.getElementById("edit-contact-phone").value = "";
 }
 
 

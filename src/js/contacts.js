@@ -41,6 +41,7 @@ async function addNewUserContact() {
   document.getElementById("delete-contact-button").classList.remove("d-none");
   let j = getIndexOfEmail(newmail);
   openContactDetail(j);
+  clearContent();
 }
 
 /**
@@ -69,6 +70,7 @@ async function updateUserContact(index) {
   await saveInBackendUserContacts();
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(index);
+  clearEditContent();
 }
 
 /**
