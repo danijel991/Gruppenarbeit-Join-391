@@ -1,5 +1,6 @@
 let selectedCategory;
 let selectedColor;
+let taskAddedAtAddTaskHTML = false;
 
 /**
  * function renders actual contacts of active user in drop-down menue of Add-Task Dialog
@@ -260,6 +261,7 @@ function closeCategoryInput() {
  * @returns The information inserted by the user.
  */
 async function createTask(path) {
+  console.trace('Tracing createTask(path)')
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   if (contactsCheckedBoxes == null) {
@@ -274,6 +276,7 @@ async function createTask(path) {
   let description = document.getElementById("description-text").value;
     let color = document.querySelector("input[type=radio][name=color]:checked").value;
   if (path == true) {
+    taskAddedAtAddTaskHTML = true;
     addTaskCreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   } else {
     createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);

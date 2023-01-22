@@ -11,16 +11,17 @@ let tasks = [];
  */
 async function updateHTML() {
   await loadUserTasksFromBackend();
-  setTimeout(() => {
-    addToBoard()
-  }, 200)
-  setTimeout(() => {
-    addToBoard()
-  }, 400)
+  // setTimeout(() => {
+  //   addToBoard()
+  // }, 400)
+  // setTimeout(() => {
+  //   addToBoard()
+  // }, 400)
 }
 
 function addToBoard() {
-  console.time('Board Loading Time');
+  if (taskAddedAtAddTaskHTML == false) {
+      console.time('Board Loading Time');
   // if (searchTask()) {
     filterAllTasks();
   // }
@@ -28,6 +29,7 @@ function addToBoard() {
   updateProgressBars();
   updateProgressReport();
   console.timeEnd('Board Loading Time');
+  }
 }
 
 
