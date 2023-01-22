@@ -66,6 +66,16 @@
         overflow-x: hidden;
     }
 
+    .dropdown-contacts-container {
+        width: 363px;
+    }
+
+    .dropdown-contact {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+    }
+
     .add-title {
         font-weight: 400;
         font-size: 28px;
@@ -153,13 +163,13 @@
         line-height: 120%;
     }
 
-    .input-title,
+    /* .input-title,
     .uniform-sizing,
     #date,
     .description-area textarea,
     .subtasks-input-area {
         padding: 11px 21px !important;
-    }
+    } */
 
     .subtask {
         font-weight: 400;
@@ -185,6 +195,10 @@
 @media (max-width: 768px) {
     .add-task-left {
         margin-left: 0;
+    }
+
+    .add-task-form {
+        padding-right: 0;
     }
 
     .add-task-form {
@@ -216,6 +230,10 @@
         width: 300px !important;
     }
 
+    .dropdown-contacts-container {
+        width: 100%;
+    }
+
     .button-area>button {
         width: 90px !important;
     }
@@ -233,6 +251,60 @@
 
 @media (max-width: 425px) {}
 
-@media (max-width: 375px) {}
+@media (max-width: 375px) {
+    .responsive-header {
+        height: 72.75px;
+    }
 
-@media (max-width: 320px) {}
+    .add-task-right-button-right {
+        top: 10px;
+    }
+
+    .margin-btn-45 {
+        margin-bottom: 20.25px;
+    }
+
+    .margin-btn-25 {
+        margin-bottom: 15.75px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .form-width,
+    .add-task-left,
+    .add-task-right,
+    .subtasks-input-area,
+    .add-title,
+    .description-area textarea,
+    .add-task-main,
+    .button-area,
+    .add-task-form {
+        width: 98% !important;
+    }
+
+    .responsive_text {
+        width: 75%;
+    }
+
+    .button-area>button {
+        width: 33% !important;
+    }
+
+    main {
+        font-size: 1rem !important;
+        padding-left: 0 !important;
+        padding-right: !important;
+    }
+
+    *::placeholder {
+        font-size: 1.2rem !important;
+    }
+
+
+    #high>label>img,
+    #medium>label>img,
+    #low>label>img {
+        width: 10px;
+    }
+}
