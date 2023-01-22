@@ -5,20 +5,32 @@ let currentDraggedElement;
 /***    Array       ***/
 let tasks = [];
 
+/**
+ * After "Log In", the function is collectiong a serial if data throw the corresponding functions
+ */
+async function initBoard() {
+  await includeHTML();
+  await loadUsersFromBackend();
+  await getActiveUser();
+  await loadUserContactsFromBackend();
+  await loadUserTasksFromBackend();
+  addToBoard()
+  getHighlight();
+}
+
 
 /**
  * The function is colling the follow up functions to update the "Board".
  */
-async function updateHTML() {
-  await loadUserTasksFromBackend();
-  addToBoard()
-  // setTimeout(() => {
-  //   addToBoard()
-  // }, 400)
-  // setTimeout(() => {
-  //   addToBoard()
-  // }, 400)
-}
+// async function updateHTML() {
+//   await loadUserTasksFromBackend();
+//   setTimeout(() => {
+//     addToBoard()
+//   }, 400)
+//   setTimeout(() => {
+//     addToBoard()
+//   }, 400)
+// }
 
 function addToBoard() {
   if (taskAddedAtAddTaskHTML == false) {

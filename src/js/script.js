@@ -22,9 +22,9 @@ async function logoAnimation() {
  * After "Log In", the function is collectiong a serial if data throw the corresponding functions
  */
 async function init() {
+  await includeHTML();
   await loadUsersFromBackend();
   await getActiveUser();
-  await includeHTML();
   await loadUserContactsFromBackend();
   await loadUserTasksFromBackend();
   getHighlight();
