@@ -14,7 +14,7 @@ async function initBoard() {
   await getActiveUser();
   await loadUserContactsFromBackend();
   await loadUserTasksFromBackend();
-  addToBoard()
+  addToBoard();
   getHighlight();
 }
 
@@ -103,7 +103,8 @@ function findTask() {
   filterSearchedTasks(tasks, "in-progress", search);
   filterSearchedTasks(tasks, "await-feedback", search);
   filterSearchedTasks(tasks, "done", search);
-  updateHTML();
+  // updateHTML();
+  addToBoard();
 }
 
 
@@ -184,7 +185,8 @@ async function moveTo(category) {
   tasks[currentDraggedElement]["category"] = category; // z.b. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'
   document.getElementById("search").value = "";
   await saveInBackendUserTasks();
-  updateHTML();
+  // updateHTML();
+  addToBoard();
 };
 
 
@@ -321,5 +323,6 @@ async function saveTasks(taskID) {
   getValueFromEditInputs(taskID);
   closeAddTaskDialog("task-modal", "task-overlay");
   await saveInBackendUserTasks();
-  await updateHTML();
+  // await updateHTML();
+  addToBoard();
 }

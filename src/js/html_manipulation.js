@@ -239,6 +239,7 @@ function responsiveTaskModalAnimation(id2) {
  * @param {string} id2 - Id of the Html element to be manipulated.
  */
 function closeAddTaskDialog(id, id2) {
+    clearAddTaskInputFields();
     if (id == "task-modal" && window.innerWidth > 768) {
         document.getElementById(id).classList.remove("slide-in-bottom");
     } else {
@@ -251,6 +252,14 @@ function closeAddTaskDialog(id, id2) {
     }, 200);
 }
 
+
+function clearAddTaskInputFields() {
+    document.getElementById('title').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('category-dropdown').value = '';
+    document.getElementById('description-text').value = '';
+    document.getElementById('description-text').value = '';
+}
 
 /**
  * The function modifies the Html element to show the completion of the task.

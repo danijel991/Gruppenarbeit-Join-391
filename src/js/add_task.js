@@ -298,7 +298,8 @@ async function createTask(path) {
 async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
     new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
-  await updateHTML();
+  // await updateHTML();
+  addToBoard();
   taskAddedToBoard();
   setTimeout(() => {
     closeAddTaskDialog("add-task-modal", "add-task-overlay");
@@ -322,7 +323,8 @@ async function createNewTask(array, category, title, description, contactsChecke
 async function addTaskCreateTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
     new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
     await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
-  await updateHTML();
+  // await updateHTML();
+  addToBoard();
   taskAddedAnimation();
 }
 
