@@ -21,7 +21,7 @@ async function loadAllContacts() {
  */
 function getContactDetails(index) {
   contact = activeUserContacts[index];
-  return contact; 
+  return contact;
 }
 
 /**
@@ -71,6 +71,7 @@ async function updateUserContact(index) {
   await loadAllContacts(); // refreshing contacts in contacts.html
   openContactDetail(index);
   clearEditContent();
+  closeEditContactDialog();
 }
 
 /**
@@ -84,7 +85,7 @@ function getContactInfo() {
   let newPhone = document.getElementById("new-contact-phone").value;
   let initials = setContactInitials(newName);
   let initialsColor = setColorForInitial(initials);
-  
+
   let newContact = {
     name: newName,
     initials: initials,

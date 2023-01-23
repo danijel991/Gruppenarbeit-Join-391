@@ -14,10 +14,10 @@ async function init_add_task() {
  * function changes bg-color of urgency button
  */
 function changeUrgencyHigh() {
-    document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
-    document.getElementById('urgency-btn-1').style.color = "#FFFFFF";
-    document.getElementById('img-prio-high').style.backgroundImage = "url('../img/prio_high_white.png')";
-    document.getElementById('img-prio-high').style.backgroundRepeat = "no-repeat";
+  document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
+  document.getElementById('urgency-btn-1').style.color = "#FFFFFF";
+  document.getElementById('img-prio-high').style.backgroundImage = "url('../img/prio_high_white.png')";
+  document.getElementById('img-prio-high').style.backgroundRepeat = "no-repeat";
   event.preventDefault();
 }
 
@@ -25,7 +25,7 @@ function changeUrgencyHigh() {
  * function clears form
  */
 function clearForm() {
-    document.getElementById('myForm').reset();
+  document.getElementById('myForm').reset();
 }
 
 /**
@@ -34,9 +34,9 @@ function clearForm() {
  * @param {string} color
  */
 function selectCategory(category, color) {
-    document.getElementById('category-dropdown').innerHTML = '';
-    document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
-    document.getElementById('category-dropdown').classList.add('dropdown-active');
+  document.getElementById('category-dropdown').innerHTML = '';
+  document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
+  document.getElementById('category-dropdown').classList.add('dropdown-active');
   document.getElementById(color).checked = true;
 };
 
@@ -62,9 +62,9 @@ function generateCategoryHTML(category, color) {
  * reads user input in AddTask Dialog
  */
 function addNewCategory() {
-    let category = document.getElementById('category-input').value;
+  let category = document.getElementById('category-input').value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-    document.getElementById('collapseCategory').innerHTML += generateCategoryHTML(category, color);
+  document.getElementById('collapseCategory').innerHTML += generateCategoryHTML(category, color);
   closeCategoryInput();
   selectCategory(category, color);
 }
@@ -271,16 +271,17 @@ async function createTask(path) {
     return;
   }
   let date = document.getElementById("date").value;
-    let category = document.getElementById('category-dropdown').textContent;
+  let category = document.getElementById('category-dropdown').textContent;
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
-    let color = document.querySelector("input[type=radio][name=color]:checked").value;
+  let color = document.querySelector("input[type=radio][name=color]:checked").value;
   if (path == true) {
     taskAddedAtAddTaskHTML = true;
     addTaskCreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   } else {
     createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   }
+  clearAddTaskInputFields();
 }
 
 /**
@@ -296,7 +297,7 @@ async function createTask(path) {
  * @param {string} color - the task color.
  */
 async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-    new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   // await updateHTML();
   addToBoard();
@@ -321,8 +322,8 @@ async function createNewTask(array, category, title, description, contactsChecke
  * @param {string} color - the task color.
  */
 async function addTaskCreateTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-    new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
-    await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+  await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   // await updateHTML();
   addToBoard();
   taskAddedAnimation();
@@ -361,6 +362,6 @@ function resetAddTaskForm() {
     checkbox.checked = false;
   });
   document.querySelector("input[type=radio][name=color]:checked").checked = false;
-    document.getElementById('category-dropdown').innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
-    document.getElementById('category-dropdown').classList.remove('dropdown-active');
+  document.getElementById('category-dropdown').innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
+  document.getElementById('category-dropdown').classList.remove('dropdown-active');
 }

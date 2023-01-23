@@ -108,9 +108,7 @@
     margin: 0 !important;
 }
 
-.board-column {
-    
-}
+.board-column {}
 
 .add-icon {
     height: 30px;
@@ -509,6 +507,7 @@
 }
 
 .date {
+    cursor: unset;
     font-size: 19px;
 }
 
@@ -850,7 +849,7 @@ input[type="checkbox"]:checked {
     /* .board-header-container {
         width: 100%;
     } */
-    
+
     .board-bottom-container {
         flex-direction: column;
         width: 60%;
@@ -879,7 +878,7 @@ input[type="checkbox"]:checked {
 }
 
 @media (max-width: 768px) {
-    
+
     .board {
         margin-left: 0;
         width: 100%;
@@ -902,7 +901,7 @@ input[type="checkbox"]:checked {
         height: 41px !important;
         margin-bottom: 21px;
     }
-    
+
     .input-group {
         flex-wrap: nowrap !important;
     }
@@ -968,9 +967,9 @@ input[type="checkbox"]:checked {
     .task-headline-overlay {
         font-size: 36px;
     }
-    
-    .due-date-container, 
-    .prio-container, 
+
+    .due-date-container,
+    .prio-container,
     .assigned-to-container,
     .task-description-overlay {
         font-size: 16px;
@@ -1025,7 +1024,7 @@ input[type="checkbox"]:checked {
     .assigned-contacts {
         gap: 13px;
     }
-    
+
 }
 
 @media (max-width: 576px) {
@@ -1069,12 +1068,12 @@ input[type="checkbox"]:checked {
         height: 43px !important;
         border-bottom: 2px solid #FF3D00 !important;
     }
-    
+
     .btn-medium-hover {
         height: 43px !important;
         border-bottom: 2px solid #FFA800 !important;
     }
-    
+
     .btn-low-hover {
         height: 43px !important;
         border-bottom: 2px solid #7AE229 !important;
@@ -1117,5 +1116,5 @@ input[type="checkbox"]:checked {
         margin: 0 auto;
         font-size: 16px ;
     } */
-    
+
 }

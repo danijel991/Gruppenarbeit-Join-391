@@ -285,6 +285,11 @@ a {
 }
 
 
+.form-check-input {
+    cursor: pointer;
+}
+
+
 /* General Media Log In */
 
 /* Width base Media*/
@@ -430,13 +435,14 @@ a {
 
 
 @Media(max-height: 576px) {
-    .ls__wrapper{
+    .ls__wrapper {
         height: 5rem;
     }
 
 
-    .to__sign-in--wrapper, .to__sign-in--wrapper a{
-        font-size: 0.8rem!important;
+    .to__sign-in--wrapper,
+    .to__sign-in--wrapper a {
+        font-size: 0.8rem !important;
     }
 
     .logo__position img {
@@ -444,48 +450,9 @@ a {
         width: 35px;
     }
 
-    .logIn__frame{
+    .logIn__frame {
         height: 60vh !important;
         padding: unset;
         justify-content: center;
         gap: 10px;
     }
-/* 
-    .logIn__title {
-        font-size: 1.5rem !important;
-    } */
-}
-
-    /* .logIn__frame form{
-        height: max-content;
-    }
- */
-
-
-    /* .logIn__input{
-        height: 1rem;
-    } */
-
-    /* .logIn__selectors{
-        height: 10vh;
-        padding-block: unset;
-        font-size: 0.8rem;
-        gap: unset;
-     
-    } */
-
-    /* .logIn__buttons{
-        flex-direction: row;
-    }
-
-    .logIn__btn--user,
-    .logIn__btn--guest {
-        font-size: 0.8rem !important;
-        width: 5rem;
-    } */
-
-/* 
- .btn{
-        height: 1.5rem !important;
-        padding-block:  unset !important ;
-    } */

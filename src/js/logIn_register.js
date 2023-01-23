@@ -313,7 +313,7 @@ function checkIfEmailExists(emailUser) {
 
 
 /**
- * The function is changeing the icon of the password
+ * The function is changing the icon of the password.
  */
 function checkPasswordImg() {
     setInterval(() => {
@@ -321,15 +321,50 @@ function checkPasswordImg() {
         let input = document.getElementById('password');
         let img = document.getElementById('password__img');
         if (input.value.length > a && passwordVisible) {
-            img.src = "./src/img/icon_password_visible.png";
-            input.type = "text";
+            visiblePasswordImg(input, img);
         } else if (input.value.length > a && !passwordVisible) {
-            img.src = "./src/img/icon_password_nonvisible.png";
-            input.type = "password";
+            hiddenPasswordImg(input, img);
         } else {
-            img.src = "./src/img/input_password.png";
+            defaultPasswordImg(img);
         }
     }, 100)
+}
+
+
+/**
+ * The function in changing to password icon
+ * 
+ * @param {HTMLInputElement} input - DOM Element; 
+ * @param {img} img - DOM Element;
+ */
+function visiblePasswordImg(input, img) {
+    img.src = "./src/img/icon_password_visible.png";
+    img.style = "cursor: pointer";
+    input.type = "text";
+}
+
+
+/**
+ * The function in changing to password icon
+ * 
+ * @param {HTMLInputElement} input - DOM Element; 
+ * @param {img} img - DOM Element;
+ */
+function hiddenPasswordImg(input, img) {
+    img.src = "./src/img/icon_password_nonvisible.png";
+    img.style = "cursor: pointer";
+    input.type = "password";
+}
+
+
+/**
+ * The function in changing to password icon
+ * 
+ * @param {img} img - DOM Element;
+ */
+function defaultPasswordImg(img) {
+    img.style = "cursor: unset";
+    img.src = "./src/img/input_password.png";
 }
 
 
