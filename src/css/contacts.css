@@ -42,7 +42,7 @@ body {
 
 .contact-list {
   z-index: 3;
-  /* min-width: 430px; */
+  min-width: 430px;
   /* min-height: calc(100vh - 100px); wenn es noch keine Kontakte gibt, müsste die Höhe auf min-height gesetzt werden. Aber dann haben wir am Ende ganz rechts einen Skrollbalken */
   height: 100%;
   box-shadow: 1px 0px 2px 2px rgb(0 0 0 / 16%);
@@ -918,7 +918,8 @@ input:focus {
   }
 
   .contact-list {
-    width: 97%;
+    min-width: unset;
+    /* width: 97%; */
   }
 
   #edit-contact-modal > div.contact-dialog-top > img:nth-child(2) {
