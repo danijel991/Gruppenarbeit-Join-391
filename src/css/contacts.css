@@ -672,14 +672,6 @@ input:focus {
     display: none !important;
   }
 
-  .contact-dialog-bottom {
-    padding-top: 25%;
-  }
-
-  /* .user-avatar {
-    margin-top: -50px;
-  } */
-
   .add-contact-modal,
   .edit-contact-modal {
     width: 100vw;
@@ -697,12 +689,9 @@ input:focus {
     width: 327px;
   }
 
-  .contact-dialog-bottom {
-    padding-top:180px;
-    /* height: 761px; */
-    /* position: relative;
-    top: -150px; */
-  }
+  /* .contact-dialog-bottom {
+    padding-top: 180px;
+  } */
 
   .contact-name {
     font-size: 33px;
@@ -921,12 +910,12 @@ input:focus {
 
 /*/ Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-.contact-title{
-  font-size: 34px;
-}
-.info-text{
-  font-size: 20px;
-}
+  .contact-title {
+    font-size: 34px;
+  }
+  .info-text {
+    font-size: 20px;
+  }
 
   .contact-list {
     width: 97%;
@@ -944,7 +933,7 @@ input:focus {
   }
 
   .contact-dialog-bottom {
-    padding-top:180px;
+    padding-top: 180px;
     /* height: 761px; */
     position: relative;
     top: -150px;
@@ -1031,12 +1020,10 @@ input:focus {
 }
 
 @media (max-width: 375px) {
-
-
   .contact-name {
     font-size: 24px;
-  }  
-  
+  }
+
   .letters-large {
     min-width: 60px;
     min-height: 60px;
@@ -1050,9 +1037,7 @@ input:focus {
     top: 12px;
   }
 
-  .span-display-none{
+  .span-display-none {
     display: none;
   }
 }
-
-
