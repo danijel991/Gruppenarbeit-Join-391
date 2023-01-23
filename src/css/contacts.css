@@ -697,6 +697,13 @@ input:focus {
     width: 327px;
   }
 
+  .contact-dialog-bottom {
+    padding-top:180px;
+    /* height: 761px; */
+    /* position: relative;
+    top: -150px; */
+  }
+
   .contact-name {
     font-size: 33px;
   }
@@ -914,6 +921,13 @@ input:focus {
 
 /*/ Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
+.contact-title{
+  font-size: 34px;
+}
+.info-text{
+  font-size: 20px;
+}
+
   .contact-list {
     width: 97%;
   }
@@ -923,12 +937,15 @@ input:focus {
   }
 
   .contact-dialog-top {
-    height: 351px;
+    min-height: 150px;
+    padding: unset;
+    height: 180px;
     border-radius: 30px 30px 0 0 !important;
   }
 
   .contact-dialog-bottom {
-    height: 761px;
+    padding-top:180px;
+    /* height: 761px; */
     position: relative;
     top: -150px;
   }
@@ -1014,6 +1031,8 @@ input:focus {
 }
 
 @media (max-width: 375px) {
+
+
   .contact-name {
     font-size: 24px;
   }  
