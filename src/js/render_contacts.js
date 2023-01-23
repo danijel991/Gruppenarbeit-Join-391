@@ -1,8 +1,7 @@
-
 /*// HTML RENDERING & ANIMATION ////////////////////////////////*/
 /**
  * function opens contact Detail Modal and calls the necessary functions to render details and HTML
- * @param {integer} index 
+ * @param {integer} index
  */
 function openContactDetail(index) {
   setTimeout(() => {
@@ -17,7 +16,6 @@ function openContactDetail(index) {
   setTimeout(() => {
     document.getElementById("contact-detail").classList.add("slide-in");
   }, 200);
-
 }
 
 /**
@@ -53,7 +51,7 @@ function renderContactList() {
     content.innerHTML += `
         <div class="contact-box" onclick="openContactDetail(${i})">
         <div class="letters" style="background-color: ${activeUserContacts[i]["initialsColor"]}">${activeUserContacts[i]["initials"]}</div>
-        <div>
+        <div class="word-break">
         <div>${activeUserContacts[i]["name"]}</div>
         <div>${activeUserContacts[i]["email"]}</div>
         <div>${activeUserContacts[i]["phone"]}</div>
@@ -64,9 +62,9 @@ function renderContactList() {
 }
 
 /**
- * 
- * @param {integer} i 
- * @param {string} firstLetters 
+ *
+ * @param {integer} i
+ * @param {string} firstLetters
  * @returns function renders initials
  */
 function renderRegistery(i, firstLetters) {
@@ -126,10 +124,9 @@ function clearEditContent() {
   document.getElementById("edit-contact-phone").value = "";
 }
 
-
 /**
  * function opens Edit Contact Dialog
- * @param {integer} index 
+ * @param {integer} index
  */
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
@@ -164,7 +161,7 @@ function closeEditContactDialog() {
 
 /**
  * function renders the contact edit dialog modal
- * @param {integer} index 
+ * @param {integer} index
  * @returns HTML code
  */
 function generateContactEditDialog(index) {
@@ -209,12 +206,12 @@ function generateContactEditDialog(index) {
 
 /**
  * function renders the contact details
- * @param {integer} index 
- * @param {string} name 
- * @param {string} initials 
- * @param {string} initialsColor 
- * @param {string} email 
- * @param {string} phone 
+ * @param {integer} index
+ * @param {string} name
+ * @param {string} initials
+ * @param {string} initialsColor
+ * @param {string} email
+ * @param {string} phone
  * @returns HTML code
  */
 function generateContactDetail(index, name, initials, initialsColor, email, phone) {
@@ -253,28 +250,27 @@ function generateContactDetail(index, name, initials, initialsColor, email, phon
  * function gets arry activeUserContacts and renders drop-down in Add-Task Dialog
  */
 function renderContactsInDropDown() {
-  content = document.getElementById('collapseContacts');
-  content.innerHTML = ' ';
+  content = document.getElementById("collapseContacts");
+  content.innerHTML = " ";
   for (let i = 0; i < activeUserContacts.length; i++) {
-    let name = activeUserContacts[i]['name'];
+    let name = activeUserContacts[i]["name"];
     content.innerHTML += `
         <div class="dropdown-contact">
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
-  };
+  }
 }
 
 /**
  * function renders all active user contacs into Contacts Edit DropDown
- * @param {integer} taskID 
+ * @param {integer} taskID
  */
 function renderContactsInEditDropDown(taskID) {
-  content = document.getElementById('collapseContactsEdit');
-  content.innerHTML = ' ';
+  content = document.getElementById("collapseContactsEdit");
+  content.innerHTML = " ";
   for (let i = 0; i < activeUserContacts.length; i++) {
-
-    let name = activeUserContacts[i]['name'];
+    let name = activeUserContacts[i]["name"];
     if (assignedToContactTrue(taskID, name)) {
       content.innerHTML += `
         <div class="dropdown-contact">
@@ -287,22 +283,20 @@ function renderContactsInEditDropDown(taskID) {
         <label for="${name}">${name}</label>
         <input type="checkbox" id="${name}" name="assign-contacts" value="${name}">
     </div>`;
-
     }
-
-  };
+  }
 }
 
 /**
  * function searches task to derive contact names that are assign to task
- * @param {integer} taskID 
- * @param {string} name 
- * @returns 
+ * @param {integer} taskID
+ * @param {string} name
+ * @returns
  */
 function assignedToContactTrue(taskID, name) {
   let checkedNames = [];
-  for (let i = 0; i < tasks[taskID]['assignedTo'].length; i++) {
-    checkedNames.push(tasks[taskID]['assignedTo'][i]);
+  for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
+    checkedNames.push(tasks[taskID]["assignedTo"][i]);
   }
   if (checkedNames.includes(name)) {
     return true;
