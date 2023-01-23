@@ -901,7 +901,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     white-space: nowrap;
-    min-width: 90px;
+    min-width: 50px;
     padding-block: 12px;
     padding-inline: 8px;
   }
