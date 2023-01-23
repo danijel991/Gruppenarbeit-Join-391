@@ -52,7 +52,7 @@ body {
   overflow-y: auto;
 }
 
-.word-break{
+.word-break {
   word-break: break-word;
 }
 
@@ -1014,4 +1014,26 @@ input:focus {
 }
 
 @media (max-width: 375px) {
+  .contact-name {
+    font-size: 24px;
+  }  
+  
+  .letters-large {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 24px;
+  }
+  .contact-information {
+    font-size: 19px;
+  }
+
+  .contac-detail-mobile {
+    top: 12px;
+  }
+
+  .span-display-none{
+    display: none;
+  }
 }
+
+
