@@ -86,9 +86,10 @@
     }
 
 
-    .legalNotice__back--button{
+    .legalNotice__back--button {
         right: -30px;
         top: -4%;
+        cursor: pointer;
     }
 }
 
@@ -99,7 +100,7 @@
         width: auto;
     }
 
-    
+
     .legalNotice__wrapper h1 {
         font-size: 2rem;
     }
@@ -125,7 +126,7 @@
 
 
 @Media(max-width:576px) {
-    .legalNotice__back--button{
+    .legalNotice__back--button {
         right: 0px;
         top: -6%;
     }
