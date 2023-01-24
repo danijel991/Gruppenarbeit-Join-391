@@ -260,10 +260,14 @@ function clearAddTaskInputFields() {
     document.getElementById('description-text').value = '';
     document.getElementById('subtask-input').value = '';
     document.getElementById('subtask-container').innerHTML = '';
-    document.querySelector('input[name="prio"]:checked').checked = false;
     document.querySelectorAll('input[name="assign-contacts"]:checked').forEach((checkbox) => {
         checkbox.checked = false;
     });
+
+    let prioInput = document.querySelector('input[name="prio"]:checked');
+    if (prioInput !== null) {
+        prioInput.checked = false;
+    }
 }
 
 /**
