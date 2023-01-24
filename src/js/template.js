@@ -87,7 +87,7 @@ function generateEditTaskHTML(task) {
                           </div>
                           <div class="description-area description-area-overlay flex-column margin-btn-45">
                               <span class="category-header">Description</span>
-                              <textarea class="" name="" id="edit-description${task["id"]}" cols="30" rows="10"
+                              <textarea class="" name="" id="edit-description${task["id"]}" cols="30" rows="5"
                                   placeholder="Enter a Description">${task["description"]}</textarea>
                           </div>
                           <div class="date-area flex-column margin-btn-45">
@@ -118,6 +118,15 @@ function generateEditTaskHTML(task) {
                               </button>
                           </div>
   
+                          
+
+
+                          <div class="input-check" id="subtask-edit-container">Text</div>
+
+
+
+
+
   
                           <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
                               data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">

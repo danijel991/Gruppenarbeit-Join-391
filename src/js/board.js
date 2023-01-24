@@ -299,6 +299,9 @@ function editTasks(taskID) {
     const contacts = tasks[taskID]["assignedTo"][i];
     document.getElementById('assigned-contacts').innerHTML += generateTaskModalContactsInitialsHTML(getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
   }
+  
+  document.getElementById('subtask-edit-container').innerHTML += createSubtaskHTML("so ein schöner text");;
+  // createSubtaskHTML('text');
 }
 
 
