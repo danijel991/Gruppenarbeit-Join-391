@@ -290,7 +290,7 @@ function editTasks(taskID) {
     document.getElementById("assigned-contacts").innerHTML += generateTaskModalContactsInitialsHTML(
       getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
   }
-  debugger
+  
   if (tasks[taskID].subtasks) {
     let subtaskLength = tasks[taskID].subtasks.length
     for (let i = 0; i < subtaskLength; i++) {
