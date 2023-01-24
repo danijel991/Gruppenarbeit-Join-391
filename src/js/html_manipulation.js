@@ -256,10 +256,14 @@ function closeAddTaskDialog(id, id2) {
 function clearAddTaskInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('date').value = '';
-    document.getElementById('category-dropdown').innerHTML = 'Select task category';
+    document.getElementById('category-dropdown').innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
     document.getElementById('description-text').value = '';
     document.getElementById('subtask-input').value = '';
     document.getElementById('subtask-container').innerHTML = '';
+    document.querySelector('input[name="prio"]:checked').checked = false;
+    document.querySelectorAll('input[name="assign-contacts"]:checked').forEach((checkbox) => {
+        checkbox.checked = false;
+    });
 }
 
 /**
