@@ -34,14 +34,14 @@ async function initBoard() {
 
 function addToBoard() {
   if (taskAddedAtAddTaskHTML == false) {
-      console.time('Board Loading Time');
-  // if (searchTask()) {
+    console.time('Board Loading Time');
+    // if (searchTask()) {
     filterAllTasks();
-  // }
-  generateTemplate();
-  updateProgressBars();
-  updateProgressReport();
-  console.timeEnd('Board Loading Time');
+    // }
+    generateTemplate();
+    updateProgressBars();
+    updateProgressReport();
+    console.timeEnd('Board Loading Time');
   }
 }
 
@@ -103,6 +103,8 @@ function findTask() {
   filterSearchedTasks(tasks, "in-progress", search);
   filterSearchedTasks(tasks, "await-feedback", search);
   filterSearchedTasks(tasks, "done", search);
+  updateProgressBars();
+  updateProgressReport();
   // updateHTML();
   // addToBoard();
 }
