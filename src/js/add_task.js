@@ -1,6 +1,7 @@
 let selectedCategory;
 let selectedColor;
 let taskAddedAtAddTaskHTML = false;
+let subtasks = [];
 
 /**
  * function renders actual contacts of active user in drop-down menue of Add-Task Dialog
@@ -184,7 +185,7 @@ function openSubtaskInput() {
 function closeSubtaskInput() {
   document.getElementById("subtasks-input-area").classList.add("d-none");
   document.getElementById("subtasks-area").classList.remove("d-none");
-  document.getElementById("subtask-input").value = "";
+  document.getElementById("subtask-container").value = "";
 }
 
 /**
@@ -195,6 +196,7 @@ function addSubtask() {
   if (input) {
     document.getElementById("subtask-container").innerHTML += createSubtaskHTML(input);
     closeSubtaskInput();
+    return input;
   }
 }
 
@@ -255,6 +257,20 @@ function closeCategoryInput() {
   document.getElementById("category-input").value = "";
 }
 
+function readSubtasks() {
+  const myElement = document.getElementById('subtask-container'); //get all Subtasks as DOM Elements
+  // myElement.childElementCount gets the count of children and is identical with children.length
+  
+  for (let i = 0; i < myElement.childElementCount; i++) {
+    const checkBox = myElement.children[i].querySelector('input').checked; //tests if checkbox is false or true
+    const subtaskName = myElement.children[i].querySelector('label').textContent; //gets the text content of the subtask
+    let subtask = new CreateSubTask(subtaskName, checkBox);
+    subtasks.push(subtask);
+  }
+// for (const child of myElement.children) {
+//   console.log(child.tagName);
+}
+
 /**
  * The function is collecting the informations added into input fields from task
  *
@@ -275,11 +291,14 @@ async function createTask(path) {
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
+  debugger
+  readSubtasks();
+
   if (path == true) {
     taskAddedAtAddTaskHTML = true;
-    addTaskCreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+    addTaskCreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks);
   } else {
-    createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+    createNewTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks);
   }
   clearAddTaskInputFields();
 }
@@ -295,9 +314,10 @@ async function createTask(path) {
  * @param {string} urgency - The task priority.
  * @param {string} date - The task due date.
  * @param {string} color - the task color.
+ * @param {array} subtasks - the subtask array.
  */
-async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks) {
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   // await updateHTML();
   addToBoard();

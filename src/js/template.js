@@ -164,8 +164,8 @@ function generateEditTaskHTML(task) {
 function createSubtaskHTML(subtask) {
     return `
       <div class="subtask">
-          <input type="checkbox">
-          <label class="" for="ckeck">${subtask}</label>
+          <input type="checkbox" name="subtask-checkbox">
+          <label for="check" name="subtask-name" id="subtask-name">${subtask}</label>
       </div>
       `;
 }

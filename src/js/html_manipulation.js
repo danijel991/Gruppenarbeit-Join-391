@@ -259,6 +259,8 @@ function clearAddTaskInputFields() {
     document.getElementById('category-dropdown').value = '';
     document.getElementById('description-text').value = '';
     document.getElementById('description-text').value = '';
+    document.getElementById('subtask-container').value = '';
+
 }
 
 /**
