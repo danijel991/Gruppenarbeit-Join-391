@@ -256,9 +256,10 @@ function closeAddTaskDialog(id, id2) {
 function clearAddTaskInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('date').value = '';
-    document.getElementById('category-dropdown').value = '';
+    document.getElementById('category-dropdown').innerHTML = 'Select task category';
     document.getElementById('description-text').value = '';
-    document.getElementById('description-text').value = '';
+    document.getElementById('subtask-input').value = '';
+    document.getElementById('subtask-container').innerHTML = '';
 }
 
 /**
