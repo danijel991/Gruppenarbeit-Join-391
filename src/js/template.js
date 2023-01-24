@@ -117,17 +117,9 @@ function generateEditTaskHTML(task) {
                                   </label>
                               </button>
                           </div>
-  
-                          
 
+                          <div class="input-check" id="subtask-edit-container"></div>
 
-                          <div class="input-check" id="subtask-edit-container">Text</div>
-
-
-
-
-
-  
                           <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
                               data-bs-target="#collapseContactsEdit" aria-expanded="false" aria-controls="collapseContactsEdit" id="contact-dropdown-edit">
                               <span>Select contacts to assign</span>
@@ -170,13 +162,31 @@ function generateEditTaskHTML(task) {
 }
 
 
-function createSubtaskHTML(subtask) {
+function createSubtaskHTML(subtaskName) {
     return `
-      <div class="subtask">
-          <input type="checkbox" name="subtask-checkbox">
-          <label for="check" name="subtask-name" id="subtask-name">${subtask}</label>
+      <div class="subtask text-19pt">
+          <input type="checkbox" checked="checked" name="subtask-checkbox">
+          <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
       </div>
       `;
+}
+
+function createSubtaskEditHTML(subtaskName, checkBox) {
+    if (checkBox === true) {
+        return `
+          <div class="subtask text-19pt">
+              <input type="checkbox" checked="checked" name="subtask-checkbox">
+              <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
+          </div>
+          `;
+    } else {
+        return `
+        <div class="subtask text-19pt">
+            <input type="checkbox" name="subtask-checkbox">
+            <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
+        </div>
+        `; 
+    }
 }
 
 
