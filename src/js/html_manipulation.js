@@ -265,8 +265,10 @@ function clearAddTaskInputFields() {
 
 function updateProgressBars() {
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].subtasks) {
-      let attribute = document.querySelector(`.progress-bar${i}`);
+    let attribute = document.querySelector(`.progress-bar${i}`);
+    if (tasks[i].subtasks.length == 0) {
+      attribute.style.width = 0 + "%";
+    } else if (tasks[i].subtasks) {
       if (calculateSubtaskProgress(tasks[i].subtasks) == 0) {
         attribute.style.width = 0 + "%";
       } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.2) {
@@ -285,12 +287,12 @@ function updateProgressBars() {
 }
 
 /**
- * The function is updating the Html element to show the completion of the task.
+ * The function shows in HTML how many subtasks are checked.
  */
 function updateProgressReport() {
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].subtasks) {
-      let attribute = document.querySelector(`.progress-report${i}`);
+    let attribute = document.querySelector(`.progress-report${i}`);
+    if (!tasks[i].subtasks.length == 0) {
       let isChecked, count;
       [isChecked, count] = getSubtaskCheckboxesChecked(tasks[i].subtasks);
       attribute.innerHTML = `${isChecked} / ${count} done`;
