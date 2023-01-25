@@ -249,18 +249,39 @@ function clearAddTaskInputFields() {
 /**
  * The function modifies the Html element to show the completion of the task.
  */
+// function updateProgressBars() {
+//   document.querySelectorAll(".progress-bar").forEach((e) => {
+//     if (boardTaskContainerId(e) == "to-do") {
+//       e.style.width = 0;
+//     } else if (boardTaskContainerId(e) == "in-progress") {
+//       e.style.width = 33 + "%";
+//     } else if (boardTaskContainerId(e) == "await-feedback") {
+//       e.style.width = 66 + "%";
+//     } else if (boardTaskContainerId(e) == "done") {
+//       e.style.width = 100 + "%";
+//     }
+//   });
+// }
+
 function updateProgressBars() {
-  document.querySelectorAll(".progress-bar").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.style.width = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.style.width = 33 + "%";
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.style.width = 66 + "%";
-    } else if (boardTaskContainerId(e) == "done") {
-      e.style.width = 100 + "%";
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].subtasks) {
+      let attribute = document.querySelector(`.progress-bar${i}`);
+      if (calculateSubtaskProgress(tasks[i].subtasks) == 0) {
+        attribute.style.width = 0 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.2) {
+        attribute.style.width = 20 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.4) {
+        attribute.style.width = 40 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.6) {
+        attribute.style.width = 60 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.8) {
+        attribute.style.width = 80 + "%";
+      } else {
+        attribute.style.width = 100 + "%";
+      }
     }
-  });
+  }
 }
 
 /**

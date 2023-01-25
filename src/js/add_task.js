@@ -194,6 +194,41 @@ function addSubtask() {
   }
 }
 
+function calculateSubtaskProgress(subtasks) {
+  let isChecked = 0;
+  let checkBoxesCount = subtasks.map((e) => e.checkBox);
+  for (let i = 0; i < checkBoxesCount.length; i++) {
+    if (checkBoxesCount[i] === true) {
+      isChecked++;
+    }
+  }
+  // console.log(checkBoxesCount.length, isChecked);
+  result = isChecked / checkBoxesCount.length;
+  // console.log(result);
+  return result;
+}
+
+// function calculateSubtaskProgress(taskID) {
+//   let isChecked = 0;
+//   let checkBoxesCount = tasks[taskID].subtasks.map((e) => e.checkBox);
+//   for (let i = 0; i < checkBoxesCount.length; i++) {
+//     if (checkBoxesCount[i] === true) {
+//       isChecked++;
+//     }
+//   }
+//   console.log(checkBoxesCount.length, isChecked);
+//   result = isChecked / checkBoxesCount.length;
+//   console.log(result);
+//   // let remainder = result % 4;
+//   // if (remainder === 0) {
+//   //   return 0;
+//   // } else if (remainder === 1) {
+//   //   return 1;
+//   // } else if (remainder === 2) {
+//   //   return 2;
+//   // } else return 3;
+// }
+
 /**
  * The function is creating the drop-down and is showing the contact list of the user.
  *

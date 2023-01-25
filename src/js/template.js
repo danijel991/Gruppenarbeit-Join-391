@@ -6,7 +6,7 @@ function generateTodoHTML(task) {
           <span class="task-description">${task["description"]}</span>
           <div class="progress-container">
               <div class="progress" style="height: 8px;">
-                  <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar progress-bar${task["id"]}" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <span><span class="progress-report">0</span>/3 Done</span>
           </div>
