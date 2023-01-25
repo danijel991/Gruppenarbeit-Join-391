@@ -249,36 +249,74 @@ function clearAddTaskInputFields() {
 /**
  * The function modifies the Html element to show the completion of the task.
  */
+// function updateProgressBars() {
+//   document.querySelectorAll(".progress-bar").forEach((e) => {
+//     if (boardTaskContainerId(e) == "to-do") {
+//       e.style.width = 0;
+//     } else if (boardTaskContainerId(e) == "in-progress") {
+//       e.style.width = 33 + "%";
+//     } else if (boardTaskContainerId(e) == "await-feedback") {
+//       e.style.width = 66 + "%";
+//     } else if (boardTaskContainerId(e) == "done") {
+//       e.style.width = 100 + "%";
+//     }
+//   });
+// }
+
 function updateProgressBars() {
-  document.querySelectorAll(".progress-bar").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.style.width = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.style.width = 33 + "%";
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.style.width = 66 + "%";
-    } else if (boardTaskContainerId(e) == "done") {
-      e.style.width = 100 + "%";
+  for (let i = 0; i < tasks.length; i++) {
+    let attribute = document.querySelector(`.progress-bar${i}`);
+    if (tasks[i].subtasks.length == 0) {
+      attribute.style.width = 0 + "%";
+    } else if (tasks[i].subtasks) {
+      if (calculateSubtaskProgress(tasks[i].subtasks) == 0) {
+        attribute.style.width = 0 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.2) {
+        attribute.style.width = 20 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.4) {
+        attribute.style.width = 40 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.6) {
+        attribute.style.width = 60 + "%";
+      } else if (calculateSubtaskProgress(tasks[i].subtasks) <= 0.8) {
+        attribute.style.width = 80 + "%";
+      } else {
+        attribute.style.width = 100 + "%";
+      }
     }
-  });
+  }
 }
 
 /**
- * The function is updating the Html element to show the completion of the task.
+ * The function shows in HTML how many subtasks are checked.
  */
 function updateProgressReport() {
-  document.querySelectorAll(".progress-report").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.innerHTML = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.innerHTML = 1;
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.innerHTML = 2;
-    } else if (boardTaskContainerId(e) == "done") {
-      e.innerHTML = 3;
+  for (let i = 0; i < tasks.length; i++) {
+    let attribute = document.querySelector(`.progress-report${i}`);
+    if (!tasks[i].subtasks.length == 0) {
+      let isChecked, count;
+      [isChecked, count] = getSubtaskCheckboxesChecked(tasks[i].subtasks);
+      attribute.innerHTML = `${isChecked} / ${count} done`;
+    } else {
+      attribute.innerHTML = `no subtasks`;
     }
-  });
+  }
 }
+// /**
+//  * The function is updating the Html element to show the completion of the task.
+//  */
+// function updateProgressReport() {
+//   document.querySelectorAll(".progress-report").forEach((e) => {
+//     if (boardTaskContainerId(e) == "to-do") {
+//       e.innerHTML = 0;
+//     } else if (boardTaskContainerId(e) == "in-progress") {
+//       e.innerHTML = 1;
+//     } else if (boardTaskContainerId(e) == "await-feedback") {
+//       e.innerHTML = 2;
+//     } else if (boardTaskContainerId(e) == "done") {
+//       e.innerHTML = 3;
+//     }
+//   });
+// }
 
 /**
  * The function is showing the confirmation of the task being added.
