@@ -288,18 +288,33 @@ function updateProgressBars() {
  * The function is updating the Html element to show the completion of the task.
  */
 function updateProgressReport() {
-  document.querySelectorAll(".progress-report").forEach((e) => {
-    if (boardTaskContainerId(e) == "to-do") {
-      e.innerHTML = 0;
-    } else if (boardTaskContainerId(e) == "in-progress") {
-      e.innerHTML = 1;
-    } else if (boardTaskContainerId(e) == "await-feedback") {
-      e.innerHTML = 2;
-    } else if (boardTaskContainerId(e) == "done") {
-      e.innerHTML = 3;
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].subtasks) {
+      let attribute = document.querySelector(`.progress-report${i}`);
+      let isChecked, count;
+      [isChecked, count] = getSubtaskCheckboxesChecked(tasks[i].subtasks);
+      attribute.innerHTML = `${isChecked} / ${count} done`;
+    } else {
+      attribute.innerHTML = `no subtasks`;
     }
-  });
+  }
 }
+// /**
+//  * The function is updating the Html element to show the completion of the task.
+//  */
+// function updateProgressReport() {
+//   document.querySelectorAll(".progress-report").forEach((e) => {
+//     if (boardTaskContainerId(e) == "to-do") {
+//       e.innerHTML = 0;
+//     } else if (boardTaskContainerId(e) == "in-progress") {
+//       e.innerHTML = 1;
+//     } else if (boardTaskContainerId(e) == "await-feedback") {
+//       e.innerHTML = 2;
+//     } else if (boardTaskContainerId(e) == "done") {
+//       e.innerHTML = 3;
+//     }
+//   });
+// }
 
 /**
  * The function is showing the confirmation of the task being added.

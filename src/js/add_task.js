@@ -208,6 +208,20 @@ function calculateSubtaskProgress(subtasks) {
   return result;
 }
 
+function getSubtaskCheckboxesChecked(subtasks) {
+  let isChecked = 0;
+  let checkBoxesCount = subtasks.map((e) => e.checkBox);
+  for (let i = 0; i < checkBoxesCount.length; i++) {
+    if (checkBoxesCount[i] === true) {
+      isChecked++;
+    }
+  }
+  // console.log(checkBoxesCount.length, isChecked);
+  let count = checkBoxesCount.length;
+  console.log(isChecked, count);
+  return [isChecked, count];
+}
+
 // function calculateSubtaskProgress(taskID) {
 //   let isChecked = 0;
 //   let checkBoxesCount = tasks[taskID].subtasks.map((e) => e.checkBox);
