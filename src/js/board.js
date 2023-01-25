@@ -5,6 +5,11 @@ let currentDraggedElement;
 let tasks = [];
 
 /**
+ * boolean to mark if tasks are currently comming from editTasks dialog
+ */
+let editTaskMarker = false;
+
+/**
  * After "Log In", the function is collectiong a serial if data throw the corresponding functions
  */
 async function initBoard() {
@@ -282,21 +287,25 @@ function boardTaskContainerId(e) {
  * @param {number} taskID - Value coresponding to the task id.
  */
 function editTasks(taskID) {
+  editTaskMarker = true;
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   renderContactsInEditDropDown(taskID);
   updateUrgencyBtns(taskID);
   for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
     const contacts = tasks[taskID]["assignedTo"][i];
     document.getElementById("assigned-contacts").innerHTML += generateTaskModalContactsInitialsHTML(
-      getInitials(contacts), contacts, setColorForInitial(getInitials(contacts)));
+      getInitials(contacts),
+      contacts,
+      setColorForInitial(getInitials(contacts))
+    );
   }
-  
+
   if (tasks[taskID].subtasks) {
-    let subtaskLength = tasks[taskID].subtasks.length
+    let subtaskLength = tasks[taskID].subtasks.length;
     for (let i = 0; i < subtaskLength; i++) {
       const subtaskName = tasks[taskID].subtasks[i].subtaskName;
       const checkBox = tasks[taskID].subtasks[i].checkBox;
-      document.getElementById("subtask-edit-container").innerHTML += createSubtaskEditHTML(subtaskName, checkBox)
+      document.getElementById("subtask-edit-container").innerHTML += createSubtaskEditHTML(subtaskName, checkBox);
     }
   }
 }

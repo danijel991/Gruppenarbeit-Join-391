@@ -1,7 +1,7 @@
 let selectedCategory;
 let selectedColor;
 let taskAddedAtAddTaskHTML = false;
-let subtasks = [];
+// let subtasks = [];
 
 /**
  * function renders actual contacts of active user in drop-down menue of Add-Task Dialog
@@ -15,10 +15,10 @@ async function init_add_task() {
  * function changes bg-color of urgency button
  */
 function changeUrgencyHigh() {
-  document.getElementById('urgency-btn-1').style.backgroundColor = "#FF3D00";
-  document.getElementById('urgency-btn-1').style.color = "#FFFFFF";
-  document.getElementById('img-prio-high').style.backgroundImage = "url('../img/prio_high_white.png')";
-  document.getElementById('img-prio-high').style.backgroundRepeat = "no-repeat";
+  document.getElementById("urgency-btn-1").style.backgroundColor = "#FF3D00";
+  document.getElementById("urgency-btn-1").style.color = "#FFFFFF";
+  document.getElementById("img-prio-high").style.backgroundImage = "url('../img/prio_high_white.png')";
+  document.getElementById("img-prio-high").style.backgroundRepeat = "no-repeat";
   event.preventDefault();
 }
 
@@ -26,7 +26,7 @@ function changeUrgencyHigh() {
  * function clears form
  */
 function clearForm() {
-  document.getElementById('myForm').reset();
+  document.getElementById("myForm").reset();
 }
 
 /**
@@ -35,12 +35,11 @@ function clearForm() {
  * @param {string} color
  */
 function selectCategory(category, color) {
-  document.getElementById('category-dropdown').innerHTML = '';
-  document.getElementById('category-dropdown').innerHTML = category + `<div class="category-color ${color}"></div>`;
-  document.getElementById('category-dropdown').classList.add('dropdown-active');
+  document.getElementById("category-dropdown").innerHTML = "";
+  document.getElementById("category-dropdown").innerHTML = category + `<div class="category-color ${color}"></div>`;
+  document.getElementById("category-dropdown").classList.add("dropdown-active");
   document.getElementById(color).checked = true;
-};
-
+}
 
 /**
  *
@@ -63,9 +62,9 @@ function generateCategoryHTML(category, color) {
  * reads user input in AddTask Dialog
  */
 function addNewCategory() {
-  let category = document.getElementById('category-input').value;
+  let category = document.getElementById("category-input").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-  document.getElementById('collapseCategory').innerHTML += generateCategoryHTML(category, color);
+  document.getElementById("collapseCategory").innerHTML += generateCategoryHTML(category, color);
   closeCategoryInput();
   selectCategory(category, color);
 }
@@ -96,12 +95,6 @@ function taskAddedRemoveMessage() {
   document.getElementById("added-task-message").style.transform = "";
 }
 
-
-
-
-
-
-
 /***        From Board          ***/
 
 /**
@@ -123,6 +116,7 @@ function getValueFromEditInputs(taskID) {
   tasks[taskID]["description"] = editDescription;
   tasks[taskID]["dueDate"] = editDate;
   tasks[taskID]["assignedTo"] = contactsCheckedBoxes;
+  tasks[taskID]["subtasks"] = readSubtasks();
 }
 
 /**
@@ -258,17 +252,21 @@ function closeCategoryInput() {
 }
 
 function readSubtasks() {
-  const myElement = document.getElementById('subtask-container'); //get all Subtasks as DOM Elements
-  // myElement.childElementCount gets the count of children and is identical with children.length
-  
+  let myElement;
+  let subtasks = [];
+  if (editTaskMarker == true) {
+    myElement = document.getElementById("subtask-edit-container"); //get all Subtasks as DOM Elements
+  } else {
+    myElement = document.getElementById("subtask-container"); //get all Subtasks as DOM Elements
+    // myElement.childElementCount gets the count of children and is identical with children.length
+  }
   for (let i = 0; i < myElement.childElementCount; i++) {
-    const checkBox = myElement.children[i].querySelector('input').checked; //tests if checkbox is false or true
-    const subtaskName = myElement.children[i].querySelector('label').textContent; //gets the text content of the subtask
+    let checkBox = myElement.children[i].querySelector("input").checked; //tests if checkbox is false or true
+    let subtaskName = myElement.children[i].querySelector("label").textContent; //gets the text content of the subtask
     let subtask = new CreateSubTask(subtaskName, checkBox);
     subtasks.push(subtask);
   }
-// for (const child of myElement.children) {
-//   console.log(child.tagName);
+  return subtasks;
 }
 
 /**
@@ -277,7 +275,6 @@ function readSubtasks() {
  * @returns The information inserted by the user.
  */
 async function createTask(path) {
-  console.trace('Tracing createTask(path)')
   let title = document.getElementById("title").value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   if (contactsCheckedBoxes == null) {
@@ -287,12 +284,11 @@ async function createTask(path) {
     return;
   }
   let date = document.getElementById("date").value;
-  let category = document.getElementById('category-dropdown').textContent;
+  let category = document.getElementById("category-dropdown").textContent;
   let urgency = document.querySelector('input[name="prio"]:checked').value;
   let description = document.getElementById("description-text").value;
   let color = document.querySelector("input[type=radio][name=color]:checked").value;
-  debugger
-  readSubtasks();
+  let subtasks = readSubtasks();
 
   if (path == true) {
     taskAddedAtAddTaskHTML = true;
@@ -316,7 +312,17 @@ async function createTask(path) {
  * @param {string} color - the task color.
  * @param {array} subtasks - the subtask array.
  */
-async function createNewTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks) {
+async function createNewTask(
+  array,
+  category,
+  title,
+  description,
+  contactsCheckedBoxes,
+  urgency,
+  date,
+  color,
+  subtasks
+) {
   new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   // await updateHTML();
@@ -341,8 +347,18 @@ async function createNewTask(array, category, title, description, contactsChecke
  * @param {string} date - The task due date.
  * @param {string} color - the task color.
  */
-async function addTaskCreateTask(array, category, title, description, contactsCheckedBoxes, urgency, date, color) {
-  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color);
+async function addTaskCreateTask(
+  array,
+  category,
+  title,
+  description,
+  contactsCheckedBoxes,
+  urgency,
+  date,
+  color,
+  subtasks
+) {
+  new CreateTask(tasks.length, category, title, description, contactsCheckedBoxes, urgency, date, color, subtasks);
   await saveInBackendUserTasks(tasks.length); // this saves all tasks in Backend
   // await updateHTML();
   addToBoard();
@@ -382,6 +398,8 @@ function resetAddTaskForm() {
     checkbox.checked = false;
   });
   document.querySelector("input[type=radio][name=color]:checked").checked = false;
-  document.getElementById('category-dropdown').innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
-  document.getElementById('category-dropdown').classList.remove('dropdown-active');
+  document.getElementById(
+    "category-dropdown"
+  ).innerHTML = `<span>Select task category</span><img src="../img/select-arrow.png" alt="">`;
+  document.getElementById("category-dropdown").classList.remove("dropdown-active");
 }
