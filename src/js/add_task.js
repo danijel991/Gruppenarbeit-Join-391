@@ -292,7 +292,6 @@ function readSubtasks() {
 
 /**
  * The function is collecting the informations added into input fields from task
- *
  * @returns The information inserted by the user.
  */
 async function createTask(path) {
@@ -322,7 +321,6 @@ async function createTask(path) {
 
 /**
  * The function does create and save a new "Task". Afterwords does update the coresponding area.
- *
  * @param {number} array - The number of tasks.
  * @param {string} category - The task category.
  * @param {string} title - The task title.
@@ -358,7 +356,6 @@ async function createNewTask(
 
 /**
  * The function does create and save a new "Task" from the Add-Task.html specifically. It triggers a different kind of animation, than the one used on board.html
- *
  * @param {number} array - The number of tasks.
  * @param {string} category - The task category.
  * @param {string} title - The task title.
@@ -388,7 +385,6 @@ async function addTaskCreateTask(
 
 /**
  * The function registers if a checkbox has been selected and provides the list of checked elements.
- *
  * @param {string} chkboxName - Provides the name of the identifier.
  * @returns List of people assigned to the task.
  */
