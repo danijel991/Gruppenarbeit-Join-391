@@ -58,6 +58,9 @@
                         <button value="submit" type="submit" class="btn-add-task btn-create-task">Create task
                             <img src="../img/check-icon.png" alt="add-icon">
                         </button>
+                        <button value="submit" type="submit" class="btn-add-task btn-create-task-resp">Create
+                            <img src="../img/check-icon.png" alt="add-icon">
+                        </button>
                         <div class="form-width input-title margin-btn-25">
                             <input class="add-title input-title-font" type="text" placeholder="Enter a title" id="title"
                                 required>
@@ -94,12 +97,14 @@
                             <span class="category-header">Due date</span>
                             <input id="date" class="uniform-sizing" type="date" required>
                         </div>
-                        <span class="category-header">Category</span>
-                        <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"
-                            id="category-dropdown">
-                            <span>Select task category</span>
-                            <img src="../img/select-arrow.png" alt="">
+                        <div class="category-area flex-column margin-btn-45">
+                            <span class="category-header">Category</span>
+                            <div class="uniform-sizing text-19pt dropdown" role="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCategory" aria-expanded="false"
+                                aria-controls="collapseCategory" id="category-dropdown">
+                                <span>Select task category</span>
+                                <img src="../img/select-arrow.png" alt="">
+                            </div>
                         </div>
                         <div class="category-container d-none" id="category-input-area">
                             <div class="subtasks-input-area">
@@ -216,7 +221,7 @@
                                 </div>
                             </div>
                             <div class="input-check" id="subtask-container">
-  
+
                             </div>
                         </div>
                     </form>
@@ -247,7 +252,7 @@
                         </span>
                     </div>
                     <button class="btn-add-task" onclick="openAddTaskDialog('add-task-overlay', 'add-task-modal')">
-                        Add task
+                        Add <span>task</span>
                         <img src="../img/add-icon.png" alt="add-icon">
                     </button>
                 </div>

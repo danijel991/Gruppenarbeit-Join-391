@@ -66,6 +66,15 @@
         overflow-x: hidden;
     }
 
+    main {
+        overflow-y: scroll;
+    }
+
+    main::-webkit-scrollbar {
+        display: none;
+    }
+
+
     .dropdown-contacts-container {
         width: 363px;
     }
@@ -93,7 +102,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 120%;
-        width: 363px;
+        /* width: 363px; */
     }
 
     .uniform-sizing::placeholder {
@@ -115,29 +124,30 @@
     }
 
     .button-area {
-        width: 354px;
+        width: 422px;
         height: 51px;
     }
 
+
     #high,
     #low {
-        width: 111px;
-        height: 41px;
+        width: 33%;
+        /* height: 41px; */
         font-weight: 400;
         font-size: 16px;
         line-height: 120%;
     }
 
     #medium {
-        width: 112px;
-        height: 41px;
+        width: 33%;
+        /* height: 41px; */
         font-weight: 400;
         font-size: 16px;
         line-height: 120%;
     }
 
     .description-area textarea {
-        width: 363px;
+        /* width: 363px; */
         height: 93px;
         font-weight: 400;
         font-size: 16px;
@@ -151,7 +161,7 @@
     }
 
     .subtasks-input-area {
-        width: 363px;
+        /* width: 363px; */
         font-weight: 400;
         font-size: 16px;
         line-height: 120%;
@@ -186,7 +196,8 @@
     }
 
     .form-width,
-    .add-task-left {
+    /* .add-task-left */
+     {
         width: 363px;
     }
 
@@ -219,7 +230,7 @@
 
 @media (max-width: 576px) {
 
-    .form-width,
+    /* .form-width,
     .add-task-left,
     .subtasks-input-area,
     .add-title,
@@ -228,28 +239,23 @@
     .button-area,
     .add-task-form {
         width: 300px !important;
-    }
+    } */
 
     .dropdown-contacts-container {
         width: 100%;
     }
 
-    .button-area>button {
+    /* .button-area>button {
         width: 90px !important;
-    }
+    } */
 
     .add-task-main {
-        margin-left: auto;
-        margin-right: auto;
-        width: 100px;
     }
 
     .form-width {
         margin-top: 0;
     }
 }
-
-@media (max-width: 425px) {}
 
 @media (max-width: 375px) {
     .responsive-header {
@@ -271,14 +277,14 @@
 
 @media (max-width: 320px) {
 
-    .form-width,
+    /* .form-width, */
     .add-task-left,
     .add-task-right,
     .subtasks-input-area,
     .add-title,
     .description-area textarea,
     .add-task-main,
-    .button-area,
+    /* .button-area, */
     .add-task-form {
         width: 98% !important;
     }

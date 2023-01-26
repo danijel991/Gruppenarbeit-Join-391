@@ -83,7 +83,7 @@ function generateEditTaskHTML(task) {
                           </div>
                           <div class="description-area description-area-overlay flex-column margin-btn-45">
                               <span class="category-header">Description</span>
-                              <textarea class="" name="" id="edit-description${task["id"]}" cols="30" rows="5"
+                              <textarea class="edit-description" name="" id="edit-description${task["id"]}" cols="30" rows="5"
                                   placeholder="Enter a Description">${task["description"]}</textarea>
                           </div>
                           <div class="date-area flex-column margin-btn-45">

@@ -9,6 +9,10 @@
     width: calc(100% - 232px);
 }
 
+.btn-create-task-resp {
+    display: none !important;
+}
+
 .board {
     overflow-y: scroll;
 }
@@ -290,8 +294,7 @@
     background-color: white;
     background: #ffffff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
-    height: 818px;
-    min-height: 818px;
+    height: 95%;
     width: 623px;
     border-radius: 30px;
     padding: 50px;
@@ -313,6 +316,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    align-items: flex-start;
 }
 
 .close-icon-overlay {
@@ -427,10 +431,13 @@
     height: 61px;
 }
 
-.button-edit-task-area-confirm {
+.button-edit-task-area-confirm,
+#task-modal>div>form {
     display: flex;
     justify-content: center;
     padding-bottom: 55.500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .slide-in {
@@ -451,6 +458,25 @@
     display: none;
 }
 
+.task-modal {
+    overflow-y: scroll;
+}
+
+
+.task-modal::-webkit-scrollbar {
+    display: none;
+}
+
+.add-task-modal::-webkit-scrollbar {
+    display: none;
+}
+
+.add-task-modal {
+    overflow-y: scroll;
+}
+
+
+
 #collapseContactsEdit {
     overflow-y: scroll !important;
 }
@@ -468,6 +494,7 @@
     width: 100%;
     height: 35%;
     padding: 61px 36px 17px;
+    align-items: center;
 }
 
 .close-icon {
@@ -488,21 +515,22 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    width: 422px;
 }
 
 .btn-create-task {
     height: 61px !important;
     font-weight: 400 !important;
     width: 180px !important;
-    position: absolute;
-    top: 78px;
     right: 36px;
+    position: absolute;
+    top: 80px;
 }
 
 .edit-task {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 .assigned-to-area {
@@ -547,6 +575,17 @@
 
 .button-area {
     height: 40px;
+}
+
+#task-modal>div>form>div.description-area.description-area-overlay.flex-column.margin-btn-45,
+#task-modal>div>form>div.date-area.flex-column.margin-btn-45 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#task-modal>div>form>div.button-area.margin-btn-56 {
+    justify-content: center;
 }
 
 .button-area button>* {
@@ -906,7 +945,26 @@ input[type="checkbox"]:checked {
         width: 100%;
     }
 
-    .btn-add-task {
+    .btn-create-task-resp {
+        display: flex !important;
+        align-items: center;
+        right: 36px;
+        position: absolute;
+        top: 80px;
+        width: 113px;
+        height: 51px;
+    }
+
+    #add-task-modal>div>form>button.btn-add-task.btn-create-task {
+        display: none;
+    }
+
+    .assigned-contacts-initials {
+        width: unset;
+        flex-wrap: wrap;
+    }
+
+    body>div>main>div.board-header-container>div>button {
         display: none;
     }
 
@@ -963,11 +1021,16 @@ input[type="checkbox"]:checked {
     }
 
     .task-modal {
-        top: 100px;
+        /* top: 100px; */
         padding: 89px 15px 15px;
         border-radius: 30px 0 30px 30px;
-        width: 95%;
+        width: 100%;
+        height: 90%;
         transform: translateX(950px)
+    }
+
+    .add-task-prio-low {
+        width: 33%;
     }
 
     .task-modal-container {
@@ -1007,45 +1070,58 @@ input[type="checkbox"]:checked {
 
     .edit-task * {
         font-size: 16px !important;
-        /* margin: 0 -20px; */
+        /* align-items: stretch; */
+        align-items: center;
     }
 
     .input-title,
-    .input-title-font {
-        width: 100% !important;
-        font-size: 28px !important;
-        font-weight: 400 !important;
-    }
+    {
+    width: 100% !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
+}
 
-    .input-title {
-        margin-top: 26px;
-    }
 
-    .description-area-overlay,
-    .description-area textarea,
-    .date-area,
-    .date,
-    .uniform-sizing {
-        width: 100% !important;
-    }
+/* title input field */
+#task-modal>div>form>div.form-width.input-title.margin-btn-25 {
+    padding-left: 0;
+    padding-right: 0;
+}
 
-    .button-area {
-        gap: unset;
-        justify-content: space-between;
-        width: 100%;
-    }
+.input-title {
+    margin-top: 26px;
+}
 
-    .scroll {
-        height: 145px;
-    }
+.description-area-overlay,
+.description-area textarea,
+.date-area,
+.date,
+.add-title,
+.uniform-sizing {
+    width: 422px;
+}
 
-    .assign-contact-container {
-        width: 100%;
-    }
+.button-area {
+    gap: unset;
+    justify-content: space-between;
+    width: unset;
+}
 
-    .assigned-contacts {
-        gap: 13px;
-    }
+.scroll {
+    height: 145px;
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+    align-items: stretch;
+}
+
+.assign-contact-container {
+    width: 100%;
+}
+
+.assigned-contacts {
+    gap: 13px;
+}
 
 }
 
@@ -1105,11 +1181,11 @@ input[type="checkbox"]:checked {
         height: 43px !important;
     }
 
-    .button-area button {
+    /* .button-area button {
         height: 41px !important;
         width: 111px !important;
         font-size: 16px !important;
-    }
+    } */
 
     /* .description-area-overlay {
         width: 363px !important;
@@ -1118,9 +1194,7 @@ input[type="checkbox"]:checked {
     .description-text {
         width: 363px !important;
         font-size: 16px !important;
-    }
-
-    .subtasks-area {
+    } {
         width: 363px !important;
     }
 
@@ -1138,5 +1212,194 @@ input[type="checkbox"]:checked {
         margin: 0 auto;
         font-size: 16px ;
     } */
+}
 
+@media (max-width: 480px) {
+    .task-modal-container {
+        padding: 10px;
+    }
+
+    .task-modal {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #task-modal>div>form>div.form-width.input-title.margin-btn-25,
+    .input-title-font,
+    .description-area,
+    #task-modal>div>form>div.date-area.flex-column.margin-btn-45,
+    .input-check,
+    .uniform-sizing,
+    .subtasks-input-area,
+    .assign-contact-container,
+    .edit-description,
+    .description-text,
+    .subtasks-input-area,
+    .input-title,
+    .add-task-left,
+    .button-area,
+    .date-area {
+        width: 360px !important;
+    }
+
+    .add-task-header-bottom {
+        width: 411px !important;
+    }
+
+    .margin-btn-45 {
+        margin-bottom: 21px !important;
+    }
+
+    .margin-btn-25 {
+        margin-bottom: 16px !important;
+    }
+}
+
+@media (max-width: 420px) {
+
+    #task-modal>div>form>div.form-width.input-title.margin-btn-25,
+    .input-title-font,
+    .description-area,
+    #task-modal>div>form>div.date-area.flex-column.margin-btn-45,
+    .input-check,
+    .uniform-sizing,
+    .subtasks-input-area,
+    .assign-contact-container,
+    .edit-description,
+    .button-area,
+    .description-text,
+    .subtask-input,
+    .subtasks-input-area,
+    .input-title,
+    .add-task-left,
+    .add-task-right,
+    .subtasks-area,
+    .button-area,
+    #add-task-modal>div>form>div.date-area.flex-column.margin-btn-45,
+    body>div.container-fluid.mh-100.d-flex.flex-column>main>div>form>div.add-task-left>div>div.date-area.flex-column.margin-btn-45 {
+        width: 305px !important;
+    }
+
+    .add-task-title {
+        font-size: 32px !important;
+    }
+
+    #title {
+        font-size: 24px;
+    }
+
+    .btn-create-task-resp {
+        top: 74px;
+    }
+
+    #high,
+    #medium,
+    #low {
+        height: 30px;
+    }
+
+    .add-task-header-bottom {
+        width: 310px !important;
+    }
+
+    #exampleModalLabel {
+        font-size: 42px;
+    }
+
+    .edit-btn {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    #edit-high,
+    #edit-medium,
+    #edit-low,
+    #high,
+    #medium,
+    #low {
+        width: 33%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #edit-high img,
+    #edit-medium img,
+    #edit-low img,
+    #high img,
+    #medium img,
+    #low img {
+        width: 15px;
+    }
+
+    .category-header,
+    .uniform-sizing,
+    #subtask-name,
+    .add-task-prio-medium,
+    .priority-button-text,
+    .text-19pt,
+    .assign-contact-container {
+        font-size: 1rem !important;
+    }
+
+    #subtask-input {
+        width: 220px;
+    }
+
+    .add-task-header-bottom {
+        width: 280px !important;
+    }
+
+    .btn-create-task-resp {
+        right: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    #task-modal>div>form>div.form-width.input-title.margin-btn-25,
+    .input-title-font,
+    .description-area,
+    #task-modal>div>form>div.date-area.flex-column.margin-btn-45,
+    .input-check,
+    .uniform-sizing,
+    .subtasks-input-area,
+    .assign-contact-container,
+    .edit-description,
+    .button-area,
+    .date-area,
+    .description-text,
+    .uniform-sizing,
+    #date,
+    .form-width,
+    .subtask-input,
+    .subtasks-input-area,
+    .input-title,
+    .add-task-right,
+    .subtasks-area,
+    #add-task-modal>div>form>div.date-area.flex-column.margin-btn-45,
+    body>div.container-fluid.mh-100.d-flex.flex-column>main>div>form>div.add-task-left>div>div.date-area.flex-column.margin-btn-45 {
+        width: 250px !important;
+    }
+
+    .responsive_text {
+        width: unset !important;
+        text-align: center;
+    }
+
+    .progress-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .close-icon-overlay {
+        right: 25px;
+    }
+
+    #subtask-input {
+        width: 165px;
+    }
+
+    .add-task-header-bottom {
+        width: 265px !important;
+    }
 }
