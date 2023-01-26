@@ -1,5 +1,5 @@
 function generateTodoHTML(task) {
-  return `
+    return `
       <div id="${task["id"]}" draggable="true" ondragstart="startDragging(${task["id"]}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal', ${task["id"]})" class="board-task">
           <span class="department ${task["color"]}">${task["department"]}</span>
           <span class="task-headline">${task["headline"]}</span>
@@ -22,13 +22,13 @@ function generateTodoHTML(task) {
 }
 
 function generateAssignedContactsHTML(contact, color) {
-  return `
+    return `
           <div style="background-color:${color}" class="task-contacts">${contact}</div>
       `;
 }
 
 function generateTaskModalHTML(task) {
-  return `
+    return `
           <div class="task-modal-container">
                       <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                           onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
@@ -56,7 +56,7 @@ function generateTaskModalHTML(task) {
 }
 
 function generateTaskModalContactsHTML(contactInitials, contact, color) {
-  return `
+    return `
           <div class="assigned-contact-row">
               <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
               <span>${contact}</span>
@@ -65,7 +65,7 @@ function generateTaskModalContactsHTML(contactInitials, contact, color) {
 }
 
 function generateTaskModalContactsInitialsHTML(contactInitials, contact, color) {
-  return `
+    return `
           <div class="assigned-contact-initials">
               <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
           </div>
@@ -73,7 +73,7 @@ function generateTaskModalContactsInitialsHTML(contactInitials, contact, color) 
 }
 
 function generateEditTaskHTML(task) {
-  return `
+    return `
       <div class="task-modal-container">
                       <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                           onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
@@ -149,16 +149,18 @@ function generateEditTaskHTML(task) {
                               </div>
                           </div>
                       </form>
+                      <div class="button-edit-task-area-confirm">
                       <button class="btn-add-task ok-btn" onclick="saveTasks(${task["id"]})">
                           Ok
                           <img src="../img/check-icon.png" alt="add-icon">
                       </button>
+                      </div>
                   </div>
       `;
 }
 
 function createSubtaskHTML(subtaskName) {
-  return `
+    return `
       <div class="subtask text-19pt">
           <input type="checkbox" name="subtask-checkbox">
           <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
@@ -167,25 +169,25 @@ function createSubtaskHTML(subtaskName) {
 }
 
 function createSubtaskEditHTML(subtaskName, checkBox) {
-  if (checkBox === true) {
-    return `
+    if (checkBox === true) {
+        return `
           <div class="subtask text-19pt">
               <input type="checkbox" checked="checked" name="subtask-checkbox">
               <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
           </div>
           `;
-  } else {
-    return `
+    } else {
+        return `
         <div class="subtask text-19pt">
             <input type="checkbox" name="subtask-checkbox">
             <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
         </div>
         `;
-  }
+    }
 }
 
 function createContactHTML() {
-  return `
+    return `
       <div class="task-contacts-overlay-container">
           <div class="task-contacts-overlay font-size21">SM</div>
           <div class="task-contacts-overlay font-size21">MV</div>
@@ -201,5 +203,5 @@ function createContactHTML() {
  * @returns HTML element
  */
 function templateTask(i) {
-  return `<div id="template${i}" class="template-task"><div>`;
+    return `<div id="template${i}" class="template-task"><div>`;
 }

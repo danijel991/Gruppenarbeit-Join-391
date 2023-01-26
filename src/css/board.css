@@ -291,6 +291,7 @@
     background: #ffffff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
     height: 818px;
+    min-height: 818px;
     width: 623px;
     border-radius: 30px;
     padding: 50px;
@@ -424,9 +425,12 @@
 .ok-btn {
     width: 84px;
     height: 61px;
-    position: absolute;
-    right: 31px;
-    bottom: 44px;
+}
+
+.button-edit-task-area-confirm {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 55.500px;
 }
 
 .slide-in {
@@ -437,6 +441,22 @@
 .slide-in-bottom {
     transition: transform 225ms ease-in-out;
     transform: translateY(0px);
+}
+
+.slide-in-bottom {
+    overflow-y: scroll;
+}
+
+.slide-in-bottom::-webkit-scrollbar {
+    display: none;
+}
+
+#collapseContactsEdit {
+    overflow-y: scroll !important;
+}
+
+#collapseContactsEdit::-webkit-scrollbar {
+    display: none !important;
 }
 
 .add-task-header-top {
