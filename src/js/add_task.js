@@ -409,7 +409,10 @@ function getCheckedBoxes(chkboxName) {
 function resetAddTaskForm() {
   document.getElementById("title").value = "";
   document.getElementById("date").value = "";
-  document.querySelector('input[name="prio"]:checked').checked = false;
+  let prioInput = document.querySelector('input[name="prio"]:checked');
+  if (prioInput !== null) {
+    prioInput.checked = false;
+  }
   document.getElementById("description-text").value = "";
   document.querySelectorAll('input[name="assign-contacts"]:checked').forEach((checkbox) => {
     checkbox.checked = false;
