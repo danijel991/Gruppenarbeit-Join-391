@@ -23,28 +23,16 @@ async function initBoard() {
 }
 
 /**
- * The function is colling the follow up functions to update the "Board".
+ * function renders all task cards to the board.html
  */
-// async function updateHTML() {
-//   await loadUserTasksFromBackend();
-//   setTimeout(() => {
-//     addToBoard()
-//   }, 400)
-//   setTimeout(() => {
-//     addToBoard()
-//   }, 400)
-// }
-
 function addToBoard() {
   if (taskAddedAtAddTaskHTML == false) {
-    console.time("Board Loading Time");
-    // if (searchTask()) {
+    // console.time("Board Loading Time");
     filterAllTasks();
-    // }
     generateTemplate();
     updateProgressBars();
     updateProgressReport();
-    console.timeEnd("Board Loading Time");
+    // console.timeEnd("Board Loading Time");
   }
 }
 
@@ -108,8 +96,6 @@ function findTask() {
   filterSearchedTasks(tasks, "done", search);
   updateProgressBars();
   updateProgressReport();
-  // updateHTML();
-  // addToBoard();
 }
 
 /**

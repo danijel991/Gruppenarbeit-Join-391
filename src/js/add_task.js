@@ -1,7 +1,6 @@
 let selectedCategory;
 let selectedColor;
 let taskAddedAtAddTaskHTML = false;
-// let subtasks = [];
 
 /**
  * function renders actual contacts of active user in drop-down menue of Add-Task Dialog
@@ -73,33 +72,22 @@ function addNewCategory() {
  * This triggers the task added message.
  */
 function taskAddedAnimation() {
-  // document.getElementById('added-task-message').classList.remove('display-none');
-  // setTimeout(function(){
   document.getElementById("added-task-message").classList.add("task-added-animation");
-  // }, 100);
-
   setTimeout(() => {
     taskAddedRemoveMessage();
-    // closeAddTaskDialog("add-task-modal", "add-task-overlay");
-    // closeTaskAddedToBoard();
-    // resetAddTaskForm();
   }, 2000);
 }
 
 /**
  * This removes the task added message.
  */
-
 function taskAddedRemoveMessage() {
   document.getElementById("added-task-message").classList.remove("task-added-animation");
   document.getElementById("added-task-message").style.transform = "";
 }
 
-/***        From Board          ***/
-
 /**
  * The function is collecting the information from all the input fields situated in task editor.
- *
  * @param {number} taskID -  Value coresponding to the task id.
  */
 function getValueFromEditInputs(taskID) {
@@ -121,7 +109,6 @@ function getValueFromEditInputs(taskID) {
 
 /**
  * The funtion does provide the hover effect for "Task priority"
- *
  * @param {string} id -  Value coresponding to the button id.
  */
 function hoverButton(id) {
@@ -139,7 +126,6 @@ function hoverButton(id) {
 
 /**
  * The function does remove the hover effect from "Task priority"
- *
  * @param {string} id -  Value coresponding to the button id.
  */
 function leaveHoverButton(id) {
@@ -155,7 +141,6 @@ function leaveHoverButton(id) {
 
 /**
  *The function provides the informationa that the button has been clicked.
- *
  * @param {string} id -  Value coresponding to the button id.
  */
 function checkButton(id) {
@@ -194,6 +179,11 @@ function addSubtask() {
   }
 }
 
+/**
+ * function checks if subtasks exist and if they are checked
+ * @param {array} subtasks
+ * @returns a float between 0 and 1 indicating the percentage of subtasks checked
+ */
 function calculateSubtaskProgress(subtasks) {
   let isChecked = 0;
   let checkBoxesCount = subtasks.map((e) => e.checkBox);
@@ -202,12 +192,15 @@ function calculateSubtaskProgress(subtasks) {
       isChecked++;
     }
   }
-  // console.log(checkBoxesCount.length, isChecked);
   result = isChecked / checkBoxesCount.length;
-  // console.log(result);
   return result;
 }
 
+/**
+ * function checks amount of subtasks and their checked status
+ * @param {array} subtasks
+ * @returns two integers
+ */
 function getSubtaskCheckboxesChecked(subtasks) {
   let isChecked = 0;
   let checkBoxesCount = subtasks.map((e) => e.checkBox);
@@ -216,36 +209,12 @@ function getSubtaskCheckboxesChecked(subtasks) {
       isChecked++;
     }
   }
-  // console.log(checkBoxesCount.length, isChecked);
   let count = checkBoxesCount.length;
-  console.log(isChecked, count);
   return [isChecked, count];
 }
 
-// function calculateSubtaskProgress(taskID) {
-//   let isChecked = 0;
-//   let checkBoxesCount = tasks[taskID].subtasks.map((e) => e.checkBox);
-//   for (let i = 0; i < checkBoxesCount.length; i++) {
-//     if (checkBoxesCount[i] === true) {
-//       isChecked++;
-//     }
-//   }
-//   console.log(checkBoxesCount.length, isChecked);
-//   result = isChecked / checkBoxesCount.length;
-//   console.log(result);
-//   // let remainder = result % 4;
-//   // if (remainder === 0) {
-//   //   return 0;
-//   // } else if (remainder === 1) {
-//   //   return 1;
-//   // } else if (remainder === 2) {
-//   //   return 2;
-//   // } else return 3;
-// }
-
 /**
  * The function is creating the drop-down and is showing the contact list of the user.
- *
  * @param {string} id - Value coresponding to the Html id.
  * @param {string} id2 - Value coresponding to the Html id.
  * @param {string} id3 - Value coresponding to the Html id.
@@ -259,7 +228,6 @@ function openContactInput(id, id2, id3) {
 
 /**
  * The function is closing the drop-down with contacts list
- *
  * @param {*} id - Value coresponding to the Html id.
  * @param {*} id2 - Value coresponding to the Html id.
  * @param {*} id3 - Value coresponding to the Html id.
@@ -300,6 +268,10 @@ function closeCategoryInput() {
   document.getElementById("category-input").value = "";
 }
 
+/**
+ * function retrives the subtasks from the actual DOM
+ * @returns array containing the subtasks
+ */
 function readSubtasks() {
   let myElement;
   let subtasks = [];
