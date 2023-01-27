@@ -237,9 +237,9 @@ function generateContactDetail(index, name, initials, initialsColor, email, phon
         <div class="edit-contact" onclick="openEditContactDialog(${index})"><img  onclick="openEditContactDialog()"src="../img/pencil_small.png">Edit Contact</div>
     </div>
     <div class="contact-detail-bold">Email</div>
-    <div class="contact-detail-medium">${email}</div>
+    <a class="contact-detail-medium" href="mailto:${email}">${email}</a>
     <div class="contact-detail-bold">Phone</div>
-    <div class="contact-detail-medium">${phone}</div>
+    <a class="contact-detail-medium" href="tel:${phone}">${phone}</a>
     <div class="edit-contact-responsive" onclick="openEditContactDialog(${index})"><img  onclick="openEditContactDialog()"src="../img/edit_contact_responsive_icon.png"></div>
     </div>
   </div>
