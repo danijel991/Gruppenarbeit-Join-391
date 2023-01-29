@@ -6,7 +6,7 @@ let alphabetLetters = []; //takes all first letters of activeUserContacts in alp
 let priorLetter; //sets the last letter for the Alphabet Registery
 
 /**
- * -loads all contacts into contact-details and checks. If contacts do exist, a contact delete button will be displayed 
+ * -loads all contacts into contact-details and checks. If contacts do exist, a contact delete button will be displayed
  */
 async function loadAllContacts() {
   await init();
@@ -15,7 +15,7 @@ async function loadAllContacts() {
 }
 
 /**
- * 
+ *
  * @param {integer} index -the index of a specific contact
  * @returns {object array} -returns a sincle complete contact as object
  */
@@ -25,7 +25,7 @@ function getContactDetails(index) {
 }
 
 /**
- * 
+ *
  * @returns pushes new user oject into activeUserContacts and saves it into the backend
  */
 async function addNewUserContact() {
@@ -42,11 +42,12 @@ async function addNewUserContact() {
   let j = getIndexOfEmail(newmail);
   openContactDetail(j);
   clearContent();
+  closeAddContactDialog();
 }
 
 /**
- * 
- * @param {object} newmail 
+ *
+ * @param {object} newmail
  * @returns true if the newmail already exists in the activeUserContacts array
  */
 function checkIfNewContactEmailExists(newmail) {
@@ -62,7 +63,7 @@ function checkIfNewContactEmailExists(newmail) {
 /**
  * Editing of existing contact
  * Function reads updated form fields and replaces specified contact object in object array
- * @param {integer} index 
+ * @param {integer} index
  */
 async function updateUserContact(index) {
   newContactData = getNewContactInfo();
@@ -75,11 +76,10 @@ async function updateUserContact(index) {
 }
 
 /**
- * Function reads the newly submitted form fields when adding a new contact details in "New Contact Dialog" 
+ * Function reads the newly submitted form fields when adding a new contact details in "New Contact Dialog"
  * @returns new contact as object
  */
 function getContactInfo() {
-
   let newName = document.getElementById("new-contact-name").value;
   let newEmail = document.getElementById("new-contact-email").value;
   let newPhone = document.getElementById("new-contact-phone").value;
@@ -97,10 +97,9 @@ function getContactInfo() {
   return newContact;
 }
 
-
 /**
  * Function is called when adding a new contact and if submitted new contacts email already exists in contacts array
- * @param {string} newmail 
+ * @param {string} newmail
  */
 function sorryEmailAlreadyExists(newmail) {
   document.getElementById("info-text").classList.remove("info-text");
@@ -110,7 +109,7 @@ function sorryEmailAlreadyExists(newmail) {
 }
 
 /**
- * Function reads the form fields when altering/editing existing contact details in "Edit Contact Dialog" 
+ * Function reads the form fields when altering/editing existing contact details in "Edit Contact Dialog"
  * @returns new contact as object
  */
 function getNewContactInfo() {
@@ -128,7 +127,6 @@ function getNewContactInfo() {
   };
   return newContact;
 }
-
 
 /*// HELPER FUNCTIONS ////////////////////////////////*/
 
@@ -150,7 +148,7 @@ function sortActiveUserContacts() {
   });
 }
 /**
- * 
+ *
  * @returns array of emails that belong to the active user contacts
  */
 function getEmails() {
@@ -161,8 +159,8 @@ function getEmails() {
 }
 
 /**
- * 
- * @param {string} newmail 
+ *
+ * @param {string} newmail
  * @returns index of email of newly created contact
  */
 function getIndexOfEmail(newmail) {
@@ -174,8 +172,8 @@ function getIndexOfEmail(newmail) {
 }
 
 /**
- * 
- * @param {string} newName 
+ *
+ * @param {string} newName
  * @returns Upper Case Initials of FirstName and LastName in array
  */
 function setContactInitials(newName) {
@@ -190,8 +188,8 @@ function setContactInitials(newName) {
 }
 
 /**
- * 
- * @param {string} initials 
+ *
+ * @param {string} initials
  * @returns a string that represents one of 5 possible rgb colors
  */
 function setColorForInitial(initials) {
