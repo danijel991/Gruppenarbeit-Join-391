@@ -81,7 +81,8 @@ function generateTaskModalHTML(task) {
                       <h3 class="task-headline-overlay">${task["headline"]}</h3>
                       <span class="task-description-overlay">${task["description"]}</span>
 
-                      <div class="task-move-to" id="current-process-status"></div>
+                      <div class="current-process-status-bold" id="current-process-status-bold">
+                      <span class="current-process-status" id="current-process-status"></span></div>
 
                       <div class="due-date-container">
                           <span>Due date:</span>
@@ -146,8 +147,10 @@ function generateEditTaskHTML(task) {
 
 
                           
+                          <div class="task-process-main-div">
                               <span class="category-header">Task Process-Status</span>
-                              <select class="tasks_moveTo" id="tasks_moveTo"></select>
+                              <select class="tasks_moveTo" id="tasks_moveTo" value="Move"></select>
+                              </div>
                               
               
                            
