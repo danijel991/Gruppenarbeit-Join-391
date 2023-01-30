@@ -244,6 +244,7 @@ function openAddTaskDialog(id, id2, taskID) {
 function showTaskModal(id2, taskID) {
   if (id2 == "task-modal") {
     document.getElementById("task-modal").innerHTML = generateTaskModalHTML(tasks[taskID]);
+    generateTaskProcessStatus(taskID);
     for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
       const contacts = tasks[taskID]["assignedTo"][i];
       document.getElementById(`assigned-contacts${taskID}`).innerHTML += generateTaskModalContactsHTML(
@@ -276,6 +277,7 @@ function editTasks(taskID) {
   editTaskMarker = true;
   document.getElementById("task-modal").innerHTML = generateEditTaskHTML(tasks[taskID]);
   renderContactsInEditDropDown(taskID);
+  generateTaskProcessStatusforEditDialog(taskID);
   updateUrgencyBtns(taskID);
   for (let i = 0; i < tasks[taskID]["assignedTo"].length; i++) {
     const contacts = tasks[taskID]["assignedTo"][i];
@@ -318,6 +320,5 @@ async function saveTasks(taskID) {
   getValueFromEditInputs(taskID);
   closeAddTaskDialog("task-modal", "task-overlay");
   await saveInBackendUserTasks();
-  // await updateHTML();
   addToBoard();
 }
