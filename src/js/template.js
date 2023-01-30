@@ -35,6 +35,18 @@ function generateTaskModalHTML(task) {
                       <span class="department department-overlay ${task["color"]}">${task["department"]}</span>
                       <h3 class="task-headline-overlay">${task["headline"]}</h3>
                       <span class="task-description-overlay">${task["description"]}</span>
+                      <div class="task-move-to" id="task-move-to">
+                      <form action="">
+                          <label for="tasks">Move task to:</label>
+                          <select class="tasks_moveTo" id="tasks_moveTo" value="Move">
+                              <option value="to_do">To do</option>
+                              <option value="in_progress">In progress</option>
+                              <option value="await_feedback" selected>Await feedback</option>
+                              <option value="done">Done</option>
+                          </select>
+                          <input type="submit" value="Move">
+                      </form>
+                  </div>
                       <div class="due-date-container">
                           <span>Due date:</span>
                           <span>${task["dueDate"]}</span>
