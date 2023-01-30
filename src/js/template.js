@@ -39,33 +39,33 @@ function generateTaskProcessStatusforEditDialog(taskID) {
   let content = document.getElementById("tasks_moveTo");
   if (currentTaskStatus === "to-do") {
     return (content.innerHTML = `
-                              <option value="to_do" selected>To do</option>
-                              <option value="in_progress">In progress</option>
-                              <option value="await_feedback">Await feedback</option>
+                              <option value="to-do" selected>To do</option>
+                              <option value="in-progress">In progress</option>
+                              <option value="await-feedback">Await feedback</option>
                               <option value="done">Done</option>
 
     `);
   } else if (currentTaskStatus === "await-feedback") {
     return (content.innerHTML = `
-                              <option value="to_do">To do</option>
-                              <option value="in_progress">In progress</option>
-                              <option value="await_feedback" selected>Await feedback</option>
+                              <option value="to-do">To do</option>
+                              <option value="in-progress">In progress</option>
+                              <option value="await-feedback" selected>Await feedback</option>
                               <option value="done">Done</option>
 
     `);
   } else if (currentTaskStatus === "in-progress") {
     return (content.innerHTML = `
-                              <option value="to_do">To do</option>
-                              <option value="in_progress" selected>In progress</option>
-                              <option value="await_feedback">Await feedback</option>
+                              <option value="to-do">To do</option>
+                              <option value="in-progress" selected>In progress</option>
+                              <option value="await-feedback">Await feedback</option>
                               <option value="done">Done</option>
 
     `);
   } else {
     return (content.innerHTML = `
-                                  <option value="to_do">To do</option>
-                                  <option value="in_progress">In progress</option>
-                                  <option value="await_feedback">Await feedback</option>
+                                  <option value="to-do">To do</option>
+                                  <option value="in-progress">In progress</option>
+                                  <option value="await-feedback">Await feedback</option>
                                   <option value="done" selected>Done</option>
     
         `);
@@ -144,10 +144,10 @@ function generateEditTaskHTML(task) {
                           </div>
 
 
-                          
+
                           
                               <span class="category-header">Task Process-Status</span>
-                              <select class="tasks_moveTo" id="tasks_moveTo" value="Move"></select>
+                              <select class="tasks_moveTo" id="tasks_moveTo"></select>
                               
               
                            

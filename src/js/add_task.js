@@ -93,6 +93,8 @@ function taskAddedRemoveMessage() {
 function getValueFromEditInputs(taskID) {
   let editHeadline = document.getElementById(`edit-headline${taskID}`).value;
   let editDescription = document.getElementById(`edit-description${taskID}`).value;
+  let selectedOption = document.getElementById("tasks_moveTo");
+  let editProcessStatus = selectedOption.options[selectedOption.selectedIndex].value;
   let editDate = document.getElementById(`edit-date${taskID}`).value;
   let contactsCheckedBoxes = getCheckedBoxes("assign-contacts");
   document.querySelectorAll('input[name="prio-edit"]').forEach((check) => {
@@ -102,6 +104,7 @@ function getValueFromEditInputs(taskID) {
   });
   tasks[taskID]["headline"] = editHeadline;
   tasks[taskID]["description"] = editDescription;
+  tasks[taskID]["category"] = editProcessStatus;
   tasks[taskID]["dueDate"] = editDate;
   tasks[taskID]["assignedTo"] = contactsCheckedBoxes;
   tasks[taskID]["subtasks"] = readSubtasks();
