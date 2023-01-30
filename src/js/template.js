@@ -1,5 +1,5 @@
 function generateTodoHTML(task) {
-    return `
+  return `
       <div id="${task["id"]}" draggable="true" ondragstart="startDragging(${task["id"]}); rotateTask(); highlight()" onclick="openAddTaskDialog('task-overlay', 'task-modal', ${task["id"]})" class="board-task">
           <span class="department ${task["color"]}">${task["department"]}</span>
           <span class="task-headline">${task["headline"]}</span>
@@ -22,31 +22,67 @@ function generateTodoHTML(task) {
 }
 
 function generateAssignedContactsHTML(contact, color) {
-    return `
+  return `
           <div style="background-color:${color}" class="task-contacts">${contact}</div>
       `;
 }
 
+function generateTaskProcessStatus(taskID) {
+  let currentTaskStatus = tasks[taskID]["category"];
+  let content = document.getElementById("current-process-status");
+  return (content.innerHTML = `Process-Status:&nbsp;<b>${currentTaskStatus}</b>  
+        `);
+}
+
+function generateTaskProcessStatusforEditDialog(taskID) {
+  let currentTaskStatus = tasks[taskID]["category"];
+  let content = document.getElementById("tasks_moveTo");
+  if (currentTaskStatus === "to-do") {
+    return (content.innerHTML = `
+                              <option value="to_do" selected>To do</option>
+                              <option value="in_progress">In progress</option>
+                              <option value="await_feedback">Await feedback</option>
+                              <option value="done">Done</option>
+
+    `);
+  } else if (currentTaskStatus === "await-feedback") {
+    return (content.innerHTML = `
+                              <option value="to_do">To do</option>
+                              <option value="in_progress">In progress</option>
+                              <option value="await_feedback" selected>Await feedback</option>
+                              <option value="done">Done</option>
+
+    `);
+  } else if (currentTaskStatus === "in-progress") {
+    return (content.innerHTML = `
+                              <option value="to_do">To do</option>
+                              <option value="in_progress" selected>In progress</option>
+                              <option value="await_feedback">Await feedback</option>
+                              <option value="done">Done</option>
+
+    `);
+  } else {
+    return (content.innerHTML = `
+                                  <option value="to_do">To do</option>
+                                  <option value="in_progress">In progress</option>
+                                  <option value="await_feedback">Await feedback</option>
+                                  <option value="done" selected>Done</option>
+    
+        `);
+  }
+}
+
 function generateTaskModalHTML(task) {
-    return `
+  return `
           <div class="task-modal-container">
                       <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                           onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
                       <span class="department department-overlay ${task["color"]}">${task["department"]}</span>
                       <h3 class="task-headline-overlay">${task["headline"]}</h3>
                       <span class="task-description-overlay">${task["description"]}</span>
-                      <div class="task-move-to" id="task-move-to">
-                      <form action="">
-                          <label for="tasks">Move task to:</label>
-                          <select class="tasks_moveTo" id="tasks_moveTo" value="Move">
-                              <option value="to_do">To do</option>
-                              <option value="in_progress">In progress</option>
-                              <option value="await_feedback" selected>Await feedback</option>
-                              <option value="done">Done</option>
-                          </select>
-                          <input type="submit" value="Move">
-                      </form>
-                  </div>
+
+                      <div class="task-move-to" id="current-process-status"></div>
+
                       <div class="due-date-container">
                           <span>Due date:</span>
                           <span>${task["dueDate"]}</span>
@@ -67,8 +103,16 @@ function generateTaskModalHTML(task) {
       `;
 }
 
+//   <form action="">
+//       <label for="tasks">Move task to:</label>
+//       <select class="tasks_moveTo" id="tasks_moveTo" value="Move">
+
+//       </select>
+//       <input type="submit" value="Move">
+//   </form>
+
 function generateTaskModalContactsHTML(contactInitials, contact, color) {
-    return `
+  return `
           <div class="assigned-contact-row">
               <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
               <span>${contact}</span>
@@ -77,7 +121,7 @@ function generateTaskModalContactsHTML(contactInitials, contact, color) {
 }
 
 function generateTaskModalContactsInitialsHTML(contactInitials, contact, color) {
-    return `
+  return `
           <div class="assigned-contact-initials">
               <div style="background-color:${color}" class="task-contacts-overlay">${contactInitials}</div>
           </div>
@@ -85,7 +129,7 @@ function generateTaskModalContactsInitialsHTML(contactInitials, contact, color) 
 }
 
 function generateEditTaskHTML(task) {
-    return `
+  return `
       <div class="task-modal-container">
                       <img class="close-icon-overlay" src="../img/add-task-close-icon.png"
                           onclick="closeAddTaskDialog('task-modal', 'task-overlay')">
@@ -98,6 +142,18 @@ function generateEditTaskHTML(task) {
                               <textarea class="edit-description" name="" id="edit-description${task["id"]}" cols="30" rows="5"
                                   placeholder="Enter a Description">${task["description"]}</textarea>
                           </div>
+
+
+                          
+                          
+                              <span class="category-header">Task Process-Status</span>
+                              <select class="tasks_moveTo" id="tasks_moveTo" value="Move"></select>
+                              
+              
+                           
+                         
+
+
                           <div class="date-area flex-column margin-btn-45">
                               <span class="category-header">Due date</span>
                               <input id="edit-date${task["id"]}" class="uniform-sizing date" type="date" value="${task["dueDate"]}">
@@ -172,7 +228,7 @@ function generateEditTaskHTML(task) {
 }
 
 function createSubtaskHTML(subtaskName) {
-    return `
+  return `
       <div class="subtask text-19pt">
           <input type="checkbox" name="subtask-checkbox">
           <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
@@ -181,25 +237,25 @@ function createSubtaskHTML(subtaskName) {
 }
 
 function createSubtaskEditHTML(subtaskName, checkBox) {
-    if (checkBox === true) {
-        return `
+  if (checkBox === true) {
+    return `
           <div class="subtask text-19pt">
               <input type="checkbox" checked="checked" name="subtask-checkbox">
               <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
           </div>
           `;
-    } else {
-        return `
+  } else {
+    return `
         <div class="subtask text-19pt">
             <input type="checkbox" name="subtask-checkbox">
             <label for="check" name="subtask-name" id="subtask-name">${subtaskName}</label>
         </div>
         `;
-    }
+  }
 }
 
 function createContactHTML() {
-    return `
+  return `
       <div class="task-contacts-overlay-container">
           <div class="task-contacts-overlay font-size21">SM</div>
           <div class="task-contacts-overlay font-size21">MV</div>
@@ -215,5 +271,5 @@ function createContactHTML() {
  * @returns HTML element
  */
 function templateTask(i) {
-    return `<div id="template${i}" class="template-task"><div>`;
+  return `<div id="template${i}" class="template-task"><div>`;
 }
