@@ -947,6 +947,12 @@ input[type="checkbox"]:checked {
         font-size: 21px;
     }
 
+    #task-move-to>form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
     #tasks_moveTo {
         height: 26px !important;
         font-weight: 400;
@@ -964,7 +970,6 @@ input[type="checkbox"]:checked {
         font-size: 16px;
         line-height: 120%;
     }
-
 }
 
 
@@ -1125,6 +1130,12 @@ input[type="checkbox"]:checked {
     width: 100% !important;
     font-size: 28px !important;
     font-weight: 400 !important;
+}
+
+#task-move-to,
+.task-move-to,
+#task-move-to>form>label {
+    font-size: 16px;
 }
 
 
@@ -1397,6 +1408,12 @@ input[type="checkbox"]:checked {
 
     .btn-create-task-resp {
         right: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    #task-move-to>form>input[type=submit] {
+        margin-left: 0 !important;
     }
 }
 
