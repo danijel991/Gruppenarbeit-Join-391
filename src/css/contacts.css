@@ -307,6 +307,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   cursor: pointer;
+  max-width: min-content;
 }
 
 /* ////////////// CONTACT DETAILS END ///////////////////*/
@@ -348,7 +349,7 @@ body {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   border-radius: 0px 30px 30px 30px;
   height: 100vh;
-  width: 580px;
+  width: 552px;
   left: 0px;
   transform: translateX(-580px);
   transition: all 225ms ease-in-out;
@@ -366,7 +367,7 @@ body {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
   border-radius: 0px 30px 30px 30px;
   height: 100vh;
-  width: 580px;
+  width: 552px;
   left: 0px;
   transform: translateX(-580px);
   transition: all 225ms ease-in-out;
@@ -636,24 +637,6 @@ input[type="text"],
   padding-top: 5%;
 }
 
-/* input[type="email"] {
-  color: black;
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-}
-input[type="number"] {
-  color: black;
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-} */
 
 input:focus {
   background-color: lightblue;
@@ -668,7 +651,14 @@ input:focus {
 // No media query for `xs` since this is the default in Bootstrap */
 
 /*/ Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media(max-width: 1200px){
+  .contact-list{
+    min-width: 300px;
+  }
+
+  .letters{
+    margin-right: unset;
+  }
 }
 
 @media (max-width: 1130px) {
@@ -678,10 +668,8 @@ input:focus {
 
   .add-contact-modal,
   .edit-contact-modal {
-    width: 100vw;
-    /* viewport width */
+    width: 552px !important;
     height: 100vh;
-    /* viewport height */
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -689,13 +677,16 @@ input:focus {
 
 /*/ Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
+
+  .add-contact-modal,
+  .edit-contact-modal {
+    width: 100vw !important;
+  }
+
   .add-contact-input-field {
     width: 327px;
   }
 
-  /* .contact-dialog-bottom {
-    padding-top: 180px;
-  } */
 
   .contact-name {
     font-size: 33px;
@@ -734,10 +725,10 @@ input:focus {
     z-index: 11;
   }
 
-  .add-contact-modal,
+  /* .add-contact-modal,
   .edit-contact-modal {
     border-radius: 0;
-  }
+  } */
 
   .create-contact-button {
     position: unset;
@@ -917,6 +908,7 @@ input:focus {
   .contact-title {
     font-size: 34px;
   }
+
   .info-text {
     font-size: 20px;
   }
@@ -926,7 +918,7 @@ input:focus {
     /* width: 97%; */
   }
 
-  #edit-contact-modal > div.contact-dialog-top > img:nth-child(2) {
+  #edit-contact-modal>div.contact-dialog-top>img:nth-child(2) {
     display: none;
   }
 
@@ -1034,6 +1026,7 @@ input:focus {
     min-height: 60px;
     font-size: 24px;
   }
+
   .contact-information {
     font-size: 19px;
   }

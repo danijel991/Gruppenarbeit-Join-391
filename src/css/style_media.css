@@ -202,7 +202,7 @@
 
   .menu {
     flex-direction: row;
-    gap: unset;
+    gap: 5vw;
   }
 
   .menu a {
