@@ -191,8 +191,39 @@ form img {
         width: 90vw;
     }
 
+
     .signUp__title {
         font-size: 2rem;
+    }
+}
+
+
+@media(max-width:576px) {
+    .forgot__title {
+        font-size: 2rem;
+    }
+
+
+    .reset__input--container,
+    .reset__input--container2 {
+        flex-direction: unset !important;
+    }
+}
+
+
+@media(max-width:376px) {
+    .forgot__title {
+        font-size: 1.5rem !important;
+    }
+
+
+    .forgot__text {
+        font-size: 1rem !important;
+    }
+
+
+    .arrow_back {
+        left: 5vw;
     }
 }
 
@@ -203,11 +234,29 @@ form img {
         left: 5vw;
         top: 5vh;
     }
-
-
-    .forgot__wrapper {
-        width: 80vw !important;
-    }
 }
 
-@Media(max-height:)
+
+@media(max-height:576px) {
+    .forgot__frame {
+        width: 80vw;
+        height: auto !important;
+        padding-block: 5px !important;
+    }
+
+
+    .forgot__text {
+        margin-bottom: unset;
+        font-size: 1rem;
+    }
+
+
+    .forgot__buttons {
+        margin-top: 5px;
+    }
+
+
+    .forgot__buttons button {
+        font-size: 1rem;
+    }
+}

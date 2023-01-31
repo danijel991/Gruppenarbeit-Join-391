@@ -310,6 +310,7 @@ a {
         gap: 10px
     }
 
+
     .logIn__buttons {
         white-space: nowrap;
     }
@@ -322,6 +323,7 @@ a {
         height: unset !important;
     }
 
+
     .to__sign-in--wrapper {
         position: absolute;
         bottom: -95vh;
@@ -330,7 +332,7 @@ a {
 
 
     .logIn__frame {
-        height: auto;
+        height: auto !important;
         padding: 1rem 0px;
     }
 
@@ -375,6 +377,7 @@ a {
         width: 65px;
     }
 
+
     .logIn__frame {
         padding: 2vh 0px;
     }
@@ -401,7 +404,7 @@ a {
 
 
     .logIn_input--container {
-        height: 6vh;
+        height: 32px;
     }
 
 
@@ -445,14 +448,16 @@ a {
         font-size: 0.8rem !important;
     }
 
+    
     .logo__position img {
         height: 40px;
         width: 35px;
     }
 
+
     .logIn__frame {
-        height: 60vh !important;
         padding: unset;
         justify-content: center;
         gap: 10px;
     }
+}
