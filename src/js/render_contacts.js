@@ -9,7 +9,7 @@ function openContactDetail(index) {
   }, 20);
 
   let content = document.getElementById("contact-detail");
-  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+  let { email, initials, initialsColor, name, phone } = getContactDetails(index);
 
   content.innerHTML = "";
   content.innerHTML = generateContactDetail(index, name, initials, initialsColor, email, phone);
@@ -130,9 +130,12 @@ function clearEditContent() {
  */
 function openEditContactDialog(index) {
   document.getElementById("overlay2").classList.remove("d-none");
-  let { name, initials, initialsColor, email, phone } = getContactDetails(index);
+  let contact = getContactDetails(index);
+  let { email, initials, initialsColor, name, phone } = contact;
   let content = document.getElementById("edit-contact-modal");
   content.innerHTML = generateContactEditDialog(index);
+  document.getElementById("user-avatar").textContent = `${initials}`;
+  document.getElementById("user-avatar").style = `background-color:${initialsColor}`;
   document.getElementById("edit-contact-name").value = `${name}`;
   document.getElementById("edit-contact-email").value = `${email}`;
   document.getElementById("edit-contact-phone").value = `${phone}`;
@@ -175,7 +178,9 @@ function generateContactEditDialog(index) {
   
                 </div>
                 <div class="contact-dialog-bottom">
-                    <div class="user-avatar"><img src="../img/user-avatar.png" alt=""></div>
+
+                    <div class="user-avatar" id="user-avatar"></div>
+                    
                     <div class="form">
                         <form class="add-contact_form" onsubmit="updateUserContact(${index}); return false;">
                             <div class="add-contact-input-field">
