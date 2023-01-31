@@ -245,7 +245,7 @@ function generateContactDetail(index, name, initials, initialsColor, email, phon
     <a class="contact-detail-medium" href="mailto:${email}">${email}</a>
     <div class="contact-detail-bold">Phone</div>
     <a class="contact-detail-medium" href="tel:${phone}">${phone}</a>
-    <div class="edit-contact-responsive" onclick="openEditContactDialog(${index})"><img  onclick="openEditContactDialog()"src="../img/edit_contact_responsive_icon.png"></div>
+    <div class="edit-contact-responsive" onclick="openEditContactDialog(${index})"><img  src="../img/edit_contact_responsive_icon.png"></div>
     </div>
   </div>
         `;
