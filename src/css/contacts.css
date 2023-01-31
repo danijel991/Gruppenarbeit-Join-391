@@ -580,7 +580,7 @@ body {
 .user-avatar {
   font-weight: 400;
   font-size: 38px;
-  background-color: #693636;
+  background-color: #d1d1d1;
   color: white;
   display: flex;
   justify-content: center;
@@ -637,7 +637,6 @@ input[type="text"],
   padding-top: 5%;
 }
 
-
 input:focus {
   background-color: lightblue;
 }
@@ -651,12 +650,12 @@ input:focus {
 // No media query for `xs` since this is the default in Bootstrap */
 
 /*/ Small devices (landscape phones, 576px and up) */
-@media(max-width: 1200px){
-  .contact-list{
+@media (max-width: 1200px) {
+  .contact-list {
     min-width: 300px;
   }
 
-  .letters{
+  .letters {
     margin-right: unset;
   }
 }
@@ -677,7 +676,6 @@ input:focus {
 
 /*/ Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-
   .add-contact-modal,
   .edit-contact-modal {
     width: 100vw !important;
@@ -686,7 +684,6 @@ input:focus {
   .add-contact-input-field {
     width: 327px;
   }
-
 
   .contact-name {
     font-size: 33px;
@@ -918,7 +915,7 @@ input:focus {
     /* width: 97%; */
   }
 
-  #edit-contact-modal>div.contact-dialog-top>img:nth-child(2) {
+  #edit-contact-modal > div.contact-dialog-top > img:nth-child(2) {
     display: none;
   }
 
