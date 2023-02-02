@@ -125,6 +125,9 @@ main {
     flex-direction: row;
     gap: 10px;
     justify-content: center;
+    margin-top: 45px;
+    margin-bottom: 25px;
+    min-height: 51px;
 }
 
 select {
