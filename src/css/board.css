@@ -943,8 +943,14 @@ input[type="checkbox"]:checked {
 }
 
 .dropdown-active {
-    justify-content: unset !important;
+    /* justify-content: unset !important; */
     gap: 10px !important;
+}
+
+.dropdown-category-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 @media (max-width: 1400px) {

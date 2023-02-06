@@ -155,14 +155,16 @@
                                     aria-controls="collapseCategory">
                                     <label for="new-category">New category</label>
                                 </div>
-                                <div onclick="selectCategory('Sales','pink')" class="dropdown-category">
+                                <div onclick="selectCategory('Sales','pink')" class="dropdown-category" role="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseCategory"
+                                    aria-expanded="false" aria-controls="collapseCategory">
                                     <label for="sales">Sales</label>
-                                    <input type="radio" name="category" id="sales" value="Sales" role="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseCategory"
-                                        aria-expanded="false" aria-controls="collapseCategory">
+                                    <input type="radio" name="category" id="sales" value="Sales">
                                     <div class="category-color-pink"></div>
                                 </div>
-                                <div onclick="selectCategory('Backoffice','turquoise')" class="dropdown-category">
+                                <div onclick="selectCategory('Backoffice','turquoise')" class="dropdown-category" role="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseCategory"
+                                    aria-expanded="false" aria-controls="collapseCategory">
                                     <label for="backoffice">Backoffice</label>
                                     <input type="radio" name="category" id="backoffice" value="Backoffice">
                                     <div class="category-color-turqoise"></div>

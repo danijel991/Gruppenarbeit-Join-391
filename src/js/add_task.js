@@ -35,7 +35,7 @@ function clearForm() {
  */
 function selectCategory(category, color) {
   document.getElementById("category-dropdown").innerHTML = "";
-  document.getElementById("category-dropdown").innerHTML = category + `<div class="category-color ${color}"></div>`;
+  document.getElementById("category-dropdown").innerHTML = `<div class="dropdown-category-select">${category}  <div class="category-color ${color}"></div></div><img src="../img/select-arrow.png" alt="">`;
   document.getElementById("category-dropdown").classList.add("dropdown-active");
   document.getElementById(color).checked = true;
 }
@@ -48,10 +48,10 @@ function selectCategory(category, color) {
  */
 function generateCategoryHTML(category, color) {
   return `
-    <div onclick="selectCategory('${category}','${color}')" class="dropdown-category" id="">
-    <label for="category-${category}">${category}</label>
-    <input type="radio" name="category" id="category-${category}" value="${category}" role="button" data-bs-toggle="collapse"
+    <div onclick="selectCategory('${category}','${color}')" class="dropdown-category" id="" role="button" data-bs-toggle="collapse"
     data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+    <label for="category-${category}">${category}</label>
+    <input type="radio" name="category" id="category-${category}" value="${category}">
     <div class="category-color ${color}"></div>
     </div>
     `;
