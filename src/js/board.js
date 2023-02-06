@@ -263,6 +263,8 @@ function showTaskModal(id2, taskID) {
 function overflowAssignedContacts(taskID) {
   if (tasks[taskID]["assignedTo"].length > 2 && window.innerWidth > 768) {
     document.getElementById(`assigned-contacts${taskID}`).classList.add('assigned-contacts-overflow');
+  } else if (tasks[taskID]["assignedTo"].length > 6 && window.innerWidth < 768) {
+    document.getElementById(`assigned-contacts${taskID}`).classList.add('assigned-contacts-overflow');
   }
 }
 

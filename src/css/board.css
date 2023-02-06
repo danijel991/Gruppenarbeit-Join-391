@@ -1092,10 +1092,9 @@ input[type="checkbox"]:checked {
     }
 
     .task-modal {
-        /* top: 100px; */
         padding: 89px 15px 15px;
         border-radius: 30px 0 30px 30px;
-        width: 100%;
+        width: 92%;
         height: 86%;
         transform: translateX(950px)
     }
@@ -1258,6 +1257,10 @@ input[type="checkbox"]:checked {
         height: 43px !important;
     }
 
+    .assigned-contacts {
+        width: 300px;
+    }
+
     /* .button-area button {
         height: 41px !important;
         width: 111px !important;
@@ -1354,9 +1357,12 @@ input[type="checkbox"]:checked {
     .subtasks-area,
     .button-area,
     .tasks_moveTo,
+    .task-process-main-div,
     #add-task-modal>div>form>div.date-area.flex-column.margin-btn-45,
     body>div.container-fluid.mh-100.d-flex.flex-column>main>div>form>div.add-task-left>div>div.date-area.flex-column.margin-btn-45 {
         width: 305px !important;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .add-task-title {
@@ -1430,6 +1436,10 @@ input[type="checkbox"]:checked {
 
     .btn-create-task-resp {
         right: 10px;
+    }
+
+    .assigned-contacts {
+        width: 250px;
     }
 }
 
