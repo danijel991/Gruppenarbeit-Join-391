@@ -26,7 +26,7 @@ async function initBoard() {
  * function renders all task cards to the board.html
  */
 function addToBoard() {
-  if (taskAddedAtAddTaskHTML == false) {
+  if (!taskAddedAtAddTaskHTML) {
     // console.time("Board Loading Time");
     filterAllTasks();
     generateTemplate();
@@ -252,10 +252,17 @@ function showTaskModal(id2, taskID) {
         contacts,
         setColorForInitial(getInitials(contacts))
       );
+      overflowAssignedContacts(taskID);
     }
     responsiveTaskModalAnimation(id2);
   } else {
     document.getElementById(id2).classList.add("slide-in");
+  }
+}
+
+function overflowAssignedContacts(taskID) {
+  if (tasks[taskID]["assignedTo"].length > 2 && window.innerWidth > 768) {
+    document.getElementById(`assigned-contacts${taskID}`).classList.add('assigned-contacts-overflow');
   }
 }
 
